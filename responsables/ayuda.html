@@ -1,0 +1,396 @@
+<!--
+
+    Archivo: ayuda.html
+    Proyecto: CCE
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: INP
+    Fecha: 29/03/2021
+    Version: 5.0
+    Licencia: GPL
+    Comentarios: Método que arma la ayuda para la carga de 
+                 usuarios autorizados
+
+-->
+
+<!-- definimos el encabezado de la página -->
+<div style="height:80px; scrollbar-width: none; padding:2px; background:#1a7bc9;">
+
+    <!-- presenta el logo -->
+    <div style="float:left">
+        <img id="logositio"
+            src="imagenes/logoleish.png"
+            alt="Logo del Sitio"
+            width=100px;>
+    </div>
+
+    <!-- presenta el título -->
+    <div style="margin-left:100px;
+                width: 60%;">
+        <h2 style='text-align:center; margin-top: 15px; color: aliceblue;'>
+            Usuarios
+        </h2>
+    </div>
+
+    <!-- presentamos los datos del instituto -->
+    <div style="float: right; 
+                margin-top: -50px;">
+        <p style='margin-top: 0px; color: aliceblue;'>
+            Instituto Nacional de Parasitología<br/>
+            Dr. Mario Fatala Chabén - Departamento de Clínica<br/>
+            Av. Paseo Colón 568 - Piso 2
+            Buenos Aires - Argentina<br/>
+            E-Mail:
+            <a href="mailto:fatalaleishmaniasis@gmail.com">fatalaleishmaniasis@gmail.com</a>
+        </p>
+    </div>
+
+<!-- cerramos el encabezado -->
+</div>
+
+<!-- presenta el enlace al tutorial -->
+<p class="ayudas-justificada">
+    <a href='#'
+       title="Pulse aquí para ver el Tutorial de Nuevo Usuario"
+       onclick="responsables.Tutorial()">
+       Ver Tutorial para el Alta de un Nuevo Usuario
+    </a>
+</p>
+
+<!-- presenta la ayuda -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Bienvenido al Sistema de Ayuda de la Plataforma de Control de Calidad Externo, esta sección 
+    trata sobre los usuarios autorizados, para ello tenga en cuenta que existen distintos niveles 
+    de usuarios, cada uno de ellos con permisos distintos, a saber:
+</p>
+
+<!-- abre las viñetas -->
+<ul>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        Responsables Jurisdiccionales o Referentes Provinciales: estos son usuarios que como su 
+        denominación indica, son Referentes Temáticos Provinciales. Este tipo de usuarios puede 
+        ver, modificar y dar de alta a otros usuarios, siempre dentro de su misma Jurisdicción.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        Responsables de Laboratorios, estos son referentes de los distintos laboratorios que 
+        participan del Programa de Control de Calidad Externo, como tales, pueden modificar 
+        sus propios datos (es decir, actualizarlos) y también modificar los datos del 
+        laboratorio al cual pertenecen, pero solo pueden consultar la información de otros 
+        usuarios del sistema.<br>
+        La intención en este caso es resguardar la información personal, pero al mismo tiempo 
+        permitir que otros usuarios autorizados la consulten.
+        En caso de requerir un laboratorio el acceso de un nuevo usuario (y con ello la 
+        autorización para cargar determinaciones) deberán solicitar la autorización al 
+        Referente Temático o al Referente del Nivel Central.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        Responsables del Nivel Central: estos son los usuarios del Instituto Nacional de 
+        Parasitología que es quien coordina la Plataforma. Estos usuarios pueden agregar
+        usuarios autorizados tanto como Referentes Jurisdiccionales y también como 
+        Usuarios de laboratorios.
+    </li>
+</ul>
+
+<!-- presenta la info del ingreso-->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Como puede ver, nada mas iniciar sesión, la Plataforma le presentará la pantalla con 
+    sus datos, le sugerimos que revise los mismos a fin de mantenerlos actualizados, 
+    especialmente la dirección de correo electrónico que es la que utilizamos para 
+    enviar novedades, notificaciones, etc. Y es también la que utiliza la plataforma 
+    para enviarle la recuperación de usuario / contraseña de ingreso que caso que 
+    no la recuerde.
+</p>
+
+<!-- presenta el título del menú -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Verá también a la izquierda de la pantalla un menú con las siguientes opciones:
+</p>
+
+<!-- abre el identado -->
+<ul>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Nuevo: </strong> en caso que cuente con el nivel de autorización 
+        correspondiente, al presionarlo, el sistema limpiará el formulario de datos 
+        permitiendo así dar de alta un nuevo usuario.<br>
+        Tenga en cuenta que al dar de alta, la plataforma verifica que tanto el 
+        nombre de usuario como la dirección de correo electrónico no se encuentren 
+        repetidas.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Buscar: </strong>Al seleccionar esta opción la plataforma le 
+        presentará un cuadro de diálogo solicitándole que ingrese el texto a 
+        buscar, tenga en cuenta que el sistema buscará en: el nombre del usuario, 
+        la Provincia o Jurisdicción, el laboratorio al cual pertenece.<br>
+        Así por ejemplo, si usted ingresar <strong>Tucumán</strong> el resultado 
+        obtenido será un listado de todos los usuarios autorizados de esa 
+        provincia.<br>
+        Por otra parte, si ingresara <strong>Rodriguez</strong> la plataforma 
+        retornará un listado donde se encuentren tanto los usuarios autorizados 
+        con ese apellido, como también los usuarios autorizados de un 
+        hipotético laboratorio que contenga <strong>Rodriguez</strong> en su 
+        denominación.<br>
+        A continuación, la plataforma abrirá una ventana emergente con una 
+        grilla conteniendo todos los registros coincidentes, en caso de 
+        desear ver un registro con mayor detalle, bastará con pulsar el 
+        ícono que se encuentra a la derecha de la grilla para que el sistema
+        cargue en el formulario todos los datos del usuario seleccinado.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Password: </strong>Esta opción le permitirá actualizar su 
+        contraseña de ingreso. Al dar de alta un usuario, el sistema genera 
+        una contraseña al azar que normalmente es muy difícil de recordar, 
+        así usted puede modificarla por una que le resulte mas familiar.<br>
+        Al seleccionarla, verá que surge una pequeña ventana emergente en 
+        la que le solicita que ingrese su contraseña actual y que luego 
+        ingrese la nueva contraseña que desea utilizar para identificarse
+        (le solicita además que la repita para evitar errores de tipeo),<br>
+        Al pulsar el botón <string>Grabar</string>, la plataforma verifica
+        que ambas contreñas coincidan y actualiza su ingreso.<br>
+        Recibirá además un mensaje a la dirección de correo electrónico 
+        registrada, con los datos de conexión, le recomendamos conservar 
+        este mensaje para futuras referencias.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Salir: </strong> Al seleccionar esta opción la plataforma
+        cierra la sesión y solicita nuevamente la autenticación del 
+        usuario. Esto garantiza que ninguna otra persona podrá interactuar
+        con la plataforma en su nombre.<br>
+        Tenga en cuenta además, que la Plataforma, luego de 30 minutos de 
+        inactividad cierra sesión automáticamente, debiendo ingresar 
+        nuevamente (esto también por motivos de seguridad, ya que en caso 
+        que inadvertidamente halla dejado su estación de trabajo con la 
+        sesión abierta, luego de un tiempo prudencial, esta sesión se 
+        cierra automáticamente)
+    </li>
+</ul>
+
+<!-- presenta la descripción de los datos -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Recuerde que la tabla de usuarios autorizados es compartida también 
+    por la Plataforma de Control de Calidad Externo, si bien los 
+    usuarios de los laboratorios en este momento no cuentan con 
+    acceso al sistema de Trazabilidad de Leishmania, al ser la misma 
+    tabla de usuarios autorizados, presenta una mayor flexibilidad ya 
+    que permite que el día de mañana, estos puedan ser autorizados 
+    para consultar o ingresar datos conservando las mismas credenciales 
+    de acceso.
+</p>
+
+<!-- los datos requeridos -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Los datos solicitados por la plataforma son:
+</p>
+
+<!-- abrimos el identado -->
+<ul>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Id: </strong>Esta es la clave única del registro y 
+        es gestionada automáticamente por la plataforma.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Nombre: </strong>El nombre completo del responsable
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Usuario: </strong>El nombre de usuario que tendrá 
+        para identificarse en el sistema (una vez grabado este 
+        dato no puede ser modificado)
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Cargo: </strong>Descripción del cargo que ocupa
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Institución: </strong>La institución donde presenta
+        servicios
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Mail: </strong>El mail del usuario, preferiblemente 
+        un mail personal ya que será el que utilizará posteriormente
+        para recuperar la contraseña de ingreso.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Teléfono: </strong>Este campo es optativo, de no 
+        contar con la información es posible ingresar la sigla 
+        s/Datos
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>País / Provincia: </strong>Puede dejarlos en blanco
+        por el momento y la plataforma lo completará mas tarde.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Localidad: </strong>Este campo es obligatorio y permitirá 
+        georreferenciar la institución, para indicar la misma se utiliza 
+        el diccionario de localidades censales que puede ser editado y 
+        actualizado a través del menú de administración.<br>
+        Para seleccionar una localidad, deberá ingresar parte del nombre 
+        de la localidad, por ejemplo <strong>Coronel</strong> y 
+        automáticamente la plataforma abrirá una ventana emergente con 
+        la grilla de todas las localidades que coindicen con el texto 
+        ingresado por usted (por ejemplo, tanto Coronel Suarez, como 
+        también Coronel Vidal y Coronel Boer entre otros), esta 
+        grilla indicará además la provincia o jurisdicción de cada 
+        una de las localidades.<br>
+        En este momento, bastará con pulsar sobre el ícono para seleccionar
+        la localidad deseada y automáticamente la plataforma 
+        actualizará el formulario.<br>
+        De esta forma se obtienen dos ventajas, la primera es que se 
+        evitan los errores de tipeo y además se obtiene una 
+        georreferenciación mas precisa.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Dirección: </strong>La dirección postal de la institución 
+        donde presta servicios (en el caso de ser un referente en el 
+        Programa de Control de Calidad, aquí es donde serán enviadas 
+        las muestras).
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Código Postal: </strong>El código postal correspondiente a 
+        la dirección antes mencionada.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Responsable Chagas: </strong>Marque esta casilla si el 
+        usuario es un referente temático de la enfermedad de Chagas.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Responsable Leish: </strong>Marque esta casilla si el 
+        usuario es un referente temático de leishmaniasis.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Activo: </strong>Esta casilla indica si el usuario se 
+        encuentra activo en la plataforma, si no está activo no 
+        podrá ingresar a la misma (por ejemplo, en el caso de un 
+        usuario que al momento de jubilarse, es conveniente 
+        desmarcar esta casilla)
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Nivel Central: </strong>Marque esta casilla si el 
+        usuario pertenece al Instituto Nacional de Parasitología, 
+        garantizando de tal forma un nivel superior de acceso 
+        (por ejemplo, en este momento, solo los usuarios de 
+        Nivel Central pueden ingresar registros en esta 
+        plataforma)
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Laboratorio: </strong>En caso que el usuario no 
+        sea referente ni de Chagas ni de Leishmania, deberá 
+        indicar en este campo a que laboratorio pertenece de 
+        tal forma que solo pueda ver los datos de su propio 
+        laboratorio.<br>
+        Para ello el mecanismo es similar a cuando seleccionamos 
+        la localidad, deberá ingresar aquí parte del nombre del 
+        laboratorio (por ejemplo Carrillo) y la plataforma 
+        mostrará un listado de todos los laboratorios que tienen 
+        en su nombre dicho texto, indicando además la provincia 
+        y localidad del mismo, al seleccionarlo, la plataforma 
+        actualizará el registro y marcará al usuario como 
+        autorizado solo para el laboratorio seleccionado.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Observaciones: </strong>Aquí puede ingresar 
+        las observaciones y comentarios que considere 
+        pertienentes.
+    </li>
+</ul>
+
+<!-- el pié de página -->
+<div style="height:55px; padding:2px;background:#1a7bc9;">
+
+    <!-- presenta el texto -->
+    <p style="text-align: center; vertical-align:middle; color:aliceblue;">
+        <a href="http://fatalachaben.mooo.com/leishmania/"> INP </a> |
+        <a href="mailto:cinvernizzi@dsgestion.site">Contacto</a> |
+                &copy; 2025 Claudio Invernizzi<br>
+                | Diseño <a href="http:/dsgestion.site/" target="_blank"> DsGestion </a> |
+                Licencia <a rel="license" target="_blank"
+                href="http://creativecommons.org/licenses/by/3.0/">
+                Creative Commons Attribution 3.0 License</a>
+    </p>
+
+<!-- cerramos el pié -->
+</div>

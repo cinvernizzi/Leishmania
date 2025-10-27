@@ -1,0 +1,116 @@
+Lista de Tareas de Leishmania
+
+Diccionarios:
+  Ocupaciones:
+    ✔ Al grabar o editar un item debe actualizar el select de filiación @high @started(25-08-20 12:05) @done(25-08-20 12:11) @lasted(6m24s)
+    ✔ Verificar ABM Ocupaciones @high @started(25-08-21 11:42) @done(25-08-21 11:59) @lasted(17m40s)
+
+  Sexos:
+    ✔ Al grabar o editar un item debe actualizar el select de filiación @high @started(25-08-20 12:11) @done(25-08-20 12:16) @lasted(5m29s)
+    ✔ Verificar ABM Sexos @high @started(25-08-21 11:42) @done(25-08-21 11:59) @lasted(17m44s)
+
+  Documentos: 
+    ✔ Al grabar o editar un item debe actualizar el select de filiación @high @started(25-08-20 12:16) @done(25-08-20 12:19) @lasted(3m59s)
+    ✔ Verificar ABM documentos @high @started(25-08-21 11:42) @done(25-08-21 11:59) @lasted(17m47s)
+
+  Animales: 
+    ✔ Validar ABM de diccionario de animales (peridomicilio) @high @started(25-08-21 11:44) @done(25-08-21 14:15) @lasted(2h31m26s)
+    ☐ Revisar desplegable del diccionario en peridomicilio @high @started(25-10-27 13:34)
+    ☐ Actualizar desplegable al actualizar diccionario de animales @high 
+    ☐ Revisar ficha datos clínicos del animal @high @started(25-10-27 13:40)
+
+  Dependencias: 
+    ✔ Validar ABM de diccionario de dependencias @high @started(25-08-21 11:44) @done(25-08-21 14:15) @lasted(2h31m45s)
+
+  Localidades: 
+    ✔ Validar ABM de localidades censales @high @started(25-08-21 11:45) @done(25-08-25 13:05) @lasted(4d1h20m55s)
+
+  Provincias: 
+    ✔ Validar ABM de jurisdicciones @high @started(25-08-21 11:45) @done(25-08-25 13:06) @lasted(4d1h21m12s)
+
+  Países: 
+    ✔ Validar ABM de nacionalidades @high @started(25-08-21 14:19) @done(25-08-25 13:12) @lasted(3d22h53m51s)
+
+  Materiales: 
+    ✔ Validar ABM de diccionario de materiales @high @started(25-08-21 11:45) @done(25-08-21 14:09) @lasted(2h24m1s)
+    ☐ Al editar material debe actualizar select en la grilla de muestras @high @started(25-10-27 13:31)
+    ☐ Idem en las muestras de las mascotas @high @started(25-10-27 13:32)
+  
+  Técnicas: 
+    ✔ Validar Diccionario de Técnicas diagnósticas @high @started(25-08-21 11:46) @done(25-08-21 14:16) @lasted(2h30m41s)
+    ☐ Al editar técnica debe actualizar select en la grilla de muestras @high @started(25-10-27 13:32)
+    ☐ Item en las muestras de las mascotas @high @started(25-10-27 13:32)
+
+  Laboratorios: 
+    ✔ Validar ABM de laboratorios @high @started(25-08-21 11:51) @done(25-08-25 14:30) @lasted(4d2h39m6s)
+
+  Instituciones: 
+    ✔ Validar ABM de instituciones asistenciales @high @started(25-08-21 11:51) @done(25-08-25 15:06) @lasted(4d3h15m42s)
+
+Pacientes: 
+
+  Filiación: 
+    ✔ Falta calendario con fecha de nacimiento @high @started(25-08-20 12:12) @done(25-08-20 13:08) @lasted(56m34s)
+    ✔ Verificar cuando es paciente y cuando tutor de una mascota @high @started(25-08-20 12:36) @done(25-08-26 13:42) @lasted(6d1h6m29s)
+    ✔ Verificar select de tipo de documento @high @started(25-08-20 12:30) @done(25-08-20 13:09) @lasted(39m2s)
+    ✔ Verificar grabación de nuevo registro @high @started(25-08-20 12:00) @done(25-08-20 13:09) @lasted(1h9m29s)
+    ✔ Verificar edición de registro @high @started(25-08-20 13:09) @done(25-08-20 17:05) @lasted(3h56m15s)
+    ✔ Verificar búsqueda de pacientes @high @started(25-08-20 13:10) @done(25-08-27 13:19) @lasted(1w9m32s)
+    ✔ Implementar georreferenciación de pacientes @high @started(25-08-20 14:05) @done(25-08-20 14:41) @lasted(36m17s)
+    ✔ Implementar visualización de mapas @high @started(25-08-20 14:05) @done(25-08-20 15:34) @lasted(1h30m)
+    ✔ Verificar actualización de provincia en la carga de edición @high @started(25-08-21 13:36) @done(25-08-21 14:04) @lasted(28m38s)
+    ✔ Verificar actualización de localidad en la carga de edición @high @started(25-08-21 13:36) @done(25-08-21 14:04) @lasted(28m41s)
+    ✔ Verificar carga de registros hijos @high @started(25-08-25 13:38) @done(25-08-26 12:57) @lasted(23h19m38s)
+    ☐ Implementar impresión de resultados de una muestra @high @started(25-08-26 13:14)
+    ☐ Implementar impresión de historial clínica @high @started(25-08-26 13:14)
+    ✔ Fecha de nacimiento debe ser optativo @high @started(25-10-27 13:30) @done(25-10-27 13:54) @lasted(24m23s)
+    ✔ Implementar separador entre datos paciente y datos institución @high @started(25-10-27 13:30) @done(25-10-27 14:17) @lasted(48m)
+    ✔ Ubicación de la lesión, mover a leishmaniasis tegumentaria @hight @started(25-10-27 13:31) @done(25-10-27 13:51) @lasted(20m25s)
+    ☐ Revisar al grabar duplica el registro @high @started(25-10-27 13:41)
+
+  Actividades:
+    ✔ Validar ABM de actividades del paciente @high @started(25-08-21 11:47) @done(25-08-25 14:10) @lasted(4d2h23m27s)
+
+  Viajes:
+    ✔ Validar ABM de viajes del paciente @high @started(25-08-21 14:46) @done(25-08-21 15:57) @lasted(1h11m27s)
+
+  Clínica: 
+    ✔ Validar datos de clínica @high @started(25-08-21 11:48) @done(25-08-25 12:58) @lasted(4d1h10m6s)
+
+  Control: 
+    ✔ Validar ABM de actividades de control @high @started(25-08-21 11:48) @done(25-08-22 16:11) @lasted(1d4h23m6s)
+
+  Evolución: 
+    ✔ Validar ABM de evolución del paciente @high @started(25-08-21 11:49) @done(25-08-25 13:32) @lasted(4d1h43m43s)
+    ✔ Eliminar fecha de denuncia (repetido con datos de filiación) @high @started(25-10-27 13:51) @done(25-10-27 13:54) @lasted(3m31s)
+
+  Mascotas: 
+    ✔ Validar ABM de mascotas del paciente @high @started(25-08-21 11:49) @done(25-08-25 13:43) @lasted(4d1h54m23s)
+
+  Muestras: 
+    ✔ Validar ABM de muestras procesadas @high @started(25-08-21 11:49) @done(25-08-22 13:13) @lasted(1d1h24m36s)
+
+  Peridomicilio: 
+    ✔ Validar ABM de datos del peridomicilio @high @started(25-08-21 11:50) @done(25-08-22 16:17) @lasted(1d4h27m35s)
+
+Mascotas: 
+  ✔ Validar ABM de mascotas (solo con datos del tutor) @high @started(25-08-21 11:50) @done(25-08-26 13:12) @lasted(5d1h22m54s)
+  ✔ Validar ABM de muestras y resultados de las mascotas @high @started(25-08-21 11:54) @done(25-08-26 13:35) @lasted(5d1h41m22s)
+  ✔ Validar ABM de síntomas de las mascotas @high @started(25-08-21 11:53) @done(25-08-26 13:12) @lasted(5d1h19m57s)
+  ☐ Síntomas, cambiar de fechas a select si /no @high @started(25-10-27 13:33)
+
+Responsables:
+  ✔ Validar ABM de usuarios autorizados @high @started(25-08-21 11:52) @done(25-08-25 15:33) @lasted(4d3h41m28s)
+  ✔ Verificar recuperación de contraseña @high @started(25-08-21 11:55) @done(25-08-27 14:29) @lasted(6d2h34m27s)
+  ✔ Implementar modificación de contraseña @high @started(25-08-27 14:29) @done(25-08-27 15:45) @lasted(1h16m17s)
+  ✔ Al ingresar debe cargar por defecto el perfil del usuario @high @started(25-08-27 14:32) @done(25-08-27 14:39) @lasted(7m44s)
+
+Reportes: 
+  ✔ Implementar reporte de muestras pendientes @high @started(25-08-21 11:52) @done(25-08-25 12:57) @lasted(4d1h5m55s)
+  ✔ Implementar reporte de casos denunciados al Sisa @high @started(25-08-21 11:53) @done(25-08-25 17:29) @lasted(4d5h36m17s)
+  ✔ Implementar reporte de casos no denunciados al Sisa @high @started(25-08-21 11:53) @done(25-08-25 16:20) @lasted(4d4h27m33s)
+  ✔ Implementar georreferenciación de casos, ver de distinguir animales de pacientes @high @started(25-08-21 11:59) @done(25-08-26 15:44) @lasted(5d3h45m39s)
+  ☐ Implementar un panel de control @low @started(25-08-21 12:01)
+
+Bases de Datos:
+  ✔ Sincronizar estructura con servidor de producción @critical @started(25-08-21 11:55) @done(25-08-22 13:14) @lasted(1d1h19m23s)

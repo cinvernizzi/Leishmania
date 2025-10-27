@@ -1,0 +1,59 @@
+<!-- 
+
+    Archivo: notificados.html
+    Proyecto: Leishmania
+    Autor: Lic. Claudio Invernizzi 
+    E-Mail: cinvernizzi@dsgestion.site
+    Fecha: 25/08/2025
+    Licencia: GPL
+
+    Documento que define el formulario con el select y el 
+    contenedor para el reporte de casos notificados al 
+    sisa
+
+-->
+
+<!-- definimos el div del año -->
+<div id="form-anios" name="form-anios">
+
+    <!-- presenta el select -->
+    <label>Año:
+        <a href="#"
+            title="Seleccione el año a reportar"
+            class="easyui-tooltip">
+        <select id="anionotificado"
+                class="easyui-combobox"
+                name="anionotificado"
+                style="width:120px;">
+
+            <!-- las opciones las agrega por javascript -->
+
+        <!-- cerramos los tags-->
+        </select>
+    </a>
+    </label>
+    
+    <!-- presenta el botón calcular -->
+    <a id="btnGeneraReporte" 
+        href="#" 
+        class="easyui-linkbutton" 
+        data-options="iconCls:'icon-pdf'"
+        style="width: 120px;"
+        onclick="reportes.reporteNotificados();">
+        Generar
+    </a>
+
+</div>
+
+<!-- definimos el contenedor del reporte -->
+<div id="form-notificados" name="form-notificados"
+     style="width: 100%;
+            height: 90%;">
+</div>
+
+<script>
+
+    // configuramos el formulario 
+    reportes.initFormAnios();
+
+</script>

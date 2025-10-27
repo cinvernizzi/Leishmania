@@ -1,0 +1,180 @@
+<!--
+
+    Archivo: formevolucion.html
+    Proyecto: Leishmania
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: DsGestion
+    Fecha: 04/08/2025
+    Version: 1.0
+    Licencia: GPL
+    Comentarios: Procedimiento que define el formulario con los 
+                 datos de la evolución del paciente
+
+-->
+
+<!-- presenta el título -->
+<div>
+    <h2 style='text-align:center; margin-top: 5px; color: #1a7bc9;'>
+        Evolución del Paciente
+    </h2>
+</div>
+
+<!-- definimos el formulario -->
+<form name="form-evolucion" id="form-evolucion">
+
+    <!-- abrimos la primer fila con cinco columnas -->
+    <div style="margin-left: 10px;
+                margin-top: 10px;
+                grid-template-columns: 15% 15% 15% 20% 35%;
+                column-gap: 10px;">
+
+        <!-- presenta la clave del registro -->
+        <label>Id:
+            <a href="#" 
+               title="Clave del registro" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='idevolucion'
+                   id='idevolucion'
+                   readonly
+                   style="width:50px;">
+            </a>
+        </label>
+
+        <!-- pide la fecha de hospitalización -->
+        <label>Hospitalización:
+            <a href="#"
+               title="Fecha de Hospitalización del Paciente"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='hospitalizacionevolucion'
+                   name='hospitalizacionevolucion'
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+        <!-- pide la fecha de alta -->
+        <label>Alta:
+            <a href="#"
+               title="Fecha de alta del paciente"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='fechaaltaevolucion'
+                   name='fechaaltaevolucion'
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+        <!-- pide la fecha de defunción -->
+        <label>Defunción:
+            <a href="#"
+               title="Fecha de defunción del paciente"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='defuncionevolucion'
+                   name='defuncionevolucion'
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+        <!-- pide la condición del alta -->
+        <label>Condición:
+            <a href="#" 
+               title="Describa la condición de la evolución" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='condicionevolucion'
+                   id='condicionevolucion'
+                   style="width:350px;">
+            </a>
+        </label>
+
+    <!-- cerramos la primer fila -->
+    </div>
+
+    <!-- abrimos la primer fila con siete columnas -->
+    <div style="margin-left: 10px;
+                margin-top: 10px;
+                grid-template-columns: 30% 15% 15% 15% 15% 15 10%;
+                column-gap: 10px;">
+
+        <!-- pide la clasificación final -->
+        <label>Clasificacion:
+            <a href="#" 
+               title="Describa la condición de la evolución" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='clasificacionevolucion'
+                   id='clasificacionevolucion'
+                   style="width:200px;">
+            </a>
+        </label>
+
+        <!-- presenta el usuario -->
+        <label>Usuario:
+            <a href="#"
+               title="Usuario que ingresó el registro"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='usuarioevolucion'
+                   name='usuarioaevolucion'
+                   readonly
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+        <!-- presenta la fecha de alta -->
+        <label>Alta:
+            <a href="#"
+               title="Fecha de alta del registro"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='altaevolucion'
+                   name='altaevolucion'
+                   readonly
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+        <!-- el botón grabar -->
+        <a id="btnGrabarEvolucion" 
+            href="#" 
+            class="easyui-linkbutton" 
+            data-options="iconCls:'icon-save'"
+            style="width: 120px;"
+            onclick="evolucion.verificaEvolucion();">
+            Grabar
+        </a>
+
+        <!-- el botón cancelar -->
+        <a id="btnCancelarEvolucion" 
+            href="#" 
+            class="easyui-linkbutton" 
+            data-options="iconCls:'icon-cancel'"
+            style="width: 120px;"
+            onclick="evolucion.cancelaEvolucion();">
+            Cancelar
+        </a>
+
+        <!-- el botón ayuda -->
+        <a id="btnAyudaEvolucion" 
+            href="#" 
+            class="easyui-linkbutton" 
+            data-options="iconCls:'icon-help'"
+            style="width: 30px;"
+            onclick="evolucion.ayudaEvolucion();">
+        </a>
+
+    <!-- cerramos el contenedor -->
+    </div>
+
+<!-- cerramos el formulario -->
+</form>
+
+<script>
+
+    // configuramos el formulario 
+    evolucion.initFormEvolucion();
+
+</script>

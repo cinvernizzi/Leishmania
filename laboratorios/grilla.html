@@ -1,0 +1,74 @@
+<!--
+
+    Archivo: grilla.html
+    Proyecto: CCE
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: INP
+    Fecha: 01/10/2024
+    Version: 5.0
+    Licencia: GPL
+    Comentarios: Método que define la grilla con el listado de
+                 laboratorios participantes
+
+-->
+
+<!-- definimos la barra de herramientas -->
+<div id="toolbarlaboratorios">
+
+    <!-- el switch de leishmaniasis -->
+    <span>Leishmaniasis: </span>
+    <input class="easyui-switchbutton"
+           id="checkleishmania">
+
+    <!-- el switch de serología -->
+    <span>Serología: </span>
+    <input class="easyui-switchbutton"
+           id="checkserologia">
+
+    <!-- el switch de pcr -->
+    <span>PCR: </span>
+    <input class="easyui-switchbutton"
+           id="checkpcr">
+
+    <!-- el texto a buscar -->
+    <span>Laboratorio:</span>
+    <input id="textolaboratorio" 
+           style="line-height:26px; width:150px; border:1px solid #ccc">
+
+    <!-- el botón filtrar -->
+    <a href="#" 
+       class="easyui-linkbutton"
+       iconCls="icon-filter" 
+       plain="true" 
+       title="Filtra los registros"
+       id='btnFiltraLaboratorios'
+       onclick="laboratorios.filtraLaboratorios();">
+       Filtrar
+    </a>
+
+    <!-- el botón imprimir -->
+    <a href="#" 
+       class="easyui-linkbutton"
+       iconCls="icon-print" 
+       plain="true" 
+       title="Imprime todos los registros"
+       id='btnImprimeLaboratorios'
+       onclick="laboratorios.imprimeReporte();">
+       Imprimir
+    </a>
+
+</div>
+
+<!-- definimos la grilla -->
+<table id="grilla-laboratorios" 
+       style="width:100%; text-align: center;"
+       toolbar="#toolbarlaboratorios">
+</table>
+
+<script>
+
+    // configuramos la grilla
+    laboratorios.initGrillaLaboratorios();
+
+</script>

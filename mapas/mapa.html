@@ -1,0 +1,28 @@
+<!--
+
+    Archivo: mapa.html
+    Proyecto: Leishmania
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: INP - Dr. Mario Fatala Chabén
+    Fecha: 05/05/2022
+    Version: 1.0
+    Licencia: GPL
+    Comentarios: Procedimiento que define el layer del mapa
+
+-->
+
+<!-- definimos el contenedor -->
+<div id="map"></div>
+
+<script>
+
+    // inicializamos el mapa según el valor
+    // de la variable control
+    if (mapas.Tipo == "adulto"){
+        pacientes.initMapa();
+    } else {
+        congenito.initMapa();
+    }
+    
+</script>

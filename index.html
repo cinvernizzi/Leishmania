@@ -1,0 +1,737 @@
+<!-- 
+
+    Archivo: index.html
+    Proyecto: Leishmania
+    Autor: Lic. Claudio Invernizzi 
+    E-Mail: cinvernizzi@dsgestion.site
+    Fecha: 21/05/2025
+    Licencia: GPL
+
+    Script principal que carga todas las librerías y presenta la pantalla
+    de la aplicación
+
+-->
+
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <!-- definimos la página -->
+    <meta charset="utf-8"/>
+    <meta name="description" content="Trazabilidad de Muestras de Leishmania"/>
+    <meta name="keywords" content="leishmaniasis, parasitologia, salud"/>
+
+    <!-- presenta el título -->
+    <title>Muestras de Leishmaniasis</title>
+
+    <!-- cargamos el favicon -->
+    <link rel="icon" type="image/x-icon" href="imagenes/logoleish.png"/>
+
+    <script>
+
+        // verificamos que el usuario esté autenticado 
+        if(sessionStorage.getItem("IdUsuario") == null){
+
+            // redirigimos el navegador
+            window.location = "seguridad/login.html";
+
+        }
+
+        // establecemos el evento de cierre de sesión cuando
+        // abandona la página, la tenemos que definir en
+        // una función pública porque todavía no cargamos
+        // las clases
+        window.onbeforeunload = function(event) {
+            Salir();
+        };
+
+    </script>
+
+    <!-- carga las hotas de estilo -->
+    <link rel="stylesheet" type="text/css" href="css/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="css/leishmania.css"/>
+    <link rel="stylesheet" type="text/css" href="css/texteditor.css">
+
+        <!-- las librerías jquery -->
+    <script src="script/jquery-3.6.4.min.js"></script>
+    <script src="script/jquery.easyui.min.js"></script>
+    <script src="script/easyui-lang-es.js"></script>
+    <script src="script/jquery.texteditor.js"></script>
+
+    <!-- carga la api de gmaps -->
+    <script async defer src="https://maps.google.com/maps/api/js?key=AIzaSyCMcOCnkfT3Orw2zwuJ_PNaGQajd9SeoiQ"></script>
+
+    <!-- carga las funciones y librerías javascript -->
+    <script src="script/funciones.js"></script>
+    <script src="script/sesion.class.js"></script>
+    <script src="material/dicmaterial.class.js"></script>
+    <script src="tecnicas/dictecnicas.class.js"></script>
+    <script src="pacientes/pacientes.class.js"></script>
+    <script src="clinica/clinica.class.js"></script>
+    <script src="seguridad/seguridad.class.js"></script>
+    <script src="localidades/localidades.class.js"></script>
+    <script src="jurisdicciones/jurisdicciones.class.js"></script>
+    <script src="paises/paises.class.js"></script>
+    <script src="dependencias/dependencias.class.js"></script>
+    <script src="laboratorios/laboratorios.class.js"></script>
+    <script src="instituciones/instituciones.class.js"></script>
+    <script src="responsables/responsables.class.js"></script>
+    <script src="animales/animales.class.js"></script>
+    <script src="documentos/documentos.class.js"></script>
+    <script src="ocupaciones/ocupaciones.class.js"></script>
+    <script src="sexos/sexos.class.js"></script>
+    <script src="actividades/actividades.class.js"></script>
+    <script src="viajes/viajes.class.js"></script>
+    <script src="mascotas/mascotas.class.js"></script>
+    <script src="peridomicilio/peridomicilio.class.js"></script>
+    <script src="evolucion/evolucion.class.js"></script>
+    <script src="control/control.class.js"></script>
+    <script src="muestras/muestras.class.js"></script>
+    <script src="sintmascotas/sintmascotas.class.js"></script>
+    <script src="muestrasmasc/muestrasmasc.class.js"></script>
+    <script src="script/mapas.class.js"></script>
+    <script src="reportes/reportes.class.js"></script>
+
+</head>
+
+<!-- definimos el cuerpo -->
+<body class="easyui-layout">
+
+     <!-- definimos el encabezado de la página -->
+     <div data-options="region:'north',split:false, border:true" 
+          style="height:12%; scrollbar-width: none; padding:2px; background:#1a7bc9;">
+
+          <!-- presenta el logo -->
+          <div style="float:left">
+               <img id="logositio"
+                    src="imagenes/logoleish.png"
+                    alt="Logo del Sitio"
+                    width=100px;>
+          </div>
+
+          <!-- presenta el título -->
+          <div style="margin-left:100px;
+                      width: 60%;">
+               <h2 style='text-align:center; margin-top: 15px; color: aliceblue;'>
+                     Trazabilidad de Muestras de Leishmania
+               </h2>
+          </div>
+
+          <!-- presentamos los datos del instituto -->
+          <div style="float: right; 
+                      margin-top: -50px;">
+               <p style='margin-top: 0px; color: aliceblue;'>
+                    Instituto Nacional de Parasitología<br/>
+                    Dr. Mario Fatala Chabén - Departamento de Clínica<br/>
+                    Av. Paseo Colón 568 - Piso 2
+                    Buenos Aires - Argentina<br/>
+                    E-Mail:
+                    <a href="mailto:fatalaleishmaniasis@gmail.com">fatalaleishmaniasis@gmail.com</a>
+               </p>
+          </div>
+
+     <!-- cerramos el encabezado -->
+     </div>
+
+     <!-- el pié de página -->
+     <div data-options="region:'south',split:false, border:false" 
+          style="height:7%; padding:2px;background:#1a7bc9;">
+
+          <p style="text-align: center; vertical-align:middle; color:aliceblue;">
+               <a href="http://fatalachaben.mooo.com/leishmania/"> INP </a> |
+               <a href="mailto:cinvernizzi@dsgestion.site">Contacto</a> |
+                        &copy; 2025 Claudio Invernizzi<br>
+                        | Diseño <a href="http:/dsgestion.site/" target="_blank"> DsGestion </a> |
+                        Licencia <a rel="license" target="_blank"
+                        href="http://creativecommons.org/licenses/by/3.0/">
+                        Creative Commons Attribution 3.0 License</a>
+          </p>
+
+     <!-- cerramos el pié -->
+     </div>
+
+     <!-- el contenedor central  -->
+     <div data-options="region:'center', border:false" style="padding:2px;background:#eee;">
+
+          <!-- definimos el tabulador con una altura de 30 
+               un ancho para cada tab de 150 y 100% del 
+               espacio disponible -->
+          <div id="tabulador"
+               class="easyui-tabs"
+               data-opcions="tabWidth:150, tabHeight:30" 
+               style="height: 100%;">
+        
+               <!-- definimos el tabulador de pacientes -->
+               <div title="Pacientes" 
+                    data-options="iconCls:'icon-nurse'" 
+                    style="overflow:auto; padding:10px; 
+                           scrollbar-width: none;">
+
+                    <!-- creamos el layout de pacientes -->
+                    <div class="easyui-layout" data-options="fit:true">
+
+                         <!-- definimos el contenedor del menú -->
+                         <div data-options="region:'west', 
+                                            collapsible:true, 
+                                            border:false" 
+                                            style="width:150px">
+
+                              <!-- definimos el menú -->
+                              <div id="menu-pacientes" 
+                                   class="easyui-menu" 
+                                   data-options="inline:true" 
+                                   style="width:100%; 
+                                          scrollbar-width: none;">
+
+                                   <!-- agregamos las opciones del menú -->
+                                   <div data-options="iconCls:'icon-nuevo'"
+                                        title="Ingresa un nuevo paciente"
+                                        onclick="pacientes.nuevoPaciente();">
+                                        Nuevo
+                                   </div>
+                                   <div data-options="iconCls:'icon-buscar'"
+                                        title="Busca un paciente en la base"
+                                        onclick="pacientes.buscaPaciente();">
+                                        Buscar
+                                   </div>
+                                   <div data-options="iconCls:'icon-print'"
+                                        title="Imprime el registro actual"
+                                        onclick="pacientes.imprimePaciente();">
+                                        Imprimir
+                                   </div>
+                                   <div data-options="iconCls:'icon-mapa'"
+                                        title="Presenta el mapa en pantalla"
+                                        onclick="pacientes.mostrarMapa();">
+                                        Mapa
+                                   </div>
+                                   <div class="menu-sep"></div>                               
+                                   <div data-options="iconCls:'icon-info'"
+                                        title="Presenta la ayuda del sistema"
+                                        onclick="pacientes.ayudaPacientes();">
+                                        Ayuda
+                                   </div>
+                                   <div class="menu-sep"></div>                                    
+                                   <div data-options="iconCls:'icon-back'"
+                                        title="Cierra la sesión del usuario"
+                                        onclick="seguridad.salir();">
+                                        Salir
+                                   </div>
+
+                              <!-- cerramos el menú -->
+                              </div>
+
+                         <!-- cerramos el contenedor del menú -->
+                         </div>
+
+                        <!-- definimos el contenedor del tabulador anidado -->
+                        <div data-options="region:'center', collapsible:true, border:false" style="width:180px">
+
+                            <!-- definimos un tabulador anidado -->
+                            <div id="tabpacientes"
+                                class="easyui-tabs"
+                                data-options="tabWidth:150,tabHeight:30" style="height:100%;">
+
+                                   <!-- definimos el tabulador de datos de filiación -->
+                                   <div id='datos-filiacion' title="Filiación" data-options="iconCls:'icon-lapicera'" style="overflow:auto; padding:10px;">
+
+                                        <!-- definimos el contenedor -->
+                                        <div id="form-filiacion"></div>
+                                        
+                                   </div>
+
+                                   <!-- definimos el tabulador de clínica -->
+                                   <div id='datos-clinica' title="Clínica" data-options="iconCls:'icon-escuela'" style="overflow:auto; padding:10px;">
+
+                                        <!-- definimos el contenedor de las muestras -->
+                                        <div id="form-muestras"
+                                             style="height:40%;">
+                                        </div>
+
+                                        <!-- el contenedor del formulario -->
+                                        <div id="form_clinica"
+                                             style="height:60%;">
+                                        </div>
+
+                                   </div>
+
+                                   <!-- definimos el tabulador de actividades -->
+                                   <div id='datos-actividades' title="Actividades" data-options="iconCls:'icon-checklist'" style="overflow:auto; padding:10px;">
+
+                                        <!-- definimos el contenedor de las actividades -->
+                                        <div id='form-actividades'
+                                             style="height:40%;">
+                                        </div>
+
+                                        <!-- definimos el contenedor de los viajes -->
+                                        <div id='form-viajes'
+                                             style="height:40%;">
+                                        </div>
+
+                                   </div>
+
+                                   <!-- definimos el tabulador de evolución -->
+                                   <div id='datos-evolucion' title="Evolución" data-options="iconCls:'icon-work'" style="overflow:auto; padding:10px;">
+
+                                        <!-- define el contenedor para los datos de evolución -->
+                                        <div id="form_evolucion"
+                                             style="height: 30%;">
+                                        </div>
+
+                                        <!-- define el contenedor de los datos de control -->
+                                        <div id="form_control"
+                                             style="height: 60%;">
+                                        </div>
+
+                                   <!-- cerramos el tabulador-->
+                                   </div>
+
+                                   <!-- definimos el tabulador de mascotas -->
+                                   <div id='datos-mascotas' title="Mascotas" data-options="iconCls:'icon-tip'" style="overflow:auto; padding:10px;">
+
+                                        <!-- definimos el contenedor de las mascotas -->
+                                        <div id='form-mascotas'
+                                             style="height:40%;">
+                                        </div>
+
+                                        <!-- definimos el contenedor de peridomicilio -->
+                                        <div id='form-peridomicilio'
+                                             style="height:40%;">
+                                        </div>
+
+                                   <!-- cerramos el tabulador de mascotas -->
+                                   </div>
+
+                            <!-- cerramos el tabulador de residentes -->
+                            </div>
+
+                        <!-- cerramos el contenedor tabulador anidado -->
+                        </div>
+
+                    <!-- cerramos el layout -->
+                    </div>
+
+               <!-- cerramos el tabulador de pacientes -->
+               </div>
+
+               <!-- definimos el tabulador de instituciones -->
+               <div title="Instituciones" 
+                    data-options="iconCls:'icon-hospital'" 
+                    style="overflow:auto; padding:10px; 
+                           scrollbar-width: none;">
+
+                    <!-- creamos el layout de instituciones -->
+                    <div class="easyui-layout" data-options="fit:true">
+
+                         <!-- definimos el contenedor del menú -->
+                         <div data-options="region:'west', 
+                                            collapsible:true, 
+                                            border:false" 
+                                            style="width:150px">
+
+                              <!-- definimos el menú -->
+                              <div id="menu-instituciones" 
+                                   class="easyui-menu" 
+                                   data-options="inline:true" 
+                                   style="width:100%; 
+                                          scrollbar-width: none;">
+
+                                   <!-- agregamos las opciones del menú -->
+                                   <div data-options="iconCls:'icon-nuevo'"
+                                        title="Ingresa una nueva Institución"
+                                        onclick="instituciones.nuevaInstitucion();">
+                                        Nueva
+                                   </div>
+                                   <div data-options="iconCls:'icon-buscar'"
+                                        title="Busca una institución en la base"
+                                        onclick="instituciones.buscaInstitucion();">
+                                        Buscar
+                                   </div>
+                                   <div data-options="iconCls:'icon-print'"
+                                        title="Imprime el listado de Laboratorios"
+                                        onclick="instituciones.imprimeInstituciones();">
+                                        Imprimir
+                                   </div>
+                                   <div class="menu-sep"></div>                               
+                                   <div data-options="iconCls:'icon-info'"
+                                        title="Presenta la ayuda del sistema"
+                                        onclick="instituciones.ayudaInstituciones();">
+                                        Ayuda
+                                   </div>
+
+                              <!-- cerramos el menú -->
+                              </div>
+
+                         <!-- cerramos el contenedor del menú -->
+                         </div>
+
+                         <!-- definimos el contenedor principal -->
+                         <div id='form_instituciones' data-options="region:'center', border:false">
+                         </div>
+
+                    <!-- cerramos el layout de instituciones -->
+                    </div>
+
+               <!-- cerramos el tabulador de instituciones -->
+               </div>             
+
+               <!-- definimos el tabulador de laboratorios -->
+               <div title="Laboratorios" 
+                    data-options="iconCls:'icon-laboratorio'" 
+                    style="overflow:auto; padding:10px; 
+                           scrollbar-width: none;">
+
+                    <!-- creamos el layout de instituciones -->
+                    <div class="easyui-layout" data-options="fit:true">
+
+                         <!-- definimos el contenedor del menú -->
+                         <div data-options="region:'west', 
+                                            collapsible:true, 
+                                            border:false" 
+                                            style="width:150px">
+
+                              <!-- definimos el menú -->
+                              <div id="menu-laboratorios" 
+                                   class="easyui-menu" 
+                                   data-options="inline:true" 
+                                   style="width:100%; 
+                                          scrollbar-width: none;">
+
+                                   <!-- agregamos las opciones del menú -->
+                                   <div data-options="iconCls:'icon-nuevo'"
+                                        title="Ingresa un nuevo Laboratorio"
+                                        onclick="laboratorios.nuevoLaboratorio();">
+                                        Nueva
+                                   </div>
+                                   <div data-options="iconCls:'icon-buscar'"
+                                        title="Busca un laboratorio en la base"
+                                        onclick="laboratorios.buscaLaboratorio();">
+                                        Buscar
+                                   </div>
+                                   <div data-options="iconCls:'icon-print'"
+                                        title="Imprime la nómina de laboratorios"
+                                        onclick="laboratorios.imprimeLaboratorios();">
+                                        Imprimir
+                                   </div>
+                                   <div class="menu-sep"></div>                               
+                                   <div data-options="iconCls:'icon-info'"
+                                        title="Presenta la ayuda del sistema"
+                                        onclick="laboratorios.ayudaLaboratorios();">
+                                        Ayuda
+                                   </div>
+
+                              <!-- cerramos el menú -->
+                              </div>
+
+                         <!-- cerramos el contenedor del menú -->
+                         </div>
+
+                         <!-- definimos el contenedor principal -->
+                         <div id='form_laboratorios' data-options="region:'center', border:false">
+                         </div>
+
+                    <!-- cerramos el layout de laboratorios -->
+                    </div>
+
+               <!-- cerramos el tabulador de laboratorios -->
+               </div>             
+
+               <!-- definimos el tabulador de usuarios -->
+               <div title="Usuarios" 
+                    data-options="iconCls:'icon-usuarios'" 
+                    style="overflow:auto; padding:10px;
+                           scrollbar-width: none;">
+
+                    <!-- creamos el layout de usuarios -->
+                    <div class="easyui-layout" data-options="fit:true">
+
+                         <!-- definimos el contenedor del menú -->
+                         <div data-options="region:'west', 
+                                            collapsible:true, 
+                                            border:false" 
+                                            style="width:150px">
+
+                              <!-- definimos el menú -->
+                              <div id="menu-usuarios" 
+                                   class="easyui-menu" 
+                                   data-options="inline:true" 
+                                   style="width:100%; 
+                                          scrollbar-width: none;">
+
+                                   <!-- agregamos las opciones del menú -->
+                                   <div data-options="iconCls:'icon-nuevo'"
+                                        title="Ingresa un nuevo Usuario"
+                                        onclick="responsables.nuevoResponsable();">
+                                        Nuevo
+                                   </div>
+                                   <div data-options="iconCls:'icon-buscar'"
+                                        title="Busca un usuario en la base"
+                                        onclick="responsables.buscaResponsable();">
+                                        Buscar
+                                   </div>
+                                   <div class="menu-sep"></div>                               
+                                   <div data-options="iconCls:'icon-candado'"
+                                        title="Cambia su contraseña de ingreso"
+                                        onclick="responsables.cambiaPassword();">
+                                        Password
+                                   </div>
+                                   <div class="menu-sep"></div>                                    
+                                   <div data-options="iconCls:'icon-info'"
+                                        title="Presenta la ayuda del sistema"
+                                        onclick="responsables.ayudaResponsables();">
+                                        Ayuda
+                                   </div>
+
+                              <!-- cerramos el menú -->
+                              </div>
+
+                         <!-- cerramos el contenedor del menú -->
+                         </div>
+
+                         <!-- definimos el contenedor principal -->
+                         <div id='form_usuarios' data-options="region:'center', border:false">
+                         </div>
+               
+                    <!-- cerramos el layout de usuarios -->
+                    </div>
+
+               <!-- cerramos el tabulador de usuarios -->
+               </div> 
+
+               <!-- definimos el tabulador de reportes -->
+               <div title="Reportes" 
+                    data-options="iconCls:'icon-biblioteca'" 
+                    style="overflow:auto; padding:10px; 
+                           scrollbar-width: none;">
+
+                    <!-- creamos el layout de reportes -->
+                    <div class="easyui-layout" data-options="fit:true">
+
+                         <!-- definimos el contenedor del menú -->
+                         <div data-options="region:'west', 
+                                            collapsible:true, 
+                                            border:false" 
+                                            style="width:150px">
+
+                              <!-- definimos el menú -->
+                              <div id="menu-reportes" 
+                                   class="easyui-menu" 
+                                   data-options="inline:true" 
+                                   style="width:100%; 
+                                          scrollbar-width: none;">
+
+                                   <!-- agregamos las opciones del menú -->
+                                   <div data-options="iconCls:'icon-pdf'"
+                                        title="Casos reportados al Sisa"
+                                        onclick="reportes.anioNotificados();">
+                                        Reportados
+                                   </div>
+                                   <div data-options="iconCls:'icon-pdf'"
+                                        title="Casos sin reportar al Sisa"
+                                        onclick="reportes.sinNotificar();">
+                                        Sin Reportar
+                                   </div>
+                                   <div class="menu-sep"></div>                               
+                                   <div data-options="iconCls:'icon-pdf'"
+                                        title="Casos sin resultados cargados"
+                                        onclick="reportes.sinDeterminacion();">
+                                        Pendientes
+                                   </div>
+                                   <div class="menu-sep"></div>                                    
+                                   <div data-options="iconCls:'icon-mapa'"
+                                        title="Presenta los pacientes georreferenciados"
+                                        onclick="reportes.georreferenciar();">
+                                        Mapa
+                                   </div>
+                                   <div class="menu-sep"></div>                                   
+                                   <div data-options="iconCls:'icon-analitica'"
+                                        title="Presenta un panel de control"
+                                        onclick="reportes.anioPanelControl();">
+                                        Panel
+                                   </div>                                                                  
+                                   <div class="menu-sep"></div>                                    
+                                   <div data-options="iconCls:'icon-info'"
+                                        title="Presenta la ayuda del sistema"
+                                        onclick="reportes.ayudaReportes();">
+                                        Ayuda
+                                   </div>
+
+                              <!-- cerramos el menú -->
+                              </div>
+
+                         <!-- cerramos el contenedor del menú -->
+                         </div>
+
+                         <!-- definimos el contenedor principal -->
+                         <div id='form_reportes' data-options="region:'center', border:false">
+                         </div>
+               
+                    <!-- cerramos el layout de reportes -->
+                    </div>
+
+               </div>
+
+               <!-- definimos el tabulador de administración -->
+              <div title="Administración" 
+                   data-options="iconCls:'icon-articulos'" 
+                   style="overflow:auto; padding:10px; 
+                          scrollbar-width: none;">
+
+                    <!-- creamos el layout de administración -->
+                    <div class="easyui-layout" data-options="fit:true">
+
+                         <!-- definimos el contenedor del menú -->
+                         <div data-options="region:'west', 
+                                            collapsible:true, 
+                                            border:false" 
+                                            style="width:150px">
+
+                              <!-- definimos el menú -->
+                              <div id="menu-administracion" 
+                                   class="easyui-menu" 
+                                   data-options="inline:true" 
+                                   style="width:100%; 
+                                          scrollbar-width: none;">
+
+                                   <!-- agregamos las opciones del menú -->
+                                   <div data-options="iconCls:'icon-xls'"
+                                        title="Presenta el diccionario de materiales"
+                                        onclick="dicmaterial.verFormMateriales();">
+                                        Materiales
+                                   </div>
+                                   <div data-options="iconCls:'icon-xls'"
+                                        title="Presenta el diccionario de técnicas"
+                                        onclick="dictecnicas.verFormTecnicas();">
+                                        Técnicas
+                                   </div>
+                                   <div data-options="iconCls:'icon-xls'"
+                                        title="Presenta el diccionario de peridomicilio"
+                                        onclick="animales.verGrillaAnimales();">
+                                        Peridomicilio
+                                   </div>
+                                   <div data-options="iconCls:'icon-xls'"
+                                        title="Presenta el diccionario de tipos de documento"
+                                        onclick="documentos.verGrillaDocumentos();">
+                                        Documentos
+                                   </div>
+                                   <div data-options="iconCls:'icon-xls'"
+                                        title="Presenta el diccionario de tipos de ocupaciones"
+                                        onclick="ocupaciones.verGrillaOcupaciones();">
+                                        Ocupaciones
+                                   </div>
+                                   <div data-options="iconCls:'icon-xls'"
+                                        title="Presenta el diccionario de sexos"
+                                        onclick="sexos.verGrillaSexos();">
+                                        Sexos
+                                   </div>
+                                   <div data-options="iconCls:'icon-xls'"
+                                        title="Presenta el diccionario de localidades"
+                                        onclick="localidades.verGrillaLocalidades();">
+                                        Localidades
+                                   </div>
+                                   <div data-options="iconCls:'icon-xls'"
+                                        title="Presenta el diccionario de provincias"
+                                        onclick="jurisdicciones.verGrillaJurisdicciones();">
+                                        Provincias
+                                   </div>
+                                   <div data-options="iconCls:'icon-xls'"
+                                        title="Presenta el diccionario de países"
+                                        onclick="paises.verGrillaPaises();">
+                                        Nacionalidades
+                                   </div>
+                                   <div data-options="iconCls:'icon-xls'"
+                                        title="Presenta el diccionario de dependencias"
+                                        onclick="dependencias.verGrillaDependencias();">
+                                        Dependencias
+                                   </div>
+
+                              <!-- cerramos el menú -->
+                              </div>
+                         
+                         <!-- cerramos el contenedor del menú -->
+                         </div>
+
+                         <!-- definimos el contenedor principal -->
+                         <div id='form_administracion' data-options="region:'center', border:false">
+                         </div>
+
+                    <!-- cerramos el layout -->
+                    </div>
+
+               <!-- cerramos el tabulador de administración-->
+               </div>
+
+          <!-- cerramos el tabulador -->
+          </div>
+
+     <!-- cerramos el contenedor -->
+     </div>
+
+     <script>
+
+          // instanciamos las clases javascript como 
+          // letiables globales 
+          let sesion = new Sesiones();
+          let dicmaterial = new DicMaterial();
+          let dictecnicas = new DicTecnicas();
+          let pacientes = new Pacientes();
+          let clinica = new Clinica();
+          let seguridad = new Seguridad();
+          let localidades = new Localidades();
+          let jurisdicciones = new Jurisdicciones();
+          let paises = new Paises();
+          let dependencias = new Dependencias();
+          let laboratorios = new Laboratorios();
+          let instituciones = new Instituciones();
+          let responsables = new Responsables();
+          let animales = new Animales();
+          let documentos = new Documentos();
+          let ocupaciones = new Ocupaciones();
+          let sexos = new Sexos();
+          let actividades = new Actividades();
+          let viajes = new Viajes();
+          let mascotas = new Mascotas();
+          let peridomicilio = new Peridomicilio();
+          let evolucion = new Evolucion();
+          let control = new Control();
+          let muestras = new Muestras();
+          let sintmascotas = new SintMascotas();
+          let muestrasmasc = new MuestrasMasc();
+          let reportes = new Reportes();
+
+          // si el usuario está acreditado
+          if(sessionStorage.getItem("IdUsuario") != null){
+
+               // cargamos el registro
+               responsables.getDatosResponsable(sessionStorage.getItem("IdUsuario"));
+
+          }
+
+          /**
+           * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+           * Método llamado al cerrar la ventana o al terminar la
+           * sesión que elimina las letiables de sesión y graba la
+           * salida en el log de usuarios, lo declaramos como una
+           * función pública porque al cargar la página todavía
+           * no hemos instanciado las clases
+           */
+          function Salir(){
+
+               // verificamos que el usuario esté logeado
+               if (sessionStorage.getItem("IdUsuario") != null){
+
+                    // grabamos el log de usuarios
+                    $.get('seguridad/salir.php?Sesion='+sessionStorage.getItem("IdSesion"));
+
+                    // destruye las letiables de sesión javascript
+                    sessionStorage.removeItem("IdUsuario");
+
+               }
+
+          }
+
+     </script>
+
+<!-- cerramos el código -->
+</body>
+</html>

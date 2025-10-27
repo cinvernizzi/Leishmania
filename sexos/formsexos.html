@@ -1,0 +1,126 @@
+<!--
+
+    Archivo: formsexos.html
+    Proyecto: Leishmania
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: INP - Dr. Mario Fatala Chabén
+    Fecha: 13/11/2021
+    Version: 1.0
+    Licencia: GPL
+    Comentarios: Procedimiento que arma el formulario para 
+                 el abm de los sexos declarados
+
+-->
+
+<!-- definimos el formulario -->
+<form name="formsexos" name="formsexos">
+
+<!-- definimos la tabla -->
+<table style="width:95%;margin:auto;padding:2px;border:0px;">
+
+    <!-- presenta la clave del registro -->
+    <tr>
+        <td>
+            <label>Id: 
+                <a href="#" 
+                   title="Clave del registro" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                       name='idsexo'
+                       id='idsexo'
+                       readonly
+                       style="width:50px">
+                </a>
+            </label>        
+        </td>
+
+        <!-- pide el nombre del sexo -->
+        <td>
+            <label>Sexo: 
+                <a href="#" 
+                   title="Indique el nombre del sexo" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                       name='nombresexo'
+                       id='nombresexo'
+                       style="width:200px">
+                </a>
+            </label>        
+        </td>
+    </tr>
+</table>
+
+<!-- abrimos la tabla -->
+<table style="width:95%;margin:auto;padding:2px;border:0px;">
+
+    <!-- presenta el usuario -->
+    <tr>
+        <td>
+            <label>Usuario: 
+                <a href="#" 
+                   title="Usuario que ingresó el registro" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                       name='usuariosexo'
+                       id='usuariosexo'
+                       readonly
+                       style="width:100px">
+                </a>
+            </label>        
+        </td>    
+
+        <!-- presenta la fecha de alta -->
+        <td>
+            <label>Fecha: 
+                <a href="#" 
+                   title="Fecha de alta del registro" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                       name='fechasexo'
+                       id='fechasexo'
+                       readonly
+                       style="width:100px">
+                </a>
+            </label>        
+        </td>    
+    </tr>
+</table>
+
+<!-- abrimos la tabla -->
+<table style="width:95%;margin:auto;padding:2px;border:0px;">
+
+    <!-- presenta el botón grabar -->
+    <tr>
+        <td style="text-align: center;">
+            <a id="btnGrabarSexo" 
+               href="#" 
+               class="easyui-linkbutton"
+               style="width:100px" 
+               data-options="iconCls:'icon-save'"
+               onclick="sexos.verificaSexo();">
+               Grabar</a>
+        </td>
+
+        <!-- presenta el botón cancelar -->
+        <td style="text-align: center;">
+            <a id="btnCancelarSexo" 
+               href="#" 
+               class="easyui-linkbutton" 
+               style="width:100px"
+               data-options="iconCls:'icon-cancel'"
+               onclick="sexos.cerrarEmergente();">
+               Cancelar</a>
+        </td>
+    </tr>
+</table>
+
+<!-- cierra el formulario -->
+</form>
+
+<script>
+
+    // inicializa los componentes
+    sexos.initFormSexos();
+
+</script>

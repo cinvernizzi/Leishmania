@@ -1,0 +1,316 @@
+<!--
+
+    Archivo: ayuda.html
+    Proyecto: CCE
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: INP
+    Fecha: 30/03/2021
+    Version: 5.0
+    Licencia: GPL
+    Comentarios: Método que arma la ayuda para la carga de 
+                 laboratorios
+
+-->
+
+<!-- definimos el encabezado de la página -->
+<div style="height:80px; scrollbar-width: none; padding:2px; background:#1a7bc9;">
+
+    <!-- presenta el logo -->
+    <div style="float:left">
+        <img id="logositio"
+            src="imagenes/logoleish.png"
+            alt="Logo del Sitio"
+            width=100px;>
+    </div>
+
+    <!-- presenta el título -->
+    <div style="margin-left:100px;
+                width: 60%;">
+        <h2 style='text-align:center; margin-top: 15px; color: aliceblue;'>
+            Laboratorios
+        </h2>
+    </div>
+
+    <!-- presentamos los datos del instituto -->
+    <div style="float: right; 
+                margin-top: -50px;">
+        <p style='margin-top: 0px; color: aliceblue;'>
+            Instituto Nacional de Parasitología<br/>
+            Dr. Mario Fatala Chabén - Departamento de Clínica<br/>
+            Av. Paseo Colón 568 - Piso 2
+            Buenos Aires - Argentina<br/>
+            E-Mail:
+            <a href="mailto:fatalaleishmaniasis@gmail.com">fatalaleishmaniasis@gmail.com</a>
+        </p>
+    </div>
+
+<!-- cerramos el encabezado -->
+</div>
+
+<!-- presenta el enlace al tutorial -->
+<p class="ayudas-justificada">
+    <a href='#'
+       title="Pulse aquí para ver el Tutorial de Nuevo Laboratorio"
+       onclick="laboratorios.Tutorial()">
+       Ver Tutorial para el Alta de un Nuevo Laboratorio
+    </a>
+</p>
+
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Este formulario presenta la información correspondiente a todos 
+    los laboratorios que participan del Control de Calidad Externo 
+    del Instituto Nacional de Parasitología Dr. Mario Fatala Chaben.
+</p>
+
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    A la izquierda de la pantalla tiene un menú con las siguientes 
+    opciones:
+</p>
+
+<ul>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Nuevo</strong> Si usted cuenta con los permisos suficientes
+        (es decir, si es Responsable Jurisdiccional o Referente del Instituto 
+        Nacional de Parasitología) al pulsar esta opción la plataforma 
+        limpiará el formulario de datos y le permitirá registrar un nuevo 
+        laboratorio participante de los controles de calidad.<br>
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Buscar</strong> Al seleccionar esta opción, la plataforma 
+        le pedirá que ingrese el texto a buscar.<br>
+        Tega en cuenta que el sistema busca tanto en el nombre del laboratorio 
+        como también en la jurisdicción y el nombre del responsable del 
+        laboratorio.<br>
+        Así por ejemplo, si usted ingresa <strong>Rodriguez</strong> la 
+        plataforma devolverá un listado con los laboratorios de la localidad 
+        de General Rodriguez, y también aquellos en los cuales el responsable
+        tenga dicho apellido.<br>
+        Como busca también por Jurisdicción, si por ejemplo, usted ingresara 
+        <strong>Jujuy</strong> obtendrá un listado con todos los laboratorios 
+        de dicha provincia.<br>
+        Una vez que la plataforma le presenta la grilla con los laboratorios 
+        encontrados, bastará con pulsar sobre el ícono a la derecha de la 
+        tabla para ver la ficha completa de datos del registro seleccionado.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Reportes</strong> Seleccionando esta opción el sistema 
+        generará una hoja de cálculo con la totalidad de los laboratorios 
+        registrados.
+    </li>
+</ul>
+
+<!-- presenta info adicional -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Algunas consideraciones importantes de los datos recabados de los 
+    laboratorios:
+</p>
+
+<!-- abre las viñetas -->
+<ul>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        El mail del laboratorio debe ser único, el sistema no permite que 
+        varios laboratorios tengan la misma dirección de correo electrónico.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        Revise por favor que la dirección postal sea correcta, en aquellos 
+        casos en los que el laboratorio recibe las muestras directamente, 
+        estas son enviadas a la dirección que figura en la base de datos.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        Dado que el Instituto Nacional de Parasitología coordina varios 
+        programas de Control de Calidad Externo, la hoja de datos del 
+        laboratorio registra cuales son los programas de los que 
+        participa. Tenga en cuenta que un laboratorio puede participar 
+        de uno o varios programas.<br>
+        Aquellos programas de control de calidad que se encuentran 
+        seleccionados (opción 'Si') indican que el laboratorio participa 
+        de ese programa y por lo tanto se generarán muestras para 
+        el mismo.
+    </li>
+</ul>
+
+<!-- presenta los datos del formulario -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Los datos que la plataforma espera en caso de alta o modificación 
+    son los siguientes (recuerde que tanto esta tabla de laboratorios 
+    como también la de instituciones, son compartidas por la 
+    Plataforma de Control de Calidad Externo):
+</p>
+
+<!-- abre el identado -->
+<ul>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Id: </strong>Esta es la clave única del registro y 
+        es completada automáticamente por la plataforma.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Nombre: </strong>Nombre completo del laboratorio.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Responsable: </strong>Nombre del responsable del 
+        laboratorio.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Dirección: </strong>La dirección postal del laboratorio, 
+        tenga en consideración que en el caso de Control de Calidad, 
+        las muestras control son enviadas a esta destinación, por esto, 
+        se sugiere mantener actualizado correctamente este campo.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Código Postal: </strong>El código postal de la dirección 
+        anteriormente mencionada (caben las mismas consideraciones que 
+        en el caso anterior)
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Dependencia: </strong>La dependencia administrativa o 
+        fuente de financiamiento del laboratorio, aquí deberá selecionar 
+        de la lista desplegable la correcta.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>País / Localidad: </strong>Deje este campo en blanco 
+        por el momento ya que es completado automáticamente por la 
+        plataforma al seleccionar la localidad.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Localidad: </strong>Este campo es obligatorio y permitirá 
+        georreferenciar la institución, para indicar la misma se utiliza 
+        el diccionario de localidades censales que puede ser editado y 
+        actualizado a través del menú de administración.<br>
+        Para seleccionar una localidad, deberá ingresar parte del nombre 
+        de la localidad, por ejemplo <strong>Coronel</strong> y 
+        automáticamente la plataforma abrirá una ventana emergente con 
+        la grilla de todas las localidades que coindicen con el texto 
+        ingresado por usted (por ejemplo, tanto Coronel Suarez, como 
+        también Coronel Vidal y Coronel Boer entre otros), esta 
+        grilla indicará además la provincia o jurisdicción de cada 
+        una de las localidades.<br>
+        En este momento, bastará con pulsar sobre el ícono para seleccionar
+        la localidad deseada y automáticamente la plataforma 
+        actualizará el formulario.<br>
+        De esta forma se obtienen dos ventajas, la primera es que se 
+        evitan los errores de tipeo y además se obtiene una 
+        georreferenciación mas precisa.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Mail:</strong>La dirección de correo electrónico del 
+        laboratorio (preferentemente institucional)
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Activo: </strong>Este campo es utilizado por la 
+        plataforma de Control de Calidad Externo e indica si el 
+        laboratorio se encuentra activo, es decir, si participa 
+        de los controles de calidad.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Muestras Serología: </strong>Indica si el laboratorio 
+        recibe muestras de serología para el Control de Calidad 
+        Externo en el diagnóstico de Chagas.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Muestras PCR: </strong>Indica si el laboratorio 
+        recibe muestras para la participación en el Control de 
+        Calidad Externo en el Diagnóstico de Chagas por PCR.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Muestras Leishmania: </strong>Indica si el laboratorio 
+        participa de los controles de calidad en Leishmania, en este 
+        caso podrá ver que existen diversas opciones, <strong>Evaluación
+        </strong> indicará que recibe 10 muestras control, mientras que 
+        <strong>Entrenamiento</strong> indica que el laboratorio solo 
+        recibe dos muestras control.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Observaciones: </strong>Aquí puede usted ingresar los 
+        comentarios y observaciones que considere convenientes.
+    </li>
+</ul>
+
+<!-- el pié de página -->
+<div style="height:55px; padding:2px;background:#1a7bc9;">
+
+    <!-- presenta el texto -->
+    <p style="text-align: center; vertical-align:middle; color:aliceblue;">
+        <a href="http://fatalachaben.mooo.com/leishmania/"> INP </a> |
+        <a href="mailto:cinvernizzi@dsgestion.site">Contacto</a> |
+                &copy; 2025 Claudio Invernizzi<br>
+                | Diseño <a href="http:/dsgestion.site/" target="_blank"> DsGestion </a> |
+                Licencia <a rel="license" target="_blank"
+                href="http://creativecommons.org/licenses/by/3.0/">
+                Creative Commons Attribution 3.0 License</a>
+    </p>
+
+<!-- cerramos el pié -->
+</div>

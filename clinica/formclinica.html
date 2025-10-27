@@ -1,0 +1,654 @@
+<!--
+
+    Archivo: formclinica.html
+    Proyecto: Leishmania
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: DsGestion
+    Fecha: 05/08/2025
+    Version: 1.0
+    Licencia: GPL
+    Comentarios: Procedimiento que define el formulario con 
+                 los datos clínicos
+
+-->
+<!-- presenta el título -->
+<div>
+    <h2 style='text-align:center; 
+               margin-top: 5px; 
+               margin-bottom: 0px;
+               color: #1a7bc9;'>
+        Datos Clínicos
+    </h2>
+</div>
+
+<!-- definimos el formulario -->
+<form name="datos-clinica" id="datos-clinica">
+
+    <!-- vamos a usar una tabla que en este caso es 
+         mas sencillo para tener alineadas las distintas
+         columnas que con css -->
+
+    <!-- abrimos la fila con tres columnas -->
+    <div style="display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;">
+
+        <!-- definimos la primer columna -->
+        <div style="width: 32%;
+                    padding: 5px;">
+
+            <!-- definimos la tabla de la sospecha tegumentaria -->
+            <table style="width:100%;margin:auto;padding:2px;border:0px;">
+
+                <!-- define los encabezados -->
+                <thead>
+                    <tr style="background-color: #1a7bc9; 
+                               color:azure;
+                               text-align: center;">
+                        <th colspan="2"><br>Leishmaniasis Tegumentaria</th>
+                    </tr>
+                </thead>
+
+                <!-- define el cuerpo -->
+                <tbody>
+
+                    <!-- abrimos la primer fila -->
+                    <tr>
+
+                        <!-- presenta la clave del registro -->
+                        <td>
+                            <label>Id:
+                                <a href="#"
+                                   title="Clave del registro"
+                                   class="easyui-tooltip">
+                                <input class="easyui-textbox"
+                                       name='idclinica'
+                                       id='idclinica'
+                                       readonly
+                                       style="width:50px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pide si hay lesión cutánea única -->
+                        <td>
+                            <label>Cutánea Unica:
+                                <a href="#"
+                                   title="Indique si presenta lesión cutánea única"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='cutaneaunica'
+                                       id='cutaneaunica'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+
+                    <!-- abrimos la segunda fila -->
+                    <tr>
+
+                        <!-- pide si hay lesión cutánea múltiple -->
+                        <td>
+                            <label>Cutánea Múltiple:
+                                <a href="#"
+                                   title="Indique si presenta múltiples lesiones"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='cutaneamultiple'
+                                       id='cutaneamultiple'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta por lesión en la mucosa nasal -->
+                        <td>
+                            <label>Mucosa Nasal:
+                                <a href="#"
+                                   title="Indique si presenta lesión en la mucosa nasal"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='lesionmucosanasal'
+                                       id='lesionmucosanasal'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+
+                    <!-- abrimos la tercer fila -->
+                    <tr>
+
+                        <!-- pregunta si hay lesión bucofaringea -->
+                        <td>
+                            <label>Bucofaringea:
+                                <a href="#"
+                                   title="Indique si presenta lesión bucofaringea"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='lesionbucofaringea'
+                                       id='lesionbucofaringea'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>                        
+
+                        <!-- pregunta si hay lesión laríngea -->
+                        <td>
+                            <label>Lesión Laringea:
+                                <a href="#"
+                                   title="Indique si presenta lesión laringea"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='lesionlaringea'
+                                       id='lesionlaringea'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>        
+                    </tr>
+
+                    <!-- abrimos la cuarta fila -->
+                    <tr>
+
+                        <!-- pregunta si presenta úlcera -->
+                        <td>
+                            <label>Ulceras:
+                                <a href="#"
+                                   title="Indique si presenta úlceras"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='ulcerasclinica'
+                                       id='ulcerasclinica'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta si presenta cicatriz -->
+                        <td>
+                            <label>Cicatrices:
+                                <a href="#"
+                                   title="Indique si presenta cicatrices"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='cicatrizclinica'
+                                       id='cicatrizclinica'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+
+                <!-- cerramos el cuerpo -->
+                </tbody>
+
+            <!-- cerramos la tabla de tegumentaria -->
+            </table>
+        
+        <!-- cerramos la primer columna -->
+        </div>
+
+        <!-- abrimos la segunda columna -->
+        <div style="width: 32%;
+                    padding: 5px;">
+        
+            <!-- definimos la tabla de leishmaniasis visceral  -->
+            <table style="width:100%;margin:auto;padding:2px;border:0px;">
+
+                <!-- define los encabezados -->
+                <thead>
+                    <tr style="background-color: #1a7bc9;
+                               color:azure;
+                               text-align: center;">
+                        <th colspan="2"><br>Leishmaniasis Visceral</th>
+                    </tr>
+                </thead>
+
+                <!-- define el cuerpo -->
+                <tbody>
+
+                    <!-- abrimos la primer fila -->
+                    <tr>
+
+                        <!-- pregunta si hay lesión visceral -->
+                        <td>
+                            <label>Lesión Visceral:
+                                <a href="#"
+                                   title="Indique si se presenta lesión visceral"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='lesionvisceral'
+                                       id='lesionvisceral'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta si presenta fiebre -->
+                        <td>
+                            <label>Fiebre:
+                                <a href="#"
+                                   title="Indique si presenta fiebre"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='presentafiebre'
+                                       id='presentafiebre'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+
+                    <!-- abrimos la segunda fila -->
+                    <tr>
+
+                        <!-- pide la fecha de inicio de la fiebre -->
+                        <td>
+                            <label>Inicio:
+                                <a href="#"
+                                   title="Fecha del inicio de la fiebre"
+                                   class="easyui-datebox">
+                                <input class="easyui-textbox"
+                                       name='fechafiebre'
+                                       id='fechafiebre'
+                                       style="width:120px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pide las características de la fiebre -->
+                        <td>
+                            <label>Tipo:
+                                <a href="#"
+                                   title="Indique las características de la fiebre"
+                                   class="easyui-tooltip">
+                                <select id="caracteristicasfiebre"
+                                        class="easyui-combobox"
+                                        name="caracteristicasfiebre"
+                                        style="width:130px;">
+
+                                    <!-- agregamos las opciones -->
+                                    <option></option>
+                                    <option>Diurna</option>
+                                    <option>Nocturna</option>
+                                    <option>Ambas</option>
+
+                                <!-- cerramos los tags-->
+                                </select>
+                                </a>
+                            </label>
+                        </td>
+                    </tr>                     
+
+                    <!-- abrimos la tercer fila -->
+                    <tr>
+
+                        <!-- pregunta si presenta edema -->
+                        <td>
+                            <label>Edema:
+                                <a href="#"
+                                   title="Indique si presenta edema"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='edemaclinica'
+                                       id='edemaclinica'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta si presenta vómitos -->
+                        <td>
+                            <label>Vómitos:
+                                <a href="#"
+                                   title="Indique si presenta vómitos"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='presentavomitos'
+                                       id='presentavomitos'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+
+                    <!-- abrimos la cuarta fila -->
+                    <tr>
+
+                        <!-- pregunta si presenta diarrea -->
+                        <td>
+                            <label>Diarrea:
+                                <a href="#"
+                                   title="Indique si se presenta diarrea"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='presentadiarrea'
+                                       id='presentadiarrea'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta si presenta pérdida de peso -->
+                        <td>
+                            <label>P. Peso:
+                                <a href="#"
+                                   title="Indique si presenta pérdida de peso"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='perdidapeso'
+                                       id='perdidapeso'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+
+                    <!-- abrimos la quinta fila -->
+                    <tr>
+
+                        <!-- pregunta si presenta fatiga -->
+                        <td>
+                            <label>Fatiga:
+                                <a href="#"
+                                   title="Indique si presenta fatiga"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='presentafatiga'
+                                       id='presentafatiga'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta si presenta debilidad -->
+                        <td>
+                            <label>Debilidad:
+                                <a href="#"
+                                   title="Indique si presenta debilidad"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='presentadebilidad'
+                                       id='presentadebilidad'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>    
+
+                    <!-- abrimos la sexta fila -->
+                    <tr>
+
+                        <!-- pregunta si presenta hepatoesplenomegalia -->
+                        <td>
+                            <label>Hepato.:
+                                <a href="#"
+                                   title="Indique si presenta hepatoesplenomegalia"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='hepatoesplenomegalia'
+                                       id='hepatoesplenomegalia'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta si presenta linfadenopatía -->
+                        <td>
+                            <label>Linfa.:
+                                <a href="#"
+                                   title="Indique si presenta linfadenopatía"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='linfadenopatia'
+                                       id='linfadenopatia'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                    </tr>
+
+                <!-- cerramos el cuerpo -->
+                </tbody>
+
+            <!-- cerramos la tabla de visceral -->
+            </table>
+
+        <!-- cerramos la segunda columna -->
+        </div>
+
+        <!-- abrimos la tercer columna -->
+        <div style="width: 32%;
+                    padding: 5px;">
+
+            <!-- definimos la tabla de la sospechas comunes -->
+            <table style="width:100%;margin:auto;padding:2px;border:0px;">
+
+                <!-- define los encabezados -->
+                <thead>
+                    <tr style="background-color: #1a7bc9;
+                               color:azure;
+                               text-align: center;">
+                        <th colspan="2"><br>Síntomas Comunes<br></th>
+                    </tr>
+                </thead>
+
+                <!-- define el cuerpo -->
+                <tbody>
+
+                    <!-- abrimos la primer fila -->
+                    <tr>
+
+                        <!-- pregunta si presenta nódulos -->
+                        <td>
+                            <label>Nódulos:
+                                <a href="#"
+                                   title="Indique si presenta nodulos"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='nodulosclinica'
+                                       id='nodulosclinica'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta si presenta piel gris -->
+                        <td>
+                            <label>Piel Gris:
+                                <a href="#"
+                                   title="Indique si presenta piel gris"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='presentapielgris'
+                                       id='presentapielgris'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+
+                    <!-- abrimos la segunda fila -->
+                    <tr>
+
+                        <!-- pregunta si presenta piel escamosa -->
+                        <td>
+                            <label>Piel Escamosa:
+                                <a href="#"
+                                   title="Indique si la piel es escamosa"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='pielescamosa'
+                                       id='pielescamosa'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta si presenta petequias -->
+                        <td>
+                            <label>Petequias:
+                                <a href="#"
+                                   title="Indique si presenta petequias"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='patequiasclinica'
+                                       id='petequiasclinica'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+
+                    <!-- abrimos la tercer fila-->
+                    <tr>
+
+                        <!-- pregunta si presenta adenomegalia -->
+                        <td>
+                            <label>Adenomegalia:
+                                <a href="#"
+                                   title="Indique si presenta adenomegalia"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='adenomegaliaclinica'
+                                       id='adenomegaliaclinica'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta si presenta lesión mucosa -->
+                        <td>
+                        <label>Lesión Mucosa:
+                            <a href="#"
+                               title="Indique si presenta lesión mucosa"
+                               class="easyui-tooltip">
+                            <input class="easyui-switchbutton"
+                                   name='lesionmucosa'
+                                   id='lesionmucosa'
+                                   style="width:70px;">
+                            </a>
+                        </label>
+                        </td>
+                    </tr>
+
+                    <!-- abrimos la cuarta fila -->
+                    <tr>
+
+                        <!-- pregunta si presenta tos seca -->
+                        <td>
+                            <label>Tos Seca:
+                                <a href="#"
+                                   title="Indique si presenta tos seca"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='presentatosseca'
+                                       id='presentatosseca'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- pregunta si presenta pérdida de cabello -->
+                        <td>
+                            <label>Perdida de Cabello:
+                                <a href="#"
+                                   title="Indique si presenta pérdida de cabello"
+                                   class="easyui-tooltip">
+                                <input class="easyui-switchbutton"
+                                       name='perdidacabello'
+                                       id='perdidacabello'
+                                       style="width:70px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>                     
+
+                    <!-- abrimos la quinta fila -->
+                    <tr>
+
+                        <!-- presenta el usuario -->
+                        <td>
+                            <label>Usuario:
+                                <a href="#"
+                                   title="Usuario que ingresó el registro"
+                                   class="easyui-tooltip">
+                                <input class="easyui-textbox"
+                                       name='usuarioclinica'
+                                       id='usuarioclinica'
+                                       readonly
+                                       style="width:120px;">
+                                </a>
+                            </label>
+                        </td>
+
+                        <!-- presenta la fecha de alta -->
+                        <td>
+                            <label>Alta:
+                                <a href="#"
+                                   title="Fecha de alta del registro"
+                                   class="easyui-tooltip">
+                                <input class="easyui-textbox"
+                                       name='altaclinica'
+                                       id='altaclinica'
+                                       readonly
+                                       style="width:120px;">
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+
+                    <!-- abrimos la sexta fila -->
+                    <tr>
+
+                        <!-- el botón grabar -->
+                        <td style="text-align: center;">
+                            <a id="btnGrabarClinica"
+                                href="#"
+                                class="easyui-linkbutton"
+                                data-options="iconCls:'icon-save'"
+                                style="width: 120px;"
+                                onclick="clinica.verificaClinica();">
+                                Grabar
+                            </a>
+                        </td>
+
+                        <!-- el botón cancelar -->
+                        <td style="text-align: center;">
+                            <a id="btnCancelarClinica"
+                                href="#"
+                                class="easyui-linkbutton"
+                                data-options="iconCls:'icon-cancel'"
+                                style="width: 120px;"
+                                onclick="clinica.cancelaClinica();">
+                                Cancelar
+                            </a>
+                        </td>
+                    </tr>
+
+                <!-- cerramos el cuerpo -->
+                </tbody>
+
+            <!-- cerramos la tabla de sospechas comunes -->
+            </table>
+            
+        <!-- cerramos la tercer columna -->
+        </div>
+
+    <!-- cerramos el contenedor -->
+    </div>
+    
+<!-- cerramos el formulario -->
+</form>
+
+<script>
+
+    // configuramos el formulario
+    clinica.initFormClinica();
+
+</script>

@@ -1,0 +1,240 @@
+<!--
+
+    Archivo: ayuda.html
+    Proyecto: Leishmania
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: INP - Dr. Mario Fatala Chabén
+    Fecha: 02/02/2022
+    Version: 1.0
+    Licencia: GPL
+    Comentarios: Procedimiento que presenta la pantalla de 
+                 ayuda en el abm de instituciones asistenciales
+
+-->
+
+<!-- definimos el encabezado de la página -->
+<div style="height:80px; scrollbar-width: none; padding:2px; background:#1a7bc9;">
+
+    <!-- presenta el logo -->
+    <div style="float:left">
+        <img id="logositio"
+            src="imagenes/logoleish.png"
+            alt="Logo del Sitio"
+            width=100px;>
+    </div>
+
+    <!-- presenta el título -->
+    <div style="margin-left:100px;
+                width: 60%;">
+        <h2 style='text-align:center; margin-top: 15px; color: aliceblue;'>
+            Jurisdicciones
+        </h2>
+    </div>
+
+    <!-- presentamos los datos del instituto -->
+    <div style="float: right; 
+                margin-top: -50px;">
+        <p style='margin-top: 0px; color: aliceblue;'>
+            Instituto Nacional de Parasitología<br/>
+            Dr. Mario Fatala Chabén - Departamento de Clínica<br/>
+            Av. Paseo Colón 568 - Piso 2
+            Buenos Aires - Argentina<br/>
+            E-Mail:
+            <a href="mailto:fatalaleishmaniasis@gmail.com">fatalaleishmaniasis@gmail.com</a>
+        </p>
+    </div>
+
+<!-- cerramos el encabezado -->
+</div>
+
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Este es el diccionario de instituciones asistenciales, es 
+    utilizado principalmente en la denuncia de casos de 
+    Chagas vertical, para seleccionar la institución en 
+    donde se ha producido el parto.
+</p>
+
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    De esta forma, el usuario selecciona la institución de 
+    una lista, en vez de ingresar el texto manualmente, 
+    evitándose así el error en la carga de datos.
+</p>
+
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Estas instituciones además están automáticamente 
+    georreferenciadas de forma que el día de mañana 
+    será posible obtener un mapa de los nacimientos 
+    denunciados en la plataforma.
+</p>
+
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Aquí usted podrá:
+</p>
+
+<ul>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        Insertar nuevos registros (la base cuenta con 
+        aproximadamente 3.500 instituciones asistenciales 
+        pero de ninguna forma está completa)
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        Editar los datos de las mismas a fin de mantenerlos 
+        actualizados y así en caso de necesidad entrar en 
+        contacto directamente con el personal de la 
+        institución.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        Generar una hoja de cálculo con la nómina completa 
+        de instituciones y sus datos mas significativos.
+    </li>
+</ul>
+
+<!-- describe los datos solicitados -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Los datos solicitados por la plataforma son:
+</p>
+
+<!-- abrimos las viñetas -->
+<ul>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Id:</strong> Este campo es generado automáticamente por la 
+            plataforma y es de solo lectura, se trata de la clave 
+            única del registro.
+    </li>
+    <li style="text-align:justify;
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-right: 10px;">
+        <strong>Nombre: </strong> El nombre completo de la institución.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Sisa: </strong> Este campo es optativo, se trata de la 
+        clave Sisa de la Institución, que puede ser útil el día de 
+        mañana para realizar análisis estadísticos.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Dependencia: </strong>En este caso deberá seleccionar 
+        de la lista la dependencia o fuente de financiamiento de la 
+        Institución.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Dirección: </strong>La dirección postal de la Institución.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Código Postal: </strong>El código postal correspondiente a 
+        la dirección declarada anteriormente (este campo es optativo y 
+        puede ser completado con la sigla s/Datos)
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Teléfono: </strong>De conocerlo, es útil contar con esta 
+        información, consignando el prefijo de área (de no contar con 
+        el mismo, puede ser completado con la sigla s/Datos)
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>E-Mail: </strong>La dirección de correo electrónico 
+        (preferentemente institucional) de la institución, este 
+        campo es obligatorio y al ingresarlo la plataforma verificará
+        que el formato del mismo sea correcto.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>País / Provincia: </strong>Estos campos son completados
+        automáticamente por la plataforma al seleccionar la localidad 
+        de la misma.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Localidad: </strong>Este campo es obligatorio y permitirá 
+        georreferenciar la institución, para indicar la misma se utiliza 
+        el diccionario de localidades censales que puede ser editado y 
+        actualizado a través del menú de administración.<br>
+        Para seleccionar una localidad, deberá ingresar parte del nombre 
+        de la localidad, por ejemplo <strong>Coronel</strong> y 
+        automáticamente la plataforma abrirá una ventana emergente con 
+        la grilla de todas las localidades que coindicen con el texto 
+        ingresado por usted (por ejemplo, tanto Coronel Suarez, como 
+        también Coronel Vidal y Coronel Boer entre otros), esta 
+        grilla indicará además la provincia o jurisdicción de cada 
+        una de las localidades.<br>
+        En este momento, bastará con pulsar sobre el ícono para seleccionar
+        la localidad deseada y automáticamente la plataforma 
+        actualizará el formulario.<br>
+        De esta forma se obtienen dos ventajas, la primera es que se 
+        evitan los errores de tipeo y además se obtiene una 
+        georreferenciación mas precisa.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Responsable: </strong>El nombre del Director o equivalente
+        de la Institución.
+    </li>
+</ul>
+
+<!-- el pié de página -->
+<div style="height:55px; padding:2px;background:#1a7bc9;">
+
+    <!-- presenta el texto -->
+    <p style="text-align: center; vertical-align:middle; color:aliceblue;">
+        <a href="http://fatalachaben.mooo.com/leishmania/"> INP </a> |
+        <a href="mailto:cinvernizzi@dsgestion.site">Contacto</a> |
+                &copy; 2025 Claudio Invernizzi<br>
+                | Diseño <a href="http:/dsgestion.site/" target="_blank"> DsGestion </a> |
+                Licencia <a rel="license" target="_blank"
+                href="http://creativecommons.org/licenses/by/3.0/">
+                Creative Commons Attribution 3.0 License</a>
+    </p>
+
+<!-- cerramos el pié -->
+</div>

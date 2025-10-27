@@ -1,0 +1,169 @@
+<!--
+
+    Archivo: formsintomas.html
+    Proyecto: Leishmania
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: INP - Dr. Mario Fatala Chabén
+    Fecha: 13/11/2021
+    Version: 1.0
+    Licencia: GPL
+    Comentarios: Procedimiento que arma la pantalla de ayuda
+                 de los síntomas de la mascota
+
+-->
+
+<!-- definimos el formulario -->
+<form name='formsintmascotas' id='formsintmascotas'>
+
+    <!-- abrimos la primer fila con cuatro columnas -->
+    <div style="margin-left: 10px;
+                margin-top: 10px;
+                grid-template-columns: 20% 20% 40% 20%;
+                column-gap: 10px;">
+
+        <!-- presenta la clave del registro -->
+        <label>Id:
+            <a href="#" 
+               title="Clave del registro" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='idsintmasc'
+                   id='idsintmasc'
+                   readonly
+                   style="width:50px">
+            </a>
+        </label>
+
+        <!-- presenta oculta la clave de la mascota -->
+        <input type='hidden' 
+               name='idmascotasint' 
+               id='idmascotasint'>
+
+        <!-- presenta oculta la clave del paciente -->
+        <input type='hidden'
+               name='idpacientesint'
+               id='idpacientesint'>
+
+        <!-- pide la fecha en que comenzó a perder el pelo -->
+        <label>Perdida Pelo:
+            <a href="#"
+               title="Fecha en que comenzó a perder el pelo"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='fechapelosint'
+                   name='fechapelosint'
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+        <!-- pide la fecha en que comenzo a adelgazar -->
+        <label>Adelgazamiento:
+            <a href="#"
+               title="Fecha estimada en que comenzó a adelgazar"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='fechaadelgazasint'
+                   name='fechaadelgazasint'
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+        <!-- pide la fecha de inicio de las úlceras -->
+        <label>Ulceras:
+            <a href="#"
+               title="Fecha que comenzaron las úlceras"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='fechaulcerasint'
+                   name='fechaulcerasint'
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+        <!-- la fecha en que se mostró poco activo -->
+        <label>Poco Activo:
+            <a href="#"
+               title="Fecha que comenzó a mostrarse poco activo"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='fechaactivosint'
+                   name='fechaactivosint'
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+    <!-- derramos el div -->
+    </div>
+
+    <!-- abrimos la segunda fila con cuatro columnas -->
+    <div style="margin-left: 10px;
+                margin-top: 10px;
+                grid-template-columns: 20% 20% 40% 20%;
+                column-gap: 10px;">
+
+        <!-- el nombre del usuario -->
+        <label>Usuario:
+        <a href="#"
+           title="Usuario que ingresó el registro"
+           class="easyui-tooltip">
+        <input class="easyui-textbox"
+               name='usuariosintmasc'
+               id='usuariosintmasc'
+               readonly
+               style="width:100px">
+        </a>
+        </label>
+
+        <!-- la fecha de alta -->
+        <label>Alta:
+        <a href="#"
+           title="Fecha de alta del registro"
+           class="easyui-tooltip">
+        <input class="easyui-textbox"
+               name='altasintmasc'
+               id='altasintmasc'
+               readonly
+               style="width:100px">
+        </a>
+        </label>
+
+        <!-- el botón grabar -->
+        <a id="btnGrabarSintMasc" 
+           href="#" 
+           class="easyui-linkbutton" 
+           data-options="iconCls:'icon-save'"
+           style="width: 120px;"
+           onclick="sintmascotas.verificaSintMascota();">
+           Grabar
+        </a>
+
+        <!-- el botón cancelar -->
+        <a id="btnCancelarSintMasc" 
+           href="#" 
+           class="easyui-linkbutton" 
+           data-options="iconCls:'icon-cancel'"
+           style="width: 120px;"
+           onclick="sintmascotas.cancelaSintMascota();">
+           Cancelar
+        </a>
+
+    <!-- cerramos el div -->
+    </div>
+
+<!-- cerramos el formulario -->
+</form>
+
+<!-- presenta un separador -->
+<div style="min-height: 15px;"></div>
+
+<!-- definimos la grilla de muestras -->
+<table id="grilla-muestrasmasc" style="width:99%;">
+</table>
+
+<script>
+
+    // inicializamos el formulario
+    sintmascotas.initFormSintomas();
+
+</script>

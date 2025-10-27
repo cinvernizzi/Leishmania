@@ -1,0 +1,226 @@
+<!-- 
+
+    Archivo: ayuda.html
+    Proyecto: Leishmania
+    Autor: Lic. Claudio Invernizzi 
+    E-Mail: cinvernizzi@dsgestion.site
+    Fecha: 05/08/2025
+    Licencia: GPL
+
+    Documento que presenta la ayuda para el abm de los datos de control
+    del paciente
+
+-->
+
+<!-- definimos el encabezado de la página -->
+<div style="height:80px; scrollbar-width: none; padding:2px; background:#1a7bc9;">
+
+    <!-- presenta el logo -->
+    <div style="float:left">
+        <img id="logositio"
+            src="imagenes/logoleish.png"
+            alt="Logo del Sitio"
+            width=100px;>
+    </div>
+
+    <!-- presenta el título -->
+    <div style="margin-left:100px;
+                width: 60%;">
+        <h2 style='text-align:center; margin-top: 15px; color: aliceblue;'>
+                Control del Paciente
+        </h2>
+    </div>
+
+    <!-- presentamos los datos del instituto -->
+    <div style="float: right; 
+                margin-top: -50px;">
+        <p style='margin-top: 0px; color: aliceblue;'>
+            Instituto Nacional de Parasitología<br/>
+            Dr. Mario Fatala Chabén - Departamento de Clínica<br/>
+            Av. Paseo Colón 568 - Piso 2
+            Buenos Aires - Argentina<br/>
+            E-Mail:
+            <a href="mailto:fatalaleishmaniasis@gmail.com">fatalaleishmaniasis@gmail.com</a>
+        </p>
+    </div>
+
+<!-- cerramos el encabezado -->
+</div>
+
+<!-- presenta el porqué de los datos -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Este apartado le solicita que ingrese los datos correspondientes 
+    al control y seguimiento del paciente, tal como se requiere que sean 
+    reportados al Sisa.
+</p>
+
+<!-- indica los datos solicitados -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    En gran parte, los datos solicitados por la plataforma son 
+    autoexplicativos, tenga si en consideración que ninguno 
+    de ellos es obligatorio, el no completar alguno de ellos
+    simplementa indicará que no se cumple este parámetro 
+    (por ejemplo, si deja en blanco <strong>Tratamiento</strong>
+    se asume que el paciente no ha recibido ningún tipo de 
+    tratamiento.
+</p>
+
+<!-- describe los datos -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    A continuación se detallan los datos solicitados: 
+</p>
+
+<!-- abrimos las viñetas -->
+<ul>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Id: </strong>La clave del registro, este campo es 
+        de solo lectura y generado automáticamente por el sistema.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Fecha: </strong>Al pulsar este control se 
+    despliega un calendario donde podrá indicar la fecha en 
+    que se ha realizado el control.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Tratamiento: </strong>Describa en este caso el tratamiento
+    (droga) utilizada.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Dosis: </strong>En caso de haber realizado un tratamiento 
+    y conocer la dosis utilizada, podrá ingresar aquí la misma (
+    expresada en miligramos).
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Contactos: </strong>Indique en este caso si se han 
+    explorado los contactos del paciente.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Nro.Contactos: </strong>En caso de haberse realizado 
+    la exploración de los contactos, indique en este campo el 
+    número (cantidad) de contactos que se han explorado.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Positivos: </strong>En caso de haber realizado 
+    exploración de contactos, podrá indicar aquí, cuantos 
+    de los contactos explorados direon positivo como resultado.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Bloqueo: </strong>Seleccione si se ha realizado 
+    bloqueo epidemiológico.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Nro. Viviendas: </strong>Indique aquí (siempre 
+    que se cumpla el punto anterior), el número de viviendas 
+    que han sido bloqueadas.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Sitios de Riesgo: </strong>En este caso podrá 
+    indicar si se ha realizado exploración de sitios de 
+    riesgo en el peridomicilio.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Insecticida: </strong>De haber utilizado algún 
+    tipo de insecticida en la zona, puede indicar aquí 
+    tanto la marca como sus características.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Cantidad: </strong>Se refiere aquí a la cantidad 
+    de insecticida utilizado.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Alta: </strong>En este caso se refiere a la fecha de 
+    alta del registro en la plataforma, este campo es de solo 
+    lectura y generado automáticamente por el sistema.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Usuario: </strong>El nombre de usuario que ingresó 
+    declaró / modificó el registro, es utilizado por el sistema 
+    con fines de seguimiento y es de solo lectura.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Grabar: </strong>Al pulsar este botón el sistema 
+    verificará los datos ingresados y grabará el registro en 
+    la base de datos.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Cancelar: </strong>Si por cualquier motivo, usted 
+    ha ingresado algún valor incorrecto, pulsando este botón 
+    el sistema recargará los datos registrados al momento de 
+    realizar la edición, anulando todos los cambios que usted 
+    pudiera haber efectuado.
+    </li>
+</ul>
+
+<!-- el pié de página -->
+<div style="height:55px; padding:2px;background:#1a7bc9;">
+
+    <!-- presenta el texto -->
+    <p style="text-align: center; vertical-align:middle; color:aliceblue;">
+        <a href="http://fatalachaben.mooo.com/leishmania/"> INP </a> |
+        <a href="mailto:cinvernizzi@dsgestion.site">Contacto</a> |
+                &copy; 2025 Claudio Invernizzi<br>
+                | Diseño <a href="http:/dsgestion.site/" target="_blank"> DsGestion </a> |
+                Licencia <a rel="license" target="_blank"
+                href="http://creativecommons.org/licenses/by/3.0/">
+                Creative Commons Attribution 3.0 License</a>
+    </p>
+
+<!-- cerramos el pié -->
+</div>

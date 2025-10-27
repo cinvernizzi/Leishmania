@@ -1,0 +1,178 @@
+<!-- 
+
+    Archivo: inicio.html
+    Proyecto: Leishmania
+    Autor: Lic. Claudio Invernizzi 
+    E-Mail: cinvernizzi@dsgestion.site
+    Fecha: 22/05/2025
+    Licencia: GPL
+
+    Script que crea la pantalla para el login del usuario 
+
+-->
+
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <!-- definimos la página -->
+    <meta charset="utf-8"/>
+    <meta name="description" content="Trazabilidad de Muestras de Leishmania"/>
+    <meta name="keywords" content="leishmaniasis, parasitologia, salud"/>
+
+    <!-- presenta el título -->
+    <title>Muestras de Leishmaniasis</title>
+
+    <!-- cargamos el favicon -->
+    <link rel="icon" type="image/x-icon" href="../imagenes/logoleish.png"/>
+
+    <!-- carga las hotas de estilo -->
+    <link rel="stylesheet" type="text/css" href="../css/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/tareas.css"/>
+
+        <!-- las librerías jquery -->
+    <script src="../script/jquery-3.6.4.min.js"></script>
+    <script src="../script/jquery.easyui.min.js"></script>
+    <script src="../script/easyui-lang-es.js"></script>
+
+    <!-- carga las funciones y librerías javascript -->
+    <script src="../script/funciones.js"></script>
+    <script src="seguridad.class.js"></script>
+
+</head>
+<body class="easyui-layout">
+
+    <!-- definimos el encabezado de la página -->
+    <div data-options="region:'north',split:false, border:true" 
+         style="height:12%; scrollbar-width: none; padding:2px; background:#1a7bc9;">
+
+        <!-- presenta el logo -->
+        <div style="float:left">
+            <img id='logositio' 
+                 src="../imagenes/logoleish.png"
+                 alt="Logo del Sitio"
+                 width=100px;>
+        </div>
+
+        <!-- presenta el título -->
+        <div style="margin-left:100px;
+                    width: 60%;">
+            <h2 style='text-align:center; margin-top: 15px; color: aliceblue;'>
+                Trazabilidad de Muestras de Leishmania
+            </h2>
+        </div>
+
+        <!-- presentamos los datos del instituto -->
+        <div style="float: right; 
+                    margin-top: -50px;">
+            <p style='margin-top: 0px; color: aliceblue;'>
+                Instituto Nacional de Parasitología<br/>
+                Dr. Mario Fatala Chabén - Departamento de Clínica<br/>
+                Av. Paseo Colón 568 - Piso 2
+                Buenos Aires - Argentina<br/>
+                E-Mail:
+                <a href="mailto:fatalaleishmaniasis@gmail.com">fatalaleishmaniasis@gmail.com</a>
+            </p>
+        </div>
+
+    <!-- cerramos el encabezado -->
+    </div>
+
+    <!-- el pié de página -->
+    <div data-options="region:'south',split:false, border:false" 
+         style="height:7%; padding:2px;background:#1a7bc9;">
+
+        <p style="text-align: center; vertical-align:middle; color:aliceblue;">
+            <a href="http://fatalachaben.mooo.com/leishmania/"> INP</a> |
+            <a href="mailto:cinvernizzi@dsgestion.site">Contacto</a> |
+                    &copy; 2025 Claudio Invernizzi<br>
+                    Diseño <a href="http:/dsgestion.site/"> DsGestion </a> |
+                    Licencia <a rel="license" target="_blank"
+                    href="http://creativecommons.org/licenses/by/3.0/">
+                    Creative Commons Attribution 3.0 License
+            </a>
+        </p>
+
+    <!-- cerramos el pié -->
+    </div>
+
+    <!-- el contenedor central  -->
+    <div id='contenedor' 
+         data-options="region:'center', border:false" 
+         style="padding:2px;background:#eee;">
+
+        <!-- presenta el encabezado -->
+        <h2 style="text-align: center; margin-top: 15px; color: #1a7bc9;">
+            Para continuar, debe acreditarse, <br>ingrese sus credenciales
+            a continuación por favor
+        </h2>
+
+        <!-- definimos el div del logo -->
+        <div style="width: 300px; margin-left:350px; margin-top: 100px; float:left;">
+            <img src="../imagenes/logoleish.png"
+                 width='290px'
+                 alt="Logo Leishmania">
+        </div>
+        
+        <!-- definimos el div para centrar -->
+        <div style="width: 600px; margin-left: 650px; margin-top: 150px;">
+
+            <!-- pide el usuario -->
+            <div style="margin-top:15px;">
+                <a href="#"
+                    title="Ingrese su nombre de usuario"
+                    class="easyui-tooltip">
+                <input id="usuario"
+                        data-options="iconCls: 'icon-usuarios'"
+                        class="easyui-textbox"> 
+                </a>
+            </div>
+
+            <!-- pide la contraseña -->
+            <div style="margin-top:15px;">
+                <a href="#"
+                    title="Ingrese su contraseña"
+                    class="easyui-tooltip">
+                <input id="password"
+                        class="easyui-passwordbox"> 
+                </a>
+            </div>
+
+            <!-- el botón ingresar -->
+            <div style="margin-top:25px; margin-left: 50px;">
+                <a id="btnIngresar"
+                    href="#"
+                    class="easyui-linkbutton"
+                    style="width:120px;"
+                    data-options="iconCls:'icon-ok'"
+                    onclick="seguridad.Ingresar();">
+                    Ingresar
+                </a>     
+            </div>
+
+            <!-- presenta el enlace para recuperar la
+                contraseña -->
+            <div style="margin-top:50px; margin-left: 50px;">
+                <a href='#'
+                   title="Pulse para recuperar sus credenciales"
+                   onclick="seguridad.recuperaPassword()">
+                   Recuperar Contraseña
+                </a>
+            </div>
+
+        <!-- cerramos el contenedor de los controles -->
+        </div>
+
+    <!-- cerramos el contenedor -->
+    </div>
+
+    <script>
+
+        // instanciamos las clases
+        let seguridad = new Seguridad();
+
+    </script>
+
+</body>
+</html>

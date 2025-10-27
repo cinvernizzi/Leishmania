@@ -1,0 +1,475 @@
+<!--
+
+    Archivo: formpacientes.html
+    Proyecto: Leishmania
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: DsGestion
+    Fecha: 26/05/2025
+    Version: 1.0
+    Licencia: GPL
+    Comentarios: Procedimiento que define el formulario con 
+                 los datos del paciente
+
+-->
+
+<!-- definimos el formulario -->
+<form name="datos-paciente" id="datos-paciente">
+
+    <!-- abrimos la primer fila con cuatro columnas -->
+    <div style="margin-left: 10px;
+                margin-top: 10px;
+                grid-template-columns: 20% 20% 40% 20%;
+                column-gap: 10px;">
+
+        <!-- presenta la clave del registro -->
+        <label>Id:
+            <a href="#" 
+               title="Clave del registro" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='idpaciente'
+                   id='idpaciente'
+                   readonly
+                   style="width:50px">
+            </a>
+        </label>
+
+        <!-- pide la fecha de ingreso de la muestra -->
+        <label>Ingreso:
+            <a href="#"
+               title="Fecha de ingreso de la muestra"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='ingresopaciente'
+                   name='ingresopaciente'
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+        <!-- pide el nombre del paciente -->
+        <label>Nombre:
+            <a href="#" 
+               title="Nombre y Apellido del paciente" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='nombrepaciente'
+                   id='nombrepaciente'
+                   style="width:350px">
+            </a>
+        </label>
+
+        <!-- pide el número de documento y el tipo -->
+        <label>Documento:
+            <a href="#" 
+               title="Seleccione el tipo de documento"
+               class="easyui-tooltip"> 
+               <input class="easyui-combobox"
+                      id="tipodocumento"                     
+                      name="tipodocumento"
+                      style="width:100px;">
+            </a>
+            <a href="#" 
+               title="Número de documento del paciente" 
+               class="easyui-tooltip"> 
+            <input class="easyui-numberbox" 
+                   name='documentopaciente'
+                   id='documentopaciente'
+                   style="width:150px">
+            </a>
+        </label>
+
+        <!-- pide el sexo -->
+        <label>Sexo:
+            <a href="#" 
+               title="Seleccione el sexo del paciente"
+               class="easyui-tooltip"> 
+               <input class="easyui-combobox"
+                      id="sexopaciente"                     
+                      name="sexopaciente"
+                      style="width:100px;">
+            </a>
+        </label>
+
+    <!-- cerramos la primer fila -->
+    </div>
+
+    <!-- abre la segunda fila con cinco columnas -->
+    <div style="margin-left: 10px;
+                margin-top: 10px;
+                grid-template-columns: 20% 20% 20% 20% 20%;
+                column-gap: 10px;">
+
+        <!-- pide la fecha de nacimiento -->
+        <label>Nacimiento:
+            <a href="#"
+               title="Fecha de nacimiento del paciente"
+               class="easyui-tooltip">
+            <input type='text'
+                   id='nacimientopaciente'
+                   name='nacimientopaciente'
+                   style='width: 120px;'>
+            </a>
+        </label>
+
+        <!-- pide la edad -->
+        <label>Edad:
+            <a href="#"
+               title="Edad del paciente al ingreso"
+               class="easyui-tooltip">
+            <input name='edadpaciente'
+                   id='edadpaciente'
+                   style="width:60px">
+            </a>
+        </label>
+
+        <!-- presenta el país de nacimiento -->
+        <label>País:
+            <a href="#" 
+               title="País del paciente" 
+               class="easyui-tooltip"> 
+            <input class="easyui-combobox" 
+                   name='paispaciente'
+                   id='paispaciente'
+                   style="width:200px">
+            </a>
+        </label>
+
+        <!-- presenta la provincia -->
+        <label>Provincia:
+            <a href="#" 
+               title="Provincia del paciente" 
+               class="easyui-tooltip"> 
+            <input class="easyui-combobox" 
+                   name='provinciapaciente'
+                   id='provinciapaciente'
+                   style="width:250px">
+            </a>
+        </label>
+
+        <!-- presenta la localidad -->
+        <label>Localidad:
+            <a href="#" 
+               title="Ingrese la localidad y pulse buscar" 
+               class="easyui-tooltip"> 
+            <input class="easyui-combobox" 
+                   name='localidadpaciente'
+                   id='localidadpaciente'
+                   style="width:250px">
+            </a>
+        </label>
+
+        <!-- muestra oculta las coordenadas gps -->
+        <input type="hidden" 
+               name='coordenadaspaciente'
+               id='coordenadaspaciente'>
+
+    <!-- cierra la segunda fila -->
+    </div>
+
+    <!-- abre la tercer fila con dos columnas -->
+    <div style="margin-left: 10px;
+                margin-top: 10px;
+                grid-template-columns: 80% 20%;
+                column-gap: 10px;">
+
+        <!-- pide el domicilio postal -->
+        <label>Domicilio:
+            <a href="#" 
+               title="Dirección postal del paciente" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='domiciliopaciente'
+                   id='domiciliopaciente'
+                   style="width:400px">
+            </a>
+        </label>
+
+        <!-- presenta el combo con el tipo de domicilio -->
+        <label>Tipo:
+            <a href="#"
+               title="Seleccione de la lista el tipo de domicilio"
+               class="easyui-tooltip">
+            <select id="tipodomicilio"
+                    class="easyui-combobox"
+                    name="tipodomicilio"
+                    style="width:120px;">
+
+                <!-- agregamos las opciones -->
+                <option></option>
+                <option>Urbano</option>
+                <option>Rural</option>
+                <option>N/E</option>
+
+            <!-- cerramos los tags-->
+            </select>
+        </a>
+        </label>
+
+        <!-- pide el teléfono del paciente -->
+        <!-- pide el domicilio postal -->
+        <label>Teléfono:
+            <a href="#" 
+               title="Teléfono del paciente" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='telpaciente'
+                   id='telpaciente'
+                   style="width:120px">
+            </a>
+        </label>
+
+        <!-- presenta el combo de ocupación -->
+        <label>Ocupación:
+            <a href="#"
+               title="Seleccione la ocupación del paciente"
+               class="easyui-tooltip">
+            <select id="ocupacionpaciente"
+                    class="easyui-combobox"
+                    name="ocupacionpaciente"
+                    style="width:150px;">
+
+                <!-- las opciones las agregamos por javascript -->
+
+            <!-- cerramos los tags-->
+            </select>
+        </a>
+        </label>
+
+    <!-- cierra la tercer fila -->
+    </div>
+
+    <!-- abre el contenedor de los datos de la institución -->
+    <div style="border-width: thin;
+                border-style: solid;
+                margin-top: 5px;
+                margin-left: 10px;
+                margin-bottom: 5px;
+                width: 90%;">
+
+        <!-- presenta el título -->
+        <p style="margin-left: 10px;">Institución Denunciante</p>
+
+        <!-- abre la cuarta fila con cinco columnas -->
+        <div style="margin-left: 10px;
+                    margin-top: 10px;
+                    grid-template-columns: 20% 20% 20% 20% 20%;
+                    column-gap: 10px;">
+
+            <!-- presenta la provincia -->
+            <label>Provincia:
+                <a href="#" 
+                title="Provincia de la institución" 
+                class="easyui-tooltip"> 
+                <input class="easyui-combobox" 
+                    name='provinciainstitucion'
+                    id='provinciainstitucion'
+                    style="width:250px">
+                </a>
+            </label>
+
+            <!-- presenta la localidad -->
+            <label>Localidad:
+                <a href="#" 
+                title="Ingrese la localidad y pulse buscar" 
+                class="easyui-tooltip"> 
+                <input class="easyui-combobox" 
+                    name='localidadinstitucion'
+                    id='localidadinstitucion'
+                    style="width:250px">
+                </a>
+            </label>
+
+            <!-- presenta el nombre de la institución -->
+            <label>Institución:
+                <a href="#" 
+                title="Ingrese parte del nombre y pulse buscar" 
+                class="easyui-tooltip"> 
+                <input class="easyui-combobox" 
+                    name='institucionpaciente'
+                    id='institucionpaciente'
+                    style="width:350px">
+                </a>
+            </label>
+
+        <!-- cerramos la fila -->
+        </div>
+
+        <!-- abre la quinta fila con cinco columnas -->
+        <div style="margin-left: 10px;
+                    margin-top: 10px;
+                    grid-template-columns: 20% 20% 20% 20% 20%;
+                    column-gap: 10px;">
+
+            <!-- pide el profesional que envió -->
+            <label>Profesional:
+                <a href="#" 
+                title="Profesional que envió la muestra" 
+                class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='profesionalpaciente'
+                    id='profesionalpaciente'
+                    style="width:250px">
+                </a>
+            </label>
+
+            <!-- pide el mail del profesional -->
+            <label>Mail:
+                <a href="#" 
+                title="Mail de contacto del profesional" 
+                class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='mailpaciente'
+                    id='mailpaciente'
+                    style="width:250px">
+                </a>
+            </label>
+
+            <!-- pide el teléfono del profesional -->
+            <label>Teléfono:
+                <a href="#" 
+                title="Teléfono de contacto del profesional" 
+                class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='telefonoprofesional'
+                    id='telefonoprofesional'
+                    style="width:120px">
+                </a>
+            </label>
+
+            <!-- pide la fecha de notificación -->
+            <label>Notificación:
+                <a href="#"
+                title="Fecha de notificación al Sisa"
+                class="easyui-tooltip">
+                <input type='text'
+                    id='notificacionpaciente'
+                    name='notificacionpaciente'
+                    style='width: 120px;'>
+                </a>
+            </label>
+
+            <!-- pide la clave del sisa -->
+            <label>Sisa:
+                <a href="#" 
+                    title="Clave de la denuncia en el sistema Sisa" 
+                    class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='sisapaciente'
+                    id='sisapaciente'
+                    style="width:150px">
+                </a>
+            </label>
+
+        <!-- cierra la quinta fila -->
+        </div>
+
+    <!-- cerramos el div de los datos de la institución -->
+    </div>
+
+    <!-- el contenedor de los antecedentes-->
+    <div style="margin-top: 10px;
+                margin-left: 10px;
+                float:left;">
+
+        <!-- pide los antecedentes -->
+        <div class="easyui-texteditor" 
+            id="antecedentespaciente"
+            title="Antecedentes" 
+            style="width:900px;
+                   height:240px;
+                   padding:10px">
+        </div>
+
+    <!-- cerramos el contenedor -->
+    </div>
+
+    <!-- el contenedor de los botones -->
+    <div style="margin-left: 950px;
+                margin-top: 10px;">
+
+        <!-- presenta el usuario -->
+        <div style="margin-bottom: 15px;">
+            <label>Usuario:
+            <a href="#"
+               title="Usuario que ingresó el registro"
+               class="easyui-tooltip">
+            <input class="easyui-textbox"
+                   name='usuariopaciente'
+                   id='usuariopaciente'
+                   readonly
+                   style="width:100px">
+            </a>
+            </label>
+        </div>
+
+        <!-- la fecha de alta -->
+        <div style="margin-bottom: 15px;">
+            <label>Alta:
+            <a href="#"
+               title="Fecha de alta del registro"
+               class="easyui-tooltip">
+            <input class="easyui-textbox"
+                   name='altapaciente'
+                   id='altapaciente'
+                   readonly
+                   style="width:100px">
+            </a>
+            </label>
+        </div>
+
+        <!-- la fecha de modificación -->
+        <div style="margin-bottom: 15px;">
+            <label>Modificado:
+            <a href="#"
+               title="Fecha de modificación del registro"
+               class="easyui-tooltip">
+            <input class="easyui-textbox"
+                   name='modificadopaciente'
+                   id='modificadopaciente'
+                   readonly
+                   style="width:100px">
+            </a>
+            </label>
+        </div>
+
+        <!-- el contenedor del botón -->
+        <div style="margin-bottom: 15px;">
+
+            <!-- presenta el botón grabar -->
+            <a id="btnGrabarPaciente" 
+               href="#" 
+               class="easyui-linkbutton" 
+               data-options="iconCls:'icon-save'"
+               style="width: 120px;"
+               onclick="pacientes.verificaPaciente();">
+               Grabar
+            </a>
+        </div>
+
+        <!-- el contenedor del botón -->
+        <div>
+
+            <!-- presenta el botón cancelar -->
+            <a id="btnCancelarPaciente" 
+               href="#" 
+               class="easyui-linkbutton" 
+               data-options="iconCls:'icon-cancel'"
+               style="width: 120px;"
+               onclick="pacientes.cancelaPaciente();">
+               Cancelar
+            </a>
+        </div>
+
+    <!-- cierra el contenedor de los botones -->
+    </div>
+
+<!-- cerramos el formulario -->
+</form>
+
+<script>
+
+    // configuramos el formulario
+    pacientes.initFormPacientes();
+
+</script>

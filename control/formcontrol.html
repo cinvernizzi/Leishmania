@@ -1,0 +1,269 @@
+<!--
+
+    Archivo: formevolucion.html
+    Proyecto: Leishmania
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: DsGestion
+    Fecha: 04/08/2025
+    Version: 1.0
+    Licencia: GPL
+    Comentarios: Procedimiento que define el formulario con los 
+                 datos de la evolución del paciente
+
+-->
+
+<!-- presenta el título -->
+<div>
+    <h2 style='text-align:center; margin-top: 0px; color: #1a7bc9;'>
+        Datos de Control
+    </h2>
+</div>
+
+<!-- definimos el formulario -->
+<form name="form-control" id="form-control">
+
+    <!-- abrimos la primer fila con cinco columnas -->
+    <div style="margin-left: 10px;
+                margin-top: 10px;
+                grid-template-columns: 15% 35% 35% 15%;
+                column-gap: 10px;">
+
+        <!-- presenta la clave del registro -->
+        <label>Id:
+            <a href="#" 
+               title="Clave del registro" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='idcontrol'
+                   id='idcontrol'
+                   readonly
+                   style="width:50px;">
+            </a>
+        </label>
+
+        <!-- presenta pide la fecha del control -->
+        <label>Fecha:
+            <a href="#" 
+               title="Fecha del Control" 
+               class="easyui-datebox"> 
+            <input class="easyui-textbox" 
+                   name='fechacontrol'
+                   id='fechacontrol'
+                   style="width:120px;">
+            </a>
+        </label>
+
+        <!-- pide la descripción del tratamiento -->
+        <label>Tratamiento:
+            <a href="#" 
+               title="Describa el tratamiento utilizado" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='tratamientocontrol'
+                   id='tratamientocontrol'
+                   style="width:350px;">
+            </a>
+        </label>
+
+        <!-- pide el nombre de la droga -->
+        <label>Droga:
+            <a href="#" 
+               title="Indique la droga utilizada" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='drogacontrol'
+                   id='drogacontrol'
+                   style="width:350px;">
+            </a>
+        </label>
+
+        <!-- pide la dosis de la droga -->
+        <label>Dosis:
+            <a href="#" 
+               title="Indique la dosis en miligramos" 
+               class="easyui-tooltip"> 
+            <input class='easyui-numberspinner'
+                   name='dosiscontrol'
+                   id='dosiscontrol'
+                   style="width:70px;">
+            </a>
+        </label>
+
+    <!-- cerramos el div -->
+    </div>
+
+    <!-- abrimos la segunda fila con seis columnas -->
+    <div style="margin-left: 10px;
+                margin-top: 10px;
+                grid-template-columns: 15% 35% 35% 15%;
+                column-gap: 10px;">
+
+        <!-- pregunta si se exploraron contactos -->
+        <label>Contactos:
+            <a href="#" 
+               title="Indique si se exploraron contactos" 
+               class="easyui-tooltip"> 
+            <input class="easyui-switchbutton"
+                   name='contactoscontrol'
+                   id='contactoscontrol'
+                   style="width:80px;">
+            </a>
+        </label>
+
+        <!-- pide el nro de contactos explorados -->
+        <label>Nro.Contactos:
+            <a href="#" 
+               title="Indique el número de contactos explorados" 
+               class="easyui-tooltip"> 
+            <input class='easyui-numberspinner'
+                   name='nrocontactooscontrol'
+                   id='nrocontactoscontrol'
+                   style="width:70px;">
+            </a>
+        </label>
+
+        <!-- pide el nro de contactos positivos -->
+        <label>Positivos:
+            <a href="#" 
+               title="Indique cantidad de contactos positivos" 
+               class="easyui-tooltip"> 
+            <input class='easyui-numberspinner'
+                   name='positivoscontrol'
+                   id='positivoscontrol'
+                   style="width:70px;">
+            </a>
+        </label>
+
+        <!-- pregunta si se realizó bloqueo -->
+        <label>Bloqueo:
+            <a href="#" 
+               title="Indique si se realizó bloqueo" 
+               class="easyui-tooltip"> 
+            <input class="easyui-switchbutton"
+                   name='bloqueocontrol'
+                   id='bloqueocontrol'
+                   style="width:80px;">
+            </a>
+        </label>
+
+        <!-- pregunta por el nro de viviendas exploradas -->
+        <label>Viviendas:
+            <a href="#" 
+               title="Indique cantidad de viviendas exploradas" 
+               class="easyui-tooltip"> 
+            <input class='easyui-numberspinner'
+                   name='viviendascontrol'
+                   id='viviendascontrol'
+                   style="width:70px;">
+           </a>
+        </label>
+
+        <!-- pregunta si se exploraron sitios de riesgo -->
+        <label>Sitios Riesgo:
+            <a href="#" 
+               title="Indique si se exploraron sitios de riesgo" 
+               class="easyui-tooltip"> 
+            <input class="easyui-switchbutton"
+                   name='riesgocontrol'
+                   id='riesgocontrol'
+                   style="width:80px;">
+            </a>
+        </label>
+    </div>
+
+    <!-- abrimos la segunda fila con seis columnas -->
+    <div style="margin-left: 10px;
+                margin-top: 10px;
+                grid-template-columns: 15% 35% 35% 15%;
+                column-gap: 10px;">
+
+        <!-- pide la marca del insecticida utilizado -->
+        <label>Insecticida:
+            <a href="#" 
+            title="Indique la marca de insecticida utilizado" 
+            class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                name='insecticidacontrol'
+                id='insecticidacontrol'
+                style="width:350px;">
+            </a>
+        </label>
+
+        <!-- pide la cantidad de insecticida -->
+        <label>Cantidad:
+            <a href="#" 
+            title="Indique la cantidad de insecticida utilizado" 
+            class="easyui-tooltip"> 
+            <input class='easyui-numberspinner'
+                name='cantidadinseccontrol'
+                id='cantidadinseccontrol'
+                style="width:70px;">
+            </a>
+        </label>
+
+        <!-- presenta el usuario -->
+        <label>Usuario:
+            <a href="#" 
+            title="Usuario que ingresó el registro" 
+            class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                name='usuariocontrol'
+                id='usuariocontrol'
+                readonly
+                style="width:120px;">
+            </a>
+        </label>
+
+        <!-- presenta la fecha de alta -->
+        <label>Alta:
+            <a href="#" 
+            title="Fecha de alta del registro" 
+            class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                name='altacontrol'
+                id='altacontrol'
+                readonly
+                style="width:120px;">
+            </a>
+        </label>
+
+        <!-- el botón grabar -->
+        <a id="btnGrabarControl" 
+            href="#" 
+            class="easyui-linkbutton" 
+            data-options="iconCls:'icon-save'"
+            style="width: 120px;"
+            onclick="control.verificaControl();">
+            Grabar
+        </a>
+
+        <!-- el botón cancelar -->
+        <a id="btnCancelarControl" 
+            href="#" 
+            class="easyui-linkbutton" 
+            data-options="iconCls:'icon-cancel'"
+            style="width: 120px;"
+            onclick="control.cancelaControl();">
+            Cancelar
+        </a>
+
+        <!-- el botón ayuda -->
+        <a id="btnAyudaControl" 
+            href="#" 
+            class="easyui-linkbutton" 
+            data-options="iconCls:'icon-help'"
+            style="width: 30px;"
+            onclick="control.ayudaControl();">
+        </a>
+    </div>
+
+<!-- cerramos el formulario -->
+</form>
+
+<script>
+
+    // configuramos el formulario
+    control.initFormControl();
+    
+</script>

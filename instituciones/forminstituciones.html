@@ -1,0 +1,320 @@
+<!--
+
+    Archivo: forminstituciones.html
+    Proyecto: Leishmania
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: INP - Dr. Mario Fatala Chabén
+    Fecha: 01/02/2022
+    Version: 1.0
+    Licencia: GPL
+    Comentarios: Procedimiento que define el formulario para
+                 el abm de instituciones asistenciales
+
+-->
+
+<!-- define el formulario -->
+<form name='datos-institucion' id='datos-institucion'>
+
+<!-- presenta oculta la clave de localidad -->
+<input type='hidden'
+       name='codlocinstitucion'
+       id='codlocinstitucion'>
+
+<!-- abrimos la tabla -->
+<table style="width:95%;margin:auto;padding:5px;border:0px;">    
+
+    <!-- presenta la clave -->
+    <tr>
+        <td>
+            <label>Id: 
+                <a href="#" 
+                   title="Clave del registro" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='idcentro'
+                    id='idcentro'
+                    readonly
+                    style="width:50px">
+                </a>
+            </label>    
+        </td>
+
+        <!-- pide el nombre de la institución -->
+        <td>
+            <label>Nombre: 
+                <a href="#" 
+                   title="Nombre de la Institución" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='nombreinstitucion'
+                    id='nombreinstitucion'
+                    style="width:400px">
+                </a>
+            </label>    
+        </td>
+
+        <!-- pide la clave siisa -->
+        <td>
+            <label>Siisa: 
+                <a href="#" 
+                   title="Clave correspondiente al Siisa" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='siisainstitucion'
+                    id='siisainstitucion'
+                    style="width:100px">
+                </a>
+            </label>    
+        </td>
+
+        <!-- presenta el combo de dependencia -->
+        <td>
+            <label>Dependencia:
+                <a href="#" 
+                title="Seleccione la dependencia de la institucion" 
+                class="easyui-tooltip"> 
+                <select id="dependenciainstitucion" 
+                        class="easyui-combobox" 
+                        name="dependenciainstitucion" 
+                        style="width:150px;">
+                </select>
+                </a>
+            </label>
+        </td>
+    </tr>
+</table>
+
+<!-- abrimos la tabla -->
+<table style="width:95%;margin:auto;padding:5px;border:0px;">    
+
+    <!-- presenta la dirección postal -->
+    <tr>
+        <td>
+            <label>Dirección: 
+                <a href="#" 
+                   title="Dirección postal de la institución" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='direccioninstitucion'
+                    id='direccioninstitucion'
+                    style="width:330px">
+                </a>
+            </label>    
+        </td>
+
+        <!-- presenta el código postal -->
+        <td>
+            <label>Código Postal: 
+                <a href="#" 
+                   title="Código postal de la dirección" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='codpostinstitucion'
+                    id='codpostinstitucion'
+                    style="width:100px">
+                </a>
+            </label>    
+        </td>
+
+        <!-- pide el teléfono -->
+        <td>
+            <label>Teléfono: 
+            <a href="#" 
+               title="Teléfono de la institución con prefijo" 
+               class="easyui-tooltip"> 
+            <input name='telefonoinstitucion'
+                   id='telefonoinstitucion'
+                   style="width:110px">
+            </a>
+            </label>    
+        </td>
+
+        <!-- pide el mail -->
+        <td>
+            <label>E-Mail: 
+                <a href="#" 
+                   title="Correo electrónico de la institución" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='emailinstitucion'
+                    id='emailinstitucion'
+                    style="width:250px">
+                </a>
+            </label>    
+        </td>
+    </tr>
+</table>
+
+<!-- abrimos la tabla -->
+<table style="width:95%;margin:auto;padding:5px;border:0px;">    
+
+    <!-- presenta el nombre del país -->
+    <tr>
+        <td>
+            <label>País: 
+                <a href="#" 
+                   title="País de la institución" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='paisinstitucion'
+                    id='paisinstitucion'
+                    readonly
+                    style="width:300px">
+                </a>
+            </label>    
+        </td>
+
+        <!-- presenta el nombre de la provincia -->
+        <td>
+            <label>Provincia: 
+                <a href="#" 
+                   title="Provincia de la institución" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='nomprovinstitucion'
+                    id='nomprovinstitucion'
+                    readonly
+                    style="width:300px">
+                </a>
+            </label>    
+        </td>
+
+        <!-- presenta el nombre de la localidad -->
+        <td>
+            <label>Localidad: 
+                <a href="#" 
+                   title="Localidad de la institución" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='nomloclocinstitucion'
+                    id='nomlocinstitucion'
+                    style="width:300px">
+                </a>
+            </label>    
+        </td>
+        
+        <!-- presenta el botón buscar localidad -->
+        <td>
+            <a id="btnBuscaLocInstitucion" 
+                href="#" 
+                class="easyui-linkbutton" 
+                style="width:30px"
+                data-options="iconCls:'icon-search'"
+                onclick="instituciones.buscaLocalidad();">
+            </a>
+        </td>    
+    </tr>
+</table>
+
+<!-- abrimos la tabla -->
+<table style="width:95%;margin:auto;padding:5px;border:0px;">    
+
+    <!-- pide el nombre del responsable -->
+    <tr>
+        <td>
+            <label>Responsable: 
+                <a href="#" 
+                   title="Director o responsable de la institución" 
+                   class="easyui-tooltip"> 
+                <input class="easyui-textbox" 
+                    name='responsableinstitucion'
+                    id='responsableinstitucion'
+                    style="width:350px">
+                </a>
+            </label>    
+        </td>
+
+        <!-- presenta la fecha de alta -->
+        <td>
+            <label>Fecha: 
+            <a href="#" 
+               title="Fecha de alta del registro" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='altainstitucion'
+                   id='altainstitucion'
+                   readonly
+                   style="width:100px">
+            </a>
+            </label>    
+        </td>
+
+        <!-- presenta el usuario -->
+        <td>
+            <label>Usuario: 
+            <a href="#" 
+               title="Usuario que ingresó el registro" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='usuarioinstitucion'
+                   id='usuarioinstitucion'
+                   readonly
+                   style="width:100px">
+            </a>
+            </label>    
+        </td>
+    </tr>
+</table>
+
+<!-- abrimos la tabla -->
+<table style="width:95%;margin:auto;padding:5px;border:0px;">    
+
+    <!-- pide los comentarios -->
+    <tr>
+        <td rowspan="3">
+            <div class="easyui-texteditor" 
+                 title="Observaciones" 
+                 style="width:950px;height:200px;padding:5px"
+                 id="observacionesinstitucion">
+            </div>
+        </td>
+
+        <!-- presenta el botón grabar -->
+        <td>
+            <a id="btnGrabarInstitucion" 
+               href="#" 
+               class="easyui-linkbutton"
+               style="width:100px" 
+               data-options="iconCls:'icon-save'"
+               onclick="instituciones.verificaInstitucion();">
+               Grabar</a>
+        </td>
+    </tr>
+
+    <!-- presenta el botón cancelar -->
+    <tr>
+        <td>
+            <a id="btnCancelarInstitucion" 
+               href="#" 
+               class="easyui-linkbutton" 
+               style="width:100px"
+               data-options="iconCls:'icon-cancel'"
+               onclick="instituciones.cancelaInstitucion();">
+               Cancelar</a>
+        </td>
+    </tr>
+
+    <!-- presenta el botón borrar -->
+    <tr>
+        <td>
+            <a id="btnBorrarInstitucion" 
+               href="#" 
+               class="easyui-linkbutton" 
+               style="width:100px"
+               data-options="iconCls:'icon-error'"
+               onclick="instituciones.puedeBorrar();">
+               Borrar</a>
+        </td>
+    </tr>
+</table>
+
+<!-- cerramos el formulario -->
+</form>
+
+<script>
+
+    // inicializamos el formulario 
+    instituciones.initFormInstituciones();
+
+</script>

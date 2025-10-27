@@ -1,0 +1,27 @@
+<?php
+
+/**
+ *
+ * validadocumento/validadocumento.php
+ *
+ * @package     Leishmania
+ * @subpackage  Documentos
+ * @author      Lic. Claudio Invernizzi <cinvernizzi@dsgestion.site>
+ * @version     1.0 (13/10/2021)
+ * @copyright   Copyright (c) 2017, INP
+ *
+ * Método que recibe por get el tipo de documento y la descripción
+ * y verifica que no esté repetido, retorna el número de
+ * registros encontrados
+ *
+*/
+
+// incluimos e instanciamos la clase
+require_once "documentos.class.php";
+$documentos = new Documentos();
+
+// verificamos si está declarado
+$registros = $documentos->validaDocumento($_GET["tipo_documento"], $_GET["descripcion"]);
+
+// retornamos
+echo json_encode(array("Registros" => $registros));

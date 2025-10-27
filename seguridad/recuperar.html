@@ -1,0 +1,105 @@
+<!--
+
+    Archivo: recuperar.html
+    Proyecto: Leishmania
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: INP
+    Fecha: 27/08/2025
+    Version: 1.0
+    Licencia: GPL
+    Comentarios: Procedimiento que arma el formulario para el
+                 ingreso del mail para recuperar la 
+                 contraseña
+
+-->
+
+<!-- definimos el formulario -->
+<form name='recuperar_usuario' id='recuperar_usuario'>
+
+    <!-- presenta el título -->
+    <p style="padding: 5px; text-align: justify;">
+        <strong>Por favor ingrese la dirección de correo 
+           electrónico registrada, el sistema le 
+           enviará un mail con los datos de 
+           acceso.
+        </strong>
+    </p>
+
+    <!-- presenta la layenda -->
+    <p style="padding: 5px; text-align: justify;">
+        <strong>Solicite la recuperación una (1) sola vez, 
+           no repita la solicitud, de hacerlo se 
+           generará un error en la recuperación de 
+           credenciales. 
+        </strong>
+    </p>
+
+    <!-- abrimos la tabla -->
+    <table style="width:95%; border:0; padding: 5px">
+
+    <!-- abrimos la fila y la columna -->
+    <tr>
+
+        <!-- pedimos el mail -->
+        <td style="text-align: right;">
+            <strong>E-Mail:</strong>
+        </td>
+        <td>
+            <a href="#" 
+               title="El E-Mail registrado en la base" 
+               class="easyui-tooltip"> 
+            <input class="easyui-textbox" 
+                   name='recuperamail'
+                   id='recuperamail'
+                   style="width:250px">
+            </a>
+        </td>
+
+    <!-- cerramos la fila -->
+    </tr>
+
+    <!-- insertamos un separador -->
+    <tr><td colspan='2'><br></td></tr>
+
+    <!-- cerramos la tabla -->
+    </table>
+
+    <!-- abrimos la tabla de los botones -->
+    <table style="width:95%; border:0; padding: 5px">
+        
+    <!-- abre la fila  -->
+    <tr>
+
+        <!-- presenta el botón aceptar -->
+        <td style="text-align: center;">
+            <a id="btnIngreso" 
+               href="#" 
+               class="easyui-linkbutton"
+               style="width:100px" 
+               title="Pulse para recuperar su mail"
+               onclick="seguridad.verificaRecuperacion();"
+               data-options="iconCls:'icon-confirmar'">
+               Recuperar</a>
+        </td>
+
+        <!-- presenta el botón cancelar -->
+        <td style="text-align: center;">
+            <a id="btnCancelarRecuperacion" 
+               href="#" 
+               class="easyui-linkbutton" 
+               style="width:100px"
+               title="Cierra el formulario"
+               onclick="$('#win-seguridad').window('destroy');"
+               data-options="iconCls:'icon-cancel'">
+               Cancelar</a>
+        </td>
+
+    <!-- cierra la fila -->
+    </tr>
+
+<!-- cerramos la tabla -->
+</table>
+
+<!-- cerramos el formulario -->
+</form>

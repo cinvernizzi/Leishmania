@@ -1,0 +1,190 @@
+<!-- 
+
+    Archivo: ayuda.html
+    Proyecto: Leishmania
+    Autor: Lic. Claudio Invernizzi 
+    E-Mail: cinvernizzi@dsgestion.site
+    Fecha: 04/08/2025
+    Licencia: GPL
+
+    Documento que presenta la ayuda para el abm de la evolución 
+    del paciente
+
+-->
+
+<!-- definimos el encabezado de la página -->
+<div style="height:80px; scrollbar-width: none; padding:2px; background:#1a7bc9;">
+
+    <!-- presenta el logo -->
+    <div style="float:left">
+        <img id="logositio"
+            src="imagenes/logoleish.png"
+            alt="Logo del Sitio"
+            width=100px;>
+    </div>
+
+    <!-- presenta el título -->
+    <div style="margin-left:100px;
+                width: 60%;">
+        <h2 style='text-align:center; margin-top: 15px; color: aliceblue;'>
+                Evolución del Paciente
+        </h2>
+    </div>
+
+    <!-- presentamos los datos del instituto -->
+    <div style="float: right; 
+                margin-top: -50px;">
+        <p style='margin-top: 0px; color: aliceblue;'>
+            Instituto Nacional de Parasitología<br/>
+            Dr. Mario Fatala Chabén - Departamento de Clínica<br/>
+            Av. Paseo Colón 568 - Piso 2
+            Buenos Aires - Argentina<br/>
+            E-Mail:
+            <a href="mailto:fatalaleishmaniasis@gmail.com">fatalaleishmaniasis@gmail.com</a>
+        </p>
+    </div>
+
+<!-- cerramos el encabezado -->
+</div>
+
+<!-- presenta el porqué de los datos -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Este apartado le solicita que ingrese los datos correspondientes 
+    a la evolución del paciente, tal como se requiere que sean 
+    reportados al Sisa.
+</p>
+
+<!-- indica los datos solicitados -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    En gran parte, los datos solicitados por la plataforma son 
+    autoexplicativos, tenga si en consideración que ninguno 
+    de ellos es obligatorio, el no completar alguno de ellos
+    simplementa indicará que no se cumple este parámetro 
+    (por ejemplo, si deja en blanco <strong>Defunción</strong>
+    se asume que el paciente está vivo, de la misma manera
+    si deja en blanco la fecha de <strong>Hospitalización</strong>
+    la plataforma asume que el paciente nunca fue Hospitalizado).
+</p>
+
+<!-- describe los datos -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    A continuación se detallan los datos solicitados: 
+</p>
+
+<!-- abrimos las viñetas -->
+<ul>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+        <strong>Id: </strong>La clave del registro, este campo es 
+        de solo lectura y generado automáticamente por el sistema.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Hospitalizació: </strong>Al pulsar este control se 
+    despliega un calendario donde podrá indicar la fecha en 
+    la que el paciente fue hospitalizado,
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Alta: </strong>Al igual que en el caso anterior, aquí 
+    deberá indicar la fecha de alta del paciente (en caso de 
+    haber sido hospitalizado).
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Defunción: </strong>Como en los casos anteriores, 
+    deberá indicar la fecha de defunción del paciente (en caso 
+    de haber ocurrido por supuesto).
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Condición: </strong>Este campo es texto libre, usted
+    podrá describir aquí la condición en que se realizó el alta 
+    del paciente.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Clasificación: </strong>Describa aquí la clasificación 
+    diagnóstica final al momento del alta (o al haber realizado 
+    todos los análisis correspondientes).
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Denuncia: </strong>Esta control indicará la fecha en 
+    que fue realizada la denuncia al Sisa.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Alta: </strong>En este caso se refiere a la fecha de 
+    alta del registro en la plataforma, este campo es de solo 
+    lectura y generado automáticamente por el sistema.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Usuario: </strong>El nombre de usuario que ingresó 
+    declaró / modificó el registro, es utilizado por el sistema 
+    con fines de seguimiento y es de solo lectura.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Grabar: </strong>Al pulsar este botón el sistema 
+    verificará los datos ingresados y grabará el registro en 
+    la base de datos.
+    </li>
+    <li style="text-align:justify;
+               margin-top: 5px;
+               margin-left: 10px;
+               margin-right: 10px;">
+    <strong>Cancelar: </strong>Si por cualquier motivo, usted 
+    ha ingresado algún valor incorrecto, pulsando este botón 
+    el sistema recargará los datos registrados al momento de 
+    realizar la edición, anulando todos los cambios que usted 
+    pudiera haber efectuado.
+    </li>
+</ul>
+
+<!-- el pié de página -->
+<div style="height:55px; padding:2px;background:#1a7bc9;">
+
+    <!-- presenta el texto -->
+    <p style="text-align: center; vertical-align:middle; color:aliceblue;">
+        <a href="http://fatalachaben.mooo.com/leishmania/"> INP </a> |
+        <a href="mailto:cinvernizzi@dsgestion.site">Contacto</a> |
+                &copy; 2025 Claudio Invernizzi<br>
+                | Diseño <a href="http:/dsgestion.site/" target="_blank"> DsGestion </a> |
+                Licencia <a rel="license" target="_blank"
+                href="http://creativecommons.org/licenses/by/3.0/">
+                Creative Commons Attribution 3.0 License</a>
+    </p>
+
+<!-- cerramos el pié -->
+</div>

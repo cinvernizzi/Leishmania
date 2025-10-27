@@ -1,0 +1,389 @@
+<!--
+
+    Archivo: formresponsables.html
+    Proyecto: CCE
+    Autor: Claudio Invernizzi
+    E-Mail: cinvernizzi@dsgestion.site
+    Institución: INP
+    Fecha: 26/03/2021
+    Version: 5.0
+    Licencia: GPL
+    Comentarios: Procedimiento que arma el formulario con los datos
+                 de los responsables
+
+-->
+
+<!-- definimos el formulario -->
+<form name="formresponsables" id="formresponsables">
+
+    <!-- abrimos la tabla -->
+    <table style="width:95%;margin:auto;padding:2px;border:0px;">
+
+        <!-- presenta la clave -->
+        <tr>
+            <td>
+                <label>Id:
+                    <a href="#" 
+                       title="Clave del usuario" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='idresponsable'
+                           id='idresponsable'
+                           readonly
+                           style="width:50px">
+                    </a>
+                </label>
+            </td>
+    
+            <!-- pide el nombre del responsable -->
+            <td>
+                <label>Nombre: 
+                    <a href="#" 
+                       title="Nombre completo del responsable" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='nombreresponsable'
+                           id='nombreresponsable'
+                           style="width:350px">
+                    </a>
+                </label>
+            </td>
+
+            <!-- presenta el nombre de usuario -->            
+            <td>
+                <label>Usuario: 
+                    <a href="#" 
+                       title="Nombre de usuario en el sistema" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='usuarioresponsable'
+                           id='usuarioresponsable'
+                           style="width:100px">
+                    </a>
+                </label>
+            </td>
+        </tr>
+    </table>
+
+    <!-- abrimos la tabla -->
+    <table style="width:95%;margin:auto;padding:2px;border:0px;">
+
+        <!-- pide el cargo del responsable -->
+        <tr>
+            <td>
+                <label>Cargo: 
+                    <a href="#" 
+                       title="Cargo que ocupa" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='cargoresponsable'
+                           id='cargoresponsable'
+                           style="width:300px">
+                    </a>
+                </label>
+            </td>
+
+            <!-- pide el nombre de la institución -->
+            <td>
+                <label>Institución: 
+                    <a href="#" 
+                       title="Institución a la que pertenece" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='institucionresponsable'
+                           id='institucionresponsable'
+                           style="width:320px">
+                    </a>
+                </label>
+            </td>
+
+            <!-- pide el mail -->
+            <td>
+                <label>Mail: 
+                    <a href="#" 
+                       title="Dirección de correo electrónico" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='mailresponsable'
+                           id='mailresponsable'
+                           style="width:200px">
+                    </a>
+                </label>
+            </td>
+
+            <!-- pide el teléfono -->
+            <td>
+                <label>Teléfono: 
+                    <a href="#" 
+                       title="Número de teléfono con prefijos" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='telefonoresponsable'
+                           id='telefonoresponsable'
+                           style="width:100px">
+                    </a>
+                </label>
+            </td>
+        </tr>
+    </table>
+
+    <!-- abrimos la tabla -->
+    <table style="width:95%;margin:auto;padding:2px;border:0px;">
+
+        <!-- presenta el país -->
+        <tr>
+            <td>
+                <label>País: 
+                    <a href="#" 
+                       title="País del laboratorio" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='paisresponsable'
+                           id='paisresponsable'
+                           readonly
+                           style="width:250px">
+                    </a>
+                </label>
+            </td>
+
+            <!-- presenta la provincia -->
+            <td>
+                <label>Provincia: 
+                    <a href="#" 
+                       title="Provincia o Jurisdicción del laboratorio" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='provinciaresponsable'
+                           id='provinciaresponsable'
+                           readonly
+                           style="width:250px">
+                    </a>
+                </label>
+            </td>
+
+            <!-- presenta la localidad -->
+            <td>
+                <label>Localidad: 
+                    <a href="#" 
+                       title="Localidad del Laboratorio" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='localidadresponsable'
+                           id='localidadresponsable'
+                           style="width:300px">
+                    </a>
+                </label>
+            </td>
+
+            <!-- el botón buscar localidad -->  
+            <td>
+                <a id="btnBuscaLocResponsable"
+                   href="#"
+                   class="easyui-linkbutton"
+                   style="width:30px"
+                   data-options="iconCls:'icon-search'"
+                   onclick="responsables.buscaLocalidad();">
+                </a>
+            </td>  
+        </tr>
+    </table>
+
+    <!-- abrimos la tabla -->
+    <table style="width:95%;margin:auto;padding:2px;border:0px;">
+    
+        <!-- pide la dirección -->
+        <tr>
+            <td>
+                <label>Dirección: 
+                    <a href="#" 
+                       title="Dirección donde serán enviadas las muestras" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='direccionresponsable'
+                           id='direccionresponsable'
+                           style="width:450px">
+                    </a>
+                </label>
+            </td>
+
+            <!-- pide el código postal -->
+            <td>
+                <label>Código Postal: 
+                    <a href="#" 
+                       title="Código Postal del Responsable" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='codpostresponsable'
+                           id='codpostresponsable'
+                           style="width:80px">
+                    </a>
+                </label>
+            </td>
+        </tr>
+    </table>
+
+    <!-- abrimos la tabla -->
+    <table style="width:95%;margin:auto;padding:2px;border:0px;">
+
+        <!-- pide si es responsable de chagas -->
+        <tr>
+            <td>
+                <label>Responsable Chagas:
+                <a href="#"
+                   title="Indique si es responsable Jurisdiccional"
+                   class="easyui-tooltip">
+                <input id="chagasresponsable"
+                       class="easyui-checkbox"
+                       name="chagasresponsable">
+                </a>
+                </label>
+            </td>
+    
+            <!-- pide si es responsable de leishmania -->
+            <td>
+                <label>Responsable Leish: 
+                <a href="#"
+                   title="Indique si es responsable Jurisdiccional"
+                   class="easyui-tooltip">
+                <input id="leishresponsable"
+                       class="easyui-checkbox"
+                       name="leishresponsable">
+                </a>
+                </label>
+            </td>
+
+            <!-- pide si está activo -->
+            <td>
+                <label>Activo: 
+                <a href="#"
+                   title="Indique si está habilitado"
+                   class="easyui-tooltip">
+                <input id="activoresponsable"
+                       class="easyui-checkbox"
+                       name="activoresponsable">
+                </a>
+                </label>
+            </td>
+
+            <!-- pide si es de nivel central -->            
+            <td>
+                <label>Nivel Central: 
+                <a href="#"
+                   title="Indique si es de nivel central"
+                   class="easyui-tooltip">
+                <input id="centralresponsable"
+                       class="easyui-checkbox"
+                       name="centralresponsable">
+                </a>
+                </label>
+            </td>
+
+            <!-- presenta el laboratorio -->
+            <td>
+                <label>Laboratorio: 
+                    <a href="#" 
+                       title="Laboratorio autorizado para cargar determinaciones" 
+                       class="easyui-tooltip"> 
+                    <input class="easyui-textbox" 
+                           name='laboratorioresponsable'
+                           id='laboratorioresponsable'
+                           style="width:350px">
+                    </a>
+                </label>
+            </td>
+
+            <!-- el botón buscar laboratorio -->  
+            <td>
+                <a id="btnBuscaLabResponsable"
+                   href="#"
+                   class="easyui-linkbutton"
+                   style="width:30px"
+                   data-options="iconCls:'icon-search'"
+                   onclick="responsables.buscaLaboratorio();">
+                </a>
+            </td>  
+        </tr>
+    </table>
+
+<!-- definimos la tabla -->
+<table style="width:95%;margin:auto;padding:2px;border:0px;">
+
+    <!-- pide los comentarios -->
+    <tr>
+        <td rowspan='4'>
+            <div class="easyui-texteditor"
+                 title="Observaciones"
+                 style="width:950px;height:250px;padding:5px"
+                 id="observacionesresponsable">
+            </div>
+        </td>
+
+        <!-- presenta el usuario -->
+        <td>
+            <label>Autorizo:
+            <a href="#"
+               title="Usuario que autorizó el ingreso"
+               class="easyui-tooltip">
+            <input class="easyui-textbox"
+                   name='autorizoresponsable'
+                   id='autorizoresponsable'
+                   readonly
+                   style="width:100px">
+            </a>
+            </label>
+        </td>
+    </tr>
+
+    <!-- presenta la fecha de alta -->
+    <tr>
+        <td>
+            <label>Fecha:
+            <a href="#"
+               title="Fecha de alta del registro"
+               class="easyui-tooltip">
+            <input class="easyui-textbox"
+                   name='altaresponsable'
+                   id='altaresponsable'
+                   readonly
+                   style="width:100px">
+            </a>
+            </label>
+        </td>
+    </tr>
+
+    <!-- presenta el botón grabar -->
+    <tr>
+        <td>
+            <a id="btnGrabarResponsable"
+               href="#"
+               class="easyui-linkbutton"
+               style="width:100px"
+               data-options="iconCls:'icon-save'"
+               onclick="responsables.verificaResponsable();">
+               Grabar</a>
+        </td>
+    </tr>
+
+    <!-- presenta el botón cancelar -->
+    <tr>
+        <td>
+            <a id="btnCancelarResponsable"
+               href="#"
+               class="easyui-linkbutton"
+               style="width:100px"
+               data-options="iconCls:'icon-cancel'"
+               onclick="responsables.cancelaResponsable();">
+               Cancelar</a>
+        </td>
+    </tr>
+</table>
+
+<!-- cierra el formulario -->
+</form>
+
+<script>
+
+    // configuramos el formulario 
+    responsables.initFormResponsables();
+
+</script>

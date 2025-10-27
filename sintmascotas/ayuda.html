@@ -1,0 +1,206 @@
+<!-- 
+
+    Archivo: ayuda.html
+    Proyecto: Leishmania
+    Autor: Lic. Claudio Invernizzi 
+    E-Mail: cinvernizzi@dsgestion.site
+    Fecha: 18/08/2025
+    Licencia: GPL
+
+    Documento que presenta la ayuda para el abm de los síntomas
+    de las mascotas
+
+-->
+
+<!-- definimos el encabezado de la página -->
+<div style="height:80px; scrollbar-width: none; padding:2px; background:#1a7bc9;">
+
+    <!-- presenta el logo -->
+    <div style="float:left">
+        <img id="logositio"
+            src="imagenes/logoleish.png"
+            alt="Logo del Sitio"
+            width=100px;>
+    </div>
+
+    <!-- presenta el título -->
+    <div style="margin-left:100px;
+                width: 60%;">
+        <h2 style='text-align:center; margin-top: 15px; color: aliceblue;'>
+                Síntomas de la Mascota
+        </h2>
+    </div>
+
+    <!-- presentamos los datos del instituto -->
+    <div style="float: right; 
+                margin-top: -50px;">
+        <p style='margin-top: 0px; color: aliceblue;'>
+            Instituto Nacional de Parasitología<br/>
+            Dr. Mario Fatala Chabén - Departamento de Clínica<br/>
+            Av. Paseo Colón 568 - Piso 2
+            Buenos Aires - Argentina<br/>
+            E-Mail:
+            <a href="mailto:fatalaleishmaniasis@gmail.com">fatalaleishmaniasis@gmail.com</a>
+        </p>
+    </div>
+
+<!-- cerramos el encabezado -->
+</div>
+
+<!-- presenta el porqué de un diccionario -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    En esta sección usted podrá declarar los síntomas de una mascota
+    al seleccionar la misma en la grilla correspondiente (no es 
+    necesario que las mascotas correspondan a un paciente declarado, 
+    pero si es necesario que usted ingrese primer los datos personales
+    del tutor o dueño de la mascota correspondiente).
+</p>
+
+<!-- indica los datos solicitados -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+    Los datos solicitados en el formulario corresponden también 
+    a aquellos solicitados en la denuncia en el Sisa y son los 
+    siguientes:
+</p>
+
+<!-- abrimos las viñetas -->
+<ul>
+
+    <!-- la clave del registro -->
+    <li style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          <strong>Id: </strong>Esta es la clave del registro y es de 
+          solo lectura, la administra directamente la plataforma.
+    </li>
+
+    <!-- la fecha en que comenzó a perder el pelo -->
+    <li style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          <strong>Pérdida Pelo: </strong>Indique en este caso la fecha 
+          aproximada en la que el tutor declara que la mascota comenzó 
+          a perder el pelo (puede dejarlo en blanco si desconoce la 
+          misma)
+    </li>
+
+    <!-- la fecha en que comenzó a adelgazar -->
+    <li style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          <strong>Adelgazamiento: </strong>Fecha aproximada en la que 
+          el tutor declara que comenzó a adelgazar (puede dejarse en 
+          blanco si se desconoce).
+    </li>
+
+    <!-- la fecha de inicio de las úlceras -->
+    <li style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          <strong>Ulceras: </strong>La fecha aproximada en que la 
+          mascota comenzó a presentar úlceras (puede ser dejada en 
+          blanco si se desconoce o no presenta úlceras).
+    </li>
+
+    <!-- la fecha en que se presenta como poco activo -->
+    <li style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          <strong>Poco Activo: </strong>Una vez mas, la fecha aproximada 
+          en que la mascota se presenta como poco activa (al igual que 
+          los anteriores puede ser dejada en blanco).
+    </li>
+
+    <!-- el nombre del usuario -->
+    <li style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          <strong>Usuario: </strong>Este campo es administrado automáticamente
+          por el sistema y se trata del nombre del usuario que grabó el registro.
+    </li>
+
+    <!-- la fecha de alta -->
+    <li style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          <strong>Alta: </strong>La fecha de alta del registro en la base de 
+          datos, es también administrada automáticamente por el sistema.
+    </li>
+
+    <!-- el botón grabar -->
+    <li style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          <strong>Grabar: </strong>Al pulsar este botón grabará el registro en 
+          la base de datos.
+    </li>
+
+    <!-- el botón cancelar -->
+    <li style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          <strong>Cancelar: </strong>Si por cualquier circunstancia, entiende que 
+          ha cometido un error al cargar el formulario, pulsando este botón el 
+          mismo retornará a su estado original (siempre que no halla grabado 
+          todavía el registro en la base).
+    </li>
+
+<!-- cerramos las viñetas -->
+</ul>
+
+<!-- declaramos la grilla de muestras -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          Al pié del formulario, encontrará una grilla en donde podrá declarar 
+          las muestras tomadas a las mascotas y las técnicas aplicadas en las 
+          mismas, para ello, bastará con elegir del desplegable el tipo de 
+          muestra y la técnica. 
+</p>
+
+<!-- presenta los campos optativos -->
+<p style="text-align:justify;
+          margin-top: 5px;
+          margin-left: 10px;
+          margin-right: 10px;">
+          El resto de los campos de la grilla indican la fecha de toma de la 
+          muestra, la fecha en que se realizó la determinación y el resultado
+          de la misma.<br>
+          Estos campos son optativos(ya que usted puede haber recibido la 
+          muestra pero aún no haber realizado la determinación), una vez que 
+          cuente con los datos correspondientes, podrá volver al registro 
+          y actualizar el mismo.
+</p>
+
+<!-- el pié de página -->
+<div style="height:55px; padding:2px;background:#1a7bc9;">
+
+    <!-- presenta el texto -->
+    <p style="text-align: center; vertical-align:middle; color:aliceblue;">
+        <a href="http://fatalachaben.mooo.com/leishmania/"> INP </a> |
+        <a href="mailto:cinvernizzi@dsgestion.site">Contacto</a> |
+                &copy; 2025 Claudio Invernizzi<br>
+                | Diseño <a href="http:/dsgestion.site/" target="_blank"> DsGestion </a> |
+                Licencia <a rel="license" target="_blank"
+                href="http://creativecommons.org/licenses/by/3.0/">
+                Creative Commons Attribution 3.0 License</a>
+    </p>
+
+<!-- cerramos el pié -->
+</div>
