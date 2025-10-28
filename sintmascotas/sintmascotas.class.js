@@ -50,10 +50,45 @@ class SintMascotas {
         this.Id = 0;                    // clave del registro
         this.Mascota = 0;               // clave de la mascota
         this.Paciente = 0;              // clave del dueño
-        this.Pelo = "";                 // fecha de la pérdida de pelo
-        this.Adelgazamiento = "";       // fecha del adelgazamiento
-        this.Ulceras = "";              // fecha de las úlceras
-        this.PocoActivo = "";           // fecha de inicio
+        this.Anorexia = "No";           // si presenta anorexia
+        this.Adinamia = 'No';           // si presenta adinamia
+        this.Emaciacion = "No";         // si presenta emaciación
+        this.Polidipsia = "No";         // si presenta polidipsia
+        this.Atrofia = "No";            // si presenta atrofia muscular
+        this.Paresia = "No";            // si presenta paresia
+        this.Convulsiones = "No";       // si presenta convulsiones
+        this.Adenomegalia = "No";       // si presenta adenomegalia
+        this.Blefaritis = "No";         // si presenta blefaritis
+        this.Conjuntivitis = "No";      // si presenta conjuntivitis
+        this.Queratitis = "No";         // si presenta queratitis
+        this.Uveitis = "No";            // si presenta uveitis
+        this.Palidez = "No";            // si presenta palidez
+        this.Epistaxis = "No";          // si presenta epistaxis
+        this.Ulceras = "No";            // si presenta úlceras
+        this.Nodulos = "No";            // si presenta nódulos
+        this.Vomitos = "No";            // si presenta vómitos
+        this.Diarrea = 'No';            // si presenta diarrea
+        this.Artritis = "No";           // si presenta artritis
+        this.Eritema = "No";            // si presenta eritema
+        this.Prurito = "No";            // si presenta prurito
+        this.UlceraCutanea = "No";      // si presenta úlcera cutánea
+        this.NodulosCutaneos = "No";    // si presenta nódulos cutáneos
+        this.AlopeciaLocalizada = "No"; // si presenta pérdida de cabello
+        this.AlopeciaGeneralizada = "No"; // si presenta pérdida de pelo
+        this.HiperqueratosisN = "No";   // si presenta hiperqueratosis nasal
+        this.HiperqueratosisP = 'No';   // si presenta hiperqueratosis plantar
+        this.SeborreaGrasa = "No";      // si presenta seborrea
+        this.SeborreaEscamosa = "No";   // si presenta seborrea
+        this.Onicogrifosis = "No";      // engrosamiento de las uñas
+        this.CasoHumano = "No";         // antecedentes de un caso humano
+        this.Flebotomos = "No";         // si presenta flebótomos
+        this.CasaTrampeada = "No";      // si la casa está trampeada
+        this.Fumigacion = "No";         // si se fumiga
+        this.MateriaOrganica = "No";    // si hay presencia de materia orgánica
+        this.Repelentes = "No";         // si se utilizan repelentes
+        this.Periodicidad = "";         // semanal / mensual / semestral
+        this.Duerme = "";               // donde duerme (casa / intemperie)
+        this.QuedaLibre = "No";         // si queda suelto en la calle
         this.Usuario = "";              // nombre del usuario
         this.Alta = "";                 // fecha de alta del registro
 
@@ -93,8 +128,8 @@ class SintMascotas {
             title: "Síntomas de la Mascota",
             modal:true,
             maximizable: true,
-            width: 1000,
-            height: 500,
+            width: 1300,
+            height: 600,
             closed: false,
             closable: true,
             href: 'sintmascotas/formsintomas.html',
@@ -121,19 +156,75 @@ class SintMascotas {
 
         // configuramos el formulario
         $('#idsintmasc').textbox();
-        $('#fechapelosint').datebox({
-            width: "120px"
-        });
-        $('#fechaadelgazasint').datebox({
-            width: "120px"
-        });
-        $('#fechaulcerasint').datebox({
-            width: "120px"
-        });
-        $('#fechaactivosint').datebox({
-            width: "120px"
-        });
         $('#usuariosintmasc').textbox();
+        $('#anorexiasint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#adinamiasint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#emasiacionsint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#polidipsiasint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#atrofiasint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#paresiasint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#convulsionesint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#blefaritissint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#conjuntivitissint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#queratitissint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#uveitissint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#palidezsint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#epistaxissint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#ulcerassint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#nodulossint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#vomitossint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#diarreasint').switchbutton({
+            onText: 'Si',
+            offText: 'No'
+        });
         $('#altasintmasc').textbox();
         $('#btnGrabarSintMasc').linkbutton();
         $('#btnCancelarSintMasc').linkbutton();
@@ -190,23 +281,13 @@ class SintMascotas {
         sesion.reiniciar();
 
         // si obtuvo un registro
-        if (datos.Id != 0){
+        if (datos.Id > 0){
 
             // cargamos los datos
             $('#idsintmasc').textbox('setValue', datos.Id);
             document.getElementById('idmascotasint').value = datos.Mascota;
             document.getElementById('idpacientesint').value = datos.Paciente;
-            $('#fechapelosint').datebox('setValue', datos.Pelo);
-            $('#fechaadelgazasint').datebox('setValue', datos.Adelgazamiento);
-            $('#fechaulcerasint').datebox('setValue', datos.Ulceras);
-            $('#fechaactivosint').datebox('setValue', datos.PocoActivo);
-
-            // si hay un usuario
-            if (datos.Usuario != ""){
-                $('#usuariosintmasc').textbox('setValue', datos.Usuario);
-            } else {
-                $('#usuariosintmasc').textbox('setValue', sessionStorage.getItem("Usuario"));
-            }
+            $('#usuariosintmasc').textbox('setValue', datos.Usuario);
             $('#altasintmasc').textbox('setValue', datos.Alta);
 
         // si no hay un registro cargado
@@ -215,6 +296,10 @@ class SintMascotas {
             // cargamos las claves
             document.getElementById('idmascotasint').value = this.Mascota;
             document.getElementById('idpacientesint').value = this.Paciente;
+
+            // cargamos el usuario y la fecha de alta
+            $('#usuariosintmasc').textbox('setValue', sessionStorage.getItem("Usuario"));
+            $('#altasintmasc').textbox('setValue', fechaActual());
 
         }
 
@@ -243,10 +328,6 @@ class SintMascotas {
         // el resto de los campos los permitimos en blanco
         this.Mascota = document.getElementById('idmascotasint').value;
         this.Paciente = document.getElementById('idpacientesint').value;
-        this.Pelo = $('#fechapelosint').datebox('getValue');
-        this.Adelgazamiento = $('#fechaadelgazasint').datebox('getValue');
-        this.Ulceras = $('#fechaulcerasint').datebox('getValue');
-        this.PocoActivo = $('#fechaactivosint').datebox('getValue');
 
         // grabamos el registro
         this.grabaSintMascota();
@@ -269,10 +350,45 @@ class SintMascotas {
         datosSintomas.append("Id", this.Id);
         datosSintomas.append("Mascota", this.Mascota);
         datosSintomas.append("Paciente", this.Paciente);
-        datosSintomas.append("Pelo", this.Pelo);
-        datosSintomas.append("Adelgazamiento", this.Adelgazamiento);
+        datosSintomas.append("Anorexia", this.Anorexia);
+        datosSintomas.append("Adinamia", this.Adinamia);
+        datosSintomas.append("Emaciacion", this.Emaciacion);
+        datosSintomas.append("Polidipsia", this.Polidipsia);
+        datosSintomas.append("Atrofia", this.Atrofia);
+        datosSintomas.append("Paresia", this.Paresia);
+        datosSintomas.append("Convulsiones", this.Convulsiones);
+        datosSintomas.append("Adenomegalia", this.Adenomegalia);
+        datosSintomas.append("Blefaritis", this.Blefaritis);
+        datosSintomas.append("Conjuntivitis", this.Conjuntivitis);
+        datosSintomas.append("Queratitis", this.Queratitis);
+        datosSintomas.append("Uveitis", this.Uveitis);
+        datosSintomas.append("Palidez", this.Palidez);
+        datosSintomas.append("Epistaxis", this.Epistaxis);
         datosSintomas.append("Ulceras", this.Ulceras);
-        datosSintomas.append("PocoActivo", this.PocoActivo);
+        datosSintomas.append("Diarrea", this.Diarrea);
+        datosSintomas.append("Nodulos", this.Nodulos);
+        datosSintomas.append("Vomitos", this.Vomitos);
+        datosSintomas.append("Artritis", this.Artritis);
+        datosSintomas.append("Eritema", this.Eritema);
+        datosSintomas.append("Prurito", this.Prurito);
+        datosSintomas.append("UlceraCutanea", this.UlceraCutanea);
+        datosSintomas.append("NodulosCutaneos", this.NodulosCutaneos);
+        datosSintomas.append("AlopeciaLocalidada", this.AlopeciaLocalizada);
+        datosSintomas.append("AlopeciaGeneralizada", this.AlopeciaGeneralizada);
+        datosSintomas.append("HiperqueratosisN", this.HiperqueratosisN);
+        datosSintomas.append("HiperqueratosisP", this.HiperqueratosisP);
+        datosSintomas.append("SeborreaGrasa", this.SeborreaGrasa);
+        datosSintomas.append("SeborreaEscamosa", this.SeborreaEscamosa);
+        datosSintomas.append("Onicogrifosis", this.Onicogrifosis);
+        datosSintomas.append("CasoHumano", this.CasoHumano);
+        datosSintomas.append("Flebotomos", this.Flebotomos);
+        datosSintomas.append("CasaTrampeada", this.CasaTrampeada);
+        datosSintomas.append("Fumigacion", this.Fumigacion);
+        datosSintomas.append("MateriaOrganica", this.MateriaOrganica);
+        datosSintomas.append("Repelentes", this.Repelentes);
+        datosSintomas.append("Periodicidad", this.Periodicidad);
+        datosSintomas.append("Duerme", this.Duerme);
+        datosSintomas.append("QuedaLibre", this.QuedaLibre);
         datosSintomas.append("IdUsuario", sessionStorage.getItem("IdUsuario"));
 
         // grabamos el registro
@@ -287,7 +403,7 @@ class SintMascotas {
             success: function(data) {
 
                 // si salío bien
-                if (data.Resultado != 0){
+                if (data.Resultado > 0){
 
                     // actualizamos en el formulario
                     $('#idsintmasc').textbox('setValue', data.Resultado);
@@ -339,10 +455,6 @@ class SintMascotas {
 
         // reiniciamos el formulario
         $('#idsintmasc').textbox('setValue', "");
-        $('#fechapelosint').datebox('setValue', "");
-        $('#fechaadelgazasint').datebox('setValue', "");
-        $('#fechaulcerasint').datebox('setValue', "");
-        $('#fechaactivosint').datebox('setValue', "");
         $('#usuariosintmasc').textbox('setValue', sessionStorage.getItem("Usuario"));
         $('#altasintmasc').textbox('setValue', fechaActual());
 

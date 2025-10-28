@@ -42,6 +42,7 @@ class SintMascotas {
     protected $Mascota;             // clave de la mascota
     protected $Paciente;            // clave del paciente
     protected $Anorexia;            // si presenta anorexia
+    protected $Adinamia;            // si presenta adinamia
     protected $Emaciacion;          // si presenta emaciación
     protected $Polidipsia;          // si presenta polidipsia
     protected $Atrofia;             // si presenta atrofia
@@ -55,6 +56,7 @@ class SintMascotas {
     protected $Palidez;             // si presenta palidez
     protected $Epistaxis;           // si presenta epistaxis
     protected $Ulceras;             // si presenta úlceras
+    protected $Diarrea;             // si presenta diarrea
     protected $Nodulos;             // si presenta nódulos
     protected $Vomitos;             // si presenta vómitos
     protected $Artritis;            // si presenta artritis
@@ -62,9 +64,10 @@ class SintMascotas {
     protected $Prurito;             // si presenta prurito
     protected $UlceraCutanea;       // si presenta úlceras cutáneas
     protected $NodulosCutaneos;     // si presenta nódulos cutáneos
-    protected $AlopeciaLocalidaza;  // si hay alopecía localidada
+    protected $AlopeciaLocalizada;  // si hay alopecía localidada
     protected $AlopeciaGeneralizada;// si hay alopecía generalizada
-    protected $Hiperqueratosis;     // si presenta hiperqueratosis
+    protected $HiperqueratosisN;    // si presenta hiperqueratosis nasal
+    protected $HiperqueratosisP;    // si presenta hiperqueratosis plantar
     protected $SeborreaGrasa;       // si presenta seborrea grasa
     protected $SeborreaEscamosa;    // si presenta seborrea escamosa
     protected $Onicogrifosis;       // si presenta onicogrifosis
@@ -94,6 +97,7 @@ class SintMascotas {
         $this->Mascota = 0;
         $this->Paciente = 0;
         $this->Anorexia = 'No';
+        $this->Adinamia = 'No';
         $this->Emaciacion = 'No';
         $this->Polidipsia = 'No';
         $this->Atrofia = 'No';
@@ -107,6 +111,7 @@ class SintMascotas {
         $this->Palidez = 'No';
         $this->Epistaxis = 'No';
         $this->Ulceras = 'No';
+        $this->Diarrea = 'No';
         $this->Nodulos = 'No';
         $this->Vomitos = 'No';
         $this->Artritis = 'No';
@@ -114,9 +119,10 @@ class SintMascotas {
         $this->Prurito = 'No';
         $this->UlceraCutanea = 'No';
         $this->NodulosCutaneos = 'No';
-        $this->AlopeciaLocalidaza = 'No';
+        $this->AlopeciaLocalizada = 'No';
         $this->AlopeciaGeneralizada = 'No';
-        $this->Hiperqueratosis = 'No';
+        $this->HiperqueratosisN = 'No';
+        $this->HiperqueratosisP = 'No';
         $this->SeborreaGrasa = 'No';
         $this->SeborreaEscamosa = 'No';
         $this->Onicogrifosis = 'No';
@@ -156,7 +162,123 @@ class SintMascotas {
     public function setPaciente(int $paciente) : void {
         $this->Paciente = $paciente;
     }
-
+    public function setAnorexia(string $anorexia) : void {
+        $this->Anorexia = $anorexia;
+    }
+    public function setAdinamia(string $adinamia) : void {
+        $this->Adinamia = $adinamia;
+    }
+    public function setEmaciacion(string $emaciacion) : void {
+        $this->Emaciacion = $emaciacion;
+    }
+    public function setPolidipsia(string $polidipsia) : void {
+        $this->Polidipsia = $polidipsia;
+    }
+    public function setAtrofia(string $atrofia) : void {
+        $this->Atrofia = $atrofia;
+    }
+    public function setParesia(string $paresia) : void {
+        $this->Paresia = $paresia;
+    }
+    public function setConvulsiones(string $convulsiones) : void {
+        $this->Convulsiones = $convulsiones;
+    }
+    public function setAdenomegalia(string $adenomegalia) : void {
+        $this->Adenomegalia = $adenomegalia;
+    }
+    public function setBlefaritis(string $blefaritis) : void {
+        $this->Blefaritis = $blefaritis;
+    }
+    public function setConjuntivitis(string $conjuntivitis) : void {
+        $this->Conjuntivitis = $conjuntivitis;
+    }
+    public function setQueratitis(string $queratitis) : void {
+        $this->Queratitis = $queratitis;
+    }
+    public function setUveitis(string $uveitis) : void {
+        $this->Uveitis = $uveitis;
+    }
+    public function setPalidez(string $palidez) : void {
+        $this->Palidez = $palidez;
+    }
+    public function setEpistaxis(string $epistaxis) : void {
+        $this->Epistaxis = $epistaxis;
+    }
+    public function setUlceras(string $ulceras) : void {
+        $this->Ulceras = $ulceras;
+    }
+    public function setNodulos(string $nodulos) : void {
+        $this->Nodulos = $nodulos;
+    }
+    public function setVomitos(string $vomitos) : void {
+        $this->Vomitos = $vomitos;
+    }
+    public function setDiarrea(string $diarrea) : void {
+        $this->Diarrea = $diarrea;
+    }
+    public function setArtritis(string $artritis) : void {
+        $this->Artritis = $artritis;
+    }
+    public function setEritema(string $eritema) : void {
+        $this->Eritema = $eritema;
+    }
+    public function setPrurito(string $prurito) : void {
+        $this->Prurito = $prurito;
+    }
+    public function setUlceraCutanea(string $ulcera) : void {
+        $this->UlceraCutanea = $ulcera;
+    }
+    public function setNodulosCutaneos(string $nodulos) : void {
+        $this->NodulosCutaneos = $nodulos;
+    }
+    public function setAlopeciaLocalizada(string $alopecia) : void {
+        $this->AlopeciaLocalizada = $alopecia;
+    }
+    public function setAlopeciaGeneralizada(string $alopecia) : void {
+        $this->AlopeciaGeneralizada = $alopecia;
+    }
+    public function setHiperqueratosisN(string $hiperqueratosis) : void {
+        $this->HiperqueratosisN = $hiperqueratosis;
+    }
+    public function setHiperqueratosisP(string $hiperqueratosis) : void {
+        $this->HiperqueratosisP = $hiperqueratosis;
+    }
+    public function setSeborreaGrasa(string $seborrea) : void {
+        $this->SeborreaGrasa = $seborrea;
+    }
+    public function setSeborreaEscamosa(string $seborrea) : void {
+        $this->SeborreaEscamosa = $seborrea;
+    }
+    public function setOnicogrifosis(string $onicogrifosis) : void {
+        $this->Onicogrifosis = $onicogrifosis;
+    }
+    public function setCasoHumano(string $casohumano) : void {
+        $this->CasoHumano = $casohumano;
+    }
+    public function setFlebotomos(string $flebotomos) : void {
+        $this->Flebotomos = $flebotomos;
+    }
+    public function setCastaTrampeada(string $casatrampeada) : void {
+        $this->CasaTrampeada = $casatrampeada;
+    }
+    public function setFumigacion(string $fumigacion) : void {
+        $this->Fumigacion = $fumigacion;
+    }
+    public function setMateriaOrganica(string $materia) : void {
+        $this->MateriaOrganica = $materia;
+    }
+    public function setRepelentes(string $repelentes) : void {
+        $this->Repelentes = $repelentes;
+    }
+    public function setPeriodicidad(string $periodicidad) : void {
+        $this->Periodicidad = $periodicidad;
+    }
+    public function setDuerme(string $duerme) : void {
+        $this->Duerme = $duerme;
+    }
+    public function setQuedaLibre(string $quedalibre) : void {
+        $this->QuedaLibre = $quedalibre;
+    }
     public function setIdUsuario(int $idusuario) : void {
         $this->IdUsuario = $idusuario;
     }
@@ -170,6 +292,123 @@ class SintMascotas {
     }
     public function getPaciente() : int {
         return (int) $this->Paciente;
+    }
+    public function getAnorexia() : string {
+        return $this->Anorexia;
+    }
+    public function getAdinamia() : string {
+        return $this->Adinamia;
+    }
+    public function getEmaciacion() : string {
+        return $this->Emaciacion;
+    }
+    public function getPolidipsia() : string {
+        return $this->Polidipsia;
+    }
+    public function getAtrofia() : string {
+        return $this->Atrofia;
+    }
+    public function getParesia() : string {
+        return $this->Paresia;
+    }
+    public function getConvulsiones() : string {
+        return $this->Convulsiones;
+    }
+    public function getAdenomegalia() : string {
+        return $this->Adenomegalia;
+    }
+    public function getBlefaritis() : string {
+        return $this->Blefaritis;
+    }
+    public function getConjuntivitis() : string {
+        return $this->Conjuntivitis;
+    }
+    public function getQueratitis() : string {
+        return $this->Queratitis;
+    }
+    public function getUveitis() : string {
+        return $this->Uveitis;
+    }
+    public function getPalidez() : string {
+        return $this->Palidez;
+    }
+    public function getEpistaxis() : string {
+        return $this->Epistaxis;
+    }
+    public function getUlceras() : string {
+        return $this->Ulceras;
+    }
+    public function getDiarrea() : string {
+        return $this->Diarrea;
+    }
+    public function getNodulos() : string {
+        return $this->Nodulos;
+    }
+    public function getVomitos() : string {
+        return $this->Vomitos;
+    }
+    public function getArtritis() : string {
+        return $this->Artritis;
+    }
+    public function getEritema() : string {
+        return $this->Eritema;
+    }
+    public function getPrurito() : string {
+        return $this->Prurito;
+    }
+    public function getUlceraCutanea() : string {
+        return $this->UlceraCutanea;
+    }
+    public function getNodulosCutaneos() : string {
+        return $this->NodulosCutaneos;
+    }
+    public function getAlopeciaLocalizada() : string {
+        return $this->AlopeciaLocalizada;
+    }
+    public function getAlopeciaGeneralizada() : string {
+        return $this->AlopeciaGeneralizada;
+    }
+    public function getHiperqueratosisN() : string {
+        return $this->HiperqueratosisN;
+    }
+    public function getHiperqueratosisP() : string {
+        return $this->HiperqueratosisP;
+    }
+    public function getSeborreaGrasa() : string {
+        return $this->SeborreaGrasa;
+    }
+    public function getSeborreaEscamosa() : string {
+        return $this->SeborreaEscamosa;
+    }
+    public function getOnicogrifosis() : string {
+        return $this->Onicogrifosis;
+    }
+    public function getCasoHumano() : string {
+        return $this->CasoHumano;
+    }
+    public function getFlebotomos() : string {
+        return $this->Flebotomos;
+    }
+    public function getCasaTrampeada() : string {
+        return $this->CasaTrampeada;
+    }
+    public function getFumigacion() : string {
+        return $this->Fumigacion;
+    }
+    public function getMateriaOrganica() : string {
+        return $this->MateriaOrganica;
+    }
+    public function getRepelentes() : string {
+        return $this->Repelentes;
+    }
+    public function getPeriodicidad() : string {
+        return $this->Periodicidad;
+    }
+    public function getDuerme() : string {
+        return $this->Duerme;
+    }
+    public function getQuedaLibre() : string {
+        return $this->QuedaLibre;
     }
     public function getUsuario() : string {
         return $this->Usuario;
@@ -212,18 +451,88 @@ class SintMascotas {
         $consulta = "INSERT INTO leishmania.sintmascotas
                             (mascota,
                              paciente,
-                             pelo,
-                             adelgazamiento,
-                             ulceras,
-                             pocoactivo,
+                             anorexia, 
+                             adinamia,
+                             emaciacion, 
+                             polidipsia, 
+                             atrofia, 
+                             paresia, 
+                             convulsiones, 
+                             adenomegalia,
+                             blefaritis, 
+                             conjuntivitis, 
+                             queratitis, 
+                             uveitis, 
+                             palidez, 
+                             epistaxis, 
+                             ulceras, 
+                             diarrea,
+                             nodulos, 
+                             vomitos, 
+                             artritis,
+                             eritema,
+                             prurito, 
+                             ulceracutanea,
+                             noduloscutaneos,
+                             alopecialocalizada,
+                             alopeciageneralizada,
+                             hiperqueratosisn,
+                             hiperqueratosisp,
+                             seborregagrasa,
+                             seborreaescamosa,
+                             onicogrifosis,
+                             casohumano,
+                             flebotomos,
+                             casatrampeada,
+                             fumigacion,
+                             materiaorganica,
+                             repelentes,
+                             periodicidad,
+                             duerme, 
+                             quedalibre,
                              usuario)
                             VALUES
                             (:mascota,
                              :paciente,
-                             STR_TO_DATE(:pelo, '%d/%m/%Y'),
-                             STR_TO_DATE(:adelgazamiento, '%d/%m/%Y'),
-                             STR_TO_DATE(:ulceras, '%d/%m/%Y'),
-                             STR_TO_DATE(:pocoactivo, '%d/%m/%Y'),
+                             :anorexia, 
+                             :adinamia,
+                             :emaciacion, 
+                             :polidipsia, 
+                             :atrofia,
+                             :paresia, 
+                             :convulsiones,
+                             :adenomegalia,
+                             :blefaritis,
+                             :conjuntivitis, 
+                             :queratitis,
+                             :uveitis, 
+                             :palidez,
+                             :epistaxis, 
+                             :ulceras,
+                             :diarrea,
+                             :nodulos,
+                             :vomitos,
+                             :artritis,
+                             :eritema,
+                             :prurito,
+                             :ulceracutanea,
+                             :noduloscutaneos,
+                             :alopecialocalizada,
+                             :alopeciageneralizada,
+                             :hiperqueratosisn,
+                             :hiperqueratosisp,
+                             :seborreagrasa,
+                             :seborreaescamosa,
+                             :onicogrifosis,
+                             :casohumano,
+                             :flebotomos,
+                             :casatrampeada,
+                             :fumigacion, 
+                             :materiaorganica,
+                             :repelentes,
+                             :periodicidad,
+                             :duerme,
+                             :quedalibre,
                              :usuario); ";
     
         // capturamos el error
@@ -231,13 +540,47 @@ class SintMascotas {
             
             // preparamos, asignamos y ejecutamos
             $preparada = $this->Link->prepare($consulta);
-            $preparada->bindParam(":mascota",        $this->Mascota);
-            $preparada->bindParam(":paciente",       $this->Paciente);
-            $preparada->bindParam(":pelo",           $this->Pelo);
-            $preparada->bindParam(":adelgazamiento", $this->Adelgazamiento);
-            $preparada->bindParam(":ulceras",        $this->Ulceras);
-            $preparada->bindParam(":pocoactivo",     $this->PocoActivo);
-            $preparada->bindParam(":usuario",        $this->IdUsuario);
+            $preparada->bindParam(":mascota",              $this->Mascota);
+            $preparada->bindParam(":paciente",             $this->Paciente);
+            $preparada->bindParam(":anorexia",             $this->Anorexia);
+            $preparada->bindParam(":adinamia",             $this->Adinamia);
+            $preparada->bindParam(":emaciacion",           $this->Emaciacion);
+            $preparada->bindParam(":polidipsia",           $this->Polidipsia);
+            $preparada->bindParam(":atrofia",              $this->Atrofia);
+            $preparada->bindParam(":paresia",              $this->Paresia);
+            $preparada->bindParam(":convulsiones",         $this->Convulsiones);
+            $preparada->bindParam(":adenomegalia",         $this->Adenomegalia);
+            $preparada->bindParam(":blefaritis",           $this->Blefaritis);
+            $preparada->bindParam(":conjuntivitis",        $this->Conjuntivitis);
+            $preparada->bindParam(":queratitis",           $this->Queratitis);
+            $preparada->bindParam(":uveitis",              $this->Uveitis);
+            $preparada->bindParam(":palidez",              $this->Palidez);
+            $preparada->bindParam(":epistaxis",            $this->Epistaxis);
+            $preparada->bindParam(":ulceras",              $this->Ulceras);
+            $preparada->bindParam(":diarrea",              $this->Diarrea);
+            $preparada->bindParam(":nodulos",              $this->Nodulos);
+            $preparada->bindParam(":vomitos",              $this->Vomitos);
+            $preparada->bindParam(":artritis",             $this->Artritis);
+            $preparada->bindParam(":eritema",              $this->Eritema);
+            $preparada->bindParam(":prurito",              $this->Prurito);
+            $preparada->bindParam(":ulceracutanea",        $this->UlceraCutanea);
+            $preparada->bindParam(":noduloscutaneos",      $this->NodulosCutaneos);
+            $preparada->bindParam(":alopecialocalizada",   $this->AlopeciaLocalizada);
+            $preparada->bindParam(":alopeciageneralizada", $this->AlopeciaGeneralizada);
+            $preparada->bindParam(":hiperqueratosisn",      $this->HiperqueratosisN);
+            $preparada->bindParam(":hiperqueratosisp",      $this->HiperqueratosisP);
+            $preparada->bindParam(":seborreagrasa",        $this->SeborreaGrasa);
+            $preparada->bindParam(":seborreaescamosa",     $this->SeborreaEscamosa);
+            $preparada->bindParam(":onicogrifosis",        $this->Onicogrifosis);
+            $preparada->bindParam(":casohumano",           $this->CasoHumano);
+            $preparada->bindParam(":flebotomos",           $this->Flebotomos);
+            $preparada->bindParam(":casatrampeada",        $this->CasaTrampeada);
+            $preparada->bindParam(":fumigacion",           $this->Fumigacion);
+            $preparada->bindParam(":materiaorganica",      $this->MateriaOrganica);
+            $preparada->bindParam(":repelenetes",          $this->Repelentes);
+            $preparada->bindParam(":periodicidad",         $this->Duerme);
+            $preparada->bindParam(":quedalibre",           $this->QuedaLibre);
+            $preparada->bindParam(":usuario",              $this->IdUsuario);
             $preparada->execute();
             return (int) $this->Link->lastInsertId();
             
@@ -263,10 +606,45 @@ class SintMascotas {
 
         // componemos la consulta
         $consulta = "UPDATE leishmania.sintmascotas SET
-                            pelo = STR_TO_DATE(:pelo, '%d/%m/%Y'),
-                            adelgazamiento = STR_TO_DATE(:adelgazamiento, '%d/%m/%Y'),
-                            ulceras = STR_TO_DATE(:ulceras, '%d/%m/%Y'),
-                            pocoactivo = STR_TO_DATE(:pocoactivo, '%d/%m/%Y'),
+                            anorexia = :anorexia, 
+                            adinamia = :adinamia,
+                            emaciacion = :emaciacion, 
+                            polidipsia = :polidipsia, 
+                            atrofia = :atrofia, 
+                            paresia = :paresia, 
+                            convulsiones = :convulsiones, 
+                            adenomegalia = :adenomegalia, 
+                            blefaritis = :blefaritis, 
+                            conjuntivitis = :conjuntivitis, 
+                            queratitis = :queratitis, 
+                            uveitis = :uveitis, 
+                            palidez = :palidez, 
+                            epistaxis = :epistaxis, 
+                            ulceras = :ulceras, 
+                            diarrea = :diarrea,
+                            nodulos = :nodulos, 
+                            vomitos = :vomitos, 
+                            artritis = :artritis,
+                            eritema = :eritema, 
+                            prurito = :prurito, 
+                            ulceracutanea = :ulceracutanea, 
+                            noduloscutaneos = :noduloscutaneos, 
+                            alopecialocalizada = :alopecialocalizada, 
+                            alopeciageneralizada = :alopeciageneralizada, 
+                            hiperqueratosisn = :hiperqueratotisn, 
+                            hiperqueratosisp = :hiperqueratosisp,
+                            seborreagrasa = :seborreagrasa, 
+                            seborreaescamosa = :seborreaescamosa, 
+                            onicogrifosis = :onicogrifosis, 
+                            casohumano = :casohumano, 
+                            flebotomos = :flebotomos, 
+                            casatrampeada = :casatrampeada, 
+                            fumigacion = :fumigacion, 
+                            materiaorganica = :materiaorganica, 
+                            repelentes = :repelentes, 
+                            periodicidad = :periodicidad, 
+                            duerme = :duerme, 
+                            quedalibre = :quedalibre, 
                             usuario = :usuario
                      WHERE leishmania.sintmascotas.id = :id; ";
 
@@ -275,12 +653,46 @@ class SintMascotas {
             
             // preparamos, asignamos y ejecutamos
             $preparada = $this->Link->prepare($consulta);
-            $preparada->bindParam(":pelo",           $this->Pelo);
-            $preparada->bindParam(":adelgazamiento", $this->Adelgazamiento);
-            $preparada->bindParam(":ulceras",        $this->Ulceras);
-            $preparada->bindParam(":pocoactivo",     $this->PocoActivo);
-            $preparada->bindParam(":usuario",        $this->IdUsuario);
-            $preparada->bindParam(":id",             $this->Id);
+            $preparada->bindParam(":anorexia",             $this->Anorexia);
+            $preparada->bindParam(":adinamia",             $this->Adinamia);
+            $preparada->bindParam(":emaciacion",           $this->Emaciacion);
+            $preparada->bindParam(":polidipsia",           $this->Polidipsia);
+            $preparada->bindParam(":atrofia",              $this->Atrofia);
+            $preparada->bindParam(":paresia",              $this->Paresia);
+            $preparada->bindParam(":convulsiones",         $this->Convulsiones);
+            $preparada->bindParam(":adenomegalia",         $this->Adenomegalia);
+            $preparada->bindParam(":blefaritis",           $this->Blefaritis);
+            $preparada->bindParam(":conjuntivitis",        $this->Conjuntivitis);
+            $preparada->bindParam(":queratitis",           $this->Queratitis);
+            $preparada->bindParam(":uveitis",              $this->Uveitis);
+            $preparada->bindParam(":palidez",              $this->Palidez);
+            $preparada->bindParam(":epistaxis",            $this->Epistaxis);
+            $preparada->bindParam(":ulceras",              $this->Ulceras);
+            $preparada->bindParam(":diarrea",              $this->Diarrea);
+            $preparada->bindParam(":nodulos",              $this->Nodulos);
+            $preparada->bindParam(":vomitos",              $this->Vomitos);
+            $preparada->bindParam(":artritis",             $this->Artritis);
+            $preparada->bindParam(":eritema",              $this->Eritema);
+            $preparada->bindParam(":prurito",              $this->Prurito);
+            $preparada->bindParam(":ulceracutanea",        $this->UlceraCutanea);
+            $preparada->bindParam(":noduloscutaneos",      $this->NodulosCutaneos);
+            $preparada->bindParam(":alopecialocalizada",   $this->AlopeciaLocalizada);
+            $preparada->bindParam(":alopeciageneralizada", $this->AlopeciaGeneralizada);
+            $preparada->bindParam(":hiperqueratosisn",     $this->HiperqueratosisN);
+            $preparada->bindParam(":hiperqueratosisp",     $this->HiperqueratosisP);
+            $preparada->bindParam(":seborreagrasa",        $this->SeborreaGrasa);
+            $preparada->bindParam(":seborreaescamosa",     $this->SeborreaEscamosa);
+            $preparada->bindParam(":onicogrifosis",        $this->Onicogrifosis);
+            $preparada->bindParam(":casohumano",           $this->CasoHumano);
+            $preparada->bindParam(":flebotomos",           $this->Flebotomos);
+            $preparada->bindParam(":casatrampeada",        $this->CasaTrampeada);
+            $preparada->bindParam(":fumigacion",           $this->Fumigacion);
+            $preparada->bindParam(":materiaorganica",      $this->MateriaOrganica);
+            $preparada->bindParam(":repelenetes",          $this->Repelentes);
+            $preparada->bindParam(":periodicidad",         $this->Duerme);
+            $preparada->bindParam(":quedalibre",           $this->QuedaLibre);
+            $preparada->bindParam(":usuario",              $this->IdUsuario);
+            $preparada->bindParam(":id",                   $this->Id);
             $preparada->execute();
             return (int) $this->Id;
             
@@ -312,10 +724,45 @@ class SintMascotas {
         $consulta = "SELECT leishmania.v_sintmascotas.id AS id,
                             leishmania.v_sintmascotas.idmascota AS idmascota,
                             leishmania.v_sintmascotas.idpaciente AS idpaciente,
-                            leishmania.v_sintmascotas.pelo As pelo,
-                            leishmania.v_sintmascotas.adelgazamiento AS adelgazamiento,
-                            leishmania.v_sintmascotas.ulceras AS ulceras,
-                            leishmania.v_sintmascotas.pocoactivo AS pocoactivo,
+                            leishmania.v_sintmascotas.anorexia AS anorexia, 
+                            leishmania.v_sintmascotas.adinamia AS adinamia, 
+                            leishmania.v_sintmascotas.emaciacion AS emaciacion, 
+                            leishmania.v_sintmascotas.polidipsia AS polidipsia,
+                            leishmania.v_sintmascotas.atrofia AS atrofia, 
+                            leishmania.v_sintmascotas.paresia AS paresia, 
+                            leishmania.v_sintmascotas.convulsiones AS convulsiones,
+                            leishmania.v_sintmascotas.adenomegalia AS adenomegalia, 
+                            leishmania.v_sintmascotas.blefaritis AS blefaritis, 
+                            leishmania.v_sintmascotas.conjuntivitis AS conjuntivitis, 
+                            leishmania.v_sintmascotas.queratitis AS queratitis, 
+                            leishmania.v_sintmascotas.uveitis AS uveitis, 
+                            leishmania.v_sintmascotas.palidez AS palidez, 
+                            leishmania.v_sintmascotas.epistaxis AS epistaxis, 
+                            leishmania.v_sintmascotas.ulceras AS ulceras, 
+                            leishmania.v_sintmascotas.diarrea AS diarrea,
+                            leishmania.v_sintmascotas.nodulos AS nodulos, 
+                            leishmania.v_sintmascotas.vomitos AS vomitos, 
+                            leishmania.v_sintmascotas.artritis AS artritis, 
+                            leishmania.v_sintmascotas.eritema AS eritema, 
+                            leishmania.v_sintmascotas.prurito AS prurito, 
+                            leishmania.v_sintmascotas.ulceracutanea AS ulceracutanea, 
+                            leishmania.v_sintmascotas.noduloscutaneos AS noduloscutaneos, 
+                            leishmania.v_sintmascotas.alopecialocalizada AS alopecialocalizada, 
+                            leishmania.v_sintmascotas.alopeciageneralizada AS alopeciageneralizada,
+                            leishmania.v_sintmascotas.hiperqueratosisn AS hiperqueratosisn, 
+                            leishmania.v_sintmascotas.hiperqueratosisp AS hiperqueratosisp,
+                            leishmania.v_sintmascotas.seborreagrasa AS seborreagrasa, 
+                            leishmania.v_sintmascotas.seborreaescamosa AS seborreaescamosa, 
+                            leishmania.v_sintmascotas.onicogrifosis AS onicogrifosis, 
+                            leishmania.v_sintmascotas.casohumano AS casohumano, 
+                            leishmania.v_sintmascotas.flebotomos AS flebotomos, 
+                            leishmania.v_sintmascotas.casatrampeada AS casatrampeada, 
+                            leishmania.v_sintmascotas.fumigacion AS fumigacion, 
+                            leishmania.v_sintmascotas.materiaorganica AS materiaorganica,
+                            leishmania.v_sintmascotas.repelentes AS repelentes, 
+                            leishmania.v_sintmascotas.periodicidad AS periodicidad, 
+                            leishmania.v_sintmascotas.duerme AS duerme, 
+                            leishmania.v_sintmascotas.quedalibre AS quedalibre, 
                             leishmania.v_sintmascotas.usuario AS usuario,
                             leishmania.v_sintmascotas.alta AS alta
                      FROM leishmania.v_sintmascotas
@@ -336,10 +783,45 @@ class SintMascotas {
                 $this->Id = $fila["id"];
                 $this->Mascota = $fila["idmascota"];
                 $this->Paciente = $fila["idpaciente"];
-                $this->Pelo = $fila["pelo"];
-                $this->Adelgazamiento = $fila["adelgazamiento"];
+                $this->Anorexia = $fila["anorexia"];
+                $this->Adinamia = $fila["adinamia"];
+                $this->Emaciacion = $fila["emaciacion"];
+                $this->Polidipsia = $fila["polidipsia"];
+                $this->Atrofia = $fila["atrofia"];
+                $this->Paresia = $fila["paresia"];
+                $this->Convulsiones = $fila["convulsiones"];
+                $this->Adenomegalia = $fila["adenomegalia"];
+                $this->Blefaritis = $fila["blefaritis"];
+                $this->Conjuntivitis = $fila["conjuntivitis"];
+                $this->Queratitis = $fila["queratitis"];
+                $this->Uveitis = $fila["uveitis"];
+                $this->Palidez = $fila["palidez"];
+                $this->Epistaxis = $fila["epistaxis"];
                 $this->Ulceras = $fila["ulceras"];
-                $this->PocoActivo = $fila["pocoactivo"];
+                $this->Diarrea = $fila["diarrea"];
+                $this->Nodulos = $fila["nodulos"];
+                $this->Vomitos = $fila["vomitos"];
+                $this->Artritis = $fila["artritis"];
+                $this->Eritema = $fila["eritema"];
+                $this->Prurito = $fila["prurito"];
+                $this->UlceraCutanea = $fila["ulceracutanea"];
+                $this->NodulosCutaneos = $fila["noduloscutaneos"];
+                $this->AlopeciaLocalizada = $fila["alopecialocalizada"];
+                $this->AlopeciaGeneralizada = $fila["alopeciageneralizada"];
+                $this->HiperqueratosisN = $fila["hiperqueratosisn"];
+                $this->HiperqueratosisP = $fila["hiperqueratosisp"];
+                $this->SeborreaGrasa = $fila["seborreagrasa"];
+                $this->SeborreaEscamosa = $fila["seborreaescamosa"];
+                $this->Onicogrifosis = $fila["onicogrifosis"];
+                $this->CasoHumano = $fila["casohumano"];
+                $this->Flebotomos = $fila["flebotomos"];
+                $this->CasaTrampeada = $fila["casatrampeada"];
+                $this->Fumigacion = $fila["fumigacion"];
+                $this->MateriaOrganica = $fila["materiaorganica"];
+                $this->Repelentes = $fila["repelentes"];
+                $this->Periodicidad = $fila["periodicidad"];
+                $this->Duerme = $fila["duerme"];
+                $this->QuedaLibre = $fila["quedalibre"];
                 $this->Usuario = $fila["usuario"];
                 $this->Alta = $fila["alta"];
 

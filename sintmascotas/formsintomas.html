@@ -16,140 +16,488 @@
 <!-- definimos el formulario -->
 <form name='formsintmascotas' id='formsintmascotas'>
 
-    <!-- abrimos la primer fila con cuatro columnas -->
-    <div style="margin-left: 10px;
-                margin-top: 10px;
-                grid-template-columns: 20% 20% 40% 20%;
-                column-gap: 10px;">
+   <!-- vamos a definir una tabla para los distintos elementos -->
+   <table id="sintomasmascotas" style="width:100%;margin:auto;padding:2px;border:0px;">
 
-        <!-- presenta la clave del registro -->
-        <label>Id:
-            <a href="#" 
-               title="Clave del registro" 
-               class="easyui-tooltip"> 
-            <input class="easyui-textbox" 
-                   name='idsintmasc'
-                   id='idsintmasc'
-                   readonly
-                   style="width:50px">
-            </a>
-        </label>
+      <!-- definimos los encabezados -->
+      <thead>
+         <tr style="background-color: #1a7bc9; 
+                    color:azure;
+                    text-align: center;">
+            <th>Condición General</th>
+            <th>Neuromuscular</th>
+            <th>Signos Oftalmológicos</th>
+            <th>Mucosas</th>
+            <th>Signos Cutáneos</th>
+            <th>Otros</th>
+         </tr>
+      </thead>
 
-        <!-- presenta oculta la clave de la mascota -->
-        <input type='hidden' 
-               name='idmascotasint' 
-               id='idmascotasint'>
+      <!-- definimos el cuerpo de la tabla -->
+      <tbody>
 
-        <!-- presenta oculta la clave del paciente -->
-        <input type='hidden'
-               name='idpacientesint'
-               id='idpacientesint'>
+         <!-- agregamos la primer fila -->
+         <tr>
 
-        <!-- pide la fecha en que comenzó a perder el pelo -->
-        <label>Perdida Pelo:
-            <a href="#"
-               title="Fecha en que comenzó a perder el pelo"
-               class="easyui-tooltip">
-            <input type='text'
-                   id='fechapelosint'
-                   name='fechapelosint'
-                   style='width: 120px;'>
-            </a>
-        </label>
+            <!-- vamos a definir una tabla por cada celda de la fila -->
+            <td>
 
-        <!-- pide la fecha en que comenzo a adelgazar -->
-        <label>Adelgazamiento:
-            <a href="#"
-               title="Fecha estimada en que comenzó a adelgazar"
-               class="easyui-tooltip">
-            <input type='text'
-                   id='fechaadelgazasint'
-                   name='fechaadelgazasint'
-                   style='width: 120px;'>
-            </a>
-        </label>
+               <!-- la primera tabla será la de condición general -->
+               <table>
+                  <tr>
+                     <td>
 
-        <!-- pide la fecha de inicio de las úlceras -->
-        <label>Ulceras:
-            <a href="#"
-               title="Fecha que comenzaron las úlceras"
-               class="easyui-tooltip">
-            <input type='text'
-                   id='fechaulcerasint'
-                   name='fechaulcerasint'
-                   style='width: 120px;'>
-            </a>
-        </label>
+                        <!-- presenta oculta la clave de la mascota -->
+                        <input type='hidden' 
+                               name='idmascotasint' 
+                               id='idmascotasint'>
 
-        <!-- la fecha en que se mostró poco activo -->
-        <label>Poco Activo:
-            <a href="#"
-               title="Fecha que comenzó a mostrarse poco activo"
-               class="easyui-tooltip">
-            <input type='text'
-                   id='fechaactivosint'
-                   name='fechaactivosint'
-                   style='width: 120px;'>
-            </a>
-        </label>
+                        <!-- presenta oculta la clave del paciente -->
+                        <input type='hidden'
+                               name='idpacientesint'
+                               id='idpacientesint'>
 
-    <!-- derramos el div -->
-    </div>
+                           <!-- presenta la clave del registro -->
+                           <label>Id:
+                              <a href="#" 
+                                 title="Clave del registro" 
+                                 class="easyui-tooltip"> 
+                              <input class="easyui-textbox" 
+                                     name='idsintmasc'
+                                     id='idsintmasc'
+                                     readonly
+                                     style="width:50px">
+                              </a>
+                           </label>
+                     </td>
+                  </tr>
+                           
+                  <!-- la anorexia prolongada -->
+                  <tr>
+                     <td>
+                        <label>Anorexia Prolongada:
+                           <a href="#"
+                              title="Indique si presenta anorexia prolongada"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='anorexiasint'
+                                 id='anorexiasint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
 
-    <!-- abrimos la segunda fila con cuatro columnas -->
-    <div style="margin-left: 10px;
-                margin-top: 10px;
-                grid-template-columns: 20% 20% 40% 20%;
-                column-gap: 10px;">
+                     <!-- la adinamia -->                           
+                     <td>
+                        <label>Adinamia:
+                           <a href="#"
+                              title="Indique si se presenta letargado"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='adinamiasint'
+                                 id='adinamiasint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
 
-        <!-- el nombre del usuario -->
-        <label>Usuario:
-        <a href="#"
-           title="Usuario que ingresó el registro"
-           class="easyui-tooltip">
-        <input class="easyui-textbox"
-               name='usuariosintmasc'
-               id='usuariosintmasc'
-               readonly
-               style="width:100px">
-        </a>
-        </label>
+                  <!-- la emaciación -->
+                  <tr>
+                     <td>
+                        <label>Emaciación:
+                           <a href="#"
+                              title="Indique si presenta emaciación"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='emasiacionsint'
+                                 id='emasiacionsint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
 
-        <!-- la fecha de alta -->
-        <label>Alta:
-        <a href="#"
-           title="Fecha de alta del registro"
-           class="easyui-tooltip">
-        <input class="easyui-textbox"
-               name='altasintmasc'
-               id='altasintmasc'
-               readonly
-               style="width:100px">
-        </a>
-        </label>
+                     <!-- la polidipsia -->
+                     <td>
+                        <label>Polidipsia:
+                           <a href="#"
+                              title="Indique si presenta polidipsia"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='polidipsiasint'
+                                 id='polidipsiasint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+      
+               <!-- cerramos la tabla y la columna -->
+               </table>
+            </td>
 
-        <!-- el botón grabar -->
-        <a id="btnGrabarSintMasc" 
-           href="#" 
-           class="easyui-linkbutton" 
-           data-options="iconCls:'icon-save'"
-           style="width: 120px;"
-           onclick="sintmascotas.verificaSintMascota();">
-           Grabar
-        </a>
+            <!-- abrimos la segunda columna -->
+            <td>
 
-        <!-- el botón cancelar -->
-        <a id="btnCancelarSintMasc" 
-           href="#" 
-           class="easyui-linkbutton" 
-           data-options="iconCls:'icon-cancel'"
-           style="width: 120px;"
-           onclick="sintmascotas.cancelaSintMascota();">
-           Cancelar
-        </a>
+               <!-- abrimos la tabla de neuromuscular -->
+               <table>
 
-    <!-- cerramos el div -->
-    </div>
+                  <!-- pide la atrofia muscular -->
+                  <tr>
+                     <td>
+                        <label>Atrofia Muscular:
+                           <a href="#"
+                              title="Indique si presenta atrofiamuscular"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='atrofiasint'
+                                 id='atrofiasint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+
+                  <!-- pide la paresia -->
+                  <tr>
+                     <td>
+                        <label>Paresia:
+                           <a href="#"
+                              title="Indique si presenta paresia"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='paresiasint'
+                                 id='paresiasint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+
+                  <!-- pide las convulsiones -->
+                  <tr>
+                     <td>
+                        <label>Convulsiones:
+                           <a href="#"
+                              title="Indique si presenta convulsiones"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='convulsionesint'
+                                 id='convulsionesint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+               </table>
+
+            <!-- cerramos la segunda columna -->
+            </td>
+
+            <!-- abrimos la tercer columna -->
+            <td>
+
+               <!-- abrimos la tabla de signos oftalmológicos -->
+               <table>
+
+                  <!-- la blefaritis -->
+                  <tr>
+                     <td>
+                        <label>Blefaritis:
+                           <a href="#"
+                              title="Indique si presenta blefaritis"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='blefaritissint'
+                                 id='blefaritissint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+
+                  <!-- la conjuntivitis -->
+                  <tr>
+                     <td>
+                        <label>Conjuntivitis:
+                           <a href="#"
+                              title="Indique si presenta convulsiones"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='conjuntivitissint'
+                                 id='conjuntivitissint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+
+                  <!-- la queratitis -->
+                  <tr>
+                     <td>
+                        <label>Queratitis:
+                           <a href="#"
+                              title="Indique si presenta queratitis"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='queratitissint'
+                                 id='queratitissint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+
+                  <!-- la uveitis -->
+                  <tr>
+                     <td>
+                        <label>Uveitis:
+                           <a href="#"
+                              title="Indique si presenta uveitis"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='uveitissint'
+                                 id='uveitissint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+               </table>
+
+            <!-- cerramos la tercer columna -->
+            </td>
+
+            <!-- abrimos la cuarta columna -->
+            <td>
+
+               <!-- abrimos la tabla de mucosas -->
+               <table>
+                  <tr>
+
+                     <!-- si presenta palidez -->
+                     <td>
+                        <label>Palidez:
+                           <a href="#"
+                              title="Indique si presenta palidez"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='palidezsint'
+                                 id='palidezsint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+
+                     <!-- si presenta epistaxis -->
+                     <td>
+                        <label>Epistaxis:
+                           <a href="#"
+                              title="Indique si presenta epistaxix"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='epistaxissint'
+                                 id='epistaxissint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+                  <tr>
+
+                     <!-- si presenta úlceras-->
+                     <td>
+                        <label>Ulceras:
+                           <a href="#"
+                              title="Indique si presenta ulceras"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='ulcerassint'
+                                 id='ulcerassint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+
+                     <!-- si presenta nódulos-->
+                     <td>
+                        <label>Nódulos:
+                           <a href="#"
+                              title="Indique si presenta nódulos"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='nodulossint'
+                                 id='nodulossint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+                  <tr>
+
+                     <!-- si presenta vómitos -->
+                     <td>
+                        <label>Vómitos:
+                           <a href="#"
+                              title="Indique si presenta vómitos (gastritis)"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='vomitossint'
+                                 id='vomitossint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+
+                     <!-- si presenta diarrea -->
+                     <td>
+                        <label>Diarrea:
+                           <a href="#"
+                              title="Indique si presenta diarrea (enteritis)"
+                              class="easyui-tooltip">
+                           <input class="easyui-switchbutton"
+                                 name='diarreasint'
+                                 id='diarreasint'
+                                 style="width:70px;">
+                           </a>
+                        </label>
+                     </td>
+                  </tr>
+               </table>
+
+            <!-- cerramos la cuarta columna -->
+            </td>
+
+            <!-- abrimos la quinta columna -->
+            <td>
+               
+               <!-- abrimos la tabla de signos cutáneos -->
+               <table>
+                  <tr>
+
+                     <!-- pide el eritema -->
+                     <td>
+
+                     </td>
+
+                     <!-- pide el prurito -->
+                     <td>
+
+                     </td>
+                  </tr>
+
+                  <tr>
+
+                     <!-- pide la úlcera cutánea -->
+                     <td>
+
+                     </td>
+
+                     <!-- pide los nódulos cutáneos -->
+                     <td>
+
+                     </td>
+                  </tr>
+
+                  <tr>
+
+                     <!-- la alopecía localizada -->
+                     <td>
+
+                     </td>
+
+                     <!-- la alopecía generalizada -->
+                     <td>
+
+                     </td>
+                  </tr>
+
+                  <tr>
+
+                     <!-- la hiperqueratosis nasal -->
+                     <td>
+
+                     </td>
+
+                     <!-- la hiperqueratosis plantar -->
+                     <td>
+                        
+                     </td>
+                  </tr>
+               </table>
+
+            <!-- cerramos la quinta columna -->
+            </td>
+
+            <!-- abrimos la última columna -->
+            <td>
+
+               <!-- abrimos la tabla de otros -->
+               <table>
+                  <tr>
+                     <td>
+
+                     </td>
+                  </tr>
+               </table>
+
+            <!-- cerramos la última columna -->
+            </td>
+
+         <!-- cerramos la primer fila -->
+         </tr>
+
+      <!-- cerramos el cuerpo -->
+      </tbody>
+
+   <!-- cerramos la tabla -->
+   </table>
+
+      <!-- el nombre del usuario -->
+      <label>Usuario:
+      <a href="#"
+         title="Usuario que ingresó el registro"
+         class="easyui-tooltip">
+      <input class="easyui-textbox"
+             name='usuariosintmasc'
+             id='usuariosintmasc'
+             readonly
+             style="width:100px">
+      </a>
+      </label>
+
+      <!-- la fecha de alta -->
+      <label>Alta:
+      <a href="#"
+         title="Fecha de alta del registro"
+         class="easyui-tooltip">
+      <input class="easyui-textbox"
+             name='altasintmasc'
+             id='altasintmasc'
+             readonly
+             style="width:100px">
+      </a>
+      </label>
+
+      <!-- el botón grabar -->
+      <a id="btnGrabarSintMasc" 
+         href="#" 
+         class="easyui-linkbutton" 
+         data-options="iconCls:'icon-save'"
+         style="width: 120px;"
+         onclick="sintmascotas.verificaSintMascota();">
+         Grabar
+      </a>
+
+      <!-- el botón cancelar -->
+      <a id="btnCancelarSintMasc" 
+         href="#" 
+         class="easyui-linkbutton" 
+         data-options="iconCls:'icon-cancel'"
+         style="width: 120px;"
+         onclick="sintmascotas.cancelaSintMascota();">
+         Cancelar
+      </a>
 
 <!-- cerramos el formulario -->
 </form>

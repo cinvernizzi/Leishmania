@@ -15,6 +15,7 @@
     mascota entero clave de la mascota
     paciente entero clave del paciente
     anorexia enum si presenta anorexia
+    adinamia enum si presenta adinamia
     emaciacion si presenta emaciacion
     polidipsia si presenta polidipcia
     atrofia si presenta atrofia muscular
@@ -30,6 +31,7 @@
     ulceras si presenta úlceras en las mucosas
     nodulos si presenta nódulos en las mucosas
     vomitos si presenta vómitos
+    diarrea si presenta diarrea
     artritis si presenta artritis
     eritema si presenta eritema
     prurito si presenta prurito
@@ -37,8 +39,8 @@
     noduloscutaneos si presenta nódulos cutáneos 
     alopecialocalizada si presenta péridida de cabello 
     alopeciageneralizada si presenta pérdida de cabello
-    hipequeratosis si presenta hiperqueratosis nasal
-    hiperquetatosisplantar si presenta hiperqueratosis plantar
+    hipequeratosisn si presenta hiperqueratosis nasal
+    hiperquetatosis si presenta hiperqueratosis plantar
     seborreagrasa si presenta seborrea
     seborreaescamosa si presenta seborrea
     onicogrifosis si presenta engrosamiento de las uñas
@@ -73,6 +75,7 @@ CREATE TABLE sintmascotas(
     mascota int(4) UNSIGNED NOT NULL,
     paciente int(4) UNSIGNED NOT NULL,
     anorexia varchar(10) DEFAULT 'No',
+    adinamia varchar(10) DEFAULT 'No',
     emaciacion varchar(10) DEFAULT 'No',
     polidipsia varchar(10) DEFAULT 'No',
     atrofia varchar(10) DEFAULT 'No',
@@ -88,6 +91,7 @@ CREATE TABLE sintmascotas(
     ulceras varchar(10) DEFAULT 'No',
     nodulos varchar(10) DEFAULT 'No',
     vomitos varchar(10) DEFAULT 'No',
+    diarrea varchar(10) DEFAULT 'No',
     artritis varchar(10) DEFAULT 'No',
     eritema varchar(10) DEFAULT 'No',
     prurito varchar(10) DEFAULT 'No',
@@ -95,7 +99,8 @@ CREATE TABLE sintmascotas(
     noduloscutaneos varchar(10) DEFAULT 'No',
     alopecialocalizada varchar(10) DEFAULT 'No',
     alopeciageneralizada varchar(10) DEFAULT 'No',
-    hiperqueratosis varchar(10) DEFAULT 'No',
+    hiperqueratosisn varchar(10) DEFAULT 'No',
+    hiperqueratosisp varchar(10) DEFAULT 'No',
     seborreagrasa varchar(10) DEFAULT 'No',
     seborreaescamosa varchar(10) DEFAULT 'No',
     onicogrifosis varchar(10) DEFAULT 'No',
@@ -132,6 +137,7 @@ CREATE ALGORITHM = UNDEFINED
               leishmania.sintmascotas.mascota AS idmascota,
               leishmania.sintmascotas.paciente AS idpaciente,
               leishmania.sintmascotas.anorexia AS anorexia,
+              leishmania.sintmascotas.adinamia AS adinamia,
               leishmania.sintmascotas.emaciacion AS emaciacion,
               leishmania.sintmascotas.polidipsia AS polidipsia,
               leishmania.sintmascotas.atrofia AS atrofia,
@@ -147,6 +153,7 @@ CREATE ALGORITHM = UNDEFINED
               leishmania.sintmascotas.ulceras AS ulceras,
               leishmania.sintmascotas.nodulos AS nodulos,
               leishmania.sintmascotas.vomitos AS vomitos,
+              leishmania.sintmascotas.diarrea AS diarrea,
               leishmania.sintmascotas.artritis AS artritis,
               leishmania.sintmascotas.eritema AS eritema,
               leishmania.sintmascotas.prurito AS prurito,
@@ -154,7 +161,8 @@ CREATE ALGORITHM = UNDEFINED
               leishmania.sintmascotas.noduloscutaneos AS noduloscutaneos,
               leishmania.sintmascotas.alopecialocalizada AS alopecialocalizada,
               leishmania.sintmascotas.alopeciageneralizada AS alopeciageneralizada,
-              leishmania.sintmascotas.hiperqueratosis AS hiperqueratosis,
+              leishmania.sintmascotas.hiperqueratosisn AS hiperqueratosisn,
+              leishmania.sintmascotas.hiperqueratosisp AS hiperqueratosisp,
               leishmania.sintmascotas.seborreagrasa AS seborreagrasa,
               leishmania.sintmascotas.seborreaescamosa AS seborreaescamosa,
               leishmania.sintmascotas.onicogrifosis AS onicogrifosis,
