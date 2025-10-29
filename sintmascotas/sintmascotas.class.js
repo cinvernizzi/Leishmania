@@ -469,7 +469,6 @@ class SintMascotas {
             onText: 'Si',
             offText: 'No'
         });
-
         $('#altasintmasc').textbox();
         $('#btnGrabarSintMasc').linkbutton();
         $('#btnCancelarSintMasc').linkbutton();
@@ -532,6 +531,196 @@ class SintMascotas {
             $('#idsintmasc').textbox('setValue', datos.Id);
             document.getElementById('idmascotasint').value = datos.Mascota;
             document.getElementById('idpacientesint').value = datos.Paciente;
+
+            // según los valores del registro
+            if (datos.Anorexia == "Si"){
+                $('#anorexiasint').switchbutton('check');
+            } else {
+                $('#anorexiasint').switchbutton('uncheck');
+            }
+            if (datos.Adinamia == "Si"){
+                $('#adinamiasint').switchbutton('check');
+            } else {
+                $('#adinamiasint').switchbutton('uncheck');
+            }
+            if (datos.Emaciacion == "Si"){
+                $('#emasiacionsint').switchbutton('check');
+            } else {
+                $('#emasiacionsint').switchbutton('uncheck');
+            }
+            if (datos.Polidipsia == "Si"){
+                $('#polidipsiasint').switchbutton('check');
+            } else {
+                $('#polidipsiasint').switchbutton('uncheck');
+            }
+            if (datos.Atrofia == "Si"){
+                $('#atrofiasint').switchbutton('check');
+            } else {
+                $('#atrofiasint').switchbutton('uncheck');
+            }
+            if (datos.Paresia == "Si"){
+                $('#paresiasint').switchbutton('check');
+            } else {
+                $('#paresiasint').switchbutton('uncheck');
+            }
+            if (datos.Convulsiones == "Si"){
+                $('#convulsionesint').switchbutton('check');
+            } else {
+                $('#convulsionesint').switchbutton('uncheck');
+            }
+            if (datos.Adenomegalia == "Si"){
+                $('#adenomegaliasint').switchbutton('check');
+            } else {
+                $('#adenomegaliasint').switchbutton('uncheck');
+            }
+            if (datos.Blefaritis == "Si"){
+                $('#blefaritissint').switchbutton('check');
+            } else {
+                $('#blefaritissint').switchbutton('uncheck');
+            }
+            if (datos.Conjuntivitis == "Si"){
+                $('#conjuntivitissint').switchbutton('check');
+            } else {
+                $('#conjuntivitissint').switchbutton('uncheck');
+            }
+            if (datos.Queratitis == "Si"){
+                $('#queratitissint').switchbutton('check');
+            } else {
+                $('#queratitissint').switchbutton('uncheck');
+            }
+            if (datos.Uveitis == "Si"){
+                $('#uveitissint').switchbutton('check');
+            } else {
+                $('#uveitissint').switchbutton('uncheck');
+            }
+            if (datos.Palidez == "Si"){
+                $('#palidezsint').switchbutton('check');
+            } else {
+                $('#palidezsint').switchbutton('uncheck');
+            }
+            if (datos.Epistaxis == "Si"){
+                $('#epistaxissint').switchbutton('check');
+            } else {
+                $('#epistaxissint').switchbutton('uncheck');
+            }
+            if (datos.Ulceras == "Si"){
+                $('#ulcerassint').switchbutton('check');
+            } else {
+                $('#ulcerassint').switchbutton('uncheck');
+            }
+            if (datos.Diarrea == "Si"){
+                $('#diarreasint').switchbutton('check');
+            } else {
+                $('#diarreasint').switchbutton('uncheck');
+            }
+            if (datos.Nodulos == "Si"){
+                $('#nodulossint').switchbutton('check');
+            } else {
+                $('#nodulossint').switchbutton('uncheck');
+            }
+            if (datos.Vomitos == "Si"){
+                $('#vomitossint').switchbutton('check');
+            } else {
+                $('#vomitossint').switchbutton('uncheck');
+            }
+            if (datos.Artritis == "Si"){
+                $('#artritissint').switchbutton('check');
+            } else {
+                $('#artritissint').switchbutton('uncheck');
+            }
+            if (datos.Eritema == "Si"){
+                $('#eritemasint').switchbutton('check');
+            } else {
+                $('#eritemasint').switchbutton('uncheck');
+            }
+            if (datos.Prurito == "Si"){
+                $('#pruritosint').switchbutton('check');
+            } else {
+                $('#pruritosint').switchbutton('uncheck');
+            }
+            if (datos.UlceraCutanea == "Si"){
+                $('#ulceracutsint').switchbutton('check');
+            } else {
+                $('#ulceracutsint').switchbutton('uncheck');
+            }
+            if (datos.NodulosCutaneos == "Si"){
+                $('#noduloscutsint').switchbutton('check');
+            } else {
+                $('#noduloscutsint').switchbutton('uncheck');
+            }
+            if (datos.AlopeciaLocalizada == "Si"){
+                $('#alopecialocsint').switchbutton('check');
+            } else {
+                $('#alopecialocsint').switchbutton('uncheck');
+            }
+            if (datos.AlopeciaGeneralizada == "Si"){
+                $('#alopeciagensint').switchbutton('check');
+            } else {
+                $('#alopeciagensint').switchbutton('uncheck');
+            }
+            if (datos.HiperqueratosisN == "Si"){
+                $('#hiperqueratosisnsint').switchbutton('check');
+            } else {
+                $('#hiperqueratosisnsint').switchbutton('uncheck');
+            }
+            if (datos.HiperqueratosisP == "Si"){
+                $('#hiperqueratosispsint').switchbutton('check');
+            } else {
+                $('#hiperqueratosispsint').switchbutton('uncheck');
+            }
+            if (datos.SeborreaGrasa == "Si"){
+                $('#seborreagrasasint').switchbutton('check');
+            } else {
+                $('#seborreagrasasint').switchbutton('uncheck');
+            }
+            if (datos.SeborreaEscamosa == "Si"){
+                $('#seborreaescsint').switchbutton('check');
+            } else {
+                $('#seborreaescsint').switchbutton('uncheck');
+            }
+            if (datos.Onicogrifosis == "Si"){
+                $('#onicogrifosissint').switchbutton('check');
+            } else {
+                $('#onicogrifosissint').switchbutton('uncheck');
+            }
+            if (datos.CasoHumano == "Si"){
+                $('#casohumanosint').switchbutton('check');
+            } else {
+                $('#casohumanosint').switchbutton('uncheck');
+            }
+            if (datos.Flebotomos == "Si"){
+                $('#flebotomossint').switchbutton('check');
+            } else {
+                $('#flebotomossint').switchbutton('uncheck');
+            }
+            if (datos.CasaTrampeada == "Si"){
+                $('#casatrampeadasint').switchbutton('check');
+            } else {
+                $('#casatrampeadasint').switchbutton('uncheck');
+            }
+            if (datos.Fumigacion == "Si"){
+                $('#fumigacionsint').switchbutton('check');
+            } else {
+                $('#fumigacionsint').switchbutton('uncheck');
+            }
+            if (datos.MateriaOrganica == "Si"){
+                $('#materiaorganicasint').switchbutton('check');
+            } else {
+                $('#materiaorganicasint').switchbutton('uncheck');
+            }
+            if (datos.Repelentes == "Si"){
+                $('#repelentessint').switchbutton('check');
+            } else {
+                $('#repelentessint').switchbutton('uncheck');
+            }
+            $('#frecuenciasint').combobox('setValue', datos.Periodicidad);
+            $('#dondeduermesint').combobox('setValue', datos.Duerme);
+            if (datos.QuedaLibre == "Si"){
+                $('#quedasueltosint').switchbutton('check');
+            } else {
+                $('#quedasueltosint').switchbutton('uncheck');
+            }
+
             $('#usuariosintmasc').textbox('setValue', datos.Usuario);
             $('#altasintmasc').textbox('setValue', datos.Alta);
 
@@ -541,6 +730,47 @@ class SintMascotas {
             // cargamos las claves
             document.getElementById('idmascotasint').value = this.Mascota;
             document.getElementById('idpacientesint').value = this.Paciente;
+
+            // nos aseguramos de inicializar los check
+            $('#anorexiasint').switchbutton('uncheck');
+            $('#adinamiasint').switchbutton('uncheck');
+            $('#emasiacionsint').switchbutton('uncheck');
+            $('#polidipsiasint').switchbutton('uncheck');
+            $('#atrofiasint').switchbutton('uncheck');
+            $('#paresiasint').switchbutton('uncheck');
+            $('#convulsionesint').switchbutton('uncheck');
+            $('#adenomegaliasint').switchbutton('uncheck');
+            $('#blefaritissint').switchbutton('uncheck');
+            $('#conjuntivitissint').switchbutton('uncheck');
+            $('#queratitissint').switchbutton('uncheck');
+            $('#uveitissint').switchbutton('uncheck');
+            $('#palidezsint').switchbutton('uncheck');
+            $('#epistaxissint').switchbutton('uncheck');
+            $('#ulcerassint').switchbutton('uncheck');
+            $('#diarreasint').switchbutton('uncheck');
+            $('#nodulossint').switchbutton('uncheck');
+            $('#vomitossint').switchbutton('uncheck');
+            $('#artritissint').switchbutton('uncheck');
+            $('#eritemasint').switchbutton('uncheck');
+            $('#pruritosint').switchbutton('uncheck');
+            $('#ulceracutsint').switchbutton('uncheck');
+            $('#noduloscutsint').switchbutton('uncheck');
+            $('#alopecialocsint').switchbutton('uncheck');
+            $('#alopeciagensint').switchbutton('uncheck');
+            $('#hiperqueratosisnsint').switchbutton('uncheck');
+            $('#hiperqueratosispsint').switchbutton('uncheck');
+            $('#seborreagrasasint').switchbutton('uncheck');
+            $('#seborreaescsint').switchbutton('uncheck');
+            $('#onicogrifosissint').switchbutton('uncheck');
+            $('#casohumanosint').switchbutton('uncheck');
+            $('#flebotomossint').switchbutton('uncheck');
+            $('#casatrampeadasint').switchbutton('uncheck');
+            $('#fumigacionsint').switchbutton('uncheck');
+            $('#materiaorganicasint').switchbutton('uncheck');
+            $('#repelentessint').switchbutton('uncheck');
+            $('#frecuenciasint').combobox('setValue', "");
+            $('#dondeduermesint').combobox('setValue', "");
+            $('#quedasueltosint').switchbutton('uncheck');
 
             // cargamos el usuario y la fecha de alta
             $('#usuariosintmasc').textbox('setValue', sessionStorage.getItem("Usuario"));
@@ -570,7 +800,196 @@ class SintMascotas {
             this.Id = $('#idsintmasc').textbox('getValue');
         }
 
-        // el resto de los campos los permitimos en blanco
+        // asignamos según el estado de los switchbutton
+        if ($('#anorexiasint').switchbutton('options').checked){
+            this.Anorexia = "Si";
+        } else {
+            this.Anorexia = "No";
+        }
+        if ($('#adinamiasint').switchbutton('options').checked){
+            this.Adinamia = "Si";
+        } else {
+            this.Adinamia = "No";
+        }
+        if ($('#emasiacionsint').switchbutton('options').checked){
+            this.Emaciacion = "Si";
+        } else {
+            this.Emaciacion = "No";
+        }
+        if ($('#polidipsiasint').switchbutton('options').checked){
+            this.Polidipsia = "Si";
+        } else {
+            this.Polidipsia = "No";
+        }
+        if ($('#atrofiasint').switchbutton('options').checked){
+            this.Atrofia = "Si";
+        } else {
+            this.Atrofia = "No";
+        }
+        if ($('#paresiasint').switchbutton('options').checked){
+            this.Paresia = "Si";
+        } else {
+            this.Paresia = "No";
+        }
+        if ($('#convulsionesint').switchbutton('options').checked){
+            this.Convulsiones = "Si";
+        } else {
+            this.Convulsiones = "No";
+        }
+        if ($('#blefaritissint').switchbutton('options').checked){
+            this.Blefaritis = "Si";
+        } else {
+            this.Blefaritis = "No";
+        }
+        if ($('#conjuntivitissint').switchbutton('options').checked){
+            this.Conjuntivitis = "Si";
+        } else {
+            this.Conjuntivitis = "No";
+        }
+        if ($('#queratitissint').switchbutton('options').checked){
+            this.Queratitis = "Si";
+        } else {
+            this.Queratitis = "No";
+        }
+        if ($('#uveitissint').switchbutton('options').checked){
+            this.Uveitis = "Si";
+        } else {
+            this.Uveitis = "No";
+        }
+        if ($('#palidezsint').switchbutton('options').checked){
+            this.Palidez = "Si";
+        } else {
+            this.Palidez = "No";
+        }
+        if ($('#epistaxissint').switchbutton('options').checked){
+            this.Epistaxis = "Si";
+        } else {
+            this.Epistaxis = "No";
+        }
+        if ($('#ulcerassint').switchbutton('options').checked){
+            this.Ulceras = "Si";
+        } else {
+            this.Ulceras = "No";
+        }
+        if ($('#nodulossint').switchbutton('options').checked){
+            this.Nodulos = "Si";
+        } else {
+            this.Nodulos = "No";
+        }
+        if ($('#vomitossint').switchbutton('options').checked){
+            this.Vomitos = "Si";
+        } else {
+            this.Vomitos = "No";
+        }
+        if ($('#diarreasint').switchbutton('options').checked){
+            this.Diarrea = "Si";
+        } else {
+            this.Diarrea = "No";
+        }
+        if ($('#eritemasint').switchbutton('options').checked){
+            this.Eritema = "Si";
+        } else {
+            this.Eritema = "No";
+        }
+        if ($('#pruritosint').switchbutton('options').checked){
+            this.Prurito = "Si";
+        } else {
+            this.Prurito = "No";
+        }
+        if ($('#ulceracutsint').switchbutton('options').checked){
+            this.UlceraCutanea = "Si";
+        } else {
+            this.UlceraCutanea = "No";
+        }
+        if ($('#noduloscutsint').switchbutton('options').checked){
+            this.NodulosCutaneos = "Si";
+        } else {
+            this.NodulosCutaneos = "No";
+        }
+        if ($('#alopecialocsint').switchbutton('options').checked){
+            this.AlopeciaLocalizada = "Si";
+        } else {
+            this.AlopeciaLocalizada = "No";
+        }
+        if ($('#alopeciagensint').switchbutton('options').checked){
+            this.AlopeciaGeneralizada = "Si";
+        } else {
+            this.AlopeciaGeneralizada = "No";
+        }
+        if ($('#hiperqueratosisnsint').switchbutton('options').checked){
+            this.HiperqueratosisN = "Si";
+        } else {
+            this.HiperqueratosisN = "No";
+        }
+        if ($('#hiperqueratosispsint').switchbutton('options').checked){
+            this.HiperqueratosisP = "Si";
+        } else {
+            this.HiperqueratosisP = "No";
+        }
+        if ($('#casohumanosint').switchbutton('options').checked){
+            this.CasoHumano = "Si";
+        } else {
+            this.CasoHumano = "No";
+        }
+        if ($('#flebotomosssint').switchbutton('options').checked){
+            this.Flebotomos = "Si";
+        } else {
+            this.Flebotomos = "No";
+        }
+        if ($('#casatrampeadasint').switchbutton('options').checked){
+            this.CasaTrampeada = "Si";
+        } else {
+            this.CasaTrampeada = "No";
+        }
+        if ($('#materiaorganicasint').switchbutton('options').checked){
+            this.MateriaOrganica = "Si";
+        } else {
+            this.MateriaOrganica = "No";
+        }
+        if ($('#fumigacionsint').switchbutton('options').checked){
+            this.Fumigacion = "Si";
+        } else {
+            this.Fumigacion = "No";
+        }
+        if ($('#repelentesint').switchbutton('options').checked){
+            this.Repelentes = "Si";
+        } else {
+            this.Repelentes = "No";
+        }
+        this.Periodicidad = $('#frecuenciasint').combobox('getValue');
+        this.Duerme = $('#dondeduermesint').combobox('getValue');
+        if ($('#quedasueltosint').switchbutton('options').checked){
+            this.QuedaLibre = "Si";
+        } else {
+            this.QuedaLibre = "No";
+        }
+        if ($('#adenomegaliasint').switchbutton('options').checked){
+            this.Adenomegalia = "Si";
+        } else {
+            this.Adenomegalia = "No";
+        }
+        if ($('#artritissint').switchbutton('options').checked){
+            this.Artritis = "Si";
+        } else {
+            this.Artritis = "No";
+        }
+        if ($('#onicogrifosissint').switchbutton('options').checked){
+            this.Onicogrifosis = "Si";
+        } else {
+            this.Onicogrifosis = "No";
+        }
+        if ($('#seborreagrasasint').switchbutton('options').checked){
+            this.SeborreaGrasa = "Si";
+        } else {
+            this.SeborreaGrasa = "No";
+        }
+        if ($('#seborreaescsint').switchbutton('options').checked){
+            this.SeborreaEscamosa = "Si";
+        } else {
+            this.SeborreaEscamosa = "No";
+        }
+
+        // asignamos la clave de la mascota y el paciente
         this.Mascota = document.getElementById('idmascotasint').value;
         this.Paciente = document.getElementById('idpacientesint').value;
 
@@ -702,6 +1121,47 @@ class SintMascotas {
         $('#idsintmasc').textbox('setValue', "");
         $('#usuariosintmasc').textbox('setValue', sessionStorage.getItem("Usuario"));
         $('#altasintmasc').textbox('setValue', fechaActual());
+
+        // nos aseguramos de inicializar los check
+        $('#anorexiasint').switchbutton('uncheck');
+        $('#adinamiasint').switchbutton('uncheck');
+        $('#emasiacionsint').switchbutton('uncheck');
+        $('#polidipsiasint').switchbutton('uncheck');
+        $('#atrofiasint').switchbutton('uncheck');
+        $('#paresiasint').switchbutton('uncheck');
+        $('#convulsionesint').switchbutton('uncheck');
+        $('#adenomegaliasint').switchbutton('uncheck');
+        $('#blefaritissint').switchbutton('uncheck');
+        $('#conjuntivitissint').switchbutton('uncheck');
+        $('#queratitissint').switchbutton('uncheck');
+        $('#uveitissint').switchbutton('uncheck');
+        $('#palidezsint').switchbutton('uncheck');
+        $('#epistaxissint').switchbutton('uncheck');
+        $('#ulcerassint').switchbutton('uncheck');
+        $('#diarreasint').switchbutton('uncheck');
+        $('#nodulossint').switchbutton('uncheck');
+        $('#vomitossint').switchbutton('uncheck');
+        $('#artritissint').switchbutton('uncheck');
+        $('#eritemasint').switchbutton('uncheck');
+        $('#pruritosint').switchbutton('uncheck');
+        $('#ulceracutsint').switchbutton('uncheck');
+        $('#noduloscutsint').switchbutton('uncheck');
+        $('#alopecialocsint').switchbutton('uncheck');
+        $('#alopeciagensint').switchbutton('uncheck');
+        $('#hiperqueratosisnsint').switchbutton('uncheck');
+        $('#hiperqueratosispsint').switchbutton('uncheck');
+        $('#seborreagrasasint').switchbutton('uncheck');
+        $('#seborreaescsint').switchbutton('uncheck');
+        $('#onicogrifosissint').switchbutton('uncheck');
+        $('#casohumanosint').switchbutton('uncheck');
+        $('#flebotomossint').switchbutton('uncheck');
+        $('#casatrampeadasint').switchbutton('uncheck');
+        $('#fumigacionsint').switchbutton('uncheck');
+        $('#materiaorganicasint').switchbutton('uncheck');
+        $('#repelentessint').switchbutton('uncheck');
+        $('#frecuenciasint').combobox('setValue', "");
+        $('#dondeduermesint').combobox('setValue', "");
+        $('#quedasueltosint').switchbutton('uncheck');
 
     }
 
