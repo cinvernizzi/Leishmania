@@ -15,9 +15,10 @@ Diccionarios:
 
   Animales: 
     ✔ Validar ABM de diccionario de animales (peridomicilio) @high @started(25-08-21 11:44) @done(25-08-21 14:15) @lasted(2h31m26s)
-    ☐ Revisar desplegable del diccionario en peridomicilio @high @started(25-10-27 13:34)
-    ☐ Actualizar desplegable al actualizar diccionario de animales @high 
-    ☐ Revisar ficha datos clínicos del animal @high @started(25-10-27 13:40)
+    ✔ Revisar desplegable del diccionario en peridomicilio @high @started(25-10-27 13:34) @done(25-10-29 11:50) @lasted(1d22h16m59s)
+    ✔ Actualizar desplegable al actualizar diccionario de animales @high @started(24-10-29 11:50) @done(25-10-29 11:50) @lasted(1y50s)
+    ✔ Revisar ficha datos clínicos del animal @high @started(25-10-27 13:40) @done(25-10-29 11:52) @lasted(1d22h12m42s)
+    ✔ En la grilla de animales cambiar edp7ad a spinner @low @started(25-10-29 11:53) @done(25-10-29 13:10) @lasted(1h17m56s)
 
   Dependencias: 
     ✔ Validar ABM de diccionario de dependencias @high @started(25-08-21 11:44) @done(25-08-21 14:15) @lasted(2h31m45s)
@@ -33,13 +34,13 @@ Diccionarios:
 
   Materiales: 
     ✔ Validar ABM de diccionario de materiales @high @started(25-08-21 11:45) @done(25-08-21 14:09) @lasted(2h24m1s)
-    ☐ Al editar material debe actualizar select en la grilla de muestras @high @started(25-10-27 13:31)
-    ☐ Idem en las muestras de las mascotas @high @started(25-10-27 13:32)
+    ✔ Al editar material debe actualizar select en la grilla de muestras @high @started(25-10-27 13:31) @done(25-10-29 11:51) @lasted(1d22h20m10s)
+    ✔ Idem en las muestras de las mascotas @high @started(25-10-27 13:32) @done(25-10-29 11:51) @lasted(1d22h19m12s)
   
   Técnicas: 
     ✔ Validar Diccionario de Técnicas diagnósticas @high @started(25-08-21 11:46) @done(25-08-21 14:16) @lasted(2h30m41s)
-    ☐ Al editar técnica debe actualizar select en la grilla de muestras @high @started(25-10-27 13:32)
-    ☐ Item en las muestras de las mascotas @high @started(25-10-27 13:32)
+    ✔ Al editar técnica debe actualizar select en la grilla de muestras @high @started(25-10-27 13:32) @done(25-10-29 11:51) @lasted(1d22h19m16s)
+    ✔ Item en las muestras de las mascotas @high @started(25-10-27 13:32) @done(25-10-29 11:51) @lasted(1d22h19m20s)
 
   Laboratorios: 
     ✔ Validar ABM de laboratorios @high @started(25-08-21 11:51) @done(25-08-25 14:30) @lasted(4d2h39m6s)
@@ -97,7 +98,7 @@ Mascotas:
   ✔ Validar ABM de mascotas (solo con datos del tutor) @high @started(25-08-21 11:50) @done(25-08-26 13:12) @lasted(5d1h22m54s)
   ✔ Validar ABM de muestras y resultados de las mascotas @high @started(25-08-21 11:54) @done(25-08-26 13:35) @lasted(5d1h41m22s)
   ✔ Validar ABM de síntomas de las mascotas @high @started(25-08-21 11:53) @done(25-08-26 13:12) @lasted(5d1h19m57s)
-  ☐ Síntomas, cambiar de fechas a select si /no @high @started(25-10-27 13:33)
+  ✔ Síntomas, cambiar de fechas a select si /no @high @started(25-10-27 13:33) @done(25-10-29 11:51) @lasted(1d22h18m38s)
 
 Responsables:
   ✔ Validar ABM de usuarios autorizados @high @started(25-08-21 11:52) @done(25-08-25 15:33) @lasted(4d3h41m28s)
@@ -114,3 +115,4 @@ Reportes:
 
 Bases de Datos:
   ✔ Sincronizar estructura con servidor de producción @critical @started(25-08-21 11:55) @done(25-08-22 13:14) @lasted(1d1h19m23s)
+  ✔ Actualizar estructura de síntomas de las mascotas @critical @started(23-10-29 11:52) @done(25-10-29 11:52) @lasted(2y1d15s)

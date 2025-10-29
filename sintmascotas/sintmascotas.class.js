@@ -128,7 +128,7 @@ class SintMascotas {
             title: "Síntomas de la Mascota",
             modal:true,
             maximizable: true,
-            width: 1300,
+            width: 1400,
             height: 600,
             closed: false,
             closable: true,
@@ -158,73 +158,318 @@ class SintMascotas {
         $('#idsintmasc').textbox();
         $('#usuariosintmasc').textbox();
         $('#anorexiasint').switchbutton({
+            label: 'Anorexia:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#adinamiasint').switchbutton({
+            label: 'Adinamia:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#emasiacionsint').switchbutton({
+            label: 'Emaciación:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#polidipsiasint').switchbutton({
+            label: 'Polidipsia:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#atrofiasint').switchbutton({
+            label: 'Atrofia Musc.:',
+            labelWidth: 100,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#paresiasint').switchbutton({
+            label: 'Paresia:',
+            labelWidth: 100,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#convulsionesint').switchbutton({
+            label: 'Convulsiones:',
+            labelWidth: 100,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#blefaritissint').switchbutton({
+            label: 'Blefaritis:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#conjuntivitissint').switchbutton({
+            label: 'Conjuntivitis:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#queratitissint').switchbutton({
+            label: 'Queratitis:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#uveitissint').switchbutton({
+            label: 'Uveitis:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#palidezsint').switchbutton({
+            label: 'Palidez:',
+            labelWidth: 70,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#epistaxissint').switchbutton({
+            label: 'Epistaxis:',
+            labelWidth: 70,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#ulcerassint').switchbutton({
+            label: 'Ulceras:',
+            labelWidth: 70,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#nodulossint').switchbutton({
+            label: 'Nódulos:',
+            labelWidth: 70,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#vomitossint').switchbutton({
+            label: 'Vómitos:',
+            labelWidth: 70,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#diarreasint').switchbutton({
+            label: 'Diarrea:',
+            labelWidth: 70,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
+        $('#eritemasint').switchbutton({
+            label: 'Eritema:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#pruritosint').switchbutton({
+            label: 'Prurito:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#ulceracutsint').switchbutton({
+            label: 'Ulcera:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#noduloscutsint').switchbutton({
+            label: 'Nódulos:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#alopecialocsint').switchbutton({
+            label: 'Alopecía Loc.:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#alopeciagensint').switchbutton({
+            label: 'Alopecía Gen.:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#hiperqueratosisnsint').switchbutton({
+            label: 'HiperQ. Nasal:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#hiperqueratosispsint').switchbutton({
+            label: 'HiperQ. Plantar:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#casohumanosint').switchbutton({
+            label: 'Caso Humano:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#flebotomossint').switchbutton({
+            label: 'Flebótomos:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#casatrampeadasint').switchbutton({
+            label: 'Casa Tramp.:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#materiaorganicasint').switchbutton({
+            label: 'Mat. Orgánica:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#fumigacionsint').switchbutton({
+            label: 'Fumigación:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#repelentessint').switchbutton({
+            label: 'Repelentes:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#frecuenciasint').combobox({
+            panelHeight: 'auto',
+            label: 'Frecuencia:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            limitToList: true
+        });
+        $('#dondeduermesint').combobox({
+            panelHeight: 'auto',
+            label: 'Duerme:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            limitToList: true
+        });
+        $('#quedasueltosint').switchbutton({
+            label: 'Queda Suelto:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#adenomegaliasint').switchbutton({
+            label: 'Adenomegalia:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#artritissint').switchbutton({
+            label: 'Artritis:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#onicogrifosissint').switchbutton({
+            label: 'Onicogrifosis:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#seborreagrasasint').switchbutton({
+            label: 'Seborrea Grasa:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+        $('#seborreaescsint').switchbutton({
+            label: 'Seborrea Esc.:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            onText: 'Si',
+            offText: 'No'
+        });
+
         $('#altasintmasc').textbox();
         $('#btnGrabarSintMasc').linkbutton();
         $('#btnCancelarSintMasc').linkbutton();
