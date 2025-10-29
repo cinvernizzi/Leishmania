@@ -766,7 +766,7 @@ class Clinica {
         sesion.reiniciar();
 
         // si está editando
-        if (this.Paciente != 0){
+        if (this.Paciente > 0){
             this.getDatosClinica(this.Paciente);
         } else {
             this.nuevoPaciente();
