@@ -108,108 +108,211 @@ class Clinica {
         // configuramos los elementos
         $('#idclinica').textbox();
         $('#cutaneaunica').switchbutton({
+            label: 'Cutánea Unica:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#cutaneamultiple').switchbutton({
+            label: 'Cutánea Múltiple:',
+            labelWidth: 120,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#lesionmucosanasal').switchbutton({
+            label: 'Mucosa Nasal:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#lesionbucofaringea').switchbutton({
+            label: 'Bucofaringea:',
+            labelWidth: 120,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#lesionlaringea').switchbutton({
+            label: 'Lesión Laringea:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#lesionvisceral').switchbutton({
+            label: 'Lesión Visceral:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#presentafiebre').switchbutton({
+            label: 'Fiebre:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
-        $('#fechafiebre').datebox({
-            width: "120px"
-        });
+        $('#fechafiebre').datebox();
         $('#caracteristicasfiebre').combobox({
-            panelHeight: 'auto'
+            label: 'Tipo:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
+            panelHeight: 'auto', 
+            limitToList: true
         });
         $('#presentafatiga').switchbutton({
+            label: 'Fatiga:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#presentadebilidad').switchbutton({
+            label: 'Debilidad:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',            
             onText: 'Si',
             offText: 'No'
         });
         $('#presentavomitos').switchbutton({
+            label: 'Vómitos:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#presentadiarrea').switchbutton({
+            label: 'Diarrea:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#presentatosseca').switchbutton({
+            label: 'Tos Seca:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#presentapielgris').switchbutton({
+            label: 'Piel Gris:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#edemaclinica').switchbutton({
+            label: 'Edema:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',            
             onText: 'Si',
             offText: 'No'
         });
         $('#pielescamosa').switchbutton({
+            label: 'Piel Escamosa:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#petequiasclinica').switchbutton({
+            label: 'Petequias:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#perdidacabello').switchbutton({
+            label: 'P.de Cabello:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#adenomegaliaclinica').switchbutton({
+            label: 'Adenomegalia:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#hepatoesplenomegalia').switchbutton({
+            label: 'Hepato.:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#linfadenopatia').switchbutton({
+            label: 'Linfa.:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#perdidapeso').switchbutton({
+            label: 'P. Peso:',
+            labelWidth: 90,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#nodulosclinica').switchbutton({
+            label: 'Nódulos:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#ulcerasclinica').switchbutton({
+            label: 'Ulceras:',
+            labelWidth: 120,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#cicatrizclinica').switchbutton({
+            label: 'Cicatrices:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
         $('#lesionmucosa').switchbutton({
+            label: 'Lesión Mucosa:',
+            labelWidth: 110,
+            labelPosition: 'before',
+            labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
         });
@@ -629,7 +732,7 @@ class Clinica {
             success: function(data) {
 
                 // si salío bien
-                if (data.Resultado != 0){
+                if (data.Resultado > 0){
 
                     // actualizamos en el formulario
                     $('#idclinica').textbox('setValue', data.Resultado);
