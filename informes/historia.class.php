@@ -20,6 +20,8 @@ require_once "paginas.class.php";
 require_once "../pacientes/pacientes.class.php";
 require_once "../muestras/muestras.class.php";
 require_once "../clinica/clinica.class.php";
+require_once "../actividades/actividades.class.php";
+require_once "../viajes/viajes.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("../clases/config.ini");
@@ -87,8 +89,10 @@ class Historia{
         $this->verificaClinica((int) $id);
 
         // verificamos si tiene actividades
+        $this->verificaActividades((int) $id);
         
         // verificamos si tiene viajes realizados 
+        $this->verificaViajes((int) $id);
 
         // si hay datos de la evolución 
 
@@ -317,6 +321,7 @@ class Historia{
             $this->Documento->Cell(10, $this->Interlineado, $registro["id"], 0, 0);
             $this->Documento->Cell(35, $this->Interlineado, $registro["tecnica"], 0, 0);
             $this->Documento->Cell(35, $this->Interlineado, $registro["material"], 0, 0);
+            $this->Documento->Cell(35, $this->Interlineado, $registro["fecha"], 0, 0);
 
             // si hay un resultado
             if (!empty($registro["resultado"])){
@@ -324,7 +329,7 @@ class Historia{
                 $this->Documento->Cell(35, $this->Interlineado, $registro["resultado"], 0, 0);
                 $this->Documento->Cell(35, $this->Interlineado, $registro["usuario"], 0, 1);
             } else {
-                $this->Documento->Cell(90, $this->Interlineado, "Determinación Pendiente", 0, 1);
+                $this->Documento->Cell(100, $this->Interlineado, "Determinación Pendiente", 0, 1);
             }
 
         }
@@ -342,6 +347,7 @@ class Historia{
         $this->Documento->Cell(10, $this->Interlineado, "ID", 0, 0);
         $this->Documento->Cell(35, $this->Interlineado, "Técnica", 0, 0);
         $this->Documento->Cell(35, $this->Interlineado, "Material", 0, 0);
+        $this->Documento->Cell(35, $this->Interlineado, "Ingreso", 0, 0);
         $this->Documento->Cell(30, $this->Interlineado, "Fecha", 0, 0);
         $this->Documento->Cell(35, $this->Interlineado, "Resultado", 0, 0);
         $this->Documento->Cell(35, $this->Interlineado, "Operador", 0, 1);
@@ -437,6 +443,133 @@ class Historia{
         $this->Documento->Cell(60, $this->Interlineado, "Tos Seca: " . $clinica->getTosSeca(), 0, 0);
         $this->Documento->Cell(60, $this->Interlineado, "Périda de Cabello: " . $clinica->getCabello(), 0, 0);
         $this->Documento->Cell(60, $this->Interlineado, "Operador: " . $clinica->getUsuario(), 0, 1);
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int $id - clave del paciente
+     * Método que recibe como parámetro la clave del paciente 
+     * y verifica que el mismo tenga alguna actividad 
+     * declarada, en cuyo caso la presenta
+     */
+    protected function verificaActividades(int $id) : void {
+
+        // instanciamos la clase y obtenemos la nómina
+        $actividades = new Actividades();
+        $nomina = $actividades->nominaActividades((int) $id);
+
+        // si no hay registros 
+        if (count($nomina) == 0){
+            return;
+        }
+
+        // de otra forma definimos la fuente
+        $this->Documento->SetFont('DejaVu', 'B', $this->Fuente);
+
+        // presenta el título
+        $this->Documento->MultiCell(0, $this->Interlineado, "Actividades Realizadas por el Paciente"); 
+
+        // fijamos la fuente
+        $this->Documento->SetFont('DejaVu', '', $this->Fuente);
+
+        // ahora recorremos los registros
+        foreach($nomina as $registro){
+
+            // verificamos si hay espacio
+            if (!$this->hayLugar($this->Interlineado)){
+
+                // agrega la página e imprime los encabezados
+                $this->Documento->AddPage();
+                $this->encabezadosActividad();
+
+            }
+
+            // presenta el registro
+            $this->Documento->Cell(100, $this->Interlineado, $registro["lugar"], 0, 0);
+            $this->Documento->Cell(100, $this->Interlineado, $registro["actividad"], 0, 0);
+            $this->Documento->Cell(30, $this->Interlineado, $registro["fecha"], 0, 0);
+            $this->Documento->Cell(30, $this->Interlineado, $registro["usuario"], 0, 1);
+
+        }
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * Método que agrega los encabezados de columna de las 
+     * actividades del paciente
+     */
+    protected function encabezadosActividad() : void {
+
+        // define los encabezados
+        $this->Documento->Cell(100, $this->Interlineado, "Lugar", 0, 0);
+        $this->Documento->Cell(100, $this->Interlineado, "Actividad", 0, 0);
+        $this->Documento->Cell(30, $this->Interlineado, "Fecha", 0, 0);
+        $this->Documento->Cell(30, $this->Interlineado, "Operador", 0, 1);
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int $id - clave del paciente
+     * Método que verifica si el paciente tiene viajes declarados
+     * y en todo caso los presenta
+     */
+    protected function verificaViajes(int $id) : void {
+
+        // instanciamos la clase y obtenemos la nómina
+        $viajes = new Viajes();
+        $nomina = $viajes->nominaViajes((int) $id);
+
+        // si no hay registros 
+        if (count($nomina) == 0){
+            return;
+        }
+
+        // fijamos la fuente
+        $this->Documento->setFont('DejaVu', 'B', $this->Fuente);
+
+        // presenta el título 
+        $this->Documento->MultiCell(0, $this->Interlineado, "Viajes Realizados por el Paciente");
+
+        // fijamos la fuente
+        $this->Documento->SetFont('DejaVu', '', $this->Fuente);
+
+        // presenta los encabezados 
+        $this->encabezadosViajes();
+
+        // recorremos el vector
+        foreach($nomina as $registro){
+
+            // verificamos si hay espacio 
+            if (!$this->hayLugar($this->Interlineado)){
+
+                // agregamos una página y presenta los encabezados
+                $this->Documento->AddPage();
+                $this->encabezadosViajes();
+
+            }
+
+            // presenta el registro
+            $this->Documento->Cell(100, $this->Interlineado, $registro["lugar"], 0, 0);
+            $this->Documento->Cell(30, $this->Interlineado, $registro["fecha"], 0, 0);
+            $this->Documento->Cell(30, $this->Interlineado, $registro["usuario"], 0, 1);
+
+        }
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * Método que define los encabezados de columna de los viajes
+     */
+    protected function encabezadosViajes() : void {
+
+        // define los encabezados 
+        $this->Documento->Cell(100, $this->Interlineado, "Lugar", 0, 0);
+        $this->Documento->Cell(30, $this->Interlineado, "Fecha", 0, 0);
+        $this->Documento->Cell(30, $this->Interlineado, "Operador", 0, 1);
 
     }
 
