@@ -351,6 +351,7 @@ class Clinica {
                             leishmania.v_clinica.diarrea AS diarrea,
                             leishmania.v_clinica.tosseca AS tosseca,
                             leishmania.v_clinica.pielgris AS pielgris,
+                            leishmania.v_clinica.edema AS edema, 
                             leishmania.v_clinica.escamosa AS escamosa,
                             leishmania.v_clinica.petequias As petequias,
                             leishmania.v_clinica.cabello As cabello,
@@ -373,17 +374,19 @@ class Clinica {
 
             // obtenemos el registro y asignamos
             $resultado = $this->Link->query($consulta);
-            $fila = $resultado->fetch(PDO::FETCH_ASSOC);
 
             // verificamos ya que puede retornar nulo
-            if ($fila){
+            if ($resultado->rowCount() > 0){
+
+                // obtenemos el registro
+                $fila = $resultado->fetch(PDO::FETCH_ASSOC);                
 
                 // asignamos en la clase
                 $this->Id = $fila["id"];
                 $this->Paciente = $fila["paciente"];
                 $this->CutaneaUnica = $fila["cutaneaunica"];
                 $this->CutaneaMultiple = $fila["cutaneamultiple"];
-                $this->MucosaNasal = $fila["mucosaNasal"];
+                $this->MucosaNasal = $fila["mucosanasal"];
                 $this->Bucofaringea = $fila["bucofaringea"];
                 $this->Laringea = $fila["laringea"];
                 $this->Visceral = $fila["visceral"];
@@ -405,11 +408,11 @@ class Clinica {
                 $this->Linfadenopatia = $fila["linfadenopatia"];
                 $this->PerdidaPeso = $fila["perdidapeso"];
                 $this->Nodulo = $fila["nodulo"];
-                $this->Ulcera = $fila["ulceara"];
+                $this->Ulcera = $fila["ulcera"];
                 $this->Cicatriz = $fila["cicatriz"];
                 $this->LesionMucosa = $fila["lesionmucosa"];
                 $this->Alta = $fila["alta"];
-                $this->Modificado = $fila["modifiado"];
+                $this->Modificado = $fila["modificado"];
                 $this->Usuario = $fila["usuario"];
 
             }
@@ -534,6 +537,7 @@ class Clinica {
                              nodulo,
                              ulcera,
                              cicatriz,
+                             lesionmucosa, 
                              usuario)
                             VALUES
                             (:paciente,
@@ -563,6 +567,7 @@ class Clinica {
                              :nodulo,
                              :ulcera,
                              :cicatriz,
+                             :lesionmucosa,
                              :usuario); ";
 
         // capturamos el error
@@ -597,6 +602,7 @@ class Clinica {
             $preparada->bindParam(":nodulo",               $this->Nodulo);
             $preparada->bindParam(":ulcera",               $this->Ulcera);
             $preparada->bindParam(":cicatriz",             $this->Cicatriz);
+            $preparada->bindParam(":lesionmucosa",         $this->LesionMucosa);
             $preparada->bindParam(":usuario",              $this->IdUsuario);
 
             // ejecutamos y retornamos
@@ -652,6 +658,7 @@ class Clinica {
                             nodulo = :nodulo,
                             ulcera = :ulcera,
                             cicatriz = :cicatriz,
+                            lesionmucosa = :lesionmucosa,
                             usuario = :usuario
                      WHERE leishmania.clinica.id = :id; ";
 
@@ -686,6 +693,7 @@ class Clinica {
             $preparada->bindParam(":nodulo",               $this->Nodulo);
             $preparada->bindParam(":ulcera",               $this->Ulcera);
             $preparada->bindParam(":cicatriz",             $this->Cicatriz);
+            $preparada->bindParam(":lesionmucosa",         $this->LesionMucosa);
             $preparada->bindParam(":usuario",              $this->IdUsuario);
             $preparada->bindParam(":id",                   $this->Id);
 

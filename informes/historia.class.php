@@ -19,6 +19,7 @@ declare(strict_types=1);
 require_once "paginas.class.php";
 require_once "../pacientes/pacientes.class.php";
 require_once "../muestras/muestras.class.php";
+require_once "../clinica/clinica.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("../clases/config.ini");
@@ -83,6 +84,7 @@ class Historia{
         $this->verificaMuestras((int) $id);
 
         // verificamos si tiene datos clínicos
+        $this->verificaClinica((int) $id);
 
         // verificamos si tiene actividades
         
@@ -297,15 +299,19 @@ class Historia{
         $this->Documento->SetFont('DejaVu', '', $this->Fuente);
 
         // definimos los encabezados 
-        $this->Documento->Cell(10, $this->Interlineado, "ID", 0, 0);
-        $this->Documento->Cell(35, $this->Interlineado, "Técnica", 0, 0);
-        $this->Documento->Cell(35, $this->Interlineado, "Material", 0, 0);
-        $this->Documento->Cell(20, $this->Interlineado, "Fecha", 0, 0);
-        $this->Documento->Cell(35, $this->Interlineado, "Resultado", 0, 0);
-        $this->Documento->Cell(35, $this->Interlineado, "Operador", 0, 1);
+        $this->encabezadosMuestra();
 
         // recorremos el vector 
         foreach($nomina as $registro){
+
+            // verificamos si hay espacio
+            if (!$this->hayLugar($this->Interlineado)){
+
+                // agregamos una página y definimos los encabezados 
+                $this->Documento->AddPage();
+                $this->encabezadosMuestra();
+
+            }
 
             // presentamos la determinación 
             $this->Documento->Cell(10, $this->Interlineado, $registro["id"], 0, 0);
@@ -314,13 +320,148 @@ class Historia{
 
             // si hay un resultado
             if (!empty($registro["resultado"])){
-                $this->Documento->Cell(20, $this->Interlineado, $registro["determinacion"], 0, 0);
+                $this->Documento->Cell(30, $this->Interlineado, $registro["determinacion"], 0, 0);
                 $this->Documento->Cell(35, $this->Interlineado, $registro["resultado"], 0, 0);
                 $this->Documento->Cell(35, $this->Interlineado, $registro["usuario"], 0, 1);
             } else {
                 $this->Documento->Cell(90, $this->Interlineado, "Determinación Pendiente", 0, 1);
             }
 
+        }
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * Método que genera los encabezados de la tabla de 
+     * muestras recibidas del paciente
+     */
+    protected function encabezadosMuestra() : void {
+
+        // definimos los encabezados 
+        $this->Documento->Cell(10, $this->Interlineado, "ID", 0, 0);
+        $this->Documento->Cell(35, $this->Interlineado, "Técnica", 0, 0);
+        $this->Documento->Cell(35, $this->Interlineado, "Material", 0, 0);
+        $this->Documento->Cell(30, $this->Interlineado, "Fecha", 0, 0);
+        $this->Documento->Cell(35, $this->Interlineado, "Resultado", 0, 0);
+        $this->Documento->Cell(35, $this->Interlineado, "Operador", 0, 1);
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param $id - clave del paciente
+     * Método que recibe como parámetro la clave de un paciente
+     * y presenta (en caso de tener) los datos clínicos
+     */
+    protected function verificaClinica(int $id) : void {
+
+        // instanciamos la clase y obtenemos el registro
+        $clinica = new Clinica();
+        $clinica->getDatosClinica((int) $id);
+
+        // verificamos si hay un registro
+        if ($clinica->getId() == 0){
+            return;
+        }
+
+        // inserta un salto de página
+        $this->Documento->AddPage();
+
+        // fijamos la fuente
+        $this->Documento->setFont('DejaVu', 'B', $this->Fuente);
+
+        // presenta el título
+        $this->Documento->MultiCell(0, $this->Interlineado, "Datos Clínicos del Paciente");
+
+        // fijamos la fuente
+        $this->Documento->SetFont('DejaVu', '', $this->Fuente);
+
+        // presenta la leishmaniasis tegumentaria
+        $this->Documento->MultiCell(0, $this->Interlineado, "Leishmaniasis Tegumentaria");
+
+        // presentamos en tres columnas
+        $this->Documento->Cell(60, $this->Interlineado, "Lesión Cutánea Unica: " . $clinica->getCutaneaUnica(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Lesión Cutánea Múltiple: " . $clinica->getCutaneaMultiple(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Mucosa Nasal: " . $clinica->getMucosaNasal(), 0, 1);
+        $this->Documento->Cell(60, $this->Interlineado, "Lesión Bucofaringea: " . $clinica->getBucofaringea(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Lesión Laringea: " . $clinica->getLaringea(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Ulceras: " . $clinica->getUlcera(), 0, 1);
+        $this->Documento->Cell(60, $this->Interlineado, "Cicatrices: " . $clinica->getCicatriz(), 0, 1);
+
+        // insertamos un separador
+        $this->Documento->Ln($this->Interlineado);
+
+        // presenta la leishmaniasis visceral
+        $this->Documento->Multicell(0, $this->Interlineado, "Leishmaniasis Visceral");
+
+        // presentamos también en tres columnas
+        $this->Documento->Cell(60, $this->Interlineado, "Lesión Visceral: " . $clinica->getVisceral(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Fiebre: " . $clinica->getFiebre(), 0, 0);
+
+        // si presenta fiebre
+        if ($clinica->getFiebre() == "Si"){
+
+            // presenta la fecha y el tipo
+            $this->Documento->Cell(35, $this->Interlineado, "Inicio: " . $clinica->getInicio(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Tipo: " . $clinica->getCaracteristicas(), 0, 1);
+
+        // si no hay fiebre avanzamos a la siguiente línea
+        } else {
+            $this->Documento->Ln($this->Interlineado);
+        }
+
+        // sigue presentando
+        $this->Documento->Cell(60, $this->Interlineado, "Edema: " . $clinica->getEdema(), 0, 0);        
+        $this->Documento->Cell(60, $this->Interlineado, "Vómitos: " . $clinica->getVomitos(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Diarrea: " . $clinica->getDiarrea(), 0, 1);
+        $this->Documento->Cell(60, $this->Interlineado, "Pérdida de Peso: " . $clinica->getPerdidaPeso(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Fatiga: " . $clinica->getFatiga(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Debilidad: " . $clinica->getDebilidad(), 0, 1);
+        $this->Documento->Cell(60, $this->Interlineado, "Hepatoesplenomegalia: " . $clinica->getHepatoEspleno(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Linfadenopatía: " . $clinica->getLinfadenopaTia(), 0, 1);
+
+        // inserta un separador
+        $this->Documento->Ln($this->Interlineado);
+
+        // presenta los síntomas comunes
+        $this->Documento->MultiCell(0, $this->Interlineado, "Síntomas Comunes");
+
+        // seguimos con tres columnas
+        $this->Documento->Cell(60, $this->Interlineado, "Nódulos: " . $clinica->getNodulo(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Piel Gris: " . $clinica->getPielGris(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Piel Escamosa: " . $clinica->getEscamosa(), 0, 1);
+        $this->Documento->Cell(60, $this->Interlineado, "Petequias: " . $clinica->getPetequias(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Adenomegalia: " . $clinica->getAdenomegalia(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Lesión Mucosa: " . $clinica->getLesionMucosa(), 0, 1);
+        $this->Documento->Cell(60, $this->Interlineado, "Tos Seca: " . $clinica->getTosSeca(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Périda de Cabello: " . $clinica->getCabello(), 0, 0);
+        $this->Documento->Cell(60, $this->Interlineado, "Operador: " . $clinica->getUsuario(), 0, 1);
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int espacio que ocupa el texto a imprimir
+     * @return boolean verdadero si hay lugar 
+     * Método que recibe como parámetro el alto del texto a 
+     * imprimir y retorna verdadero si hay espacio en la 
+     * página para el mismo
+     */
+    protected function hayLugar(int $tamanio) : bool {
+
+        // obtenemos el tamaño de la página y le 
+        // descontamos el pié de página 
+        $pagina = (int) $this->Documento->GetPageHeight() - 15;
+
+        // obtenemos la posición actual del cabezal
+        $posicion = (int) $this->Documento->GetY();
+
+        // verifica si hay espacio
+        if ($posicion + $tamanio < $pagina){
+            return true;
+        } else {
+            return false;
         }
 
     }

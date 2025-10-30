@@ -143,5 +143,5 @@ CREATE ALGORITHM = UNDEFINED
               DATE_FORMAT(leishmania.clinica.modificado, '%d/%m/%Y') AS modificado,
               leishmania.clinica.usuario AS idusuario,
               cce.responsables.usuario AS usuario
-       FROM leishmania.clinica INNER JOIN cce.responsables ON leishmania.clinica.usuario = cce.responsables.usuario
+       FROM leishmania.clinica INNER JOIN cce.responsables ON leishmania.clinica.usuario = cce.responsables.id
                                INNER JOIN leishmania.pacientes ON leishmania.clinica.paciente = leishmania.pacientes.id;

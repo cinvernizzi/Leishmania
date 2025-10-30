@@ -49,6 +49,7 @@ $clinica->setPerdidaPeso($_POST["PerdidaPeso"]);
 $clinica->setNodulo($_POST["Nodulo"]);
 $clinica->setUlcera($_POST["Ulcera"]);
 $clinica->setCicatriz($_POST["Cicatriz"]);
+$clinica->setLesionMucosa($_POST["LesionMucosa"]);
 $clinica->setIdUsuario((int) $_POST["IdUsuario"]);
 
 // grabamos

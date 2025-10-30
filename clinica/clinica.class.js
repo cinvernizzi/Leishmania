@@ -377,7 +377,7 @@ class Clinica {
             $('#presentafiebre').switchbutton('uncheck');
         }
         $('#fechafiebre').datebox('setValue', datos.Inicio);
-        $('#caracteristicasfiebre').combobox('setValue', datos.Inicio);
+        $('#caracteristicasfiebre').combobox('setValue', datos.Caracteristicas);
         if (datos.Fatiga == "Si"){
             $('#presentafatiga').switchbutton('check');
         } else {
@@ -716,6 +716,7 @@ class Clinica {
         datosClinica.append("Linfadenopatia", this.Linfa);
         datosClinica.append("PerdidaPeso", this.PerdidaPeso);
         datosClinica.append("Nodulo", this.Nodulo);
+        datosClinica.append("LesionMucosa", this.LesionMucosa);
         datosClinica.append("Ulcera", this.Ulcera);
         datosClinica.append("Cicatriz", this.Cicatriz);
         datosClinica.append("IdUsuario", sessionStorage.getItem("IdUsuario"));
