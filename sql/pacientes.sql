@@ -299,48 +299,9 @@ CREATE ALGORITHM = UNDEFINED
               leishmania.pacientes.sisa AS sisa,
               leishmania.pacientes.usuario AS idusuario,
               cce.responsables.usuario AS usuario,
-              DATE_FORMAT(leishmania.pacientes.alta, '%d/%m/%Y') AS alta,
-              DATE_FORMAT(leishmania.pacientes.modificado, '%D/%m/%Y') AS modificado,
-              leishmania.actividades.lugar AS lugar,
-              leishmania.actividades.actividad AS actividad,
-              DATE_FORMAT(leishmania.actividades.fecha, '%d/%m%Y') AS fecha_actividad,
-              leishmania.control.tratamiento AS tratamiento,
-              leishmania.control.droga AS droga,
-              leishmania.control.dosis AS dosis,
-              leishmania.control.contactos AS contactos,
-              leishmania.control.nrocontactos AS nrocontactos,
-              leishmania.control.contactospos AS contactospos,
-              leishmania.control.bloqueo AS bloqueo,
-              leishmania.control.nroviviendas AS nroviviendas,
-              leishmania.control.sitiosriesgo AS sitiosriesgo,
-              leishmania.control.insecticida AS insecticida,
-              leishmania.control.cantidadinsec AS cantidadinsec,
-              DATE_FORMAT(leishmania.evolucion.hospitalizacion, '%d/%m/%Y') AS hospitalizacion,
-              DATE_FORMAT(leishmania.evolucion.fechaalta, '%d/%m/%Y') AS fechaalta,
-              DATE_FORMAT(leishmania.evolucion.defuncion, '%d/%m/%Y') AS defuncion,
-              leishmania.evolucion.condicion AS condicion,
-              leishmania.evolucion.clasificacion AS clasificacion,
               leishmania.mascotas.nombre AS mascota,
-              leishmania.mascotas.edad AS edadmascota,
-              leishmania.mascotas.origen AS origen,
-              leishmania.muestrasmasc.material AS idmaterialmasc,
-              materialmasc.material AS materialmasc,
-              leishmania.muestrasmasc.tecnica AS idtecnicamasc,
-              tecnicasmasc.tecnica AS tecnicamasc,
-              DATE_FORMAT(leishmania.muestrasmasc.fecha, '%d/%m/%d') AS fechamuestramasc,
-              leishmania.muestrasmasc.resultado AS resultadomasc,
-              DATE_FORMAT(leishmania.muestrasmasc.determinacion, '%d/%m/%Y') AS fechadetemasc,
-              leishmania.peridomicilio.animal AS idanimal,
-              leishmania.dicanimales.animal AS animal,
-              leishmania.peridomicilio.distancia AS distancia,
-              leishmania.peridomicilio.cantidad AS cantidad,
-              leishmania.muestras.material AS idmaterial,
-              leishmania.dicmaterial.material AS material,
-              leishmania.muestras.tecnica AS idtecnica,
-              leishmania.dictecnicas.tecnica AS tecnica,
-              DATE_FORMAT(leishmania.muestras.fecha, '%d/%m/%Y') AS fecha_muestra,
-              leishmania.muestras.resultado AS resultado,
-              DATE_FORMAT(leishmania.muestras.determinacion, '%d/%m/%Y') AS fecha_determinacion
+              DATE_FORMAT(leishmania.pacientes.alta, '%d/%m/%Y') AS alta,
+              DATE_FORMAT(leishmania.pacientes.modificado, '%D/%m/%Y') AS modificado
        FROM leishmania.pacientes LEFT JOIN diccionarios.tipo_documento ON leishmania.pacientes.tipodoc = diccionarios.tipo_documento.id_documento
                                  LEFT JOIN diccionarios.localidades ON leishmania.pacientes.locnac = diccionarios.localidades.codloc
                                  LEFT JOIN diccionarios.provincias ON diccionarios.localidades.codpcia = diccionarios.provincias.cod_prov
@@ -350,16 +311,5 @@ CREATE ALGORITHM = UNDEFINED
                                  LEFT JOIN diccionarios.localidades AS locinstitucion ON diagnostico.centros_asistenciales.localidad = locinstitucion.codloc
                                  LEFT JOIN diccionarios.provincias AS provinstitucion ON locinstitucion.codpcia = provinstitucion.cod_prov
                                  LEFT JOIN diccionarios.sexos ON leishmania.pacientes.sexo = diccionarios.sexos.id
-                                 LEFT JOIN leishmania.actividades ON leishmania.pacientes.id = leishmania.actividades.paciente
-                                 LEFT JOIN leishmania.control ON leishmania.pacientes.id = leishmania.control.paciente
-                                 LEFT JOIN leishmania.evolucion ON leishmania.pacientes.id = leishmania.evolucion.paciente
                                  LEFT JOIN leishmania.mascotas ON leishmania.pacientes.id = leishmania.mascotas.paciente
-                                 LEFT JOIN leishmania.peridomicilio ON leishmania.pacientes.id = leishmania.peridomicilio.paciente
-                                 LEFT JOIN leishmania.dicanimales ON leishmania.peridomicilio.animal = leishmania.dicanimales.id
-                                 LEFT JOIN leishmania.muestras ON leishmania.pacientes.id = leishmania.muestras.paciente
-                                 LEFT JOIN leishmania.dicmaterial ON leishmania.muestras.material = leishmania.dicmaterial.id
-                                 LEFT JOIN leishmania.dictecnicas ON leishmania.muestras.tecnica = leishmania.dictecnicas.id
-                                 LEFT JOIN leishmania.muestrasmasc ON leishmania.mascotas.id = leishmania.muestrasmasc.mascota
-                                 LEFT JOIN dicmaterial AS materialmasc ON leishmania.muestrasmasc.material = materialmasc.id
-                                 LEFT JOIN dictecnicas AS tecnicasmasc ON leishmania.muestrasmasc.tecnica = tecnicasmasc.id
                                  INNER JOIN cce.responsables ON leishmania.pacientes.usuario = cce.responsables.id;

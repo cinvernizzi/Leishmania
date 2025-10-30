@@ -47,6 +47,7 @@ class Pacientes {
     protected $IdSexo;           // clave del sexo
     protected $Edad;             // edad del paciente
     protected $LocNacimiento;    // clave indec de la localidad de nacimiento
+    protected $Localidad;        // nombre de la localidad de nacimiento
     protected $Nacimiento;       // fecha de nacimiento
     protected $Provincia;        // provincia de nacimiento
     protected $IdProvincia;      // clave indec de la provincia de nacimiento
@@ -57,6 +58,7 @@ class Pacientes {
     protected $Urbano;           // tipo de domicilio (urbano / rural)
     protected $TelPaciente;      // teléfono del paciente
     protected $IdOcupacion;      // clave de la ocupación
+    protected $Ocupacion;        // descripción de la ocupación
     protected $IdInstitucion;    // clave de la institución
     protected $Institucion;      // nombre de la institución
     protected $ProvInstitucion;  // nombre de la provincia de la institución
@@ -95,6 +97,7 @@ class Pacientes {
         $this->Sexo = "";
         $this->IdSexo = 0;
         $this->LocNacimiento = "";
+        $this->Localidad = "";
         $this->Nacimiento = "";
         $this->Provincia = "";
         $this->IdProvincia = "";
@@ -105,6 +108,7 @@ class Pacientes {
         $this->Urbano = "";
         $this->TelPaciente = "";
         $this->IdOcupacion = 0;
+        $this->Ocupacion = "";
         $this->IdInstitucion = 0;
         $this->Institucion = "";
         $this->NomLocInstitucion = "";
@@ -217,6 +221,9 @@ class Pacientes {
     public function getIdTipoDoc() : ?int {
         return (int) $this->IdTipoDoc;
     }
+    public function getTipoDoc() : ?string {
+        return $this->TipoDoc;
+    }
     public function getEdad() : ?int {
         return (int) $this->Edad;
     }
@@ -228,6 +235,9 @@ class Pacientes {
     }
     public function getLocNacimiento() : ?string {
         return $this->LocNacimiento;
+    }
+    public function getLocalidad() : ?string {
+        return $this->Localidad;
     }
     public function getNacimiento() : ?string {
         return $this->Nacimiento;
@@ -256,8 +266,11 @@ class Pacientes {
     public function getTelPaciente() : ?string {
         return $this->TelPaciente;
     }
-    public function getIdOcupacion() : ?int {
+    public function getIdOcupacion() : int {
         return (int) $this->IdOcupacion;
+    }
+    public function getOcupacion() : string {
+        return $this->Ocupacion;
     }
     public function getIdInstitucion() : int {
         return (int) $this->IdInstitucion;
@@ -534,6 +547,7 @@ class Pacientes {
                             leishmania.v_pacientes.urbano AS urbano,
                             leishmania.v_pacientes.telpaciente AS telpaciente,
                             leishmania.v_pacientes.idocupacion AS idocupacion,
+                            leishmania.v_pacientes.ocupacion AS ocupacion, 
                             leishmania.v_pacientes.idinstitucion AS idinstitucion,
                             leishmania.v_pacientes.institucion AS institucion,
                             leishmania.v_pacientes.nomlocinstitucion AS nomlocinstitucion,
@@ -570,7 +584,8 @@ class Pacientes {
             $this->IdSexo = $fila["idsexo"];
             $this->Edad = $fila["edad"];
             $this->Nacimiento = $fila["nacimiento"];
-            $this->LocNacimiento = $fila["localidad"];
+            $this->LocNacimiento = $fila["locnacimiento"];
+            $this->Localidad = $fila["localidad"];
             $this->IdProvincia = $fila["codprov"];
             $this->Provincia = $fila["provincia"];
             $this->IdNacionalidad = $fila["idnacionalidad"];
@@ -581,6 +596,7 @@ class Pacientes {
             $this->Urbano = $fila["urbano"];
             $this->TelPaciente = $fila["telpaciente"];
             $this->IdOcupacion = $fila["idocupacion"];
+            $this->Ocupacion = $fila["ocupacion"];
             $this->IdInstitucion = $fila["idinstitucion"];
             $this->CodLocInstitucion = $fila["codlocinstitucion"];
             $this->NomLocInstitucion = $fila["nomlocinstitucion"];

@@ -1053,6 +1053,53 @@ class Pacientes {
 
     /**
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * Método llamado desde el menú principal que imprime la 
+     * historia clínica completa del paciente y en todo caso 
+     * de las mascotas
+     */
+    imprimePaciente(){
+
+        // reiniciamos la sesión 
+        sesion.reiniciar();
+
+        // verificamos que exista un registro activo
+        let idpaciente = $('#idpaciente').textbox('getValue');
+        if ( idpaciente == ""){
+
+            // presenta el mensaje y retorna
+            Mensaje("Error", "Atención", "Debe tener un registro en pantalla");
+            return;
+
+        }
+
+        // definimos el contenido a agregar
+        let formulario = "<div id='win-pacientes'>" +
+                         "</div>";
+
+        // agregamos la definición de la grilla al dom
+        $("#form-filiacion").append(formulario);
+
+        // abrimos el layer presentando el documento
+        $('#win-pacientes').window({
+            width:850,
+            height:500,
+            modal:true,
+            title: "Historia Clínica",
+            minimizable: false,
+            closable: true,
+            onClose:function(){$('#win-pacientes').window('destroy');},
+            href: 'informes/historiaclinica.php?id='+idpaciente,
+            loadingMessage: 'Cargando',
+            border: 'thin'
+        });
+
+        // centramos el formulario
+        $(this.Layer).window('center');
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
      * Método que abre el layer emergente presentando la
      * ayuda del sistema
      */

@@ -13,6 +13,7 @@ $desc=array (
 );
 $up=-63;
 $ut=44;
-$ttffile='../clases/fpdf/font/unifont/DejaVuSansCondensed.ttf';
+$ttffile='/home/iceman/Documentos/Fuentes/HTML/Leishmania/clases/fpdf/font/unifont/DejaVuSansCondensed.ttf';
 $originalsize=680264;
 $fontkey='dejavu';
+?>
