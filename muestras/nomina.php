@@ -36,8 +36,8 @@ if (isset($_POST["idpaciente"])){
         // lo agregamos
         $resultado[] = array("Id" =>           $registro["id"],
                             "Paciente" =>      $registro["paciente"],
-                            "Material" =>      $registro["material"],
-                            "Tecnica" =>       $registro["tecnica"],
+                            "Material" =>      $registro["idmaterial"],
+                            "Tecnica" =>       $registro["idtecnica"],
                             "Fecha" =>         $registro["fecha"],
                             "Resultado" =>     $registro["resultado"],
                             "Determinacion" => $registro["determinacion"],

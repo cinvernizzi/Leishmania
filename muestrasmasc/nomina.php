@@ -35,10 +35,8 @@ if (!empty($_GET["idmascota"])){
 
         // lo agregamos
         $resultado[] = array("Id" =>            $registro["id"],
-                             "IdMaterial" =>    $registro["idmaterial"],
-                             "Material" =>      $registro["material"],
-                             "IdTecnica" =>     $registro["idtecnica"],
-                             "Tecnica" =>       $registro["tecnica"],
+                             "Material" =>      $registro["idmaterial"],
+                             "Tecnica" =>       $registro["idtecnica"],
                              "Fecha" =>         $registro["fecha"],
                              "Resultado" =>     $registro["resultado"],
                              "Determinacion" => $registro["determinacion"],

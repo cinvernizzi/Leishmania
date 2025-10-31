@@ -478,7 +478,7 @@ class SintMascotas {
                              alopeciageneralizada,
                              hiperqueratosisn,
                              hiperqueratosisp,
-                             seborregagrasa,
+                             seborreagrasa,
                              seborreaescamosa,
                              onicogrifosis,
                              casohumano,
@@ -567,8 +567,8 @@ class SintMascotas {
             $preparada->bindParam(":noduloscutaneos",      $this->NodulosCutaneos);
             $preparada->bindParam(":alopecialocalizada",   $this->AlopeciaLocalizada);
             $preparada->bindParam(":alopeciageneralizada", $this->AlopeciaGeneralizada);
-            $preparada->bindParam(":hiperqueratosisn",      $this->HiperqueratosisN);
-            $preparada->bindParam(":hiperqueratosisp",      $this->HiperqueratosisP);
+            $preparada->bindParam(":hiperqueratosisn",     $this->HiperqueratosisN);
+            $preparada->bindParam(":hiperqueratosisp",     $this->HiperqueratosisP);
             $preparada->bindParam(":seborreagrasa",        $this->SeborreaGrasa);
             $preparada->bindParam(":seborreaescamosa",     $this->SeborreaEscamosa);
             $preparada->bindParam(":onicogrifosis",        $this->Onicogrifosis);
@@ -577,8 +577,9 @@ class SintMascotas {
             $preparada->bindParam(":casatrampeada",        $this->CasaTrampeada);
             $preparada->bindParam(":fumigacion",           $this->Fumigacion);
             $preparada->bindParam(":materiaorganica",      $this->MateriaOrganica);
-            $preparada->bindParam(":repelenetes",          $this->Repelentes);
-            $preparada->bindParam(":periodicidad",         $this->Duerme);
+            $preparada->bindParam(":repelentes",           $this->Repelentes);
+            $preparada->bindParam(":periodicidad",         $this->Periodicidad);
+            $preparada->bindParam(":duerme",               $this->Duerme);
             $preparada->bindParam(":quedalibre",           $this->QuedaLibre);
             $preparada->bindParam(":usuario",              $this->IdUsuario);
             $preparada->execute();
@@ -631,7 +632,7 @@ class SintMascotas {
                             noduloscutaneos = :noduloscutaneos, 
                             alopecialocalizada = :alopecialocalizada, 
                             alopeciageneralizada = :alopeciageneralizada, 
-                            hiperqueratosisn = :hiperqueratotisn, 
+                            hiperqueratosisn = :hiperqueratosisn, 
                             hiperqueratosisp = :hiperqueratosisp,
                             seborreagrasa = :seborreagrasa, 
                             seborreaescamosa = :seborreaescamosa, 
@@ -688,8 +689,9 @@ class SintMascotas {
             $preparada->bindParam(":casatrampeada",        $this->CasaTrampeada);
             $preparada->bindParam(":fumigacion",           $this->Fumigacion);
             $preparada->bindParam(":materiaorganica",      $this->MateriaOrganica);
-            $preparada->bindParam(":repelenetes",          $this->Repelentes);
-            $preparada->bindParam(":periodicidad",         $this->Duerme);
+            $preparada->bindParam(":repelentes",           $this->Repelentes);
+            $preparada->bindParam(":periodicidad",         $this->Periodicidad);
+            $preparada->bindParam(":duerme",               $this->Duerme);
             $preparada->bindParam(":quedalibre",           $this->QuedaLibre);
             $preparada->bindParam(":usuario",              $this->IdUsuario);
             $preparada->bindParam(":id",                   $this->Id);

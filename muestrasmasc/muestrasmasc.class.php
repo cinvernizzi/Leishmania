@@ -236,7 +236,7 @@ class MuestrasMasc {
                             tecnica = :tecnica,
                             fecha = STR_TO_DATE(:fecha, '%d/%m/%Y'),
                             resultado = :resultado,
-                            determinacion = STR_TO_DATE(:determinacion, '%d/%m/%Y),
+                            determinacion = STR_TO_DATE(:determinacion, '%d/%m/%Y'),
                             usuario = :usuario
                      WHERE leishmania.muestrasmasc.id = :id; ";
 

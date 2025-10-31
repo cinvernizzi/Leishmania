@@ -931,7 +931,7 @@ class SintMascotas {
         } else {
             this.CasoHumano = "No";
         }
-        if ($('#flebotomosssint').switchbutton('options').checked){
+        if ($('#flebotomossint').switchbutton('options').checked){
             this.Flebotomos = "Si";
         } else {
             this.Flebotomos = "No";
@@ -951,7 +951,7 @@ class SintMascotas {
         } else {
             this.Fumigacion = "No";
         }
-        if ($('#repelentesint').switchbutton('options').checked){
+        if ($('#repelentessint').switchbutton('options').checked){
             this.Repelentes = "Si";
         } else {
             this.Repelentes = "No";
