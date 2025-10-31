@@ -378,7 +378,7 @@ class Actividades {
             success: function(data) {
 
                 // si salío bien
-                if (data.Resultado != 0){
+                if (data.Resultado > 0){
 
                     // presenta el mensaje
                     Mensaje("Info", "Atención", "Registro Grabado ...");
