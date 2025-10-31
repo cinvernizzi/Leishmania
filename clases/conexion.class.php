@@ -27,11 +27,15 @@ class Conexion extends PDO {
 
         // leemos el archivo de configuración
         $config = parse_ini_file("config.ini");
-        DEFINE ("HOST",        $config["Host"]);
-        DEFINE ("BASE",        $config["Base"]);
-        DEFINE ("USUARIO",     $config["Usuario"]);
-        DEFINE ("CONTRASEGNA", $config["Password"]);
-        DEFINE ("ESTADO",      $config["Estado"]);
+
+        // verificamos que las constantes no estén definidas
+        if (!defined('HOST')){
+            DEFINE ("HOST",        $config["Host"]);
+            DEFINE ("BASE",        $config["Base"]);
+            DEFINE ("USUARIO",     $config["Usuario"]);
+            DEFINE ("CONTRASEGNA", $config["Password"]);
+            DEFINE ("ESTADO",      $config["Estado"]);
+        }
 
         // según el estado del servidor
         if (ESTADO == "Desarrollo") {

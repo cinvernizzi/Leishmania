@@ -476,6 +476,7 @@ class Control {
                             leishmania.v_control.droga AS droga,
                             leishmania.v_control.dosis AS dosis,
                             leishmania.v_control.contactos AS contactos,
+                            leishmania.v_control.nrocontactos AS nrocontactos,
                             leishmania.v_control.contactospos AS contactospos,
                             leishmania.v_control.bloqueo AS bloqueo,
                             leishmania.v_control.nroviviendas AS nroviviendas,
@@ -493,10 +494,12 @@ class Control {
 
             // ejecutamos y obtenemos el registro
             $resultado = $this->Link->query($consulta);
-            $fila = $resultado->fetch(PDO::FETCH_ASSOC);
             
             // si existe un registro
-            if ($fila){
+            if ($resultado->rowCount() > 0){
+
+                // obtenemos el registro
+                $fila = $resultado->fetch(PDO::FETCH_ASSOC);                
 
                 // asignamos los valores
                 $this->Id = $fila["id"];

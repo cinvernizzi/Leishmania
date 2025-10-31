@@ -170,7 +170,7 @@ class Control {
 
         // asignamos los valores en el formulario
         $('#idcontrol').textbox('setValue', datos.Id);
-        $('#fechacontrol').textbox('setValue', datos.Fecha);
+        $('#fechacontrol').datebox('setValue', datos.Fecha);
         $('#tratamientocontrol').textbox('setValue', datos.Tratamiento);
         $('#drogacontrol').textbox('setValue', datos.Droga);
         $('#dosiscontrol').numberspinner('setValue', datos.Dosis);
@@ -281,9 +281,9 @@ class Control {
         }
         this.NroViviendas = $('#viviendascontrol').numberspinner('getValue');
         if ($('#riesgocontrol').switchbutton('options').checked){
-            this.Riesgo = "Si";
+            this.SitiosRiesgo = "Si";
         } else {
-            this.Riesgo = "No";
+            this.SitiosRiesgo = "No";
         }
         this.Insecticida = $('#insecticidacontrol').textbox('getValue');
         this.CantidadInsec = $('#cantidadinseccontrol').numberspinner('getValue');
@@ -335,7 +335,7 @@ class Control {
             success: function(data) {
 
                 // si salío bien
-                if (data.Resultado != 0){
+                if (data.Resultado > 0){
 
                     // actualizamos en el formulario
                     $('#idcontrol').textbox('setValue', data.Resultado);
@@ -368,7 +368,7 @@ class Control {
         sesion.reiniciar();
 
         // si está editando
-        if ($('#idcontrol').textbox('getValue') != 0) {
+        if ($('#idcontrol').textbox('getValue') != "") {
 
             // recargamos
             this.getDatosControl($('#idcontrol').textbox('getValue'));

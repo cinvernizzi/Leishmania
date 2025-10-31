@@ -306,7 +306,7 @@ class Evolucion {
                             leishmania.v_evolucion.hospitalizacion AS hospitalizacion,
                             leishmania.v_evolucion.fechaalta AS fechaalta,
                             leishmania.v_evolucion.defuncion AS defuncion,
-                            leishmania.v_evolucion.concidion AS condicion,
+                            leishmania.v_evolucion.condicion AS condicion,
                             leishmania.v_evolucion.clasificacion AS clasificacion,
                             leishmania.v_evolucion.usuario AS usuario,
                             leishmania.v_evolucion.alta AS alta
@@ -318,19 +318,26 @@ class Evolucion {
 
             // ejecutamos la consulta
             $resultado = $this->Link->query($consulta);
-            $fila = $resultado->fetch(PDO::FETCH_ASSOC);
 
-            // asignamos en la clase
-            $this->Id = $fila["id"];
-            $this->Paciente = $fila["paciente"];
-            $this->Hospitalizacion = $fila["hospitalizacion"];
-            $this->FechaAlta = $fila["fechaalta"];
-            $this->Defuncion = $fila["defuncion"];
-            $this->Condicion = $fila["condicion"];
-            $this->Clasificacion = $fila["clasificacion"];
-            $this->Usuario = $fila["usuario"];
-            $this->Alta = $fila["alta"];
+            // verificamos que tenga registros
+            if ($resultado->rowCount() > 0){
 
+                // obtenemos el registro
+                $fila = $resultado->fetch(PDO::FETCH_ASSOC);
+
+                // asignamos en la clase
+                $this->Id = $fila["id"];
+                $this->Paciente = $fila["paciente"];
+                $this->Hospitalizacion = $fila["hospitalizacion"];
+                $this->FechaAlta = $fila["fechaalta"];
+                $this->Defuncion = $fila["defuncion"];
+                $this->Condicion = $fila["condicion"];
+                $this->Clasificacion = $fila["clasificacion"];
+                $this->Usuario = $fila["usuario"];
+                $this->Alta = $fila["alta"];
+
+            }
+            
             // retornamos
             return true;
 

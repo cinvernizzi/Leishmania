@@ -84,6 +84,7 @@ CREATE ALGORITHM = UNDEFINED
               leishmania.control.droga AS droga,
               leishmania.control.dosis AS dosis,
               leishmania.control.contactos AS contactos,
+              leishmania.control.nrocontactos AS nrocontactos,
               leishmania.control.contactospos AS contactospos,
               leishmania.control.bloqueo AS bloqueo,
               leishmania.control.nroviviendas AS nroviviendas,

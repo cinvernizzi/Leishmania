@@ -22,6 +22,9 @@ require_once "../muestras/muestras.class.php";
 require_once "../clinica/clinica.class.php";
 require_once "../actividades/actividades.class.php";
 require_once "../viajes/viajes.class.php";
+require_once "../evolucion/evolucion.class.php";
+require_once "../control/control.class.php";
+require_once "../peridomicilio/peridomicilio.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("../clases/config.ini");
@@ -76,7 +79,7 @@ class Historia{
         $this->Documento->SetDisplayMode("fullpage", "single");
         $this->Documento->SetSubject("Departamento de Diagnóstico", true);
         $this->Documento->SetTitle("Historias Clínicas de Leishmaniasis", true);
-        $this->Documento->SetAutoPageBreak(true);
+        $this->Documento->SetAutoPageBreak(false);
         $this->Documento->AliasNbPages();
 
         // presentamos los datos de filiación 
@@ -95,13 +98,16 @@ class Historia{
         $this->verificaViajes((int) $id);
 
         // si hay datos de la evolución 
+        $this->verificaEvolucion((int) $id);
 
         // si hay datos de control y seguimiento
+        $this->verificaControl((int) $id);
 
         // si tiene mascotas (si tiene verifica la historia 
         // clínica de la mascota)
 
         // objetos y animales del peridomicilio 
+        $this->verificaPeridomicilio((int) $id);
 
         // guardamos el documento
         $this->Documento->Output("F", TEMP . "/historia.pdf");
@@ -326,10 +332,10 @@ class Historia{
             // si hay un resultado
             if (!empty($registro["resultado"])){
                 $this->Documento->Cell(30, $this->Interlineado, $registro["determinacion"], 0, 0);
-                $this->Documento->Cell(35, $this->Interlineado, $registro["resultado"], 0, 0);
+                $this->Documento->Cell(30, $this->Interlineado, $registro["resultado"], 0, 0);
                 $this->Documento->Cell(35, $this->Interlineado, $registro["usuario"], 0, 1);
             } else {
-                $this->Documento->Cell(100, $this->Interlineado, "Determinación Pendiente", 0, 1);
+                $this->Documento->Cell(95, $this->Interlineado, "Determinación Pendiente", 0, 1);
             }
 
         }
@@ -349,7 +355,7 @@ class Historia{
         $this->Documento->Cell(35, $this->Interlineado, "Material", 0, 0);
         $this->Documento->Cell(35, $this->Interlineado, "Ingreso", 0, 0);
         $this->Documento->Cell(30, $this->Interlineado, "Fecha", 0, 0);
-        $this->Documento->Cell(35, $this->Interlineado, "Resultado", 0, 0);
+        $this->Documento->Cell(30, $this->Interlineado, "Resultado", 0, 0);
         $this->Documento->Cell(35, $this->Interlineado, "Operador", 0, 1);
 
     }
@@ -444,6 +450,9 @@ class Historia{
         $this->Documento->Cell(60, $this->Interlineado, "Périda de Cabello: " . $clinica->getCabello(), 0, 0);
         $this->Documento->Cell(60, $this->Interlineado, "Operador: " . $clinica->getUsuario(), 0, 1);
 
+        // inserta un separador
+        $this->Documento->Ln($this->Interlineado);
+
     }
 
     /**
@@ -473,6 +482,9 @@ class Historia{
         // fijamos la fuente
         $this->Documento->SetFont('DejaVu', '', $this->Fuente);
 
+        // presenta los encabezados
+        $this->encabezadosActividad();
+
         // ahora recorremos los registros
         foreach($nomina as $registro){
 
@@ -486,12 +498,15 @@ class Historia{
             }
 
             // presenta el registro
-            $this->Documento->Cell(100, $this->Interlineado, $registro["lugar"], 0, 0);
-            $this->Documento->Cell(100, $this->Interlineado, $registro["actividad"], 0, 0);
+            $this->Documento->Cell(70, $this->Interlineado, $registro["lugar"], 0, 0);
+            $this->Documento->Cell(70, $this->Interlineado, $registro["actividad"], 0, 0);
             $this->Documento->Cell(30, $this->Interlineado, $registro["fecha"], 0, 0);
             $this->Documento->Cell(30, $this->Interlineado, $registro["usuario"], 0, 1);
 
         }
+
+        // inserta un separador
+        $this->Documento->Ln($this->Interlineado);
 
     }
 
@@ -503,8 +518,8 @@ class Historia{
     protected function encabezadosActividad() : void {
 
         // define los encabezados
-        $this->Documento->Cell(100, $this->Interlineado, "Lugar", 0, 0);
-        $this->Documento->Cell(100, $this->Interlineado, "Actividad", 0, 0);
+        $this->Documento->Cell(70, $this->Interlineado, "Lugar", 0, 0);
+        $this->Documento->Cell(70, $this->Interlineado, "Actividad", 0, 0);
         $this->Documento->Cell(30, $this->Interlineado, "Fecha", 0, 0);
         $this->Documento->Cell(30, $this->Interlineado, "Operador", 0, 1);
 
@@ -558,6 +573,9 @@ class Historia{
 
         }
 
+        // insertamos un separador
+        $this->Documento->Ln($this->Interlineado);
+
     }
 
     /**
@@ -575,6 +593,254 @@ class Historia{
 
     /**
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int $id - clave del paciente
+     * Método que recibe como parámetro la clave de un paciente
+     * y verifica si hay cargados datos de la evolución en cuyo 
+     * caso los presenta
+     */
+    protected function verificaEvolucion(int $id){
+
+        // instanciamos la clase y obtenemos el registro
+        $evolucion = new Evolucion();
+        $evolucion->getDatosEvolucion((int) $id);
+
+        // si no hay registros 
+        if ($evolucion->getId() == 0){
+            return;
+        }
+
+        // seteamos la fuente
+        $this->Documento->SetFont('DejaVu', 'B', $this->Fuente);
+
+        // presenta el título 
+        $this->Documento->MultiCell(0, $this->Interlineado, "Evolución del Paciente");
+
+        // setea la fuente
+        $this->Documento->SetFont('DejaVu', '', $this->Fuente);
+
+        // presenta la hospitalización 
+        $this->Documento->Cell(0, $this->Interlineado, "Hospitalización: " . $evolucion->getHospitalizacion(), 0, 1);
+
+        // si existe la fecha de alta
+        if (!empty($evolucion->getFechaAlta())){
+            $this->Documento->Cell(100, $this->Interlineado, "Fecha de Alta:" . $evolucion->getFechaAlta(), 0, 0);
+        }
+
+        // si existe la fecha de defunción 
+        if (!empty($evolucion->getDefuncion())){
+            $this->Documento->Cell(100, $this->Interlineado, "Fecha de Defunción:" . $evolucion->getDefuncion(), 0, 0);
+        }
+
+        // si presentó alguno de los dos anteriores
+        if (!empty($evolucion->getFechaAlta()) || !empty($evolucion->getDefuncion())){
+
+            // avanzamos una línea
+            $this->Documento->Ln($this->Interlineado);
+
+        }
+
+        // si existe la condición final
+        if (!empty($evolucion->getCondicion())){
+            
+            // obtenemos la longitud
+            $longitud = $this->Documento->GetStringWidth("Condición Final: " . $evolucion->getCondicion());
+            $this->Documento->Cell($longitud + 5, $this->Interlineado, "Condición Final: " . $evolucion->getCondicion(), 0, 0);
+
+        }
+
+        // si existe la clasificación 
+        if (!empty($evolucion->getClasificacion())){
+            $this->Documento->Cell(0, $this->Interlineado, "Clasificación: " . $evolucion->getClasificacion(), 0, 0);
+        }
+
+        // si presentó alguno de los dos anteriores
+        if (!empty($evolucion->getCondicion()) || !empty($evolucion->getClasificacion())){
+
+            // avanzamos una línea
+            $this->Documento->Ln($this->Interlineado);
+
+        }
+
+        // inserta un separador
+        $this->Documento->Ln($this->Interlineado);
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int $id - clave del paciente 
+     * Método que recibe la clave del paciente y verifica si 
+     * este tiene datos de control, en cuyo caso los presenta
+     */
+    protected function verificaControl(int $id) : void {
+
+        // instanciamos la clase y obtenemos el registro
+        $control = new Control();
+        $control->getDatosControl((int) $id);
+
+        // si no hay registros 
+        if ($control->getId() == 0) {
+            return;
+        }
+
+        // verificamos si hay espacio
+        if (!$this->hayLugar($this->Interlineado * 2)){
+            $this->Documento->AddPage();
+        }
+
+        // fijamos la fuente
+        $this->Documento->SetFont('DejaVu', 'B', $this->Fuente);
+
+        // presenta el título
+        $this->Documento->MultiCell(0, $this->Interlineado, "Datos de Control del Paciente");
+
+        // setea la fuente
+        $this->Documento->setfont('DejaVu', '', $this->Fuente);
+
+        // presenta la fecha del control
+        $this->Documento->Cell(0, $this->Interlineado, "Fecha del Control: " . $control->getFecha(), 0, 1);
+
+        // presenta el tratamiento
+        $longitud = $this->Documento->GetStringWidth("Tratamiento: " . $control->getTratamiento());
+        $this->Documento->Cell($longitud + 5, $this->Interlineado, "Tratamiento: " . $control->getTratamiento(), 0, 0);
+
+        // la droga 
+        $longitud = $this->Documento->GetStringWidth(("Droga: " . $control->getDroga()));
+        $this->Documento->Cell($longitud + 5, $this->Interlineado, "Droga: " . $control->getDroga(), 0, 0);
+
+        // la dosis 
+        $this->Documento->Cell(0, $this->Interlineado, "Dosis: " . $control->getDosis() . " mg.", 0, 1);
+
+        // si se exploraron contactos 
+        $longitud = $this->Documento->GetStringWidth("Se exploraron contactos: " . $control->getContactos());
+        $this->Documento->Cell($longitud + 5, $this->Interlineado, "Se exploraron contactos: " . $control->getContactos(), 0, 0);
+
+        // si se exploraron contactos
+        if ($control->getContactos() == "Si"){
+
+            // presenta el número de contactos 
+            $longitud = $this->Documento->GetStringWidth("Nro. de Contactos: " . $control->getNroContactos());
+            $this->Documento->Cell($longitud + 5, $this->Interlineado, "Nro. de Contactos: " . $control->getNroContactos(), 0, 0);
+
+            // presenta los contactos positivos 
+            $this->Documento->Cell(0, $this->Interlineado, "Contactos Positivos: " . $control->getContactosPos(), 0, 0);
+
+        }
+
+        // avanza de línea
+        $this->Documento->Ln($this->Interlineado);
+
+        // si se bloquearon viviendas
+        $longitud = $this->Documento->GetStringWidth("Se bloquearon viviendas: " . $control->getBloqueo());
+        $this->Documento->Cell($longitud + 5, $this->Interlineado, "Se bloquearon Viviendas: " . $control->getBloqueo(), 0, 0);
+
+        // si se bloquearon, cuantas
+        if ($control->getBloqueo() == "Si"){
+
+            // presenta el número de viviendas
+            $longitud = $this->Documento->GetStringWidth("Nro. Viviendas: " . $control->getNroViviendas(), 0, 0);
+            $this->Documento->Cell($longitud + 5, $this->Interlineado, "Nro. Viviendas: " . $control->getNroViviendas(), 0, 0);
+        }
+
+        // si se exploraron sitios de riesgo
+        $this->Documento->Cell(0, $this->Interlineado, "Sitios de Riesgo: " . $control->getSitiosRiesgo(), 0, 1);
+
+        // si se utilizó insecticida
+        if (!empty($control->getInsecticida())){
+
+            // presenta el insecticida
+            $longitud = $this->Documento->GetStringWidth("Insecticida Utilizado: " . $control->getInsecticida());
+            $this->Documento->Cell($longitud + 5, $this->Interlineado, "Insecticida Utilizado: " . $control->getInsecticida(), 0, 0);
+
+            // si se indica que cantidad
+            $this->Documento->Cell(0, $this->Interlineado, "Cantidad: " . $control->getCantidadInsec(), 0, 1);
+
+        // si no se utilizó 
+        } else {
+
+            // presenta el mensaje
+            $this->Documento->Cell(0, $this->Interlineado, "No se utilizó insecticida", 0, 1);
+
+        }
+
+        // inserta un separador
+        $this->Documento->Ln($this->Interlineado);
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int $id - clave del paciente
+     * Método que recibe la clave del paciente y verifica si 
+     * existen datos del peridomicilio en cuyo caso los 
+     * presenta
+     */
+    protected function verificaPeridomicilio(int $id) : void {
+
+        // instanciamos la clase y obtenemos los registros 
+        $domicilio = new Peridomicilio();
+        $nomina = $domicilio->nominaPeridomicilio((int) $id);
+
+        // setea la fuente
+        $this->Documento->SetFont('DejaVu', 'B', $this->Fuente);
+
+        // presenta el título
+        $this->Documento->MultiCell(0, $this->Interlineado, "Datos del Peridomicilio");
+
+        // seta la fuente
+        $this->Documento->SetFont('DejaVu', '', $this->Fuente);
+
+        // si no hay registros 
+        if (count($nomina) == 0){
+            $this->Documento->MultiCell(0, $this->Interlineado, "No se registran datos del peridomicilio");
+        } else {
+
+            // presenta los encabezados 
+            $this->encabezadosPeridomicilio();
+
+            // recorremos el vector
+            foreach($nomina as $registro){
+
+                // verificamos si hay lugar
+                if (!$this->hayLugar($this->Interlineado)){
+
+                    // inserta un salto de página 
+                    $this->Documento->AddPage();
+
+                    // los encabezados de columna 
+                    $this->encabezadosPeridomicilio();
+
+                }
+
+                // presenta el registro 
+                $this->Documento->Cell(70, $this->Interlineado, $registro["animal"], 0, 0);
+                $this->Documento->Cell(30, $this->Interlineado, $registro["distancia"], 0, 0);
+                $this->Documento->Cell(20, $this->Interlineado, $registro["cantidad"], 0, 0);
+                $this->Documento->Cell(20, $this->Interlineado, $registro["usuario"], 0, 1);
+
+            }
+
+        }
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * Método que presenta los encabezados de columna del
+     * peridomicilio 
+     */
+    protected function encabezadosPeridomicilio() : void {
+
+        // definimos las columnas
+        $this->Documento->Cell(70, $this->Interlineado, "Animal u Objeto", 0, 0);
+        $this->Documento->Cell(30, $this->Interlineado, "Distancia", 0, 0);
+        $this->Documento->Cell(20, $this->Interlineado, "Cantidad", 0, 0);
+        $this->Documento->Cell(20, $this->Interlineado, "Operador", 0, 1);
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
      * @param int espacio que ocupa el texto a imprimir
      * @return boolean verdadero si hay lugar 
      * Método que recibe como parámetro el alto del texto a 
@@ -584,17 +850,17 @@ class Historia{
     protected function hayLugar(int $tamanio) : bool {
 
         // obtenemos el tamaño de la página y le 
-        // descontamos el pié de página 
-        $pagina = (int) $this->Documento->GetPageHeight() - 15;
+        // descontamos el pié de página mas un pequeño margen
+        $pagina = (int) $this->Documento->GetPageHeight() - 20;
 
         // obtenemos la posición actual del cabezal
         $posicion = (int) $this->Documento->GetY();
 
         // verifica si hay espacio
-        if ($posicion + $tamanio < $pagina){
-            return true;
-        } else {
+        if ($posicion + $tamanio >= $pagina){
             return false;
+        } else {
+            return true;
         }
 
     }

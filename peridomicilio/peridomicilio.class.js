@@ -116,10 +116,10 @@ class Peridomicilio {
                     }
                 },
                 {field:'Distancia',title:'Distancia',width:100,
-                    editor:{type:'numberbox'}
+                    editor:{type:'numberspinner'}
                 },
-                {field:'Cantidad',title:'Cantidad',width:250,
-                    editor:{type:'numberbox'}
+                {field:'Cantidad',title:'Cantidad',width:100,
+                    editor:{type:'numberspinner'}
                 },
                 {field:'Alta',title:'Alta',width:100,align:'center'},
                 {field:'Usuario',title:'Usuario',width:100,align:'center'},
