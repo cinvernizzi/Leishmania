@@ -477,6 +477,9 @@ class SintMascotas {
         $('#usuariosintmasc').textbox('setValue', sessionStorage.getItem("Usuario"));
         $('#altasintmasc').textbox('setValue', fechaActual());
 
+        // ahora cargamos las muestras en la grilla
+        muestrasmasc.initGrillaMuestras(this.Mascota, this.Paciente);
+
         // verificamos si hay datos
         this.getDatosSintomas();
 
@@ -777,9 +780,6 @@ class SintMascotas {
             $('#altasintmasc').textbox('setValue', fechaActual());
 
         }
-
-        // ahora cargamos las muestras en la grilla
-        muestrasmasc.initGrillaMuestras(this.Mascota, this.Paciente);
 
     }
 

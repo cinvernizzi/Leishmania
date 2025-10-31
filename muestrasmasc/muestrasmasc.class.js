@@ -131,7 +131,7 @@ class MuestrasMasc {
                             }
                     }
                 },
-                {field:'Fecha',title:'Fecha',width:110,
+                {field:'Fecha',title:'Fecha',width:110,align:'center',
                     editor:{type:'datebox'}
                 },
                 {field:'Resultado',title:'Resultado',width:110,
@@ -141,7 +141,7 @@ class MuestrasMasc {
                                  textField: 'valor',
                                  panelHeight: 'auto'
                         }}},
-                {field:'Determinacion',title:'Determ.',width:110,
+                {field:'Determinacion',title:'Determ.',width:110,align:'center',
                     editor:{type:'datebox'}
                 },
                 {field:'Alta',title:'Alta',width:100,align:'center'},
@@ -348,7 +348,7 @@ class MuestrasMasc {
             success: function(data) {
 
                 // si salío bien
-                if (data.Resultado != 0){
+                if (data.Resultado > 0){
 
                     // presenta el mensaje
                     Mensaje("Info", "Atención", "Registro Grabado ...");

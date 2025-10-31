@@ -645,7 +645,7 @@ class Pacientes {
                                   int $registros) : array {
 
         // componemos la consulta
-        $consulta = "SELECT leishmania.v_pacientes.id AS id,
+        $consulta = "SELECT DISTINCT(leishmania.v_pacientes.id) AS id,
                             leishmania.v_pacientes.nombre AS nombre,
                             leishmania.v_pacientes.documento AS documento,
                             leishmania.v_pacientes.institucion AS institucion,

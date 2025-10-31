@@ -163,7 +163,7 @@ class Muestras{
                             }
                     }
                 },
-                {field:'Fecha',title:'Fecha',width:120,
+                {field:'Fecha',title:'Fecha',width:120, align:'center',
                     editor:{type:'datebox'}
                 },
                 {field:'Resultado',title:'Resultado',width:120,
@@ -173,7 +173,7 @@ class Muestras{
                                  textField: 'valor',
                                  panelHeight: 'auto'
                         }}},
-                {field:'Determinacion',title:'Determ.',width:120,
+                {field:'Determinacion',title:'Determ.',width:120,align:'center',
                     editor:{type:'datebox'}
                 },
                 {field:'Alta',title:'Alta',width:100,align:'center'},

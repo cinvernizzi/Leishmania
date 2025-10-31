@@ -25,6 +25,8 @@ require_once "../viajes/viajes.class.php";
 require_once "../evolucion/evolucion.class.php";
 require_once "../control/control.class.php";
 require_once "../peridomicilio/peridomicilio.class.php";
+require_once "../mascotas/mascotas.class.php";
+require_once "../muestrasmasc/muestrasmasc.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("../clases/config.ini");
@@ -105,6 +107,7 @@ class Historia{
 
         // si tiene mascotas (si tiene verifica la historia 
         // clínica de la mascota)
+        $this->verificaMascotas((int) $id);
 
         // objetos y animales del peridomicilio 
         $this->verificaPeridomicilio((int) $id);
@@ -836,6 +839,171 @@ class Historia{
         $this->Documento->Cell(30, $this->Interlineado, "Distancia", 0, 0);
         $this->Documento->Cell(20, $this->Interlineado, "Cantidad", 0, 0);
         $this->Documento->Cell(20, $this->Interlineado, "Operador", 0, 1);
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int $id - clave del paciente
+     * Método que recibe como parámetro la clave de un paciente
+     * y verifica que el mismo tenga mascotas en cuyo caso 
+     * las presenta
+     */
+    protected function verificaMascotas(int $id) : void {
+
+        // instanciamos la clase y obtenemos la nómina
+        $mascotas = new Mascotas();
+        $nomina = $mascotas->nominaMascotas((int) $id);
+
+        // fijamos la fuente
+        $this->Documento->setFont('DejaVu', 'B', $this->Fuente);
+
+        // presenta el título 
+        $this->Documento->MultiCell(0, $this->Interlineado, "Mascotas Declaradas");
+
+        // fijamos la fuente
+        $this->Documento->SetFont('DejaVu', '', $this->Fuente);
+
+        // si no hay registros 
+        if (count($nomina) == 0){
+
+            // presenta el mensaje
+            $this->Documento->MultiCell(0, $this->Interlineado, "El paciente no declara mascotas");
+
+        // si hay mascotas
+        } else {
+
+            // presenta los encabezados 
+            $this->encabezadosMascotas();
+
+            // recorremos el vector 
+            foreach($nomina as $registro){
+
+                // verificamos si hay lugar
+                if (!$this->hayLugar($this->Interlineado)){
+
+                    // inserta una página 
+                    $this->Documento->AddPage();
+
+                    // presenta los encabezados 
+                    $this->encabezadosMascotas();
+
+                }
+
+                // presenta el registro
+                $this->Documento->Cell(70, $this->Interlineado, $registro["nombre"], 0, 0);
+                $this->Documento->Cell(20, $this->Interlineado, $registro["edad"], 0, 0);
+                $this->Documento->Cell(30, $this->Interlineado, $registro["origen"], 0, 0);
+                $this->Documento->Cell(20, $this->Interlineado, $registro["usuario"], 0, 1);
+
+            }
+
+            // ahora llamamos los datos de las muestras de las mascotas
+            // pasándole el array 
+            $this->verMuestrasMascotas($nomina);
+
+        }
+     
+        // inserta un separador
+        $this->Documento->Ln($this->Interlineado);
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * Método que presenta los encabezados de las mascotas
+     */
+    protected function encabezadosMascotas() : void {
+
+        // definimos los encabezados 
+        $this->Documento->Cell(70, $this->Interlineado, "Nombre", 0, 0);
+        $this->Documento->Cell(20, $this->Interlineado, "Edad", 0, 0);
+        $this->Documento->Cell(30, $this->Interlineado, "Origen", 0, 0);
+        $this->Documento->Cell(20, $this->Interlineado, "Operador", 0, 1);
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param array vector con las mascotas del paciente
+     * Método que recibe como parámetro el vector con las 
+     * mascotas del paciente y verifica que las mismas 
+     * tengan muestras en cuyo caso las presenta
+     */
+    protected function verMuestrasMascotas(array $nomina){
+
+        // instanciamos la clase
+        $muestras = new MuestrasMasc();
+
+        // insertamos un separador 
+        $this->Documento->Ln($this->Interlineado);
+
+        // fijamos la fuente
+        $this->Documento->SetFont('DejaVu', 'B', $this->Fuente);
+
+        // presenta el título 
+        $this->Documento->MultiCell(0, $this->Interlineado, "Muestras obtenidas de las mascotas");
+
+        // fijamos la fuente
+        $this->Documento->SetFont('DejaVu', '', $this->Fuente);
+
+        // recorremos el vector 
+        foreach($nomina as $registro){
+
+            // verificamos si tiene muestras
+            $listado = $muestras->nominaMuestras((int) $registro["id"]);
+
+            // si no tiene muestras
+            if (count($listado) == 0){
+
+                // presenta el mensaje
+                $this->Documento->MultiCell(0, $this->Interlineado, $registro["nombre"] . " No tiene muestras");
+
+            // si hay resultados 
+            } else {
+
+                // inserta un separador
+                $this->Documento->Ln($this->Interlineado);
+                
+                // presenta el título 
+                $this->Documento->MultiCell(0, $this->Interlineado, "Muestras Obtenidas de " . $registro["nombre"]);
+
+                // presenta los encabezados (que son los mismos que para 
+                // las muestras de humanos)
+                $this->encabezadosMuestra(); 
+
+                // recorremos el vector 
+                foreach($listado as $ejemplar){
+
+                    // verificamos si hay espacio
+                    if (!$this->hayLugar($this->Interlineado)){
+
+                        // agrega una página y los encabezados
+                        $this->Documento->AddPage();
+                        $this->encabezadosMuestra();
+
+                    }
+
+                    // presenta el registro
+                    $this->Documento->Cell(10, $this->Interlineado, $ejemplar["id"], 0, 0);
+                    $this->Documento->Cell(35, $this->Interlineado, $ejemplar["tecnica"], 0, 0);
+                    $this->Documento->Cell(35, $this->Interlineado, $ejemplar["material"], 0, 0);
+                    $this->Documento->Cell(35, $this->Interlineado, $ejemplar["fecha"], 0, 0);
+
+                    // si hay un resultado
+                    if (!empty($ejemplar["resultado"])){
+                        $this->Documento->Cell(30, $this->Interlineado, $ejemplar["determinacion"], 0, 0);
+                        $this->Documento->Cell(30, $this->Interlineado, $ejemplar["resultado"], 0, 0);
+                        $this->Documento->Cell(35, $this->Interlineado, $ejemplar["usuario"], 0, 1);
+                    } else {
+                        $this->Documento->Cell(95, $this->Interlineado, "Determinación Pendiente", 0, 1);
+                    }
+
+                }
+
+            }
+
+        }
 
     }
 

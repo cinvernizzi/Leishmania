@@ -99,7 +99,7 @@ class Viajes {
                 {field:'Lugar',title:'Lugar',width:250,
                     editor:{type:'textbox'}
                 },
-                {field:'Fecha',title:'Fecha',width:120,
+                {field:'Fecha',title:'Fecha',width:120,align:'center',
                     editor:{type:'datebox'}
                 },
                 {field:'Alta',title:'Alta',width:100,align:'center'},

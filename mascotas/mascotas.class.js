@@ -100,7 +100,7 @@ class Mascotas {
                 {field:'Nombre',title:'Nombre',width:250,
                     editor:{type:'textbox'}
                 },
-                {field:'Edad',title:'Edad',width:80,
+                {field:'Edad',title:'Edad',width:80, align:'center',
                     editor:{type:'numberspinner'}
                 },
                 {field:'Origen',title:'Origen',width:250,

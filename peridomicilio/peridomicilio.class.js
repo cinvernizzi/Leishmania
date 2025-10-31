@@ -115,10 +115,10 @@ class Peridomicilio {
                             }
                     }
                 },
-                {field:'Distancia',title:'Distancia',width:100,
+                {field:'Distancia',title:'Distancia',width:100, align:'center',
                     editor:{type:'numberspinner'}
                 },
-                {field:'Cantidad',title:'Cantidad',width:100,
+                {field:'Cantidad',title:'Cantidad',width:100, align:'center',
                     editor:{type:'numberspinner'}
                 },
                 {field:'Alta',title:'Alta',width:100,align:'center'},
