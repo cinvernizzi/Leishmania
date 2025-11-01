@@ -27,6 +27,7 @@ require_once "../control/control.class.php";
 require_once "../peridomicilio/peridomicilio.class.php";
 require_once "../mascotas/mascotas.class.php";
 require_once "../muestrasmasc/muestrasmasc.class.php";
+require_once "../sintmascotas/sintmascotas.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("../clases/config.ini");
@@ -1001,9 +1002,128 @@ class Historia{
 
                 }
 
+                // luego de presentar los datos de las muestras de las 
+                // mascotas verificamos si tiene datos clínicos
+                $this->verificaClinicaMascota($registro);
+
             }
 
         }
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param array vector con el registro de la mascota
+     * Método que recibe como parámetro el registro de la tabla 
+     * de mascotas y verifica si tiene antecedentes clínicos 
+     * en cuyo caso los presenta
+     */
+    protected function verificaClinicaMascota(array $registro) : void {
+
+        // instanciamos la clase y obtenemos el registro
+        $mascota = new SintMascotas();
+        $mascota->getDatosSintomas((int) $registro["id"]);
+
+        // fijamos la fuente
+        $this->Documento->setFont('DejaVu', 'B', $this->Fuente);
+
+        // presenta el título 
+        $this->Documento->MultiCell(0, $this->Interlineado, "Antecedentes Clínicos de " . $registro["nombre"]);
+
+        // setea la fuente
+        $this->Documento->setFont('DejaVu', 'B', $this->Fuente);
+
+        // si no hay registros 
+        if ($mascota->getId() == 0){
+
+            // presenta el texto 
+            $this->Documento->MultiCell(0, $this->Interlineado, "No hay antecedentes de " . $registro["nombre"]);
+
+        // si hay un registro activo
+        } else {
+
+            // presenta los datos en un esquema de cuatro columnas
+
+            // la condición general 
+            $this->Documento->MultiCell(0, $this->Interlineado, "Condición General");
+            $this->Documento->Cell(40, $this->Interlineado, "Anorexia: " . $mascota->getAnorexia(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Adinamia: " . $mascota->getAdinamia(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Emaciación: " . $mascota->getEmaciacion(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Polidipsia: " . $mascota->getPolidipsia(), 0, 1);
+
+            // inserta un separador
+            $this->Documento->Ln($this->Interlineado);
+
+            // los antecedentes neuromusculares
+            $this->Documento->MultiCell(0, $this->Interlineado, "Antecedentes Neuromusculares");
+            $this->Documento->Cell(40, $this->Interlineado, "Atrofia Musc: " . $mascota->getAtrofia(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Paresia: " . $mascota->getParesia(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Convulsiones: " . $mascota->getConvulsiones(), 0, 1);
+
+            // inserta un separador
+            $this->Documento->Ln($this->Interlineado);
+
+            // los antecedentes oftalmológicos
+            $this->Documento->MultiCell(0, $this->Interlineado, "Antecedentes Oftalmológicos");
+            $this->Documento->Cell(40, $this->Interlineado, "Blefaritis: " . $mascota->getBlefaritis(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Conjuntivitis: " . $mascota->getConjuntivitis(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Queratitis: " . $mascota->getQueratitis(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Uveitis: " . $mascota->getUveitis(), 0, 1);
+
+            // inserta un separador
+            $this->Documento->Ln($this->Interlineado);
+
+            // las mucosas
+            $this->Documento->MultiCell(0, $this->Interlineado, "Mucosas");
+            $this->Documento->Cell(40, $this->Interlineado, "Palidez: " . $mascota->getPalidez(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Epistaxis: " . $mascota->getEpistaxis(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Ulceras: " . $mascota->getUlceras(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Nódulos: " . $mascota->getNodulos(), 0, 1);
+            $this->Documento->Cell(40, $this->Interlineado, "Vómitos: " . $mascota->getVomitos(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Diarrea: " . $mascota->getDiarrea(), 0, 1);
+
+            // inserta un separador
+            $this->Documento->Ln($this->Interlineado);
+
+            // antecedentes cutáneos
+            $this->Documento->MultiCell(0, $this->Interlineado, "Antecedentes Cutáneos");
+            $this->Documento->Cell(40, $this->Interlineado, "Eritema: " . $mascota->getEritema(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Prurito: " . $mascota->getPrurito(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Ulcera: " . $mascota->getUlceraCutanea(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Nódulos: " . $mascota->getNodulosCutaneos(), 0, 1);
+            $this->Documento->Cell(40, $this->Interlineado, "Alopecía Loc.: " . $mascota->getAlopeciaLocalizada(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Alopecía Gen.: " . $mascota->getAlopeciaGeneralizada(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Hiperqueratosis Nasal: " . $mascota->getHiperqueratosisN(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Hiperqueratosis Plantar: " . $mascota->getHiperqueratosisP(), 0, 1);
+
+            // inserta un separador
+            $this->Documento->Ln($this->Interlineado);
+
+            // otros
+            $this->Documento->MultiCell(0, $this->Interlineado, "Otros Antecedentes");
+            $this->Documento->Cell(40, $this->Interlineado, "Caso Humano: " . $mascota->getCasoHumano(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Flebótomos: " . $mascota->getFlebotomos(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Casa Trampeada: " . $mascota->getCasaTrampeada(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Materia Orgánica: " . $mascota->getMateriaOrganica(), 0, 1);
+            $this->Documento->Cell(40, $this->Interlineado, "Fumigación: " . $mascota->getFumigacion(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Repelentes: " . $mascota->getRepelentes(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Frecuencia: " . $mascota->getPeriodicidad(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Donde Duerme: " . $mascota->getDuerme(), 0, 1);
+            $this->Documento->Cell(40, $this->Interlineado, "Queda Suelto: " . $mascota->getQuedaLibre(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Adenomegalia: " . $mascota->getAdenomegalia(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Artritis: " . $mascota->getArtritis(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Onicogrifosis: " . $mascota->getOnicogrifosis(), 0, 1);
+            $this->Documento->Cell(40, $this->Interlineado, "Seborrea Grasa: " . $mascota->getSeborreaGrasa(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Seborrea Escamosa: " . $mascota->getSeborreaEscamosa(), 0, 1);
+
+            // inserta un separador
+            $this->Documento->Ln($this->Interlineado);
+
+        }
+
+        // inserta un separador
+        $this->Documento->Ln($this->Interlineado);
 
     }
 

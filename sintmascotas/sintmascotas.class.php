@@ -776,10 +776,12 @@ class SintMascotas {
 
             // ejecutamos y asignamos en la clase
             $resultado = $this->Link->query($consulta);
-            $fila = $resultado->fetch(PDO::FETCH_ASSOC);
 
             // si hay registros
-            if ($fila){
+            if ($resultado->rowCount() > 0){
+
+                // obtenemos el registro
+                $fila = $resultado->fetch(PDO::FETCH_ASSOC);
 
                 // asignamos en la clase
                 $this->Id = $fila["id"];
