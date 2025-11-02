@@ -2,7 +2,7 @@
 
 /**
  *
- * informes/protocolo.class.php
+ * informes/protocolomasc.class.php
  *
  * @package     Leishmania
  * @subpackage  Informes
@@ -18,7 +18,7 @@ declare(strict_types=1);
 // incluimos los archivos
 require_once "paginas.class.php";
 require_once "../pacientes/pacientes.class.php";
-require_once "../muestras/muestras.class.php";
+require_once "../muestrasmasc/muestrasmasc.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("../clases/config.ini");
@@ -40,7 +40,7 @@ define('TEMP', $config["Temp"]);
  * Clase que genera el documento pdf con el resultado de la determinación
  * @author Lic. Claudio Invernizzi <cinvernizzi@dsgestion.site>
  */
-class Protocolo{
+class ProtocoloMasc{
 
     // definimos las variables 
     protected $Documento;             // el documento pdf
@@ -49,13 +49,17 @@ class Protocolo{
 
     /**
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * @param $id - clave del paciente
+     * @param $idpaciente - clave del paciente
+     * @param $idmascota - clave de la mascota
      * @param $fecha - la fecha de ingreso de la muestra 
      * Constructor de la clase, recibe como parámetro la clave 
-     * del paciente, instancia los objetos y genera el 
-     * documento pdf el protocolo
+     * del paciente, la clave de la mascota y la fecha de alta
+     * de la muestra, instancia los objetos y genera el 
+     * documento pdf con el protocolo correspondiente
      */
-    public function __construct(int $id, string $fecha){
+    public function __construct(int $idpaciente, 
+                                int $idmascota, 
+                                string $fecha){
     
         // inicializamos el interlineado y el tamaño de la fuente
         $this->Interlineado = 7;
@@ -78,13 +82,13 @@ class Protocolo{
         $this->Documento->AliasNbPages();
 
         // presentamos los datos de filiación 
-        $this->getDatosFiliacion((int) $id);
+        $this->getDatosFiliacion((int) $idpaciente);
 
         // verificamos si tiene muestras 
-        $this->verificaMuestras((int) $id, $fecha);
+        $this->verificaMuestras((int) $idmascota, $fecha);
 
         // guardamos el documento
-        $this->Documento->Output("F", TEMP . "/protocolo.pdf");
+        $this->Documento->Output("F", TEMP . "/protocolomasc.pdf");
 
     }
 
@@ -260,14 +264,14 @@ class Protocolo{
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
      * @param $id - clave del paciente
      * @param $fecha - la fecha de ingreso de la muestra
-     * Método que recibe la clave del paciente y la fecha de 
+     * Método que recibe la clave de la mascota y la fecha de 
      * entrada de la muestra en formato dd/mm/yyyy presenta las 
      * muestras tomadas al mismo en esa fecha
      */
     protected function verificaMuestras(int $id, $fecha) : void {
 
         // instanciamos la clase
-        $muestras = new Muestras();
+        $muestras = new MuestrasMasc();
         $nomina = $muestras->muestrasFecha((int) $id, $fecha);
 
         // insertamos un separador
@@ -277,7 +281,7 @@ class Protocolo{
         $this->Documento->SetFont('DejaVu', 'B', $this->Fuente);
 
         // definimos el título 
-        $this->Documento->MultiCell(0, $this->Interlineado, "Muestras Recibidas del Paciente");
+        $this->Documento->MultiCell(0, $this->Interlineado, "Muestras Recibidas de " . $nomina[0]["mascota"]);
 
         // fijamos la fuente
         $this->Documento->SetFont('DejaVu', '', $this->Fuente);

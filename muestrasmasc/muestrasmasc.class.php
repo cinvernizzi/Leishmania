@@ -366,6 +366,51 @@ class MuestrasMasc {
     }
 
     /**
+     * Método que recibe como parámetro la clave de una mascota
+     * y la fecha de recepción de la muestra y retorna el vector 
+     * con todas las muestras tomadas a esa mascota
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int $idmascota - clave de la mascota
+     * @param string $fecha - fecha de recepción
+     * @return array vector con las muestras
+     */
+    public function muestrasFecha(int $idmascota, string $fecha) : array {
+
+        // componemos la consulta
+        $consulta = "SELECT leishmania.v_muestrasmasc.id AS id,
+                            leishmania.v_muestrasmasc.mascota AS mascota, 
+                            leishmania.v_muestrasmasc.idmaterial AS idmaterial,
+                            leishmania.v_muestrasmasc.material AS material,
+                            leishmania.v_muestrasmasc.idtecnica AS idtecnica,
+                            leishmania.v_muestrasmasc.tecnica AS tecnica,
+                            leishmania.v_muestrasmasc.fecha AS fecha,
+                            leishmania.v_muestrasmasc.resultado AS resultado,
+                            leishmania.v_muestrasmasc.determinacion AS determinacion,
+                            leishmania.v_muestrasmasc.usuario AS usuario,
+                            leishmania.v_muestrasmasc.alta AS alta
+                     FROM leishmania.v_muestrasmasc
+                     WHERE leishmania.v_muestrasmasc.idmascota = '$idmascota' AND 
+                           STR_TO_DATE(leishmania.v_muestrasmasc.fecha, '%d/%m/%Y') = STR_TO_DATE('$fecha', '%d/%m/%Y'); ";
+
+        // capturamos el error
+        try {
+
+            // obtenemos el vector y retornamos
+            $resultado = $this->Link->query($consulta);
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        // si ocurrión un error
+        } catch (PDOEXception $e){
+
+            // presenta el mensaje y retorna
+            echo $e->getMessage();
+            return array("Resultado" => false);
+
+        }
+
+    }
+
+    /**
      * Método que recibe como parámetro la clave de una muestra
      * y ejecuta la consulta de eliminación, retorna el resultado
      * de la operación

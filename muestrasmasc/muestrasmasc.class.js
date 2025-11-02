@@ -146,8 +146,9 @@ class MuestrasMasc {
                 },
                 {field:'Alta',title:'Alta',width:100,align:'center'},
                 {field:'Usuario',title:'Usuario',width:100,align:'center'},
-                {field:'Editar',width:50,align:'center'},
-                {field:'Borrar',width:50,align:'center'}
+                {field:'Editar',title:'Ed.',width:50,align:'center'},
+                {field:'Borrar',title:'El.',width:50,align:'center'},
+                {field:'Imprimir',title:'Imp.',width:50,align:'center'}
             ]],
             onEndEdit:function(index,row){
                 var ed = $(this).datagrid('getEditor', {
@@ -213,6 +214,12 @@ class MuestrasMasc {
 
             // pedimos confirmación
             this.confirmaEliminar(index);
+
+        // si se pulsó sobre imprimir 
+        } else if (field == "Imprimir"){
+
+            // imprimimos el protocolo
+            this.protocoloMascota(index);
 
         // si pulsó en cualquier otro campo
         } else {
@@ -445,6 +452,51 @@ class MuestrasMasc {
 
             }});
 
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param {int} index - la clave de la grilla 
+     * Método que recibe como parámetro la clave de la grilla 
+     * obtiene los valores del registro y genera la impresión 
+     * del protocolo de todas las muestras con la misma 
+     * fecha de entrada
+     */
+    protocoloMascota(index){
+
+        // reiniciamos la sesión 
+        sesion.reiniciar();
+
+        // obtenemos la fila
+        let row = $('#grilla-muestrasmasc').datagrid('getRows')[index];
+
+        // vamos a tomar la clave del paciente y la clave de la 
+        // mascota de la clase de síntomas de las mascotas
+
+        // definimos el contenido a agregar
+        let formulario = "<div id='win-pacientes'>" +
+                         "</div>";
+
+        // agregamos la definición de la grilla al dom
+        $("#form-filiacion").append(formulario);
+
+        // abrimos el layer presentando el documento
+        $('#win-pacientes').window({
+            width:850,
+            height:500,
+            modal:true,
+            title: "Impresión de Protocolos",
+            minimizable: false,
+            closable: true,
+            onClose:function(){$('#win-pacientes').window('destroy');},
+            href: 'informes/protocolomasc.php?paciente='+sintmascotas.Paciente+'&mascota='+sintmascotas.Mascota+'&fecha='+row.Fecha,
+            loadingMessage: 'Cargando',
+            border: 'thin'
+        });
+
+        // centramos el formulario
+        $('#win-pacientes').window('center');
+        
     }
 
     /**

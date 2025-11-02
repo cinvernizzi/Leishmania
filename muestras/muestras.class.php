@@ -366,7 +366,7 @@ class Muestras {
                             leishmania.v_muestras.alta AS alta
                      FROM leishmania.v_muestras
                      WHERE leishmania.v_muestras.idpaciente = '$idpaciente' AND 
-                           STR_TO_DATE(leishmania.v_muestras.fecha, '%d/%m/%Y') = STR_TO_DATE($fecha, '%d/%m/%Y')
+                           STR_TO_DATE(leishmania.v_muestras.fecha, '%d/%m/%Y') = STR_TO_DATE('$fecha', '%d/%m/%Y')
                      ORDER BY STR_TO_DATE(leishmania.v_muestras.alta, '%d/%m/%Y') DESC; ";
 
         // capturamos el error

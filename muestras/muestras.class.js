@@ -139,7 +139,7 @@ class Muestras{
             url:'muestras/nomina.php',
             columns:[[
                 {field:'Id',title:'Id',width:50,align:'center'},
-                {field:'Material',title:'Material',width:250,
+                {field:'Material',title:'Material',width:200,
                     formatter:function(value,row){
                         return row.nombreMaterial || value;
                     },
@@ -151,7 +151,7 @@ class Muestras{
                             }
                     }
                 },
-                {field:'Tecnica',title:'Tecnica',width:250,
+                {field:'Tecnica',title:'Tecnica',width:200,
                     formatter:function(value,row){
                         return row.nombreTecnica || value;
                     },
@@ -178,9 +178,9 @@ class Muestras{
                 },
                 {field:'Alta',title:'Alta',width:100,align:'center'},
                 {field:'Usuario',title:'Usuario',width:100,align:'center'},
-                {field:'Editar',width:50,align:'center'},
-                {field:'Borrar',width:50,align:'center'},
-                {field:'Imprimir',width:50,align:'center'},
+                {field:'Editar',title:'Ed.',width:50,align:'center'},
+                {field:'Borrar',title:'El.',width:50,align:'center'},
+                {field:'Imprimir',title:'Imp',width:50,align:'center'},
             ]],
             onEndEdit:function(index,row){
                 var ed = $(this).datagrid('getEditor', {
@@ -577,7 +577,7 @@ class Muestras{
                          "</div>";
 
         // agregamos la definición de la grilla al dom
-        $("#form-filiacion").append(formulario);
+        $("#form-muestras").append(formulario);
 
         // abrimos el layer presentando el documento
         $('#win-pacientes').window({
@@ -594,7 +594,7 @@ class Muestras{
         });
 
         // centramos el formulario
-        $(this.Layer).window('center');
+        $('#win-pacientes').window('center');
 
     }
 

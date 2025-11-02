@@ -72,6 +72,7 @@ CREATE ALGORITHM = UNDEFINED
        VIEW v_muestrasmasc AS
        SELECT leishmania.muestrasmasc.id AS id,
               leishmania.muestrasmasc.mascota AS idmascota,
+              leishmania.mascotas.nombre AS mascota, 
               leishmania.muestrasmasc.paciente AS idpaciente,
               leishmania.muestrasmasc.material AS idmaterial,
               leishmania.dicmaterial.material AS material,
@@ -85,5 +86,6 @@ CREATE ALGORITHM = UNDEFINED
               DATE_FORMAT(leishmania.muestrasmasc.alta, '%d/%m/%Y') AS alta
        FROM leishmania.muestrasmasc INNER JOIN leishmania.dicmaterial ON leishmania.muestrasmasc.material = leishmania.dicmaterial.id
                                     INNER JOIN leishmania.dictecnicas ON leishmania.muestrasmasc.tecnica = leishmania.dictecnicas.id
+                                    INNER JOIN leishmania.mascotas ON leishmania.muestrasmasc.mascota = leishmania.mascotas.id
                                     INNER JOIN cce.responsables ON leishmania.muestrasmasc.usuario = cce.responsables.id;
 

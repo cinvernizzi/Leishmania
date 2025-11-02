@@ -1094,7 +1094,7 @@ class Pacientes {
         });
 
         // centramos el formulario
-        $(this.Layer).window('center');
+        $('#win-pacientes').window('center');
 
     }
 
