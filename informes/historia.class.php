@@ -322,7 +322,7 @@ class Historia{
         foreach($nomina as $registro){
 
             // verificamos si hay espacio
-            if (!$this->hayLugar($this->Interlineado)){
+            if (!$this->Documento->hayLugar($this->Interlineado)){
 
                 // agregamos una página y definimos los encabezados 
                 $this->Documento->AddPage();
@@ -496,7 +496,7 @@ class Historia{
         foreach($nomina as $registro){
 
             // verificamos si hay espacio
-            if (!$this->hayLugar($this->Interlineado)){
+            if (!$this->Documento->hayLugar($this->Interlineado)){
 
                 // agrega la página e imprime los encabezados
                 $this->Documento->AddPage();
@@ -565,7 +565,7 @@ class Historia{
         foreach($nomina as $registro){
 
             // verificamos si hay espacio 
-            if (!$this->hayLugar($this->Interlineado)){
+            if (!$this->Documento->hayLugar($this->Interlineado)){
 
                 // agregamos una página y presenta los encabezados
                 $this->Documento->AddPage();
@@ -691,7 +691,7 @@ class Historia{
         }
 
         // verificamos si hay espacio
-        if (!$this->hayLugar($this->Interlineado * 2)){
+        if (!$this->Documento->hayLugar($this->Interlineado * 2)){
             $this->Documento->AddPage();
         }
 
@@ -809,7 +809,7 @@ class Historia{
             foreach($nomina as $registro){
 
                 // verificamos si hay lugar
-                if (!$this->hayLugar($this->Interlineado)){
+                if (!$this->Documento->hayLugar($this->Interlineado)){
 
                     // inserta un salto de página 
                     $this->Documento->AddPage();
@@ -884,7 +884,7 @@ class Historia{
             foreach($nomina as $registro){
 
                 // verificamos si hay lugar
-                if (!$this->hayLugar($this->Interlineado)){
+                if (!$this->Documento->hayLugar($this->Interlineado)){
 
                     // inserta una página 
                     $this->Documento->AddPage();
@@ -980,7 +980,7 @@ class Historia{
                 foreach($listado as $ejemplar){
 
                     // verificamos si hay espacio
-                    if (!$this->hayLugar($this->Interlineado)){
+                    if (!$this->Documento->hayLugar($this->Interlineado)){
 
                         // agrega una página y los encabezados
                         $this->Documento->AddPage();
@@ -1054,7 +1054,7 @@ class Historia{
             // la posición del cabezal de impresión)
 
             // verificamos el espacio
-            if (!$this->hayLugar($this->Interlineado)){
+            if (!$this->Documento->hayLugar($this->Interlineado)){
                 $this->Documento->AddPage();
             }
 
@@ -1069,7 +1069,7 @@ class Historia{
             $this->Documento->Ln($this->Interlineado);
 
             // verifica el espacio
-            if (!$this->hayLugar($this->Interlineado * 2)){
+            if (!$this->Documento->hayLugar($this->Interlineado * 2)){
                 $this->Documento->AddPage();
             }
 
@@ -1083,7 +1083,7 @@ class Historia{
             $this->Documento->Ln($this->Interlineado);
 
             // verifica el espacio
-            if (!$this->hayLugar($this->Interlineado * 2)){
+            if (!$this->Documento->hayLugar($this->Interlineado * 2)){
                 $this->Documento->AddPage();
             }
 
@@ -1098,7 +1098,7 @@ class Historia{
             $this->Documento->Ln($this->Interlineado);
 
             // verifica el espacio
-            if (!$this->hayLugar($this->Interlineado * 3)){
+            if (!$this->Documento->hayLugar($this->Interlineado * 3)){
                 $this->Documento->AddPage();
             }
 
@@ -1115,7 +1115,7 @@ class Historia{
             $this->Documento->Ln($this->Interlineado);
 
             // verifica el espacio
-            if (!$this->hayLugar($this->Interlineado * 3)){
+            if (!$this->Documento->hayLugar($this->Interlineado * 3)){
                 $this->Documento->AddPage();
             }
 
@@ -1134,7 +1134,7 @@ class Historia{
             $this->Documento->Ln($this->Interlineado);
 
             // verifica el espacio
-            if (!$this->hayLugar($this->Interlineado * 5)){
+            if (!$this->Documento->hayLugar($this->Interlineado * 5)){
                 $this->Documento->AddPage();
             }
 
@@ -1158,32 +1158,6 @@ class Historia{
             // inserta un separador
             $this->Documento->Ln($this->Interlineado);
 
-        }
-
-    }
-
-    /**
-     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * @param int espacio que ocupa el texto a imprimir
-     * @return boolean verdadero si hay lugar 
-     * Método que recibe como parámetro el alto del texto a 
-     * imprimir y retorna verdadero si hay espacio en la 
-     * página para el mismo
-     */
-    protected function hayLugar(int $tamanio) : bool {
-
-        // obtenemos el tamaño de la página y le 
-        // descontamos el pié de página mas un pequeño margen
-        $pagina = (int) $this->Documento->GetPageHeight() - 20;
-
-        // obtenemos la posición actual del cabezal
-        $posicion = (int) $this->Documento->GetY();
-
-        // verifica si hay espacio
-        if ($posicion + $tamanio >= $pagina){
-            return false;
-        } else {
-            return true;
         }
 
     }

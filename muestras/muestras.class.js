@@ -179,7 +179,8 @@ class Muestras{
                 {field:'Alta',title:'Alta',width:100,align:'center'},
                 {field:'Usuario',title:'Usuario',width:100,align:'center'},
                 {field:'Editar',width:50,align:'center'},
-                {field:'Borrar',width:50,align:'center'}
+                {field:'Borrar',width:50,align:'center'},
+                {field:'Imprimir',width:50,align:'center'},
             ]],
             onEndEdit:function(index,row){
                 var ed = $(this).datagrid('getEditor', {
@@ -308,6 +309,12 @@ class Muestras{
 
             // pedimos confirmación
             this.confirmaEliminar(index);
+
+        // si se pulsó sobre imprimir
+        } else if (field == "Imprimir"){
+
+            // generamos el protocolo
+            this.imprimeProtocolo(index);
 
         // si pulsó en cualquier otro campo
         } else {
@@ -542,6 +549,52 @@ class Muestras{
                 }
 
             }});
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param {int} index - la clave de la grilla 
+     * Método llamado al pulsar el botón imprimir que recibe 
+     * como parámetro la clave de la grilla, obtenemos los 
+     * datos del paciente y muestra y genera el protocolo
+     */
+    imprimeProtocolo(index){
+
+        // reiniciamos la sesión 
+        sesion.reiniciar();
+
+        // generamos el protocolo pasándole la fecha y la clave 
+        // del paciente (porque el sistema interpretará que 
+        // dos muestras recibidas en la misma fecha corresponden 
+        // a la misma determinación)
+
+        // obtenemos la fila
+        let row = $('#grilla-muestras').datagrid('getRows')[index];
+
+        // definimos el contenido a agregar
+        let formulario = "<div id='win-pacientes'>" +
+                         "</div>";
+
+        // agregamos la definición de la grilla al dom
+        $("#form-filiacion").append(formulario);
+
+        // abrimos el layer presentando el documento
+        $('#win-pacientes').window({
+            width:850,
+            height:500,
+            modal:true,
+            title: "Impresión de Protocolos",
+            minimizable: false,
+            closable: true,
+            onClose:function(){$('#win-pacientes').window('destroy');},
+            href: 'informes/protocolo.php?id='+row.Paciente+'&fecha='+row.Fecha,
+            loadingMessage: 'Cargando',
+            border: 'thin'
+        });
+
+        // centramos el formulario
+        $(this.Layer).window('center');
 
     }
 

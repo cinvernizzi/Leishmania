@@ -77,4 +77,30 @@ class Paginas extends tFPDF {
 
     }
 
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int espacio que ocupa el texto a imprimir
+     * @return boolean verdadero si hay lugar 
+     * Método que recibe como parámetro el alto del texto a 
+     * imprimir y retorna verdadero si hay espacio en la 
+     * página para el mismo
+     */
+    public function hayLugar(int $tamanio) : bool {
+
+        // obtenemos el tamaño de la página y le 
+        // descontamos el pié de página mas un pequeño margen
+        $pagina = (int) $this->GetPageHeight() - 20;
+
+        // obtenemos la posición actual del cabezal
+        $posicion = (int) $this->GetY();
+
+        // verifica si hay espacio
+        if ($posicion + $tamanio >= $pagina){
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
 }

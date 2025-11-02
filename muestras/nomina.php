@@ -44,7 +44,8 @@ if (isset($_POST["idpaciente"])){
                             "Usuario" =>       $registro["usuario"],
                             "Alta" =>          $registro["alta"],
                             "Editar" =>        "<img src='imagenes/save.png'>",
-                            "Borrar" =>        "<img src='imagenes/borrar.png'>");
+                            "Borrar" =>        "<img src='imagenes/borrar.png'>",
+                            "Imprimir" =>      "<img src='imagenes/print.png'>");
 
         }
 

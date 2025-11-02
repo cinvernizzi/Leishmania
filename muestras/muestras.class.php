@@ -339,6 +339,53 @@ class Muestras {
         }
 
     }
+
+    /**
+     * Método que recibe como parámetro la clave de un
+     * paciente y la fecha de entrada de la muestra en formato
+     * dd/mm/yyyy retorna el vector con todas las muestras
+     * de ese paciente en esa fecha
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int $idpaciente clave del paciente
+     * @param string $fecha fecha de entrada de la muestra
+     * @return array vector con los registros
+     */
+    public function muestrasFecha(int $idpaciente, string $fecha) : array {
+        
+        // componemos la consulta
+        $consulta = "SELECT leishmania.v_muestras.id AS id,
+                            leishmania.v_muestras.idpaciente AS paciente,
+                            leishmania.v_muestras.idmaterial AS idmaterial,
+                            leishmania.v_muestras.material AS material,
+                            leishmania.v_muestras.idtecnica AS idtecnica,
+                            leishmania.v_muestras.tecnica AS tecnica,
+                            leishmania.v_muestras.fecha AS fecha,
+                            leishmania.v_muestras.resultado AS resultado,
+                            leishmania.v_muestras.determinacion AS determinacion,
+                            leishmania.v_muestras.usuario AS usuario,
+                            leishmania.v_muestras.alta AS alta
+                     FROM leishmania.v_muestras
+                     WHERE leishmania.v_muestras.idpaciente = '$idpaciente' AND 
+                           STR_TO_DATE(leishmania.v_muestras.fecha, '%d/%m/%Y') = STR_TO_DATE($fecha, '%d/%m/%Y')
+                     ORDER BY STR_TO_DATE(leishmania.v_muestras.alta, '%d/%m/%Y') DESC; ";
+
+        // capturamos el error
+        try {
+
+            // obtenemos el vector
+            $resultado = $this->Link->query($consulta);
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        // si hubo un error
+        } catch (PDOException $e){
+
+            // presenta el mensaje y retorna
+            echo $e->getMessage();
+            return array("Resultado" => false);
+
+        }
+
+    }
     
     /**
      * Método que recibe como parámetro la clave de un registro
