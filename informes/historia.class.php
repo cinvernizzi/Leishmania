@@ -215,7 +215,7 @@ class Historia{
         if (!empty($pacientes->getTelefono())){
 
             // lo presenta
-            $this->Documento->Cell(20, $this->Interlineado, "Teléfono: " . $pacientes->getTelefono(), 0, 0);
+            $this->Documento->Cell(40, $this->Interlineado, "Teléfono: " . $pacientes->getTelefono(), 0, 0);
 
         }
 

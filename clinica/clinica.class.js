@@ -88,6 +88,7 @@ class Clinica {
         this.Nodulo = "";              // si presenta nódulos
         this.Ulcera = "";              // si presenta úlcera
         this.Cicatriz = "";            // si hay cicatriz
+        this.Antecedentes = "";        // antecedentes epidemiológicos
         this.LesionMucosa = "";        // si hay lesión mucosa
         this.Alta = "";                // fecha de alta del registro
         this.Usuario = "";             // nombre del usuario
@@ -308,6 +309,12 @@ class Clinica {
             onText: 'Si',
             offText: 'No'
         });
+        $('#epidemioclinica').textbox({
+            width: 370,
+            height: 70, 
+            prompt: 'Antecedentes Epidemiológicos',
+            multiline: true
+        });
         $('#lesionmucosa').switchbutton({
             label: 'Lesión Mucosa:',
             labelWidth: 110,
@@ -463,6 +470,7 @@ class Clinica {
         } else {
             $('#cicatrizclinica').switchbutton('uncheck');
         }
+        $('#epidemioclinica').textbox('setValue', datos.Antecedentes);
         if (datos.LesionMucosa == "Si"){
             $('#lesionmucosa').switchbutton('check');
         } else {
@@ -665,6 +673,7 @@ class Clinica {
         } else {
             this.Cicatriz = "No";
         }
+        this.Antecedentes = $('#epidemioclinica').textbox('getValue');
         if ($('#lesionmucosa').switchbutton('options').checked){
             this.LesionMucosa = "Si";
         } else {
@@ -719,6 +728,7 @@ class Clinica {
         datosClinica.append("LesionMucosa", this.LesionMucosa);
         datosClinica.append("Ulcera", this.Ulcera);
         datosClinica.append("Cicatriz", this.Cicatriz);
+        datosClinica.append("Antecedentes", this.Antecedentes);
         datosClinica.append("IdUsuario", sessionStorage.getItem("IdUsuario"));
 
         // grabamos el registro
@@ -814,6 +824,7 @@ class Clinica {
         $('#nodulosclinica').switchbutton('uncheck');
         $('#ulcerasclinica').switchbutton('uncheck');
         $('#cicatrizclinica').switchbutton('uncheck');
+        $('#epidemioclinica').textbox('setValue', "");
         $('#lesionmucosa').switchbutton('uncheck');
         $('#usuarioclinica').textbox('setValue', sessionStorage.getItem("Usuario"));
         $('#altaclinica').textbox('setValue', fechaActual());

@@ -38,6 +38,7 @@
     nodulo varchar(5) si presenta
     ulcera varchar(5) si presenta
     cicatriz varchar(5) si presenta
+    antecedentes text antecedentes epidemiológicos
     lesionmucosa varchar(5) si presenta
     alta date fecha de alta del registro
     modificado fecha de modificación del registro
@@ -88,6 +89,7 @@ CREATE TABLE clinica (
     nodulo varchar(5) DEFAULT NULL,
     ulcera varchar(5) DEFAULT NULL,
     cicatriz varchar(5) DEFAULT NULL,
+    antecedentes text DEFAULT NULL, 
     lesionmucosa varchar(5) DEFAULT NULL,
     alta date DEFAULT CURDATE(),
     modificado timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -138,6 +140,7 @@ CREATE ALGORITHM = UNDEFINED
               leishmania.clinica.nodulo AS nodulo,
               leishmania.clinica.ulcera AS ulcera,
               leishmania.clinica.cicatriz AS cicatriz,
+              leishmania.clinica.antecedentes AS antecedentes, 
               leishmania.clinica.lesionmucosa AS lesionmucosa,
               DATE_FORMAT(leishmania.clinica.alta, '%d/%m/%Y') As alta,
               DATE_FORMAT(leishmania.clinica.modificado, '%d/%m/%Y') AS modificado,

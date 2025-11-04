@@ -66,6 +66,7 @@ class Clinica {
     protected $Nodulo;          // si presenta nódulos
     protected $Ulcera;          // si presenta úlceras
     protected $Cicatriz;        // si presenta cicatriz
+    protected $Antecedentes;    // antecedentes epidemiológicos
     protected $LesionMucosa;    // si presenta lesión mucosa
     protected $Alta;            // fecha de alta del registro
     protected $Modificado;      // fecha de modificación del registro
@@ -111,6 +112,7 @@ class Clinica {
         $this->Nodulo = "No";
         $this->Ulcera = "No";
         $this->Cicatriz = "No";
+        $this->Antecedentes = "";
         $this->LesionMucosa = "No";
         $this->Alta = date('d/m/Y');
         $this->Modificado = date('d/m/Y');
@@ -215,6 +217,9 @@ class Clinica {
     public function setCicatriz(string $cicatriz) : void {
         $this->Cicatriz = $cicatriz;
     }
+    public function setAntecedentes(?string $antecedentes) : void {
+        $this->Antecedentes = $antecedentes;
+    }
     public function setLesionMucosa(string $lesion) : void {
         $this->LesionMucosa = $lesion;
     }
@@ -310,6 +315,9 @@ class Clinica {
     public function getCicatriz() : string {
         return $this->Cicatriz;
     }
+    public function getAntecedentes() : ?string {
+        return $this->Antecedentes;
+    }
     public function getLesionMucosa() : string {
         return $this->LesionMucosa;
     }
@@ -362,6 +370,7 @@ class Clinica {
                             leishmania.v_clinica.nodulo AS nodulo,
                             leishmania.v_clinica.ulcera AS ulcera,
                             leishmania.v_clinica.cicatriz AS cicatriz,
+                            leishmania.v_clinica.antecedentes AS antecedentes,
                             leishmania.v_clinica.lesionmucosa AS lesionmucosa,
                             leishmania.v_clinica.alta AS alta,
                             leishmania.v_clinica.modificado AS modificado,
@@ -410,6 +419,7 @@ class Clinica {
                 $this->Nodulo = $fila["nodulo"];
                 $this->Ulcera = $fila["ulcera"];
                 $this->Cicatriz = $fila["cicatriz"];
+                $this->Antecedentes = $fila["antecedentes"];
                 $this->LesionMucosa = $fila["lesionmucosa"];
                 $this->Alta = $fila["alta"];
                 $this->Modificado = $fila["modificado"];
@@ -537,6 +547,7 @@ class Clinica {
                              nodulo,
                              ulcera,
                              cicatriz,
+                             antecedentes,
                              lesionmucosa, 
                              usuario)
                             VALUES
@@ -567,6 +578,7 @@ class Clinica {
                              :nodulo,
                              :ulcera,
                              :cicatriz,
+                             :antecedentes,
                              :lesionmucosa,
                              :usuario); ";
 
@@ -602,6 +614,7 @@ class Clinica {
             $preparada->bindParam(":nodulo",               $this->Nodulo);
             $preparada->bindParam(":ulcera",               $this->Ulcera);
             $preparada->bindParam(":cicatriz",             $this->Cicatriz);
+            $preparada->bindParam(":antecedentes",         $this->Antecedentes);
             $preparada->bindParam(":lesionmucosa",         $this->LesionMucosa);
             $preparada->bindParam(":usuario",              $this->IdUsuario);
 
@@ -658,6 +671,7 @@ class Clinica {
                             nodulo = :nodulo,
                             ulcera = :ulcera,
                             cicatriz = :cicatriz,
+                            antecedentes = :antecedentes,
                             lesionmucosa = :lesionmucosa,
                             usuario = :usuario
                      WHERE leishmania.clinica.id = :id; ";
@@ -693,6 +707,7 @@ class Clinica {
             $preparada->bindParam(":nodulo",               $this->Nodulo);
             $preparada->bindParam(":ulcera",               $this->Ulcera);
             $preparada->bindParam(":cicatriz",             $this->Cicatriz);
+            $preparada->bindParam(":antecedentes",         $this->Antecedentes);
             $preparada->bindParam(":lesionmucosa",         $this->LesionMucosa);
             $preparada->bindParam(":usuario",              $this->IdUsuario);
             $preparada->bindParam(":id",                   $this->Id);

@@ -49,6 +49,11 @@ Diccionarios:
     ✔ Validar ABM de instituciones asistenciales @high @started(25-08-21 11:51) @done(25-08-25 15:06) @lasted(4d3h15m42s)
 
 Pacientes: 
+  ☐ En datos de filiación provincia optativo @high @started(25-11-04 12:29)
+  ☐ En datos de filiación localidad optativo @high @started(25-11-04 12:29)
+  ☐ Verificar relaciones de las vistas @critical @started(25-11-04 12:29)
+  ☐ Agregar campo protocolo @high @started(25-11-04 12:30)
+
 
   Filiación: 
     ✔ Falta calendario con fecha de nacimiento @high @started(25-08-20 12:12) @done(25-08-20 13:08) @lasted(56m34s)
@@ -62,12 +67,13 @@ Pacientes:
     ✔ Verificar actualización de provincia en la carga de edición @high @started(25-08-21 13:36) @done(25-08-21 14:04) @lasted(28m38s)
     ✔ Verificar actualización de localidad en la carga de edición @high @started(25-08-21 13:36) @done(25-08-21 14:04) @lasted(28m41s)
     ✔ Verificar carga de registros hijos @high @started(25-08-25 13:38) @done(25-08-26 12:57) @lasted(23h19m38s)
-    ☐ Implementar impresión de resultados de una muestra @high @started(25-08-26 13:14)
-    ☐ Implementar impresión de historial clínica @high @started(25-08-26 13:14)
+    ✔ Implementar impresión de resultados de una muestra @high @started(25-08-26 13:14) @done(25-11-03 11:09) @lasted(9w5d21h55m21s)
+    ✔ Implementar impresión de historial clínica @high @started(25-08-26 13:14) @done(25-11-03 11:09) @lasted(9w5d21h55m23s)
     ✔ Fecha de nacimiento debe ser optativo @high @started(25-10-27 13:30) @done(25-10-27 13:54) @lasted(24m23s)
     ✔ Implementar separador entre datos paciente y datos institución @high @started(25-10-27 13:30) @done(25-10-27 14:17) @lasted(48m)
     ✔ Ubicación de la lesión, mover a leishmaniasis tegumentaria @hight @started(25-10-27 13:31) @done(25-10-27 13:51) @lasted(20m25s)
-    ☐ Revisar al grabar duplica el registro @high @started(25-10-27 13:41)
+    ✔ Revisar al grabar duplica el registro @high @started(25-10-27 13:41) @done(25-11-03 11:09) @lasted(6d21h28m27s)
+    ✔ En historia clínica verificar espaciado del teléfono @high @started(25-11-04 12:32) @done(25-11-04 12:40) @lasted(8m52s)
 
   Actividades:
     ✔ Validar ABM de actividades del paciente @high @started(25-08-21 11:47) @done(25-08-25 14:10) @lasted(4d2h23m27s)
@@ -77,6 +83,7 @@ Pacientes:
 
   Clínica: 
     ✔ Validar datos de clínica @high @started(25-08-21 11:48) @done(25-08-25 12:58) @lasted(4d1h10m6s)
+    ☐ Agregar texto libre con datos epidemiológicos @high @started(25-11-04 12:33)
 
   Control: 
     ✔ Validar ABM de actividades de control @high @started(25-08-21 11:48) @done(25-08-22 16:11) @lasted(1d4h23m6s)
@@ -99,18 +106,21 @@ Mascotas:
   ✔ Validar ABM de muestras y resultados de las mascotas @high @started(25-08-21 11:54) @done(25-08-26 13:35) @lasted(5d1h41m22s)
   ✔ Validar ABM de síntomas de las mascotas @high @started(25-08-21 11:53) @done(25-08-26 13:12) @lasted(5d1h19m57s)
   ✔ Síntomas, cambiar de fechas a select si /no @high @started(25-10-27 13:33) @done(25-10-29 11:51) @lasted(1d22h18m38s)
+  ☐ Agregar texto libre con datos epidemiológicos @critical @started(25-11-04 12:33)
 
 Responsables:
   ✔ Validar ABM de usuarios autorizados @high @started(25-08-21 11:52) @done(25-08-25 15:33) @lasted(4d3h41m28s)
   ✔ Verificar recuperación de contraseña @high @started(25-08-21 11:55) @done(25-08-27 14:29) @lasted(6d2h34m27s)
   ✔ Implementar modificación de contraseña @high @started(25-08-27 14:29) @done(25-08-27 15:45) @lasted(1h16m17s)
   ✔ Al ingresar debe cargar por defecto el perfil del usuario @high @started(25-08-27 14:32) @done(25-08-27 14:39) @lasted(7m44s)
+  ☐ Verificar permisos de los usuarios @critical @started(25-11-04 12:28)
 
 Reportes: 
   ✔ Implementar reporte de muestras pendientes @high @started(25-08-21 11:52) @done(25-08-25 12:57) @lasted(4d1h5m55s)
   ✔ Implementar reporte de casos denunciados al Sisa @high @started(25-08-21 11:53) @done(25-08-25 17:29) @lasted(4d5h36m17s)
   ✔ Implementar reporte de casos no denunciados al Sisa @high @started(25-08-21 11:53) @done(25-08-25 16:20) @lasted(4d4h27m33s)
   ✔ Implementar georreferenciación de casos, ver de distinguir animales de pacientes @high @started(25-08-21 11:59) @done(25-08-26 15:44) @lasted(5d3h45m39s)
+  ☐ Verificar generación de reportes @high @started(25-11-04 12:39)
   ☐ Implementar un panel de control @low @started(25-08-21 12:01)
 
 Bases de Datos:
