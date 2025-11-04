@@ -49,8 +49,8 @@ Diccionarios:
     ✔ Validar ABM de instituciones asistenciales @high @started(25-08-21 11:51) @done(25-08-25 15:06) @lasted(4d3h15m42s)
 
 Pacientes: 
-  ☐ En datos de filiación provincia optativo @high @started(25-11-04 12:29)
-  ☐ En datos de filiación localidad optativo @high @started(25-11-04 12:29)
+  ✔ En datos de filiación provincia optativo @high @started(25-11-04 12:29) @done(25-11-04 13:35) @lasted(1h6m9s)
+  ✔ En datos de filiación localidad optativo @high @started(25-11-04 12:29) @done(25-11-04 13:35) @lasted(1h6m8s)
   ☐ Verificar relaciones de las vistas @critical @started(25-11-04 12:29)
   ☐ Agregar campo protocolo @high @started(25-11-04 12:30)
 
@@ -83,7 +83,7 @@ Pacientes:
 
   Clínica: 
     ✔ Validar datos de clínica @high @started(25-08-21 11:48) @done(25-08-25 12:58) @lasted(4d1h10m6s)
-    ☐ Agregar texto libre con datos epidemiológicos @high @started(25-11-04 12:33)
+    ✔ Agregar texto libre con datos epidemiológicos @high @started(25-11-04 12:33) @done(25-11-04 13:26) @lasted(53m39s)
 
   Control: 
     ✔ Validar ABM de actividades de control @high @started(25-08-21 11:48) @done(25-08-22 16:11) @lasted(1d4h23m6s)

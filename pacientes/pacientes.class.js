@@ -534,9 +534,8 @@ class Pacientes {
         this.CodLoc = $('#localidadpaciente').combobox('getValue');
         if (this.CodLoc == ""){
 
-            // presenta el mensaje y retorna
-            Mensaje("Error", "Atención", "Seleccione la localidad");
-            return;
+            // presenta el mensaje y continúa
+            Mensaje("Error", "Atención", "No se ha declarado localidad");
 
         }
 
@@ -561,6 +560,7 @@ class Pacientes {
          * de un paciente
          *
          */
+
         // el tipo de domicilio lo permite en blanco
         this.Urbano = $('#tipodomicilio').combobox('getValue');
 

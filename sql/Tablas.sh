@@ -79,5 +79,9 @@ mariadb -u $USUARIO -p$PASSWORD < pacientes.sql
 echo "Generando tablas de datos clínicos"
 mariadb -u $USUARIO -p$PASSWORD < clinica.sql
 
+# creamos las claves foráneas
+echo "Generando claves foráneas"
+mariadb -u $USUARIO -p$PASSWORD < claves.sql
+
 # presentamos el mensaje
 echo "Generación de tablas realizada"
