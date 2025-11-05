@@ -1,7 +1,7 @@
 Lista de Tareas de Leishmania
 
 Diccionarios:
-  
+
   Ocupaciones:
     ✔ Al grabar o editar un item debe actualizar el select de filiación @high @started(25-08-20 12:05) @done(25-08-20 12:11) @lasted(6m24s)
     ✔ Verificar ABM Ocupaciones @high @started(25-08-21 11:42) @done(25-08-21 11:59) @lasted(17m40s)
@@ -107,7 +107,7 @@ Mascotas:
   ✔ Validar ABM de muestras y resultados de las mascotas @high @started(25-08-21 11:54) @done(25-08-26 13:35) @lasted(5d1h41m22s)
   ✔ Validar ABM de síntomas de las mascotas @high @started(25-08-21 11:53) @done(25-08-26 13:12) @lasted(5d1h19m57s)
   ✔ Síntomas, cambiar de fechas a select si /no @high @started(25-10-27 13:33) @done(25-10-29 11:51) @lasted(1d22h18m38s)
-  ☐ Agregar texto libre con datos epidemiológicos @critical @started(25-11-04 12:33)
+  ✔ Agregar texto libre con datos epidemiológicos @critical @started(25-11-04 12:33) @done(25-11-05 15:25) @lasted(1d2h52m36s)
 
 Responsables:
   ✔ Validar ABM de usuarios autorizados @high @started(25-08-21 11:52) @done(25-08-25 15:33) @lasted(4d3h41m28s)

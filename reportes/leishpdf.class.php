@@ -35,9 +35,6 @@ declare(strict_types=1);
 // leemos el archivo de configuración
 $config = parse_ini_file("../clases/config.ini");
 
-// define la ruta a las fuentes pdf
-define('FPDF_FONTPATH', $config["Fuentes"]);
-
 // incluimos la clase tpdf
 require_once "../clases/fpdf/tfpdf.php";
 
@@ -56,55 +53,43 @@ require_once "../clases/fpdf/tfpdf.php";
  */
 class LeishPdf extends tFPDF {
 
-	/**
-	 * Constructor de la clase, definimos las fuentes 
-	 * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-	 */
-	public function __construct(){
+    /**
+     * Método que sobrecarga la cabecera de la página
+     */
+    public function Header() {
 
-        // agrega una fuente unicode
-        $this->AddFont('DejaVu', '', 'DejaVuSansCondensed.ttf', true);
-        $this->AddFont('DejaVu', 'B', 'DejaVuSans-Bold.ttf', true);
+        // presenta el logo
+        $this->Image('../imagenes/logoleish.png',10, 10, 50, 30);
 
-	}
+        // fijamos la fuente
+        $this->SetFont('DejaVu', '', 12);
 
-	/**
-	 * Método que sobrecarga la cabecera de la página
-	 */
-	protected function Header() {
+        // fijamos la posición 
+        $this->Cell(80);
+        
+        // presenta el título 
+        $this->Cell(30,10,'Trazabilidad de Muestras de Leishmania',1,0,'C');
 
-	    // presenta el logo
-	    $this->Image('../imagenes/logoleish.png',10, 10, 50, 30);
+        // un salto de línea
+        $this->Ln(20);
 
-	    // fijamos la fuente
-	    $this->Documento->SetFont('DejaVu', '', 12);
+    }
 
-	    // fijamos la posición 
-	    $this->Cell(80);
-	    
-	    // presenta el título 
-	    $this->Cell(30,10,'Trazabilidad de Muestras de Leishmania',1,0,'C');
+    /**
+     * Método que sobrecarga el pié de página 
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     */
+    public function Footer() {
 
-	    // un salto de línea
-	    $this->Ln(20);
+        // fijamos la posición de impresión
+        $this->SetY(-15);
 
-	}
+        // establecemos la fuente
+        $this->SetFont('DejaVu', '', 10);
+        
+        // presentamos el número de página
+        $this->Cell(0, 10,'Página: ' . $this->PageNo() ." de " . '{nb}', 0, 0, 'C');
 
-	/**
-	 * Método que sobrecarga el pié de página 
-	 * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-	 */
-	protected function Footer() {
-
-    	// fijamos la posición de impresión
-    	$this->SetY(-15);
-
-    	// establecemos la fuente
-    	$this->SetFont('DejaVu', '', 10);
-    	
-    	// presentamos el número de página
-    	$this->Cell(0, 10,'Página: ' . $this->PageNo() ." de " . '/{nb}', 0, 0, 'C');
-
-	}
+    }
 
 }

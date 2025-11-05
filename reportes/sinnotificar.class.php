@@ -34,12 +34,13 @@
 declare(strict_types=1);
 
 // incluimos las clases
-require_once "../clases.conexion.class.php";
+require_once "../clases/conexion.class.php";
 require_once "leishpdf.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("config.ini");
-DEFINE ("TEMPORAL", $config["TEMPORAL"]);
+define('FPDF_FONTPATH', $config["Fuentes"]);
+define ("TEMP", $config["Temp"]);
 
 /**
  * Definición de la clase
@@ -83,7 +84,7 @@ class SinNotificar{
         $this->generarReporte();
 
         // guardamos el documento
-        $this->Documento->Output("F", TEMPORAL . "/sinnotificar.pdf");
+        $this->Documento->Output("F", TEMP . "/sinnotificar.pdf");
 
     }
 
@@ -115,9 +116,15 @@ class SinNotificar{
         // si hay registros
         if (count($registros) > 0){
 
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', 'B', 12);
+
             // presenta el título
             $texto = "Pacientes no notificados al Sisa";
             $this->Documento->MultiCell(100, $this->Interlineado, $texto, 0);
+
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', '', 12);
 
             // definimos los encabezados de columna
             $this->Documento->Cell(10, $this->Interlineado, "Fecha", 0, 0);
@@ -142,6 +149,9 @@ class SinNotificar{
 
         // si no hay registros pendientes
         } else {
+
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', 'B', 12);
 
             // presenta el mensaje
             $this->Documento->Cell(100, $this->Interlineado, "No hay muestras pendientes", 0, 1, "C");
@@ -168,7 +178,7 @@ class SinNotificar{
                      FROM leishmania.v_pacientes
                      WHERE NOT ISNULL(leishmania.v_pacientes.resultado) AND
                            ISNULL(leishmania.v_pacientes.sisa)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
+                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
                               leishmania.v_pacientes.nombre; ";
 
         // capturamos el error
@@ -202,9 +212,14 @@ class SinNotificar{
         // si hay registros
         if (count($registros) > 0){
 
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', 'B', 12);
+
             // presenta el título
-            $texto = "Mascotas sin Notificar al Sisa";
-            $this->Documento->MultiCell(100, $this->Interlineado, $texto, 0);
+            $this->Documento->MultiCell(100, $this->Interlineado, "Mascotas sin Notificar al Sisa", 0);
+
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', '', 12);
 
             // definimos los encabezados de columna
             $this->Documento->Cell(10, $this->Interlineado, "Fecha", 0, 0);
@@ -232,6 +247,9 @@ class SinNotificar{
         // si no hay registros pendientes
         } else {
 
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', 'B', 12);
+
             // presenta el mensaje
             $this->Documento->Cell(100, $this->Interlineado, "No hay muestras pendientes", 0, 1, "C");
 
@@ -258,7 +276,7 @@ class SinNotificar{
                      FROM leishmania.v_pacientes
                      WHERE NOT ISNULL(leishmania.v_pacientes.resultadomasc) AND
                            ISNULL(leishmania.v_pacientes.sisa)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
+                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
                               leishmania.v_pacientes.nombre; ";
 
         // capturamos el error

@@ -33,12 +33,13 @@
 declare(strict_types=1);
 
 // incluimos las clases
-require_once "../clases.conexion.class.php";
+require_once "../clases/conexion.class.php";
 require_once "leishpdf.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("config.ini");
-DEFINE ("TEMPORAL", $config["TEMPORAL"]);
+define('FPDF_FONTPATH', $config["Fuentes"]);
+define ("TEMP", $config["Temp"]);
 
 /**
  * Definición de la clase
@@ -82,7 +83,7 @@ class SinDeterminacion{
         $this->generarReporte();
 
         // guardamos el documento
-        $this->Documento->Output("F", TEMPORAL . "/sindeterminacion.pdf");
+        $this->Documento->Output("F", TEMP . "/sindeterminacion.pdf");
 
     }
 
@@ -114,9 +115,14 @@ class SinDeterminacion{
         // si hay registros
         if (count($registros) > 0){
 
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', 'B', 12);
+
             // presenta el título
-            $texto = "Muestras de pacientes aún no procesadas";
-            $this->Documento->MultiCell(100, $this->Interlineado, $texto, 0);
+            $this->Documento->MultiCell(100, $this->Interlineado, "Pacientes con Muestras no Procesadas", 0);
+
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', '', 12);
 
             // definimos los encabezados de columna
             $this->Documento->Cell(10, $this->Interlineado, "Fecha", 0, 0);
@@ -141,6 +147,9 @@ class SinDeterminacion{
 
         // si no hay registros pendientes
         } else {
+
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', 'B', 12);
 
             // presenta el mensaje
             $this->Documento->Cell(100, $this->Interlineado, "No hay muestras pendientes", 0, 1, "C");
@@ -167,7 +176,7 @@ class SinDeterminacion{
                      FROM leishmania.v_pacientes
                      WHERE ISNULL(leishmania.v_pacientes.resultado) AND
                            NOT ISNULL(leishmania.v_pacientes.material)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
+                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
                               leishmania.v_pacientes.nombre; ";
 
         // capturamos el error
@@ -201,9 +210,14 @@ class SinDeterminacion{
         // si hay registros
         if (count($registros) > 0){
 
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', 'B', 12);
+
             // presenta el título
-            $texto = "Muestras de mascotas aún no procesadas";
-            $this->Documento->MultiCell(100, $this->Interlineado, $texto, 0);
+            $this->Documento->MultiCell(100, $this->Interlineado, "Muestras de Mascotas no Procesadas", 0);
+
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', '', 12);
 
             // definimos los encabezados de columna
             $this->Documento->Cell(10, $this->Interlineado, "Fecha", 0, 0);
@@ -231,6 +245,9 @@ class SinDeterminacion{
         // si no hay registros pendientes
         } else {
 
+            // fijamos la fuente
+            $this->Documento->SetFont('DejaVu', 'B', 12);
+
             // presenta el mensaje
             $this->Documento->Cell(100, $this->Interlineado, "No hay muestras pendientes", 0, 1, "C");
 
@@ -257,7 +274,7 @@ class SinDeterminacion{
                      FROM leishmania.v_pacientes
                      WHERE ISNULL(leishmania.v_pacientes.resultadomasc) AND
                            NOT ISNULL(leishmania.v_pacientes.materialmasc)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
+                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
                               leishmania.v_pacientes.nombre; ";
 
         // capturamos el error
