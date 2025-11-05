@@ -73,6 +73,7 @@ if ($resultado){
                            "Periodicidad" =>         $sintomas->getPeriodicidad(),
                            "Duerme" =>               $sintomas->getDuerme(),
                            "QuedaLibre" =>           $sintomas->getQuedaLibre(),
+                           "Antecedentes" =>         $sintomas->getAntecedentes(),
                            "Usuario" =>              $sintomas->getUsuario(),
                            "Alta" =>                 $sintomas->getAlta()));
 

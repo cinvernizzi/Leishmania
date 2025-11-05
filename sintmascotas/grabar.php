@@ -65,6 +65,7 @@ $sintomas->setRepelentes($_POST["Repelentes"]);
 $sintomas->setPeriodicidad($_POST["Periodicidad"]);
 $sintomas->setDuerme($_POST["Duerme"]);
 $sintomas->setQuedaLibre($_POST["QuedaLibre"]);
+$sintomas->setAntecedentes($_POST["Antecedentes"]);
 $sintomas->setIdUsuario((int) $_POST["IdUsuario"]);
 
 // grabamos

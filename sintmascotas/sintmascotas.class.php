@@ -80,6 +80,7 @@ class SintMascotas {
     protected $Periodicidad;        // frecuencia de utilización (semanal, mensual, etc.)
     protected $Duerme;              // donde duerme (adentro / afuera)
     protected $QuedaLibre;          // si dejan libre al animal en la calle
+    protected $Antecedentes;        // antecedentes epidemiológicos
     protected $Usuario;             // nombre del usuario
     protected $IdUsuario;           // clave del usuario
     protected $Alta;                // fecha de alta del registro
@@ -135,6 +136,7 @@ class SintMascotas {
         $this->Periodicidad = '';
         $this->Duerme = '';
         $this->QuedaLibre = 'No';
+        $this->Antecedentes = "";
         $this->Usuario = "";
         $this->IdUsuario = 0;
         $this->Alta = date('d/m/Y');
@@ -279,6 +281,9 @@ class SintMascotas {
     public function setQuedaLibre(string $quedalibre) : void {
         $this->QuedaLibre = $quedalibre;
     }
+    public function setAntecedentes(?string $antecedentes) : void {
+        $this->Antecedentes = $antecedentes;
+    }
     public function setIdUsuario(int $idusuario) : void {
         $this->IdUsuario = $idusuario;
     }
@@ -410,6 +415,9 @@ class SintMascotas {
     public function getQuedaLibre() : string {
         return $this->QuedaLibre;
     }
+    public function getAntecedentes() : ?string {
+        return $this->Antecedentes;
+    }
     public function getUsuario() : string {
         return $this->Usuario;
     }
@@ -490,6 +498,7 @@ class SintMascotas {
                              periodicidad,
                              duerme, 
                              quedalibre,
+                             antecedentes,
                              usuario)
                             VALUES
                             (:mascota,
@@ -533,6 +542,7 @@ class SintMascotas {
                              :periodicidad,
                              :duerme,
                              :quedalibre,
+                             :antecedentes,
                              :usuario); ";
     
         // capturamos el error
@@ -581,6 +591,7 @@ class SintMascotas {
             $preparada->bindParam(":periodicidad",         $this->Periodicidad);
             $preparada->bindParam(":duerme",               $this->Duerme);
             $preparada->bindParam(":quedalibre",           $this->QuedaLibre);
+            $preparada->bindParam(":antecedentes",         $this->Antecedentes);
             $preparada->bindParam(":usuario",              $this->IdUsuario);
             $preparada->execute();
             return (int) $this->Link->lastInsertId();
@@ -646,6 +657,7 @@ class SintMascotas {
                             periodicidad = :periodicidad, 
                             duerme = :duerme, 
                             quedalibre = :quedalibre, 
+                            antecedentes = :antecedentes,
                             usuario = :usuario
                      WHERE leishmania.sintmascotas.id = :id; ";
 
@@ -693,6 +705,7 @@ class SintMascotas {
             $preparada->bindParam(":periodicidad",         $this->Periodicidad);
             $preparada->bindParam(":duerme",               $this->Duerme);
             $preparada->bindParam(":quedalibre",           $this->QuedaLibre);
+            $preparada->bindParam(":antecedentes",         $this->Antecedentes);
             $preparada->bindParam(":usuario",              $this->IdUsuario);
             $preparada->bindParam(":id",                   $this->Id);
             $preparada->execute();
@@ -765,6 +778,7 @@ class SintMascotas {
                             leishmania.v_sintmascotas.periodicidad AS periodicidad, 
                             leishmania.v_sintmascotas.duerme AS duerme, 
                             leishmania.v_sintmascotas.quedalibre AS quedalibre, 
+                            leishmania.v_sintmascotas.antecedentes AS antecedentes,
                             leishmania.v_sintmascotas.usuario AS usuario,
                             leishmania.v_sintmascotas.alta AS alta
                      FROM leishmania.v_sintmascotas
@@ -826,6 +840,7 @@ class SintMascotas {
                 $this->Periodicidad = $fila["periodicidad"];
                 $this->Duerme = $fila["duerme"];
                 $this->QuedaLibre = $fila["quedalibre"];
+                $this->Antecedentes = $fila["antecedentes"];
                 $this->Usuario = $fila["usuario"];
                 $this->Alta = $fila["alta"];
 

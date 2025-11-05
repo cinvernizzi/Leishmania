@@ -89,6 +89,7 @@ class SintMascotas {
         this.Periodicidad = "";         // semanal / mensual / semestral
         this.Duerme = "";               // donde duerme (casa / intemperie)
         this.QuedaLibre = "No";         // si queda suelto en la calle
+        this.Antecedentes = "";         // antecedentes epidemiológicos
         this.Usuario = "";              // nombre del usuario
         this.Alta = "";                 // fecha de alta del registro
 
@@ -188,6 +189,12 @@ class SintMascotas {
             labelAlign: 'left',
             onText: 'Si',
             offText: 'No'
+        });
+        $('#epidemiomascota').textbox({
+            width: 180,
+            height: 100, 
+            prompt: 'Antecedentes Epidemiológicos',
+            multiline: true
         });
         $('#atrofiasint').switchbutton({
             label: 'Atrofia Musc.:',
@@ -556,6 +563,7 @@ class SintMascotas {
             } else {
                 $('#polidipsiasint').switchbutton('uncheck');
             }
+            $('#epidemiomascota').textbox('setValue', datos.Antecedentes);
             if (datos.Atrofia == "Si"){
                 $('#atrofiasint').switchbutton('check');
             } else {
@@ -739,6 +747,7 @@ class SintMascotas {
             $('#adinamiasint').switchbutton('uncheck');
             $('#emasiacionsint').switchbutton('uncheck');
             $('#polidipsiasint').switchbutton('uncheck');
+            $('#epidemiomascota').textbox('setValue', "");
             $('#atrofiasint').switchbutton('uncheck');
             $('#paresiasint').switchbutton('uncheck');
             $('#convulsionesint').switchbutton('uncheck');
@@ -821,6 +830,7 @@ class SintMascotas {
         } else {
             this.Polidipsia = "No";
         }
+        this.Antecedentes = $('#epidemiomascota').textbox('getValue');
         if ($('#atrofiasint').switchbutton('options').checked){
             this.Atrofia = "Si";
         } else {
@@ -1018,6 +1028,7 @@ class SintMascotas {
         datosSintomas.append("Adinamia", this.Adinamia);
         datosSintomas.append("Emaciacion", this.Emaciacion);
         datosSintomas.append("Polidipsia", this.Polidipsia);
+        datosSintomas.append("Antecedentes", this.Antecedentes);
         datosSintomas.append("Atrofia", this.Atrofia);
         datosSintomas.append("Paresia", this.Paresia);
         datosSintomas.append("Convulsiones", this.Convulsiones);
@@ -1127,6 +1138,7 @@ class SintMascotas {
         $('#adinamiasint').switchbutton('uncheck');
         $('#emasiacionsint').switchbutton('uncheck');
         $('#polidipsiasint').switchbutton('uncheck');
+        $('#epidemiomascota').textbox('setValue', "");
         $('#atrofiasint').switchbutton('uncheck');
         $('#paresiasint').switchbutton('uncheck');
         $('#convulsionesint').switchbutton('uncheck');

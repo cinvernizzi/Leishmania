@@ -53,6 +53,7 @@
     periodicidad semanal / mensual / semestral frecuencia del repelente
     duerme interior / exterior 
     quedalibre si queda libre en la calle
+    antecedentes texto con los antecedentes epidemiológicos
     usuario entero clave del usuario
     alta date fecha de alta del registro
 
@@ -113,6 +114,7 @@ CREATE TABLE sintmascotas(
     periodicidad varchar(20) DEFAULT NULL,
     duerme varchar(20) DEFAULT NULL,
     quedalibre varchar(10) DEFAULT 'No',
+    antecedentes text DEFAULT NULL, 
     usuario int(4) UNSIGNED NOT NULL,
     alta timestamp DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(id),
@@ -175,6 +177,7 @@ CREATE ALGORITHM = UNDEFINED
               leishmania.sintmascotas.periodicidad AS periodicidad,
               leishmania.sintmascotas.duerme AS duerme,
               leishmania.sintmascotas.quedalibre AS quedalibre,
+              leishmania.sintmascotas.antecedentes AS antecedentes,
               leishmania.sintmascotas.usuario AS idusuario,
               cce.responsables.usuario AS usuario,
               DATE_FORMAT(leishmania.sintmascotas.alta, '%d/%m/%Y') AS alta
