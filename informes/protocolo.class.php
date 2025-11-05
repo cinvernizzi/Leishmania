@@ -114,8 +114,8 @@ class Protocolo{
         // setea la fuente
         $this->Documento->setFont('Dejavu', '', $this->Fuente);
 
-        // presentamos el registro 
-        $this->Documento->Cell(20, $this->Interlineado, "Id: " . $pacientes->getId(), 0, 0);
+        // presentamos el protocolo
+        $this->Documento->Cell(20, $this->Interlineado, "Protocolo: " . $pacientes->getProtocolo(), 0, 0);
 
         // obtenemos la longitud
         $longitud = $this->Documento->GetStringWidth("Nombre: " . $pacientes->getNombre());
@@ -182,10 +182,11 @@ class Protocolo{
         $this->Documento->Cell(20, $this->Interlineado, "Tipo: " . $pacientes->getUrbano(), 0, 1);
 
         // si tenemos el teléfono 
-        if (!empty($pacientes->getTelefono())){
+        if (!empty($pacientes->getTelPaciente())){
 
             // lo presenta
-            $this->Documento->Cell(20, $this->Interlineado, "Teléfono: " . $pacientes->getTelefono(), 0, 0);
+            $longitud = $this->Documento->GetStringWidth("Teléfono: " . $pacientes->getTelPaciente());
+            $this->Documento->Cell($longitud + 5, $this->Interlineado, "Teléfono: " . $pacientes->getTelPaciente(), 0, 0);
 
         }
 

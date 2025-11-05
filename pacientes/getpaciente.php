@@ -24,6 +24,7 @@ $registro = $paciente->getDatosPaciente((int) $_GET["id"]);
 
 // retornamos
 echo json_encode(array("Id" =>                 $paciente->getId(),
+                       "Protocolo" =>          $paciente->getProtocolo(),
                        "Fecha" =>              $paciente->getFecha(),
                        "Nombre" =>             $paciente->getNombre(),
                        "Documento" =>          $paciente->getDocumento(),

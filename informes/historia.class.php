@@ -144,8 +144,15 @@ class Historia{
         // setea la fuente
         $this->Documento->setFont('Dejavu', '', $this->Fuente);
 
-        // presentamos el registro 
-        $this->Documento->Cell(20, $this->Interlineado, "Id: " . $pacientes->getId(), 0, 0);
+        // presentamos el registro verificando si está declarado
+        // y obteniendo la longitud
+        if (empty($pacientes->getProtocolo())){
+            $protocolo = "Protocolo: Sin Datos";
+        } else {
+            $protocolo = "Protocolo: " . $pacientes->getProtocolo();
+        }
+        $longitud = $this->Documento->GetStringWidth($protocolo);
+        $this->Documento->Cell($longitud + 5, $this->Interlineado, $protocolo, 0, 0);
 
         // obtenemos la longitud
         $longitud = $this->Documento->GetStringWidth("Nombre: " . $pacientes->getNombre());
@@ -212,10 +219,11 @@ class Historia{
         $this->Documento->Cell(20, $this->Interlineado, "Tipo: " . $pacientes->getUrbano(), 0, 1);
 
         // si tenemos el teléfono 
-        if (!empty($pacientes->getTelefono())){
+        if (!empty($pacientes->getTelPaciente())){
 
             // lo presenta
-            $this->Documento->Cell(40, $this->Interlineado, "Teléfono: " . $pacientes->getTelefono(), 0, 0);
+            $longitud = $this->Documento->GetStringWidth("Teléfono: " . $pacientes->getTelPaciente());
+            $this->Documento->Cell($longitud + 5, $this->Interlineado, "Teléfono: " . $pacientes->getTelPaciente(), 0, 0);
 
         }
 
@@ -257,7 +265,7 @@ class Historia{
         // si declaró teléfono 
         if (!empty($pacientes->getTelefono())){
 
-            // obtenemos la longitud y presentamos
+            // presentamos
             $longitud = $this->Documento->GetStringWidth("Telefono: " .  $pacientes->getTelefono());
             $this->Documento->Cell($longitud + 5, $this->Interlineado, "Teléfono: " . $pacientes->getTelefono(), 0, 0);
 

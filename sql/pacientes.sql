@@ -12,6 +12,7 @@
     Estructura de la tabla
 
     id entero clave del registro
+    protocolo varchar protocolo asignado por el servicio
     fecha date fecha de denuncia
     nombre varchar nombre y apellido del paciente
     documento varchar número de documento del paciente
@@ -52,6 +53,7 @@ DROP TABLE IF EXISTS pacientes;
 -- la recreamos
 CREATE TABLE pacientes (
     id int(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+    protocolo varchar(15) DEFAULT NULL, 
     fecha date NOT NULL,
     nombre varchar(200) NOT NULL,
     documento varchar(15) DEFAULT NULL,
@@ -96,6 +98,7 @@ DROP TABLE IF EXISTS auditoria_pacientes;
 -- creamos la tabla de auditoría
 CREATE TABLE auditoria_pacientes (
     id int(5) UNSIGNED NOT NULL,
+    protocolo varchar(15) DEFAULT NULL,
     fecha date NOT NULL,
     nombre varchar(200) NOT NULL,
     documento varchar(15) DEFAULT NULL,
@@ -144,6 +147,7 @@ AFTER UPDATE ON pacientes
 FOR EACH ROW
 INSERT INTO auditoria_pacientes(
     id,
+    protocolo, 
     fecha,
     nombre,
     documento,
@@ -170,6 +174,7 @@ INSERT INTO auditoria_pacientes(
     evento)
    VALUES
    (OLD.id,
+    OLD.protocolo, 
     OLD.fecha,
     OLD.nombre,
     OLD.documento,
@@ -204,6 +209,7 @@ AFTER DELETE ON pacientes
 FOR EACH ROW
 INSERT INTO auditoria_pacientes(
     id,
+    protocolo, 
     fecha,
     nombre,
     documento,
@@ -230,6 +236,7 @@ INSERT INTO auditoria_pacientes(
     evento)
    VALUES
    (OLD.id,
+    OLD.protocolo, 
     OLD.fecha,
     OLD.nombre,
     OLD.documento,
@@ -264,6 +271,7 @@ CREATE ALGORITHM = UNDEFINED
        SQL SECURITY INVOKER
        VIEW v_pacientes AS
        SELECT leishmania.pacientes.id AS id,
+              leishmania.pacientes.protocolo AS protocolo, 
               DATE_FORMAT(leishmania.pacientes.fecha, '%d/%m/%Y') AS fecha,
               UCASE(leishmania.pacientes.nombre) AS nombre,
               leishmania.pacientes.documento AS documento,

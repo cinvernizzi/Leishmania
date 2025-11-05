@@ -38,6 +38,7 @@ class Pacientes {
     // definición de variables
     protected $Link;             // puntero a la base de datos
     protected $Id;               // clave del registro
+    protected $Protocolo;        // protocolo asignado por el servicio
     protected $Fecha;            // fecha de denuncia
     protected $Nombre;           // nombre del paciente
     protected $Documento;        // número de documento
@@ -88,6 +89,7 @@ class Pacientes {
 
         // inicializamos las variables
         $this->Id = 0;
+        $this->Protocolo = "";
         $this->Fecha = "";
         $this->Nombre = "";
         $this->Documento = "";
@@ -140,6 +142,9 @@ class Pacientes {
     // métodos de asignación de valores
     public function setId(int $id) : void {
         $this->Id = $id;
+    }
+    public function setProtocolo(?string $protocolo) : void {
+        $this->Protocolo = $protocolo;
     }
     public function setFecha(string $fecha) : void {
         $this->Fecha = $fecha;
@@ -208,6 +213,9 @@ class Pacientes {
     // métodos de retorno de valores
     public function getId() : int {
         return (int) $this->Id;
+    }
+    public function getProtocolo() : ?string {
+        return $this->Protocolo;
     }
     public function getFecha() : string {
         return $this->Fecha;
@@ -349,7 +357,8 @@ class Pacientes {
 
         // componemos la consulta
         $consulta = "INSERT INTO leishmania.pacientes
-                            (fecha,
+                            (protocolo, 
+                             fecha,
                              nombre,
                              documento,
                              tipodoc,
@@ -371,7 +380,8 @@ class Pacientes {
                              sisa,
                              usuario)
                             VALUES
-                            (STR_TO_DATE(:fecha, '%d/%m/%Y'),
+                            (:protocolo, 
+                             STR_TO_DATE(:fecha, '%d/%m/%Y'),
                              :nombre,
                              :documento,
                              :tipodoc,
@@ -398,6 +408,7 @@ class Pacientes {
 
             // preparamos, asignamos y ejecutamos
             $preparada = $this->Link->prepare($consulta);
+            $preparada->bindParam(":protocolo",    $this->Protocolo);
             $preparada->bindParam(":fecha",        $this->Fecha);
             $preparada->bindParam(":nombre",       $this->Nombre);
             $preparada->bindParam(":documento",    $this->Documento);
@@ -449,6 +460,7 @@ class Pacientes {
 
         // componemos la consulta
         $consulta = "UPDATE leishmania.pacientes SET
+                            protocolo = :protocolo, 
                             fecha = STR_TO_DATE(:fecha, '%d/%m/%Y'),
                             nombre = :nombre,
                             documento = :documento,
@@ -477,6 +489,7 @@ class Pacientes {
 
             // preparamos, asignamos y ejecutamos
             $preparada = $this->Link->prepare($consulta);
+            $preparada->bindParam(":protocolo",    $this->Protocolo);
             $preparada->bindParam(":fecha",        $this->Fecha);
             $preparada->bindParam(":nombre",       $this->Nombre);
             $preparada->bindParam(":documento",    $this->Documento);
@@ -527,6 +540,7 @@ class Pacientes {
 
         // componemos la consulta
         $consulta = "SELECT leishmania.v_pacientes.id AS id,
+                            leishmania.v_pacientes.protocolo AS protocolo, 
                             leishmania.v_pacientes.fecha AS fecha,
                             leishmania.v_pacientes.nombre AS nombre,
                             leishmania.v_pacientes.documento AS documento,
@@ -575,6 +589,7 @@ class Pacientes {
 
             // asignamos en la clase
             $this->Id = $fila["id"];
+            $this->Protocolo = $fila["protocolo"];
             $this->Fecha = $fila["fecha"];
             $this->Nombre = $fila["nombre"];
             $this->Documento = $fila["documento"];
@@ -646,6 +661,7 @@ class Pacientes {
 
         // componemos la consulta
         $consulta = "SELECT DISTINCT(leishmania.v_pacientes.id) AS id,
+                            leishmania.v_pacientes.protocolo AS protocolo, 
                             leishmania.v_pacientes.nombre AS nombre,
                             leishmania.v_pacientes.documento AS documento,
                             leishmania.v_pacientes.institucion AS institucion,
@@ -653,6 +669,7 @@ class Pacientes {
                      FROM leishmania.v_pacientes
                      WHERE leishmania.v_pacientes.nombre LIKE '%$texto%' OR
                            leishmania.v_pacientes.documento = '$texto' OR
+                           leishmania.v_pacientes.protocolo = '$texto' OR 
                            leishmania.v_pacientes.mascota LIKE '%$texto%'
                      ORDER BY leishmania.v_pacientes.nombre
                      LIMIT $offset, $registros; ";
@@ -690,6 +707,7 @@ class Pacientes {
                      FROM leishmania.v_pacientes
                      WHERE leishmania.v_pacientes.nombre LIKE '%$texto%' OR
                            leishmania.v_pacientes.documento = '$texto' OR
+                           leishmania.v_pacientes.protocolo = '$texto' OR
                            leishmania.v_pacientes.mascota LIKE '%$texto%'; ";
 
         // capturamos el error

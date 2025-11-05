@@ -1,6 +1,7 @@
 Lista de Tareas de Leishmania
 
 Diccionarios:
+  
   Ocupaciones:
     ✔ Al grabar o editar un item debe actualizar el select de filiación @high @started(25-08-20 12:05) @done(25-08-20 12:11) @lasted(6m24s)
     ✔ Verificar ABM Ocupaciones @high @started(25-08-21 11:42) @done(25-08-21 11:59) @lasted(17m40s)
@@ -51,8 +52,8 @@ Diccionarios:
 Pacientes: 
   ✔ En datos de filiación provincia optativo @high @started(25-11-04 12:29) @done(25-11-04 13:35) @lasted(1h6m9s)
   ✔ En datos de filiación localidad optativo @high @started(25-11-04 12:29) @done(25-11-04 13:35) @lasted(1h6m8s)
-  ☐ Verificar relaciones de las vistas @critical @started(25-11-04 12:29)
-  ☐ Agregar campo protocolo @high @started(25-11-04 12:30)
+  ✔ Verificar relaciones de las vistas @critical @started(25-11-04 12:29) @done(25-11-05 12:21) @lasted(23h52m35s)
+  ✔ Agregar campo protocolo @high @started(25-11-04 12:30) @done(25-11-05 13:21) @lasted(1d51m11s)
 
 
   Filiación: 

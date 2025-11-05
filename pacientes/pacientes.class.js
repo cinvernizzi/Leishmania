@@ -49,6 +49,7 @@ class Pacientes {
 
         // inicializamos las variables
         this.Id = 0;                     // clave del registro
+        this.Protocolo = "";             // protocolo asignado por el departamento
         this.Fecha = "";                 // fecha de la visita
         this.Nombre = "";                // nombre del paciente
         this.Documento = "";             // número de documento
@@ -90,6 +91,7 @@ class Pacientes {
 
         // configuramos los controles
         $('#idpaciente').textbox();
+        $('#protocolopaciente').textbox();        
         $('#ingresopaciente').datebox({
             required:true,
             width: "120px"
@@ -251,7 +253,7 @@ class Pacientes {
 
         // abrimos el layer presentando el protocolo
         $('#win-pacientes').window({
-            width:850,
+            width:950,
             height:500,
             modal:true,
             title: "Búsqueda de Pacientes",
@@ -295,6 +297,7 @@ class Pacientes {
             url: 'pacientes/buscapaciente.php?texto='+clase.Texto,
             columns:[[
                 {field:'Id',title:'Id',width:100,align:'center'},
+                {field:'Protocolo',title:'Protocolo',width:100,align:'center'},
                 {field:'Nombre',title:'Nombre',width:250,sortable:true},
                 {field:'Documento',title:'Documento',width:100,sortable:true},
                 {field:'Institucion',title:'Institucion',width:150,sortable:true},
@@ -401,6 +404,7 @@ class Pacientes {
 
         // cargamos en el formulario
         $('#idpaciente').textbox('setValue', datos.Id);
+        $('#protocolopaciente').textbox('setValue', datos.Protocolo);        
         $('#ingresopaciente').datebox('setValue', datos.Fecha);
         $('#nombrepaciente').textbox('setValue', datos.Nombre);
         $('#tipodocumento').combobox('setValue', datos.IdTipoDoc);
@@ -487,6 +491,9 @@ class Pacientes {
         } else {
             this.Id = $('#idpaciente').textbox('getValue');
         }
+
+        // el protocolo lo permite en blanco
+        this.Protocolo = $('#protocolopaciente').textbox('getValue');
 
         // verifica la fecha de ingreso
         this.Fecha = $('#ingresopaciente').datebox('getValue');
@@ -699,6 +706,7 @@ class Pacientes {
 
         // asignamos en el formulario
         datosPaciente.append("Id", this.Id);
+        datosPaciente.append("Protocolo", this.Protocolo);
         datosPaciente.append("Fecha", this.Fecha);
         datosPaciente.append("Nombre", this.Nombre);
         datosPaciente.append("Documento", this.Documento);
@@ -777,6 +785,7 @@ class Pacientes {
 
         // reiniciamos los campos
         $('#idpaciente').textbox('setValue', "");
+        $('#protocolopaciente').textbox('setValue', "");        
         $('#ingresopaciente').datebox('setValue', fechaActual());
         $('#nombrepaciente').textbox('setValue', "");
         $('#tipodocumento').combobox('setValue', "");

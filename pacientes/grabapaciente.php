@@ -22,6 +22,7 @@ $paciente = new Pacientes();
 
 // asignamos en la clase
 $paciente->setId((int) $_POST["Id"]);
+$paciente->setProtocolo($_POST["Protocolo"]);
 $paciente->setFecha($_POST["Fecha"]);
 $paciente->setNombre($_POST["Nombre"]);
 $paciente->setDocumento($_POST["Documento"]);

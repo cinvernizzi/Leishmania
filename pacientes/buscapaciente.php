@@ -49,6 +49,7 @@ foreach($nomina as $registro){
 
     // agregamos la fila al vector
     $items[] = array("Id" =>          $registro["id"],
+                     "Protocolo" =>   $registro["protocolo"],
                      "Nombre" =>      $registro["nombre"],
                      "Documento" =>   $registro["documento"],
                      "Institucion" => $registro["institucion"],
