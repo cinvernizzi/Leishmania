@@ -804,4 +804,126 @@ class Pacientes {
 
     }
 
+    /**
+     * Método que recibe como parámetro un año y obtiene 
+     * los registros de los pacientes que han sido notificados 
+     * en el sisa durante ese año
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param [int] $anio - el año a reportar
+     * @return [array] vector con los registros
+     */
+    public function getNotificadosPacientes(int $anio) : array {
+
+        // componemos la consulta
+        $consulta = "SELECT leishmania.v_pacientes.fecha AS fecha,
+                            leishmania.v_pacientes.nombre AS nombre,
+                            leishmania.v_pacientes.documento AS documento,
+                            leishmania.v_pacientes.material AS material,
+                            leishmania.v_pacientes.tecnica AS tecnica,
+                            leishmania.v_pacientes.fecha_muestra AS fecha_muestra,
+                            leishmania.v_pacientes.notificado As notificado
+                     FROM leishmania.v_pacientes
+                     WHERE YEAR(STR_TO_DATE(leishmania.v_pacientes.notificado, '%d/%m/%Y')) = '$anio'
+                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
+                              leishmania.v_pacientes.nombre; ";
+
+        // capturamos el error
+        try {
+
+            // obtenemos el vector y retornamos
+            $resultado = $this->Link->query($consulta);
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        // si ocurrió un error
+        } catch (PDOException $e){
+
+            // presenta el mensaje y retorna
+            echo $e->getMessage();
+            return array("Resultado" => false);
+
+        }
+
+    }
+
+    /**
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int $anio - entero con el año a reportar
+     * @return int entero con el número de registros 
+     * Método utilizado en la paginación de la grilla de los 
+     * resultados notificados al sisa que recibe como parámetro 
+     * un año y retorna el número de pacientes notificados 
+     * en ese año
+     */
+    public function numeroNotificados(int $anio) : int {
+
+        // componemos la consulta
+        $consulta = "SELECT COUNT(leishmania.v_pacientes.id) AS registros 
+                     FROM leishmania.v_pacientes
+                     WHERE YEAR(STR_TO_DATE(leishmania.v_pacientes.notificado, '%d/%m/%Y')) = '$anio'; ";
+
+        // capturamos el error
+        try {
+
+            // obtenemos el vector y retornamos
+            $resultado = $this->Link->query($consulta);
+            $fila = $resultado->fetch(PDO::FETCH_ASSOC);
+            return (int) $fila["registros"];
+        
+        // si ocurrió un error
+        } catch (PDOException $e){
+
+            // presenta el mensaje y retorna
+            echo $e->getMessage();
+            return 0;
+
+        }
+        
+    }
+
+    /**
+     * Método que recibe como parámetro un año, el desplazamiento
+     * del primer registro y el número de registros a retornar 
+     * y obtiene los registros de los pacientes que han sido notificados 
+     * en el sisa durante ese año
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param [int] $anio - el año a reportar
+     * @return [array] vector con los registros
+     */
+    public function getNotificadosPaginados(int $anio,
+                                            int $offset, 
+                                            int $registros) : array {
+
+        // componemos la consulta
+        $consulta = "SELECT leishmania.v_pacientes.id AS id, 
+                            leishmania.v_pacientes.fecha AS fecha,
+                            leishmania.v_pacientes.nombre AS nombre,
+                            leishmania.v_pacientes.documento AS documento,
+                            leishmania.v_pacientes.material AS material,
+                            leishmania.v_pacientes.tecnica AS tecnica,
+                            leishmania.v_pacientes.fecha_muestra AS fecha_muestra
+                            leishmania.v_pacientes.notificado AS notificado
+                     FROM leishmania.v_pacientes
+                     WHERE YEAR(STR_TO_DATE(leishmania.v_pacientes.notificado, '%d/%m/%Y')) = '$anio'
+                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
+                              leishmania.v_pacientes.nombre
+                     LIMIT $offset, $registros; ";
+
+        // capturamos el error
+        try {
+
+            // obtenemos el vector y retornamos
+            $resultado = $this->Link->query($consulta);
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        // si ocurrió un error
+        } catch (PDOException $e){
+
+            // presenta el mensaje y retorna
+            echo $e->getMessage();
+            return array("Resultado" => false);
+
+        }
+
+    }
+
 }

@@ -36,6 +36,8 @@ declare(strict_types=1);
 // incluimos las clases
 require_once "../clases.conexion.class.php";
 require_once "leishpdf.class.php";
+require_once "../pacientes/pacientes.class.php";
+require_once "../mascotas/mascotas.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("config.ini");
@@ -97,10 +99,10 @@ class Notificados{
     protected function generarReporte(int $anio){
 
         // agregamos los registros pendientes de pacientes
-        $this->pendientesPacientes($anio);
+        $this->notificadosPacientes($anio);
 
         // agregamos los registros pendientes de mascotas
-        $this->pendientesMascotas($anio);
+        $this->notificadosMascotas($anio);
 
     }
 
@@ -110,10 +112,12 @@ class Notificados{
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
      * @param [int] $anio - el año a reportar
      */
-    protected function pendientesPacientes(int $anio){
+    protected function notificadosPacientes(int $anio){
 
+        // instanciamos la clase y
         // obtenemos los registros pendientes
-        $registros = $this->getPendientesPacientes($anio);
+        $pacientes = new Pacientes(); 
+        $registros = $pacientes->getNotificadosPacientes($anio);
 
         // si hay registros
         if (count($registros) > 0){
@@ -154,54 +158,17 @@ class Notificados{
     }
 
     /**
-     * Método que obtiene los registros pendientes de
-     * muestras sin resultados
-     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * @param [int] $anio - el año a reportar
-     * @return [array] vector con los registros
-     */
-    protected function getPendientesPacientes(int $anio) : array {
-
-        // componemos la consulta
-        $consulta = "SELECT leishmania.v_pacientes.fecha AS fecha,
-                            leishmania.v_pacientes.nombre AS nombre,
-                            leishmania.v_pacientes.documento AS documento,
-                            leishmania.v_pacientes.material AS material,
-                            leishmania.v_pacientes.tecnica AS tecnica,
-                            leishmania.v_pacientes.fecha_muestra AS fecha_muestra
-                     FROM leishmania.v_pacientes
-                     WHERE YEAR(STR_TO_DATE(leishmania.v_pacientes.notificado, '%d/%m/%Y')) = '$anio'
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
-                              leishmania.v_pacientes.nombre; ";
-
-        // capturamos el error
-        try {
-
-            // obtenemos el vector y retornamos
-            $resultado = $this->Link->query($consulta);
-            return $resultado->fetchAll(PDO::FETCH_ASSOC);
-        
-        // si ocurrió un error
-        } catch (PDOException $e){
-
-            // presenta el mensaje y retorna
-            echo $e->getMessage();
-            return array("Resultado" => false);
-
-        }
-
-    }
-
-    /**
      * Método que agrega al documento los registros
-     * pendientes de mascotas
+     * de mascotas notificadas al sisa
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
      * @param [int] $anio - año a reportar
      */
-    protected function pendientesMascotas(int $anio){
+    protected function notificadosMascotas(int $anio){
 
+        // instanciamos la clase y 
         // obtenemos los registros pendientes
-        $registros = $this->getPendientesMascotas($anio);
+        $mascota = new Mascotas();
+        $registros = $mascota->getNotificadosMascotas($anio);
 
         // si hay registros
         if (count($registros) > 0){
@@ -238,47 +205,6 @@ class Notificados{
 
             // presenta el mensaje
             $this->Documento->Cell(100, $this->Interlineado, "No hay muestras notificadas", 0, 1, "C");
-
-        }
-
-    }
-
-    /**
-     * Método que obtiene los registros de las muestras
-     * de mascotas sin determinación
-     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * @param [int] $anio - año a reportar
-     * @return [array] vector con los registros
-     */
-    protected function getPendientesMascotas(int $anio) : array {
-
-        // componemos la consulta
-        $consulta = "SELECT leishmania.v_pacientes.fecha AS fecha,
-                            leishmania.v_pacientes.nombre AS nombre,
-                            leishmania.v_pacientes.documento AS documento,
-                            leishmania.v_pacientes.mascota AS mascota,
-                            leishmania.v_pacientes.materialmasc AS material,
-                            leishmania.v_pacientes.tecnicamasc AS tecnica,
-                            leishmania.v_pacientes.fechamuestramasc AS fecha_muestra
-                     FROM leishmania.v_pacientes
-                     WHERE YEAR(STR_TO_DATE(leishmania.v_pacientes.notificado, '%d/%m/%Y')) = '$anio' AND
-                           NOT ISNULL(leishmania.v_pacientes.materialmasc)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
-                              leishmania.v_pacientes.nombre; ";
-
-        // capturamos el error
-        try {
-
-            // obtenemos el vector y retornamos
-            $resultado = $this->Link->query($consulta);
-            return $resultado->fetchAll(PDO::FETCH_ASSOC);
-        
-        // si ocurrió un error
-        } catch (PDOException $e){
-
-            // presenta el mensaje y retorna
-            echo $e->getMessage();
-            return array("Resultado" => false);
 
         }
 

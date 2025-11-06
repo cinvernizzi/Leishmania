@@ -354,4 +354,46 @@ class Mascotas {
         
     }
 
+    /**
+     * Método que recibe como parámetro el año a reportar
+     * y obtiene los registros de las muestras de mascotas
+     * notificadas al sisa en ese año
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param [int] $anio - año a reportar
+     * @return [array] vector con los registros
+     */
+    public function getNotificadosMascotas(int $anio) : array {
+
+        // componemos la consulta
+        $consulta = "SELECT leishmania.v_pacientes.fecha AS fecha,
+                            leishmania.v_pacientes.nombre AS nombre,
+                            leishmania.v_pacientes.documento AS documento,
+                            leishmania.v_pacientes.mascota AS mascota,
+                            leishmania.v_pacientes.materialmasc AS material,
+                            leishmania.v_pacientes.tecnicamasc AS tecnica,
+                            leishmania.v_pacientes.fechamuestramasc AS fecha_muestra
+                     FROM leishmania.v_pacientes
+                     WHERE YEAR(STR_TO_DATE(leishmania.v_pacientes.notificado, '%d/%m/%Y')) = '$anio' AND
+                           NOT ISNULL(leishmania.v_pacientes.materialmasc)
+                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
+                              leishmania.v_pacientes.nombre; ";
+
+        // capturamos el error
+        try {
+
+            // obtenemos el vector y retornamos
+            $resultado = $this->Link->query($consulta);
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        // si ocurrió un error
+        } catch (PDOException $e){
+
+            // presenta el mensaje y retorna
+            echo $e->getMessage();
+            return array("Resultado" => false);
+
+        }
+
+    }
+
 }

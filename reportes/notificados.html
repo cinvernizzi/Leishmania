@@ -7,14 +7,14 @@
     Fecha: 25/08/2025
     Licencia: GPL
 
-    Documento que define el formulario con el select y el 
-    contenedor para el reporte de casos notificados al 
-    sisa
+    Documento que define el formulario con el la barra de 
+    herramientas y la grilla de los pacientes notificados 
+    al sisa
 
 -->
 
-<!-- definimos el div del año -->
-<div id="form-anios" name="form-anios">
+<!-- definimos la barra de herramientas -->
+<div id="toollbarnotificados" style="padding: 3px;">
 
     <!-- presenta el select -->
     <label>Año:
@@ -32,28 +32,36 @@
         </select>
     </a>
     </label>
-    
-    <!-- presenta el botón calcular -->
-    <a id="btnGeneraReporte" 
-        href="#" 
-        class="easyui-linkbutton" 
-        data-options="iconCls:'icon-pdf'"
-        style="width: 120px;"
-        onclick="reportes.reporteNotificados();">
-        Generar
+
+    <!-- presenta el botón buscar -->
+    <a id="btnFiltraNotificados" 
+           href="#" 
+           class="easyui-linkbutton"
+           style="width:30px" 
+           data-options="iconCls:'icon-search'"
+           onclick="notificados.filtraRegistros();">
+    </a>
+
+    <!-- presenta el botón imprimir -->
+    <a id="btnImprimeNotificados" 
+           href="#" 
+           class="easyui-linkbutton"
+           style="width:30px" 
+           data-options="iconCls:'icon-print'"
+           onclick="notificados.imprimeNotificados();">
     </a>
 
 </div>
 
-<!-- definimos el contenedor del reporte -->
-<div id="form-notificados" name="form-notificados"
-     style="width: 100%;
-            height: 90%;">
-</div>
+<!-- definimos la grilla -->
+<table id="grilla-notificados" 
+       style="width:99%;"
+       toolbar="#toollbarnotificados">
+</table>
 
 <script>
 
     // configuramos el formulario 
-    reportes.initFormAnios();
+    notificados.initGrillaNotificados();
 
 </script>

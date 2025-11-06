@@ -59,68 +59,6 @@ class Reportes {
 
     /**
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * Método que abre el layer emergente solicitando el año
-     * a reportar de las muestras informadas al Sisa
-     */
-    anioNotificados(){
-
-        // reiniciamos la sesión
-        sesion.reiniciar();
-
-        // cargamos en el contenedor el formulario
-        $("#form_reportes").load("reportes/notificados.html");
-
-    }
-
-    /**
-     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * Método que inicializa el formulario con el pedido del
-     * año de las muestras informadas
-     */
-    initFormAnios(){
-
-        // reiniciamos la sesión
-        sesion.reiniciar();
-
-        // configuramos los controles
-        $('#anionotificado').combobox({
-            url: "reportes/anionotificados.php",
-            valueField: 'Anio',
-            textField: 'Anio',
-            panelHeigh: 'auto'
-        });
-        $('#btnGeneraReporte').linkbutton();
-
-    }
-
-    /**
-     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * Método que recibe como parámetro el año a reportar y
-     * genera el informe de las muestras y pacientes reportados
-     * al Sisa
-     */
-    reporteNotificados(){
-
-        // reiniciamos la sesión
-        sesion.reiniciar();
-
-        // obtenemos el año y verificamos
-        let anio = $('#anionotificado').combobox('getValue');
-        if (anio == "" || anio == 0){
-
-            // presenta el mensaje
-            Mensaje("Error", "Atención", "Debe indicar un año");
-            return;
-
-        }
-
-        // cargamos en el contenedor el documento pdf
-        $("#form_notificados").load("reportes/notificados.php?anio"+anio);
-
-    }
-
-    /**
-     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
      * Método que presenta en el contenedor el mapa con la
      * distribución geográfica de los casos evaluados
      * (positivos, negativos, pacientes y animales) distinguidos

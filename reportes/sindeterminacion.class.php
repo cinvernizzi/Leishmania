@@ -35,6 +35,8 @@ declare(strict_types=1);
 // incluimos las clases
 require_once "../clases/conexion.class.php";
 require_once "leishpdf.class.php";
+require_once "../muestras/muestras.class.php";
+require_once "../muestrasmasc/muestrasmasc.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("config.ini");
@@ -109,8 +111,10 @@ class SinDeterminacion{
      */
     protected function pendientesPacientes(){
 
+        // instanciamos la clase y 
         // obtenemos los registros pendientes
-        $registros = $this->getPendientesPacientes();
+        $muestras = new Muestras();
+        $registros = $muestras->getPendientesPacientes();
 
         // si hay registros
         if (count($registros) > 0){
@@ -159,53 +163,16 @@ class SinDeterminacion{
     }
 
     /**
-     * Método que obtiene los registros pendientes de
-     * muestras sin resultados
-     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * @return [array] vector con los registros
-     */
-    protected function getPendientesPacientes() : array {
-
-        // componemos la consulta
-        $consulta = "SELECT leishmania.v_pacientes.fecha AS fecha,
-                            leishmania.v_pacientes.nombre AS nombre,
-                            leishmania.v_pacientes.documento AS documento,
-                            leishmania.v_pacientes.material AS material,
-                            leishmania.v_pacientes.tecnica AS tecnica,
-                            leishmania.v_pacientes.fecha_muestra AS fecha_muestra
-                     FROM leishmania.v_pacientes
-                     WHERE ISNULL(leishmania.v_pacientes.resultado) AND
-                           NOT ISNULL(leishmania.v_pacientes.material)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
-                              leishmania.v_pacientes.nombre; ";
-
-        // capturamos el error
-        try {
-
-            // obtenemos el vector y retornamos
-            $resultado = $this->Link->query($consulta);
-            return $resultado->fetchAll(PDO::FETCH_ASSOC);
-        
-        // si ocurrió un error
-        } catch (PDOException $e){
-
-            // presenta el mensaje y retorna
-            echo $e->getMessage();
-            return array("Resultado" => false);
-
-        }
-
-    }
-
-    /**
      * Método que agrega al documento los registros
      * pendientes de mascotas
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
      */
     protected function pendientesMascotas(){
 
+        // instanciamos la clase y 
         // obtenemos los registros pendientes
-        $registros = $this->getPendientesMascotas();
+        $muestras = new MuestrasMasc();
+        $registros = $muestras->getPendientesMascotas();
 
         // si hay registros
         if (count($registros) > 0){
@@ -250,46 +217,6 @@ class SinDeterminacion{
 
             // presenta el mensaje
             $this->Documento->Cell(100, $this->Interlineado, "No hay muestras pendientes", 0, 1, "C");
-
-        }
-
-    }
-
-    /**
-     * Método que obtiene los registros de las muestras
-     * de mascotas sin determinación
-     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * @return [array] vector con los registros
-     */
-    protected function getPendientesMascotas() : array {
-
-        // componemos la consulta
-        $consulta = "SELECT leishmania.v_pacientes.fecha AS fecha,
-                            leishmania.v_pacientes.nombre AS nombre,
-                            leishmania.v_pacientes.documento AS documento,
-                            leishmania.v_pacientes.mascota AS mascota,
-                            leishmania.v_pacientes.materialmasc AS material,
-                            leishmania.v_pacientes.tecnicamasc AS tecnica,
-                            leishmania.v_pacientes.fechamuestramasc AS fecha_muestra
-                     FROM leishmania.v_pacientes
-                     WHERE ISNULL(leishmania.v_pacientes.resultadomasc) AND
-                           NOT ISNULL(leishmania.v_pacientes.materialmasc)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
-                              leishmania.v_pacientes.nombre; ";
-
-        // capturamos el error
-        try {
-
-            // obtenemos el vector y retornamos
-            $resultado = $this->Link->query($consulta);
-            return $resultado->fetchAll(PDO::FETCH_ASSOC);
-        
-        // si ocurrió un error
-        } catch (PDOException $e){
-
-            // presenta el mensaje y retorna
-            echo $e->getMessage();
-            return array("Resultado" => false);
 
         }
 

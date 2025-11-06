@@ -19,14 +19,14 @@
 
 // leemos el archivo de configuración
 $config = parse_ini_file("config.ini");
-DEFINE ("TEMPORAL", $config["TEMPORAL"]);
+DEFINE ("TEMP", $config["Temp"]);
 
 // incluimos la clase y generamos el certificado
 require_once "notificados.class.php";
 $reporte = new Notificados((int) $_GET["anio"]);
 
 // usamos el frame que nos permite incrustarlo desde php
-echo "<iframe src= TEMPORAL . '/notificados.pdf'
+echo "<iframe src= TEMP . '/notificados.pdf'
        height='100%'
        width='100%'>
       </iframe>";

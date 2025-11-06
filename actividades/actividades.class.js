@@ -498,7 +498,7 @@ class Actividades {
 
         // ahora abrimos el diálogo
         $('#ayuda-actividades').window({
-            title: "Adyuda de Actividades del Paciente",
+            title: "Ayuda de Actividades del Paciente",
             modal:true,
             maximizable: true,
             width: 900,
