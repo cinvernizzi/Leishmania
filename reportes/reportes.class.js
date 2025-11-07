@@ -29,21 +29,6 @@ class Reportes {
 
     /**
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * Método que presenta la nómina de determinaciones realizadas
-     * que aún no han sido notificadas al Sisa
-     */
-    sinNotificar(){
-
-        // reiniciamos la sesión
-        sesion.reiniciar();
-
-        // cargamos en el contenedor el documento pdf
-        $("#form_reportes").load("reportes/sinnotificar.php");
-
-    }
-
-    /**
-     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
      * Método que presenta en el contenedor el mapa con la
      * distribución geográfica de los casos evaluados
      * (positivos, negativos, pacientes y animales) distinguidos

@@ -94,6 +94,7 @@
     <script src="reportes/reportes.class.js"></script>
     <script src="reportes/notificados.class.js"></script>
     <script src="reportes/sindeterminacion.class.js"></script>
+    <script src="reportes/sinnotificar.class.js"></script>
 
 </head>
 
@@ -530,7 +531,7 @@
                                    </div>
                                    <div data-options="iconCls:'icon-pdf'"
                                         title="Casos sin reportar al Sisa"
-                                        onclick="reportes.sinNotificar();">
+                                        onclick="sinnotificar.sinNotificar();">
                                         Sin Reportar
                                    </div>
                                    <div class="menu-sep"></div>                               
@@ -702,6 +703,7 @@
           let reportes = new Reportes();
           let notificados = new Notificados();
           let sindeterminacion = new SinDeterminacion();
+          let sinnotificar = new SinNotificar();
 
           // si el usuario está acreditado
           if(sessionStorage.getItem("IdUsuario") != null){
