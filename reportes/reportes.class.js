@@ -29,21 +29,6 @@ class Reportes {
 
     /**
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
-     * Método que presenta la nómina de muestras pendientes de
-     * determinación
-     */
-    sinDeterminacion(){
-
-        // reiniciamos la sesión
-        sesion.reiniciar();
-
-        // cargamos en el contenedor el documento pdf
-        $("#form_reportes").load("reportes/sindeterminacion.php");
-
-    }
-
-    /**
-     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
      * Método que presenta la nómina de determinaciones realizadas
      * que aún no han sido notificadas al Sisa
      */

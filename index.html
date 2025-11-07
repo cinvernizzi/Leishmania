@@ -93,6 +93,7 @@
     <script src="script/mapas.class.js"></script>
     <script src="reportes/reportes.class.js"></script>
     <script src="reportes/notificados.class.js"></script>
+    <script src="reportes/sindeterminacion.class.js"></script>
 
 </head>
 
@@ -535,7 +536,7 @@
                                    <div class="menu-sep"></div>                               
                                    <div data-options="iconCls:'icon-pdf'"
                                         title="Casos sin resultados cargados"
-                                        onclick="reportes.sinDeterminacion();">
+                                        onclick="sindeterminacion.sinDeterminacion();">
                                         Pendientes
                                    </div>
                                    <div class="menu-sep"></div>                                    
@@ -700,6 +701,7 @@
           let muestrasmasc = new MuestrasMasc();
           let reportes = new Reportes();
           let notificados = new Notificados();
+          let sindeterminacion = new SinDeterminacion();
 
           // si el usuario está acreditado
           if(sessionStorage.getItem("IdUsuario") != null){

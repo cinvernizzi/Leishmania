@@ -487,6 +487,86 @@ class MuestrasMasc {
     }
 
     /**
+     * Método que obtiene el número de determinaciones sin resultados 
+     * de las mascotas
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @return int número de determinaciones pendientes
+     */
+    public function numeroPendientes() : int {
+
+        // componemos la consulta
+        $consulta = "SELECT COUNT(leishmania.v_pacientes.id) AS registros
+                     FROM leishmania.v_pacientes
+                     WHERE ISNULL(leishmania.v_pacientes.resultadomasc) AND
+                           NOT ISNULL(leishmania.v_pacientes.materialmasc); ";
+
+        // capturamos el error
+        try {
+
+            // obtenemos el vector y retornamos
+            $resultado = $this->Link->query($consulta);
+            $fila = $resultado->fetch(PDO::FETCH_ASSOC);
+            return (int) $fila["registros"];
+        
+        // si ocurrió un error
+        } catch (PDOException $e){
+
+            // presenta el mensaje y retorna
+            echo $e->getMessage();
+            return 0;
+
+        }
+
+    }
+
+    /**
+     * Método que obtiene los registros de las muestras
+     * de mascotas sin determinación, recibe como parámetro 
+     * el desplazamiento del primer registro y el número de 
+     * registros a retornar, utilizado para paginar la grilla
+     * de los reportes
+     * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+     * @param int $offset - desplazamiento del primer registro
+     * @param int $registros - número de registros a retornar
+     * @return [array] vector con los registros
+     */
+    public function pendientesPaginados(int $offset, int $registros) : array {
+
+        // componemos la consulta
+        $consulta = "SELECT leishmania.v_pacientes.id AS id, 
+                            leishmania.v_pacientes.fecha AS fecha,
+                            leishmania.v_pacientes.nombre AS nombre,
+                            leishmania.v_pacientes.documento AS documento,
+                            leishmania.v_pacientes.mascota AS mascota,
+                            leishmania.v_pacientes.materialmasc AS material,
+                            leishmania.v_pacientes.tecnicamasc AS tecnica,
+                            leishmania.v_pacientes.fechamuestramasc AS fecha_muestra
+                     FROM leishmania.v_pacientes
+                     WHERE ISNULL(leishmania.v_pacientes.resultadomasc) AND
+                           NOT ISNULL(leishmania.v_pacientes.materialmasc)
+                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
+                              leishmania.v_pacientes.nombre
+                     LIMIT $offset, $registros; ";
+
+        // capturamos el error
+        try {
+
+            // obtenemos el vector y retornamos
+            $resultado = $this->Link->query($consulta);
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        // si ocurrió un error
+        } catch (PDOException $e){
+
+            // presenta el mensaje y retorna
+            echo $e->getMessage();
+            return array("Resultado" => false);
+
+        }
+
+    }
+
+    /**
      * Método que obtiene los registros de las muestras
      * de mascotas sin notificar al sisa
      * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
