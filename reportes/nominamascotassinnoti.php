@@ -34,7 +34,7 @@ $offset = ($pagina - 1) * $rows;
 $registros = $muestras->numeroSinNotificar();
 
 // si hay registros in notificar
-if ($resultros > 0){
+if ($registros > 0){
 
     // asignamos el total
     $resultado["total"] = $registros;
@@ -54,9 +54,8 @@ if ($resultros > 0){
                         "Nombre" =>       $registro["nombre"],
                         "Documento" =>    $registro["documento"],
                         "Mascota" =>      $registro["mascota"],
-                        "Material" =>     $registro["material"],
-                        "Tecnica" =>      $registro["tecnica"],
                         "FechaMuestra" => $registro["fecha_muestra"],
+                        "Usuario" =>      $registro["usuario"],
                         "Editar" =>       "<img src='imagenes/meditar.png'>");
 
     }

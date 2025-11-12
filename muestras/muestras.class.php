@@ -573,14 +573,14 @@ class Muestras {
     public function getPendientesNotificar() : array {
 
         // componemos la consulta
-        $consulta = "SELECT leishmania.v_pacientes.fecha AS fecha,
+        $consulta = "SELECT leishmania.v_pacientes.id AS id, 
+                            leishmania.v_pacientes.fecha AS fecha,
                             leishmania.v_pacientes.nombre AS nombre,
                             leishmania.v_pacientes.documento AS documento,
-                            leishmania.v_pacientes.material AS material,
-                            leishmania.v_pacientes.tecnica AS tecnica,
-                            leishmania.v_pacientes.fecha_muestra AS fecha_muestra
-                     FROM leishmania.v_pacientes
-                     WHERE NOT ISNULL(leishmania.v_pacientes.resultado) AND
+                            DATE_FORMAT(leishmania.muestras.fecha, '%d/%m/%Y') AS fecha_muestra,
+                            leishmania.v_pacientes.usuario AS usuario
+                     FROM leishmania.v_pacientes INNER JOIN leishmania.muestras ON leishmania.v_pacientes.id = leishmania.muestras.paciente
+                     WHERE NOT ISNULL(leishmania.muestras.resultado) AND
                            ISNULL(leishmania.v_pacientes.sisa)
                      ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
                               leishmania.v_pacientes.nombre; ";
@@ -613,11 +613,11 @@ class Muestras {
 
         // componemos la consulta
         $consulta = "SELECT COUNT(leishmania.v_pacientes.id) AS registros
-                     FROM leishmania.v_pacientes
-                     WHERE NOT ISNULL(leishmania.v_pacientes.resultado) AND
+                     FROM leishmania.v_pacientes INNER JOIN leishmania.muestras ON leishmania.v_pacientes.id = leishmania.muestras.paciente
+                     WHERE NOT ISNULL(leishmania.muestras.resultado) AND
                            ISNULL(leishmania.v_pacientes.sisa)
                      ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
-                              leishmania.v_pacientes.nombre; ";
+                              leishmania.v_pacientes.nombre;; ";
 
         // capturamos el error
         try {
@@ -656,11 +656,10 @@ class Muestras {
                             leishmania.v_pacientes.fecha AS fecha,
                             leishmania.v_pacientes.nombre AS nombre,
                             leishmania.v_pacientes.documento AS documento,
-                            leishmania.v_pacientes.material AS material,
-                            leishmania.v_pacientes.tecnica AS tecnica,
-                            leishmania.v_pacientes.fecha_muestra AS fecha_muestra
-                     FROM leishmania.v_pacientes
-                     WHERE NOT ISNULL(leishmania.v_pacientes.resultado) AND
+                            DATE_FORMAT(leishmania.muestras.fecha, '%d/%m/%Y') AS fecha_muestra,
+                            leishmania.v_pacientes.usuario AS usuario
+                     FROM leishmania.v_pacientes INNER JOIN leishmania.muestras ON leishmania.v_pacientes.id = leishmania.muestras.paciente
+                     WHERE NOT ISNULL(leishmania.muestras.resultado) AND
                            ISNULL(leishmania.v_pacientes.sisa)
                      ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
                               leishmania.v_pacientes.nombre
