@@ -898,13 +898,11 @@ class Pacientes {
                             leishmania.v_pacientes.fecha AS fecha,
                             leishmania.v_pacientes.nombre AS nombre,
                             leishmania.v_pacientes.documento AS documento,
-                            leishmania.v_pacientes.material AS material,
-                            leishmania.v_pacientes.tecnica AS tecnica,
-                            leishmania.v_pacientes.fecha_muestra AS fecha_muestra
-                            leishmania.v_pacientes.notificado AS notificado
-                     FROM leishmania.v_pacientes
+                            leishmania.v_pacientes.notificado AS notificado,
+                            leishmania.v_pacientes.usuario AS usuario
+                     FROM leishmania.v_pacientes 
                      WHERE YEAR(STR_TO_DATE(leishmania.v_pacientes.notificado, '%d/%m/%Y')) = '$anio'
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
+                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
                               leishmania.v_pacientes.nombre
                      LIMIT $offset, $registros; ";
 

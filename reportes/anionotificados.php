@@ -22,23 +22,29 @@ $link = new Conexion();
 // componemos la consulta
 $consulta = "SELECT DISTINCT(YEAR(leishmania.pacientes.notificado)) AS anio
              FROM leishmania.pacientes
-             WHERE NOT ISNULL(leishmania.pacientes.notificado)
+             WHERE (NOT ISNULL(leishmania.pacientes.notificado) AND 
+                    leishmania.pacientes.notificado != '00/00/0000')
              ORDER BY leishmania.pacientes.notificado DESC;";
 
 // ejecutamos y obtenemos el vector
 $resultado = $link->query($consulta);
 $nomina = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-// definimos el array
-$anios = array();
+// si hay registros 
+if (count($nomina) > 0){
 
-// recorremos el vector
-foreach($nomina as $registro){
+    // definimos el array
+    $anios = array();
 
-    // lo agregamos al array
-    $anios[] = array("Anio" => $registro["anio"]);
+    // recorremos el vector
+    foreach($nomina as $registro){
+
+        // lo agregamos al array
+        $anios[] = array("Anio" => $registro["anio"]);
+
+    }
+
+    // retornamos
+    echo json_encode($anios);
 
 }
-
-// retornamos
-echo json_encode($anios);

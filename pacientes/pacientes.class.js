@@ -441,7 +441,11 @@ class Pacientes {
         $('#profesionalpaciente').textbox('setValue', datos.Enviado);
         $('#mailpaciente').textbox('setValue', datos.Mail);
         $('#telefonoprofesional').textbox('setValue', datos.Telefono);
-        $('#notificacionpaciente').datebox('setValue', datos.Notificado);
+        if (datos.Notificado != '00/00/0000'){
+            $('#notificacionpaciente').datebox('setValue', datos.Notificado);
+        } else {
+            $('#notificacionpaciente').datebox('setValue', "");
+        }
         $('#sisapaciente').textbox('setValue', datos.Sisa);
         $('#antecedentespaciente').texteditor('setValue', datos.Antecedentes);
         $('#usuariopaciente').textbox('setValue', datos.Usuario);

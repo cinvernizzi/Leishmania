@@ -488,11 +488,13 @@ class Muestras {
      */
     public function numeroPendientes() : int {
 
-        // componemos la consulta
+        // componemos la consulta, tenemos que hacer un join con las 
+        // muestras para verificar que las muestras de ese paciente
+        // están generadas y no tienen resultados
         $consulta = "SELECT COUNT(leishmania.v_pacientes.id) AS registros
-                     FROM leishmania.v_pacientes
-                     WHERE ISNULL(leishmania.v_pacientes.resultado) AND
-                           NOT ISNULL(leishmania.v_pacientes.material); ";
+                     FROM leishmania.v_pacientes INNER JOIN leishmania.muestras ON leishmania.v_pacientes.id = leishmania.muestras.paciente
+                     WHERE ISNULL(leishmania.muestras.resultado) AND
+                           NOT ISNULL(leishmania.muestras.material);";
 
         // capturamos el error
         try {
@@ -526,20 +528,23 @@ class Muestras {
      */
     public function pendientesPaginados(int $offset, int $registros) : array {
 
-        // componemos la consulta
+        // componemos la consulta también tenemos que hacer un join 
+        // con las muestras y las técnicas 
         $consulta = "SELECT leishmania.v_pacientes.id AS id, 
                             leishmania.v_pacientes.fecha AS fecha,
                             leishmania.v_pacientes.nombre AS nombre,
                             leishmania.v_pacientes.documento AS documento,
-                            leishmania.v_pacientes.material AS material,
-                            leishmania.v_pacientes.tecnica AS tecnica,
-                            leishmania.v_pacientes.fecha_muestra AS fecha_muestra
-                     FROM leishmania.v_pacientes
-                     WHERE ISNULL(leishmania.v_pacientes.resultado) AND
-                           NOT ISNULL(leishmania.v_pacientes.material)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
-                              leishmania.v_pacientes.nombre; 
-                     LIMIT $offset, $registros";
+                            leishmania.dicmaterial.material AS material,
+                            leishmania.dictecnicas.tecnica AS tecnica,
+                            DATE_FORMAT(leishmania.muestras.fecha, '%d/%m/%d') AS fecha_muestra
+                     FROM leishmania.v_pacientes INNER JOIN leishmania.muestras ON leishmania.v_pacientes.id = leishmania.muestras.paciente
+                                                 INNER JOIN leishmania.dicmaterial ON leishmania.muestras.material = leishmania.dicmaterial.id
+                                                 INNER JOIN leishmania.dictecnicas ON leishmania.muestras.tecnica = leishmania.dictecnicas.id
+                     WHERE ISNULL(leishmania.muestras.resultado) AND
+                           NOT ISNULL(leishmania.muestras.material)
+                     ORDER BY leishmania.muestras.fecha,
+                              leishmania.v_pacientes.nombre
+                     LIMIT $offset, $registros;";
 
         // capturamos el error
         try {

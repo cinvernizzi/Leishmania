@@ -52,12 +52,16 @@ class Notificados {
         // reiniciamos la sesión
         sesion.reiniciar();
 
+        // definimos la clase
+        let clase = this;
+        
         // configuramos los controles
         $('#anionotificado').combobox({
             url: "reportes/anionotificados.php",
             valueField: 'Anio',
             textField: 'Anio',
-            panelHeigh: 'auto'
+            limitToList: true,
+            panelHeigh: 100
         });
         $('#btnFiltraNotificados').linkbutton();
         $('#btnImprimeNotificados').linkbutton();
@@ -70,6 +74,7 @@ class Notificados {
             remoteSort: false,
             pagination: true,
             rownumbers: false,
+            emptyMsg: 'No hay pacientes notificados',
             onClickCell: function(index,field){
                 clase.eventoGrillaNotificados(index, field);
             },
@@ -79,10 +84,8 @@ class Notificados {
                 {field:'Fecha',title:'Fecha', width:80, align:'center'},
                 {field:'Nombre',title:'Paciente', width:150, align:'left'},
                 {field:'Documento',title:'Documento', width:120, align:'center'},
-                {field:'Material',title:'Material', width:120, align:'left'},
-                {field:'Tecnica',title:'Tecnica', width:100, align:'left'},
-                {field:'FechaMuestra',title:'Muestra', width:120, align:'center'},
                 {field:'Notificado',title:'Notificado', width:120, align:'center'},                
+                {field:'Usuario',title:'Operador', width:120, align:'center'},                
                 {field:'Editar',title:'Ver', width:50, align:'center'}
             ]]
         });
@@ -130,7 +133,7 @@ class Notificados {
         if (anio == ""){
 
             // presenta el mensaje 
-            Mensaje ("Debe indicar un año");
+            Mensaje ("Error", "Atención", "Debe indicar un año");
 
         // si seleccionó
         } else {
@@ -160,7 +163,7 @@ class Notificados {
         if (anio == ""){
 
             // presenta el mensaje 
-            Mensaje ("Debe indicar un año");
+            Mensaje ("Error", "Atención", "Debe indicar un año");
 
         // si seleccionó
         } else {

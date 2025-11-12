@@ -21,7 +21,7 @@
 
 // incluimos e instanciamos la clase
 require_once "../muestrasmasc/muestrasmasc.class.php";
-$muestras = new Muestras();
+$muestras = new MuestrasMasc();
 
 // obtenemos los valores recibidos por post
 $pagina = isset($_POST['page']) ? intval($_POST['page']) : 1;
@@ -32,32 +32,39 @@ $offset = ($pagina - 1) * $rows;
 
 // obtenemos el total de registros 
 $registros = $muestras->numeroSinNotificar();
-$resultado["total"] = $registros;
 
-// obtenemos el vector con los registros
-$nomina = $muestras->sinNotificarPaginados($offset, $rows);
+// si hay registros in notificar
+if ($resultros > 0){
 
-// definimos el vector 
-$items = array();
+    // asignamos el total
+    $resultado["total"] = $registros;
 
-// recorremos el vector
-foreach ($nomina as $registro){
+    // obtenemos el vector con los registros
+    $nomina = $muestras->sinNotificarPaginados($offset, $rows);
 
-    // lo agregamos al array
-    $items[] = array("Id" =>           $registro["id"],
-                     "Fecha" =>        $registro["fecha"],
-                     "Nombre" =>       $registro["nombre"],
-                     "Documento" =>    $registro["documento"],
-                     "Mascota" =>      $registro["mascota"],
-                     "Material" =>     $registro["material"],
-                     "Tecnica" =>      $registro["tecnica"],
-                     "FechaMuestra" => $registro["fecha_muestra"],
-                     "Editar" =>       "<img src='imagenes/meditar.png'>");
+    // definimos el vector 
+    $items = array();
+
+    // recorremos el vector
+    foreach ($nomina as $registro){
+
+        // lo agregamos al array
+        $items[] = array("Id" =>           $registro["id"],
+                        "Fecha" =>        $registro["fecha"],
+                        "Nombre" =>       $registro["nombre"],
+                        "Documento" =>    $registro["documento"],
+                        "Mascota" =>      $registro["mascota"],
+                        "Material" =>     $registro["material"],
+                        "Tecnica" =>      $registro["tecnica"],
+                        "FechaMuestra" => $registro["fecha_muestra"],
+                        "Editar" =>       "<img src='imagenes/meditar.png'>");
+
+    }
+
+    // agregamos al resultado
+    $resultado["rows"] = $items;
+
+    // retornamos 
+    echo json_encode($resultado);
 
 }
-
-// agregamos al resultado
-$resultado["rows"] = $items;
-
-// retornamos 
-echo json_encode($resultado);

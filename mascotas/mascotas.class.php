@@ -369,13 +369,11 @@ class Mascotas {
                             leishmania.v_pacientes.nombre AS nombre,
                             leishmania.v_pacientes.documento AS documento,
                             leishmania.v_pacientes.mascota AS mascota,
-                            leishmania.v_pacientes.materialmasc AS material,
-                            leishmania.v_pacientes.tecnicamasc AS tecnica,
-                            leishmania.v_pacientes.fechamuestramasc AS fecha_muestra
-                     FROM leishmania.v_pacientes
-                     WHERE YEAR(STR_TO_DATE(leishmania.v_pacientes.notificado, '%d/%m/%Y')) = '$anio' AND
-                           NOT ISNULL(leishmania.v_pacientes.materialmasc)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y),
+                            leishmania.v_pacientes.notificado AS notificado,
+                            leishmania.v_pacientes.usuario AS usuario
+                     FROM leishmania.v_pacientes INNER JOIN leishmania.muestrasmasc ON leishmania.v_pacientes.id = leishmania.muestrasmasc.paciente
+                     WHERE YEAR(STR_TO_DATE(leishmania.v_pacientes.notificado, '%d/%m/%Y')) = '$anio'
+                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
                               leishmania.v_pacientes.nombre; ";
 
         // capturamos el error

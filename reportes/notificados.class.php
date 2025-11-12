@@ -34,14 +34,14 @@
 declare(strict_types=1);
 
 // incluimos las clases
-require_once "../clases.conexion.class.php";
-require_once "leishpdf.class.php";
+require_once "../informes/paginas.class.php";
 require_once "../pacientes/pacientes.class.php";
 require_once "../mascotas/mascotas.class.php";
 
 // leemos el archivo de configuración
 $config = parse_ini_file("config.ini");
-DEFINE ("TEMPORAL", $config["TEMPORAL"]);
+DEFINE ("TEMP", $config["Temp"]);
+define('FPDF_FONTPATH', $config["Fuentes"]);
 
 /**
  * Definición de la clase
@@ -49,7 +49,6 @@ DEFINE ("TEMPORAL", $config["TEMPORAL"]);
 class Notificados{
 
     // definimos las variables de clase
-    protected $Link;             // puntero a la base de datos
     protected $Documento;        // documento pdf
     protected $Interlineado;     // distancia del interlineado
     protected $Fuente;           // tamaño de la fuente en puntos
@@ -63,8 +62,11 @@ class Notificados{
     public function __construct(int $anio){
 
         // instanciamos los objetos
-        $this->Link = new Conexion();
-        $this->Documento = new LeishPdf();
+        $this->Documento = new Paginas('P', 'mm');
+
+        // agrega una fuente unicode
+        $this->Documento->AddFont('DejaVu', '', 'DejaVuSansCondensed.ttf', true);
+        $this->Documento->AddFont('DejaVu', 'B', 'DejaVuSans-Bold.ttf', true);
 
         // fijamos las propiedades del documento
         $this->Documento->SetAuthor("Claudio Invernizzi");
@@ -73,20 +75,17 @@ class Notificados{
         $this->Documento->SetSubject("Pacientes con determinaciones notificadas", true);
         $this->Documento->SetTitle("Trazabilidad de muestras de Leishmania", true);
         $this->Documento->SetAutoPageBreak(true);
+        $this->Documento->AliasNbPages();        
 
         // inicializamos el interlineado y el tamaño de la fuente
         $this->Interlineado = 7;
         $this->Fuente = 12;
 
-        // agrega una fuente unicode
-        $this->Documento->AddFont('DejaVu', '', 'DejaVuSansCondensed.ttf', true);
-        $this->Documento->AddFont('DejaVu', 'B', 'DejaVuSans-Bold.ttf', true);
-
         // generamos el documento
         $this->generarReporte($anio);
 
         // guardamos el documento
-        $this->Documento->Output("F", TEMPORAL . "/sindeterminacion.pdf");
+        $this->Documento->Output("F", TEMP . "/notificados.pdf");
 
     }
 
@@ -122,6 +121,9 @@ class Notificados{
         // si hay registros
         if (count($registros) > 0){
 
+            // seteamos la fuente
+            $this->Documento->SetFont('DejaVu', 'B', $this->Fuente);
+
             // presenta el título
             $texto = "Muestras de pacientes notificadas";
             $this->Documento->MultiCell(100, $this->Interlineado, $texto, 0);
@@ -130,9 +132,11 @@ class Notificados{
             $this->Documento->Cell(10, $this->Interlineado, "Fecha", 0, 0);
             $this->Documento->Cell(30, $this->Interlineado, "Paciente", 0, 0);
             $this->Documento->Cell(10, $this->Interlineado, "Documento", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Material", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Técnica", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Muestra", 0, 1);
+            $this->Documento->Cell(10, $this->Interlineado, "Notificado", 0, 0);
+            $this->Documento->Cell(10, $this->Interlineado, "Operador", 0, 1);
+
+            // seteamos la fuente
+            $this->Documento->SetFont('DejaVu', '', $this->Fuente);
 
             // recorremos el vector
             foreach($registros as $valor){
@@ -141,9 +145,8 @@ class Notificados{
                 $this->Documento->Cell(10, $this->Interlineado, $valor["fecha"], 0, 0);
                 $this->Documento->Cell(30, $this->Interlineado, $valor["paciente"], 0, 0);
                 $this->Documento->Cell(10, $this->Interlineado, $valor["documento"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["material"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["tecnica"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["fecha_muestra"], 0, 1);
+                $this->Documento->Cell(10, $this->Interlineado, $valor["notificado"], 0, 0);
+                $this->Documento->Cell(10, $this->Interlineado, $valor["usuario"], 0, 1);
                 
             }
 
@@ -173,8 +176,11 @@ class Notificados{
         // si hay registros
         if (count($registros) > 0){
 
+            // seteamos la fuente
+            $this->Documento->SetFont('DejaVu', 'B', $this->Fuente);
+
             // presenta el título
-            $texto = "Muestras de mascotas aún no procesadas";
+            $texto = "Muestras de mascotas notificadas";
             $this->Documento->MultiCell(100, $this->Interlineado, $texto, 0);
 
             // definimos los encabezados de columna
@@ -182,9 +188,11 @@ class Notificados{
             $this->Documento->Cell(30, $this->Interlineado, "Paciente", 0, 0);
             $this->Documento->Cell(10, $this->Interlineado, "Documento", 0, 0);
             $this->Documento->Cell(10, $this->Interlineado, "Mascota", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Material", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Técnica", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Muestra", 0, 1);
+            $this->Documento->Cell(10, $this->Interlineado, "Notificado", 0, 0);
+            $this->Documento->Cell(10, $this->Interlineado, "Operador", 0, 1);
+
+            // seteamos la fuente
+            $this->Documento->SetFont('DejaVu', '', $this->Fuente);
 
             // recorremos el vector
             foreach($registros as $valor){
@@ -194,10 +202,8 @@ class Notificados{
                 $this->Documento->Cell(30, $this->Interlineado, $valor["paciente"], 0, 0);
                 $this->Documento->Cell(10, $this->Interlineado, $valor["documento"], 0, 0);
                 $this->Documento->Cell(10, $this->Interlineado, $valor["mascota"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["material"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["tecnica"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["fecha_muestra"], 0, 1);
-                
+                $this->Documento->Cell(10, $this->Interlineado, $valor["notificado"], 0, 0);                
+                $this->Documento->Cell(10, $this->Interlineado, $valor["usuario"], 0, 1);                
             }
 
         // si no hay registros pendientes

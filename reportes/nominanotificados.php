@@ -31,14 +31,14 @@ $offset = ($pagina - 1) * $rows;
 
 // si recibió el año (porque puede ser llamado al cargar
 // la grilla)
-if (isset($_GET["anio"])){
+if (isset($_POST["anio"])){
 
     // obtenemos el total de registros 
-    $registros = $pacientes->numeroNotificados((int) $_GET["anio"]);
+    $registros = $pacientes->numeroNotificados((int) $_POST["anio"]);
     $resultado["total"] = $registros;
 
     // obtenemos el vector con los registros
-    $nomina = $pacientes->getNotificadosPaginados((int) $anio, $offset, $rows);
+    $nomina = $pacientes->getNotificadosPaginados((int) $_POST["anio"], $offset, $rows);
 
     // definimos el vector 
     $items = array();
@@ -51,10 +51,8 @@ if (isset($_GET["anio"])){
                          "Fecha" =>        $registro["fecha"],
                          "Nombre" =>       $registro["nombre"],
                          "Documento" =>    $registro["documento"],
-                         "Material" =>     $registro["material"],
-                         "Tecnica" =>      $registro["tecnica"],
-                         "FechaMuestra" => $registro["fecha_muestra"],
                          "Notificado" =>   $registro["notificado"],
+                         "Usuario" =>      $registro["usuario"],
                          "Editar" =>       "<img src='imagenes/meditar.png'>");
 
     }
