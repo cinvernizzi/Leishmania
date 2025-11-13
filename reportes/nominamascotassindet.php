@@ -48,9 +48,8 @@ foreach ($nomina as $registro){
                      "Nombre" =>       $registro["nombre"],
                      "Documento" =>    $registro["documento"],
                      "Mascota" =>      $registro["mascota"],
-                     "Material" =>     $registro["material"],
-                     "Tecnica" =>      $registro["tecnica"],
                      "FechaMuestra" => $registro["fecha_muestra"],
+                     "Usuario" =>      $registro["usuario"],
                      "Editar" =>       "<img src='imagenes/meditar.png'>");
 
 }

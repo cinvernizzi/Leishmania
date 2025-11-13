@@ -33,8 +33,7 @@
 declare(strict_types=1);
 
 // incluimos las clases
-require_once "../clases/conexion.class.php";
-require_once "leishpdf.class.php";
+require_once "../informes/paginas.class.php";
 require_once "../muestras/muestras.class.php";
 require_once "../muestrasmasc/muestrasmasc.class.php";
 
@@ -49,7 +48,6 @@ define ("TEMP", $config["Temp"]);
 class SinDeterminacion{
 
     // definimos las variables de clase
-    protected $Link;             // puntero a la base de datos
     protected $Documento;        // documento pdf
     protected $Interlineado;     // distancia del interlineado
     protected $Fuente;           // tamaño de la fuente en puntos
@@ -62,8 +60,7 @@ class SinDeterminacion{
     public function __construct(){
 
         // instanciamos los objetos
-        $this->Link = new Conexion();
-        $this->Documento = new LeishPdf();
+        $this->Documento = new Paginas();
 
         // fijamos las propiedades del documento
         $this->Documento->SetAuthor("Claudio Invernizzi");
@@ -72,6 +69,7 @@ class SinDeterminacion{
         $this->Documento->SetSubject("Pacientes con determinaciones pendientes", true);
         $this->Documento->SetTitle("Trazabilidad de muestras de Leishmania", true);
         $this->Documento->SetAutoPageBreak(true);
+        $this->Documento->AliasNbPages();
 
         // inicializamos el interlineado y el tamaño de la fuente
         $this->Interlineado = 7;
@@ -132,9 +130,8 @@ class SinDeterminacion{
             $this->Documento->Cell(10, $this->Interlineado, "Fecha", 0, 0);
             $this->Documento->Cell(30, $this->Interlineado, "Paciente", 0, 0);
             $this->Documento->Cell(10, $this->Interlineado, "Documento", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Material", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Técnica", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Muestra", 0, 1);
+            $this->Documento->Cell(10, $this->Interlineado, "Muestra", 0, 0);
+            $this->Documento->Cell(10, $this->Interlineado, "Operador", 0, 1);
 
             // recorremos el vector
             foreach($registros as $valor){
@@ -143,9 +140,8 @@ class SinDeterminacion{
                 $this->Documento->Cell(10, $this->Interlineado, $valor["fecha"], 0, 0);
                 $this->Documento->Cell(30, $this->Interlineado, $valor["paciente"], 0, 0);
                 $this->Documento->Cell(10, $this->Interlineado, $valor["documento"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["material"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["tecnica"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["fecha_muestra"], 0, 1);
+                $this->Documento->Cell(10, $this->Interlineado, $valor["fecha_muestra"], 0, 0);
+                $this->Documento->Cell(10, $this->Interlineado, $valor["usuario"], 0, 1);
                 
             }
 
@@ -191,9 +187,8 @@ class SinDeterminacion{
             $this->Documento->Cell(30, $this->Interlineado, "Paciente", 0, 0);
             $this->Documento->Cell(10, $this->Interlineado, "Documento", 0, 0);
             $this->Documento->Cell(10, $this->Interlineado, "Mascota", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Material", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Técnica", 0, 0);
-            $this->Documento->Cell(10, $this->Interlineado, "Muestra", 0, 1);
+            $this->Documento->Cell(10, $this->Interlineado, "Muestra", 0, 0);
+            $this->Documento->Cell(10, $this->Interlineado, "Operador", 0, 1);
 
             // recorremos el vector
             foreach($registros as $valor){
@@ -203,9 +198,8 @@ class SinDeterminacion{
                 $this->Documento->Cell(30, $this->Interlineado, $valor["paciente"], 0, 0);
                 $this->Documento->Cell(10, $this->Interlineado, $valor["documento"], 0, 0);
                 $this->Documento->Cell(10, $this->Interlineado, $valor["mascota"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["material"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["tecnica"], 0, 0);
-                $this->Documento->Cell(10, $this->Interlineado, $valor["fecha_muestra"], 0, 1);
+                $this->Documento->Cell(10, $this->Interlineado, $valor["fecha_muestra"], 0, 0);
+                $this->Documento->Cell(10, $this->Interlineado, $valor["usuario"], 0, 1);
                 
             }
 

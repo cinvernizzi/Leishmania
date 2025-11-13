@@ -459,13 +459,12 @@ class MuestrasMasc {
                             leishmania.v_pacientes.nombre AS nombre,
                             leishmania.v_pacientes.documento AS documento,
                             leishmania.v_pacientes.mascota AS mascota,
-                            leishmania.v_pacientes.materialmasc AS material,
-                            leishmania.v_pacientes.tecnicamasc AS tecnica,
-                            leishmania.v_pacientes.fechamuestramasc AS fecha_muestra
-                     FROM leishmania.v_pacientes
-                     WHERE ISNULL(leishmania.v_pacientes.resultadomasc) AND
-                           NOT ISNULL(leishmania.v_pacientes.materialmasc)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
+                            leishmania.v_muestrasmasc.fecha AS fecha_muestra,
+                            leishmania.v_pacientes.usuario AS usuario
+                     FROM leishmania.v_pacientes INNER JOIN leishmania.v_muestrasmasc ON leishmania.v_pacientes.id = leishmania.v_muestrasmasc.idpaciente
+                     WHERE ISNULL(leishmania.v_muestrasmasc.resultado) AND
+                           NOT ISNULL(leishmania.v_muestrasmasc.material)
+                     ORDER BY STR_TO_DATE(leishmania.v_muestrasmasc.fecha, '%d/%m/%Y'),
                               leishmania.v_pacientes.nombre; ";
 
         // capturamos el error
@@ -496,9 +495,9 @@ class MuestrasMasc {
 
         // componemos la consulta
         $consulta = "SELECT COUNT(leishmania.v_pacientes.id) AS registros
-                     FROM leishmania.v_pacientes
-                     WHERE ISNULL(leishmania.v_pacientes.resultadomasc) AND
-                           NOT ISNULL(leishmania.v_pacientes.materialmasc); ";
+                     FROM leishmania.v_pacientes INNER JOIN leishmania.v_muestrasmasc ON leishmania.v_pacientes.id = leishmania.v_muestrasmasc.idpaciente
+                     WHERE ISNULL(leishmania.v_muestrasmasc.resultado) AND
+                           NOT ISNULL(leishmania.v_muestrasmasc.material);; ";
 
         // capturamos el error
         try {
@@ -533,20 +532,17 @@ class MuestrasMasc {
     public function pendientesPaginados(int $offset, int $registros) : array {
 
         // componemos la consulta
-        $consulta = "SELECT leishmania.v_pacientes.id AS id, 
-                            leishmania.v_pacientes.fecha AS fecha,
+        $consulta = "SELECT leishmania.v_pacientes.fecha AS fecha,
                             leishmania.v_pacientes.nombre AS nombre,
                             leishmania.v_pacientes.documento AS documento,
                             leishmania.v_pacientes.mascota AS mascota,
-                            leishmania.v_pacientes.materialmasc AS material,
-                            leishmania.v_pacientes.tecnicamasc AS tecnica,
-                            leishmania.v_pacientes.fechamuestramasc AS fecha_muestra,
-                            leishmania.v_pacientes.usuario AS usuario, 
-                     FROM leishmania.v_pacientes
-                     WHERE ISNULL(leishmania.v_pacientes.resultadomasc) AND
-                           NOT ISNULL(leishmania.v_pacientes.materialmasc)
-                     ORDER BY STR_TO_DATE(leishmania.v_pacientes.fecha, '%d/%m/%Y'),
-                              leishmania.v_pacientes.nombre
+                            leishmania.v_muestrasmasc.fecha AS fecha_muestra,
+                            leishmania.v_pacientes.usuario AS usuario
+                     FROM leishmania.v_pacientes INNER JOIN leishmania.v_muestrasmasc ON leishmania.v_pacientes.id = leishmania.v_muestrasmasc.idpaciente
+                     WHERE ISNULL(leishmania.v_muestrasmasc.resultado) AND
+                           NOT ISNULL(leishmania.v_muestrasmasc.material)
+                     ORDER BY STR_TO_DATE(leishmania.v_muestrasmasc.fecha, '%d/%m/%Y'),
+                              leishmania.v_pacientes.nombre;
                      LIMIT $offset, $registros; ";
 
         // capturamos el error

@@ -76,9 +76,8 @@ class SinDeterminacion {
                 {field:'Fecha',title:'Fecha', width:80, align:'center'},
                 {field:'Nombre',title:'Paciente', width:150, align:'left'},
                 {field:'Documento',title:'Documento', width:120, align:'center'},
-                {field:'Material',title:'Material', width:120, align:'left'},
-                {field:'Tecnica',title:'Tecnica', width:100, align:'left'},
                 {field:'FechaMuestra',title:'Muestra', width:100, align:'left'},
+                {field:'Usuario',title:'Operador', width:100, align:'left'},
                 {field:'Editar',title:'Ver', width:50, align:'center'}
             ]]
         });
@@ -101,8 +100,8 @@ class SinDeterminacion {
                 {field:'Nombre',title:'Paciente', width:150, align:'left'},
                 {field:'Documento',title:'Documento', width:120, align:'center'},                
                 {field:'Mascota',title:'Mascota', width:150, align:'left'},                
-                {field:'Material',title:'Material', width:120, align:'left'},
-                {field:'Tecnica',title:'Tecnica', width:100, align:'left'},
+                {field:'FechaMuestra',title:'Muestra', width:100, align:'left'},                                
+                {field:'Usuario',title:'Operador', width:100, align:'left'},                                
                 {field:'Editar',title:'Ver', width:50, align:'center'}
             ]]
         });
